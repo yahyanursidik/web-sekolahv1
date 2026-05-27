@@ -1,0 +1,469 @@
+<!DOCTYPE html><html class="light" lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Artikel &amp; Edukasi | Tarbiyah Sunnah Lab School</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;family=Amiri&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#673d17",
+                    "inverse-on-surface": "#f4f1e6",
+                    "surface-variant": "#e6e2d8",
+                    "tertiary-fixed": "#dbe8b9",
+                    "on-secondary": "#ffffff",
+                    "background": "#fdf9ee",
+                    "primary-fixed-dim": "#bbcda4",
+                    "outline": "#75786e",
+                    "surface-container-low": "#f7f3e8",
+                    "surface-container-highest": "#e6e2d8",
+                    "on-tertiary-container": "#b1be91",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#794c25",
+                    "on-primary-fixed": "#121f06",
+                    "secondary": "#82542c",
+                    "on-surface": "#1c1c15",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#313129",
+                    "surface-bright": "#fdf9ee",
+                    "surface-dim": "#dddacf",
+                    "on-background": "#1c1c15",
+                    "primary": "#29371a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#2f1500",
+                    "tertiary-container": "#434d2a",
+                    "on-tertiary-fixed-variant": "#404b28",
+                    "inverse-primary": "#bbcda4",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d7e9bf",
+                    "secondary-fixed-dim": "#f8ba8a",
+                    "outline-variant": "#c5c8bc",
+                    "surface-container-high": "#ece8dd",
+                    "secondary-container": "#febf8f",
+                    "on-tertiary-fixed": "#161f02",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#bfcc9e",
+                    "secondary-fixed": "#ffdcc3",
+                    "primary-container": "#3f4e2f",
+                    "on-error-container": "#93000a",
+                    "surface": "#fdf9ee",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#adbf97",
+                    "on-surface-variant": "#45483f",
+                    "tertiary": "#2c3615",
+                    "surface-container": "#f2eee3",
+                    "surface-tint": "#546342",
+                    "on-primary-fixed-variant": "#3c4b2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-padding-desktop": "80px",
+                    "container-max": "1280px",
+                    "base": "8px",
+                    "section-padding-mobile": "40px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "accent-arabic": ["Amiri"],
+                    "display-lg": ["Playfair Display"],
+                    "label-caps": ["Inter"],
+                    "headline-sm": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "accent-arabic": ["1.25em", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pattern-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.598 15L45 17.402 32.598 20 30 35l-2.598-15L15 17.402 27.402 15z' fill='%233f4e2f' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        /* Custom Animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal-up {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .reveal-up.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            @keyframes soft-pulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0.9; transform: scale(1.02); }
+            }
+            .animate-soft-pulse {
+                animation: soft-pulse 3s ease-in-out infinite;
+            }
+            
+            .hover-lift {
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .hover-lift:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-background/95 backdrop-blur-md shadow-sm">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">Tarbiyah Sunnah Lab School</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Beranda</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Profil</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Preschool</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Elementary</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Program</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-all" href="#">Artikel</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block text-primary font-medium hover:opacity-80 transition-opacity">Sistem Informasi</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-medium hover:opacity-90 transition-all scale-95 hover:scale-100 active:scale-95">SPMB</button>
+</div>
+</nav>
+<main class="pt-24 pb-section-padding-desktop pattern-overlay">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-gutter mb-16 text-center reveal-up active">
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Artikel &amp; Edukasi</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Menyajikan wawasan mendalam seputar parenting Islami, metode pendidikan anak berdasarkan fitrah, dan mutiara hikmah Al-Qur'an untuk membimbing ananda tercinta.
+            </p>
+</section>
+<!-- Category Filter -->
+<section class="max-w-container-max mx-auto px-gutter mb-12 reveal-up active" style="transition-delay: 100ms;">
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-medium shadow-sm transition-all hover:opacity-90 hover:-translate-y-1">Semua</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-primary-fixed-dim hover:text-primary transition-all font-medium hover:-translate-y-1">Parenting Islami</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-primary-fixed-dim hover:text-primary transition-all font-medium hover:-translate-y-1">Pendidikan Anak</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-primary-fixed-dim hover:text-primary transition-all font-medium hover:-translate-y-1">Al-Qur'an</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-primary-fixed-dim hover:text-primary transition-all font-medium hover:-translate-y-1">Adab &amp; Akhlak</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-primary-fixed-dim hover:text-primary transition-all font-medium hover:-translate-y-1">Kegiatan Sekolah</button>
+</div>
+</section>
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Featured Article -->
+<article class="group relative bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/30 flex flex-col md:flex-row hover-lift reveal-up active" style="transition-delay: 200ms;"><div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+<img alt="Featured Article" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmzkKM5stq1ZOeNzj6zclPCLA2xIR-a8rQ9ZrvdaJImDMn4efVivn9TwZC-dB2fFguFNq8cChWSjDuuAdOLvQNR9mPhs2uncFo7AexvDPVnnOYJPrbx7NqI4-vjeTzHl__wk736cddSZF30IfaCCo5WT7qGdCZeU8VtA7MM1ykzS-pNVIkat7h1pGlzQq-fWgLJ_iT_jbX02qTEVlE8Yowjub3AujRftd4XbHjUZEOQEtKLZ43WfY19p6EaypSnAlWfhpmpNRcwCY">
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-3 py-1 rounded-full bg-secondary text-on-secondary font-label-caps text-[10px] tracking-wider">EDITOR'S CHOICE</span>
+<span class="text-on-tertiary-fixed-variant font-label-caps text-label-caps">Parenting Islami</span>
+</div>
+<h2 class="font-headline-md text-3xl lg:text-4xl text-primary mb-6 group-hover:text-secondary transition-colors">Menanamkan Kecintaan Terhadap Al-Qur'an Sejak Dini</h2>
+<p class="text-on-surface-variant mb-8 text-lg leading-relaxed">Membangun fondasi spiritual anak tidak dimulai dari menghafal, melainkan dari rasa cinta. Temukan 5 langkah praktis untuk mendekatkan anak dengan kalamullah di rumah melalui pembiasaan yang bermakna.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-label-caps text-outline">12 Okt 2024</span>
+<a class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all" href="#">
+                                Baca Selengkapnya 
+                                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div></article><section class="py-8 reveal-up active" style="transition-delay: 100ms;">
+<h3 class="font-headline-sm text-primary mb-6">Saran Bacaan Berdasarkan Kategori</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<a class="flex flex-col items-center justify-center p-6 bg-surface-container-low hover:bg-primary-fixed transition-all rounded-xl border border-outline-variant/30 text-center hover-lift" href="#">
+<span class="material-symbols-outlined text-primary text-4xl mb-3 transition-transform group-hover:scale-110">groups</span>
+<span class="text-sm font-bold text-primary">Parenting</span>
+</a>
+<a class="flex flex-col items-center justify-center p-6 bg-surface-container-low hover:bg-primary-fixed transition-all rounded-xl border border-outline-variant/30 text-center hover-lift" href="#">
+<span class="material-symbols-outlined text-primary text-4xl mb-3 transition-transform group-hover:scale-110">menu_book</span>
+<span class="text-sm font-bold text-primary">Al-Qur'an</span>
+</a>
+<a class="flex flex-col items-center justify-center p-6 bg-surface-container-low hover:bg-primary-fixed transition-all rounded-xl border border-outline-variant/30 text-center hover-lift" href="#">
+<span class="material-symbols-outlined text-primary text-4xl mb-3 transition-transform group-hover:scale-110">psychology</span>
+<span class="text-sm font-bold text-primary">Fitrah</span>
+</a>
+<a class="flex flex-col items-center justify-center p-6 bg-surface-container-low hover:bg-primary-fixed transition-all rounded-xl border border-outline-variant/30 text-center hover-lift" href="#">
+<span class="material-symbols-outlined text-primary text-4xl mb-3 transition-transform group-hover:scale-110">forest</span>
+<span class="text-sm font-bold text-primary">Alam Sunnah</span>
+</a>
+</div>
+</section>
+<!-- Article Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter"><div class="col-span-full mb-4 reveal-up active">
+<h3 class="font-headline-sm text-primary">Artikel Sedang Tren</h3>
+</div>
+<!-- Article 1 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/20 hover-lift flex flex-col reveal-up active" style="transition-delay: 100ms;">
+<div class="h-48 overflow-hidden group">
+<img alt="Article Image" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="A minimalist composition of diverse wooden blocks and geometric shapes arranged on a light sage green surface, representing experimental learning and architecture. The lighting is soft and natural, emphasizing textures of the wood grain and matte surfaces. The overall mood is educational, serene, and fits the organic academic identity of the school." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA-rysNjmN3BViCZ84QwnimAVvpdTuPtGsd_4-XoXMoN4c4qqqXeF13PMIC1WTjFM8eUDxlfhb43DONTzAhAZDzPP7B9KboA3sKn8UrKTwrx7Jcch6P63efim-bo17rcGkRIM-CaDQ-DYppXSY0Z8D-sC0HQ72iuJBONUyxjb5HqJLgUhWP4VFztBwdKx_v_LgwjfNQVO63y9-KaPF1fKdX0UvLEX0K6a1364jZmHDXUZe7jIc0r-AEfLXLaSbRSV1OZ2oAbDrV28">
+</div>
+<div class="p-6 flex flex-col flex-grow group">
+<span class="inline-block px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-caps text-label-caps mb-3 w-fit">Pendidikan Anak</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors">Memahami Fitrah Belajar Anak Usia Dini</h3>
+<p class="text-on-surface-variant mb-4 text-sm line-clamp-2">Pendidikan bukan tentang mengisi wadah kosong, tapi menyalakan api rasa ingin tahu yang sudah ada sejak lahir.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/10">
+<span class="text-label-caps text-outline">08 Okt 2024</span>
+<a class="text-primary font-bold text-sm hover:underline transition-all" href="#">Baca Selengkapnya</a>
+</div>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/20 hover-lift flex flex-col reveal-up active" style="transition-delay: 200ms;">
+<div class="h-48 overflow-hidden group">
+<img alt="Article Image" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="A high-angle shot of a classic library table with a single open notebook and a high-quality fountain pen resting on it. In the background, out-of-focus bookshelves are visible, creating an atmosphere of deep wisdom and academic rigor. The color palette is dominated by warm wood tones and broken white paper, punctuated by a deep olive ink spill or motif." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFJDcP6J71JM2gM483z7gE0D4l0Aq4ccIQQyKqJsxnXz2oWo2SolUC_ejTL8KxA65fPRzOkcWWO2n-doDnvL2LftTuNiwWOJEwVH-5-xQH-Syn3kLYw_XJs4BBgTzvP6fwDtSv5yFUvBilT3ZFLfWBvOnn7_5yahdNoSpKUsgqaUAB4PZI61CZqRcXTWI-EgL-mJwQ-4fDBNGMe9yClER65_VPtwIiYIxEn9CRXPv1cC76Q87JNTi2wrAE8aOToFHYwOpXzMd5aL0">
+</div>
+<div class="p-6 flex flex-col flex-grow group">
+<span class="inline-block px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-caps text-label-caps mb-3 w-fit">Adab &amp; Akhlak</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors">Adab Sebelum Ilmu: Mengapa Penting?</h3>
+<p class="text-on-surface-variant mb-4 text-sm line-clamp-2">Mengapa para ulama terdahulu menghabiskan waktu puluhan tahun mempelajari adab sebelum mulai menghafal hadits?</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/10">
+<span class="text-label-caps text-outline">05 Okt 2024</span>
+<a class="text-primary font-bold text-sm hover:underline transition-all" href="#">Baca Selengkapnya</a>
+</div>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/20 hover-lift flex flex-col reveal-up active" style="transition-delay: 300ms;">
+<div class="h-48 overflow-hidden group">
+<img alt="Article Image" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="Macro photography of stacks of ancient leather-bound books in a sunlit corner of a library. The light catches the gold-leaf inscriptions and the texture of the old parchment. A small green vine from a plant outside the window creeps into the frame, symbolizing growth through knowledge. The color scheme is deep olive, brown, and warm gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYURihIIBe0J2642yOU4MQiGsOMf8HCLwQz4XQEi572mX_0aYHmHYbUj3bmRdfVeiCx-4KJL1spMYVV3ukg2qamuXRu-SYpbachh80zZMZ4GNQ2yjkXpPn3DXmM-kuQ10yVnMLrhVHXqlCCTr3g1AiUf2PqIyI0T0RfmUHihmKoKh8QnLApZ0IPBJbXVLChV5bQ6bTj3UTR_M9iMygY-gaz_8XW0g4ccbaGHWBZcI4sOHclzSnIBZitvuN0GanU77exd6v3Q650s">
+</div>
+<div class="p-6 flex flex-col flex-grow group">
+<span class="inline-block px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-caps text-label-caps mb-3 w-fit">Kegiatan Sekolah</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors">Melihat Keseruan Field Trip 'Alam Sunnah'</h3>
+<p class="text-on-surface-variant mb-4 text-sm line-clamp-2">Rekapitulasi kegiatan luar ruangan siswa dalam mengenal ciptaan Allah melalui pengamatan flora di laboratorium alam.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/10">
+<span class="text-label-caps text-outline">01 Okt 2024</span>
+<a class="text-primary font-bold text-sm hover:underline transition-all" href="#">Baca Selengkapnya</a>
+</div>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/20 hover-lift flex flex-col reveal-up active" style="transition-delay: 400ms;">
+<div class="h-48 overflow-hidden group">
+<img alt="Article Image" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="A serene scene featuring an ivory candle burning softly on a wooden tray, surrounded by dried flowers and an open book of poetry. The lighting is low-key and intimate, creating a mood of reflection and contemplation. Subtle Islamic geometric patterns are visible in the background texture. The primary colors are cream, wood brown, and sage green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMUsM1bOGE6f8deuOxvJG-umyUG_6Uco4Zz11X3rz_O5RnNshnuOre1qGfzHaEHTZOPLmTJf3SOy31ZcAorxkQL7Ji0hq97FCY-LGqpLTxgQ6Ggu1-DbBLmCjcntjW0YBMnD-C58B0Wb9AJmjm7BBBfMiRWgMF6J5OlpK5EYTiIwkCgE7MvVo4VkELaebhzUdRqgDlCFpk7wDEIagOE8rfdykuK4NhJ3uy_sPJxt7sgmDt7y_9c6hopk1UkH2XRXfCxd8SixDUrcA">
+</div>
+<div class="p-6 flex flex-col flex-grow group">
+<span class="inline-block px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-caps text-label-caps mb-3 w-fit">Al-Qur'an</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 group-hover:text-secondary transition-colors">Metode Murojaah Menyenangkan di Rumah</h3>
+<p class="text-on-surface-variant mb-4 text-sm line-clamp-2">Tips bagi orang tua untuk mendampingi hafalan ananda tanpa tekanan, menjadikan murojaah waktu yang dinanti.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-outline-variant/10">
+<span class="text-label-caps text-outline">28 Sep 2024</span>
+<a class="text-primary font-bold text-sm hover:underline transition-all" href="#">Baca Selengkapnya</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center pt-8 reveal-up active">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-3">
+                        Muat Lebih Banyak
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-y-1">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Search -->
+<div class="bg-surface-container-high p-6 rounded-lg reveal-up active">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-4">Cari Artikel</h4>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-outline-variant rounded-full px-6 py-3 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none text-sm transition-all focus:scale-[1.02]" placeholder="Masukkan kata kunci..." type="text">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Popular Articles -->
+<div class="bg-surface-container p-6 rounded-lg border border-outline-variant/30 reveal-up active" style="transition-delay: 100ms;">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-6">Artikel Populer</h4>
+<div class="space-y-6">
+<a class="group flex gap-4 transition-transform hover:translate-x-2" href="#">
+<div class="w-16 h-16 rounded bg-surface-dim overflow-hidden flex-shrink-0">
+<img alt="Miniature" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A stack of clean, modern notebooks with different shades of green and brown covers, neatly stacked on a marble surface. A small sprig of olive leaves lies on top of the pile. The lighting is crisp and bright, conveying a sense of organized academic planning and new beginnings. High contrast between the whites and deep olives." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl1UDqfbgqmZfTg4Ia5K153ES8C8VWxSZZRzrrbbUn7rGCuRBLKaHluvpXZF57okEuCmR4Nz8qtBBz-qBge3zSKh40xJLkwfw_SXjR4ew4DF9dJ_Bxqvx3xqnr6kqpzLzXUEMf6kCFvoHchcRSt-AoE-ExPdTVudK6zJom23dwinbSjlE6Oj4yNs05Ii9UZlnNSveSdhSLNWDq62S6zh5qt1qVPtFMxvb7FXs81tasKHanvVpXYYL2ahI-RiZnu97ku_eg0mIs3GU">
+</div>
+<div>
+<h5 class="text-sm font-bold text-primary group-hover:text-secondary leading-tight mb-1 transition-colors">Mempersiapkan Mental Anak Menuju Jenjang Sekolah Dasar</h5>
+<span class="text-[10px] text-outline font-label-caps">1.2k Kali Dibaca</span>
+</div>
+</a>
+<a class="group flex gap-4 transition-transform hover:translate-x-2" href="#">
+<div class="w-16 h-16 rounded bg-surface-dim overflow-hidden flex-shrink-0">
+<img alt="Miniature" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An abstract layout of traditional school supplies—a wooden ruler, a sharpener, and some loose sketches—arranged on a surface with a faint Islamic star pattern. The color palette is warm and academic, with soft shadows and high-key lighting that emphasizes the quality of the materials. Perfect for a clean, natural educational aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJVW1aqsVAxiRUo_ZCAtxLMh-s2DdIrf1FIDB70CvzL_EAdW-zFZZ1udmlJWbLJwc-kjsdXrNOdzbZTUuXbYZcU9urGvGCRAIsKX8oAJyaP_9GTvyFYwM_q6gllEUDHq75ehl6zndomHCeElujZVrQo3T_cQYreTg9CCM2lgZcr2agZJeoWYQf9A2jARJRD0zgGb3h11x6AdNdmikY5bChAVu-ekp8uf1kNnPEwZiihPBz5pkErfXyLt1q58kQnSp0IzgHkEuaDkw">
+</div>
+<div>
+<h5 class="text-sm font-bold text-primary group-hover:text-secondary leading-tight mb-1 transition-colors">Pentingnya Nutrisi Halalan Thoyyiban Bagi Kecerdasan</h5>
+<span class="text-[10px] text-outline font-label-caps">850 Kali Dibaca</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Newsletter / Subscribe -->
+<div class="bg-surface-container-highest p-6 rounded-lg border border-outline-variant/50 reveal-up active" style="transition-delay: 200ms;">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-6">Agenda Edukasi</h4>
+<div class="space-y-4">
+<a class="group flex gap-4 p-3 bg-background rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-all hover:-translate-y-1 block" href="#">
+<div class="bg-primary text-on-primary w-12 h-12 flex flex-col items-center justify-center rounded flex-shrink-0 group-hover:bg-secondary transition-colors">
+<span class="text-xs font-bold leading-none">25</span>
+<span class="text-[10px] uppercase font-label-caps">Okt</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-primary leading-tight group-hover:text-secondary transition-colors">Webinar: Menjaga Fitrah Anak</h5>
+<p class="text-[10px] text-outline flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[12px]">schedule</span> 19.30 WIB</p>
+</div>
+</a>
+<a class="group flex gap-4 p-3 bg-background rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-all hover:-translate-y-1 block" href="#">
+<div class="bg-primary text-on-primary w-12 h-12 flex flex-col items-center justify-center rounded flex-shrink-0 group-hover:bg-secondary transition-colors">
+<span class="text-xs font-bold leading-none">02</span>
+<span class="text-[10px] uppercase font-label-caps">Nov</span>
+</div>
+<div>
+<h5 class="text-sm font-bold text-primary leading-tight group-hover:text-secondary transition-colors">Talkshow: Adab dalam Belajar</h5>
+<p class="text-[10px] text-outline flex items-center gap-1 mt-1"><span class="material-symbols-outlined text-[12px]">location_on</span> Kampus TS Lab School</p>
+</div>
+</a>
+</div>
+<button class="w-full mt-6 text-primary font-bold text-sm border-b border-primary/20 pb-1 hover:border-primary hover:tracking-wide transition-all">Lihat Semua Agenda</button>
+</div><div class="bg-primary text-on-primary p-8 rounded-lg shadow-xl relative overflow-hidden reveal-up active" style="transition-delay: 300ms;">
+<div class="relative z-10">
+<h4 class="font-headline-sm text-headline-sm mb-4">Berlangganan Insight</h4>
+<p class="text-sm text-on-primary/80 mb-6">Dapatkan artikel terbaru seputar pendidikan Islami langsung di email Anda setiap minggu.</p>
+<input class="w-full bg-white/10 border-white/20 rounded-full px-5 py-3 mb-4 text-white placeholder-white/50 focus:bg-white/20 focus:outline-none transition-all focus:scale-[1.02] focus:shadow-inner" placeholder="Email Anda" type="email">
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-3 rounded-full hover:bg-secondary-fixed-dim transition-all animate-soft-pulse hover:animate-none hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">Daftar Sekarang</button>
+</div>
+<!-- Decorative Background Circle -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-secondary-container/20 rounded-full transition-transform duration-700 hover:scale-150"></div>
+</div>
+</aside>
+</div>
+</main>
+<!-- SideNavBar (Floating Action) -->
+<div class="fixed bottom-8 right-8 z-[60] flex items-center justify-center animate-bounce">
+<a class="bg-secondary text-on-secondary rounded-full h-16 w-16 flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all" href="https://wa.me/628123456789">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</a>
+</div>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary pt-16">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter pb-16">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md mb-6">TS Lab School</div>
+<p class="text-on-primary/80 text-sm leading-relaxed mb-6">
+                    Sekolah Islam berbasis Sunnah yang berkomitmen menumbuhkan fitrah anak melalui pendidikan yang integral antara adab, ilmu, dan amal.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-container transition-colors hover:scale-110">Notebook</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-container transition-colors hover:scale-110">share</span>
+</div>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-6 text-on-primary">Quick Links</h5>
+<ul class="space-y-3">
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Program Sekolah</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Sistem Informasi</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">SPMB Online</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Biaya Pendidikan</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-6 text-on-primary">Kontak Kami</h5>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start gap-3 group">
+<span class="material-symbols-outlined text-secondary-container transition-transform group-hover:scale-110">location_on</span>
+<span class="text-on-primary/80 transition-colors group-hover:text-on-primary"><span style="color: rgb(232, 232, 232); font-family: Arial, sans-serif; background-color: rgb(34, 36, 42);" class="">Jl. Setrasari VI No.3A, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152</span></span>
+</li>
+<li class="flex items-center gap-3 group">
+<span class="material-symbols-outlined text-secondary-container transition-transform group-hover:scale-110">call</span>
+<span class="text-on-primary/80 transition-colors group-hover:text-on-primary">+62 22 1234 5678</span>
+</li>
+<li class="flex items-center gap-3 group">
+<span class="material-symbols-outlined text-secondary-container transition-transform group-hover:scale-110">mail</span>
+<span class="text-on-primary/80 transition-colors group-hover:text-on-primary">salam@tslabschool.id</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-6 text-on-primary">Jadwal Akademik</h5>
+<div class="bg-white/5 p-4 rounded border border-white/10 hover:border-white/20 transition-colors">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs text-on-primary/60">Pendaftaran 2027/2028</span>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] rounded font-bold uppercase animate-pulse">Dibuka</span>
+</div>
+<p class="text-sm font-bold">Gelombang 1: Agustus-Okt 2026</p>
+<div class="w-full bg-white/10 h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-secondary-container h-full w-2/3 transition-all duration-1000 ease-out" onload="this.style.width='66%'" style="width: 66%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-on-secondary-fixed-variant py-6 text-center text-on-primary/60 text-xs border-t border-white/5">
+            © 2024 Tarbiyah Sunnah Lab School. All Rights Reserved.
+        </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Trigger initial animation for elements already in viewport
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-up').forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        }, 100);
+        
+        // Progress bar animation trigger
+        const progressBars = document.querySelectorAll('.bg-secondary-container.h-full');
+        progressBars.forEach(bar => {
+            setTimeout(() => {
+                bar.style.width = '66%';
+            }, 500);
+        });
+    });
+</script>
+
+
+
+
+</body></html>

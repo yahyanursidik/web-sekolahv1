@@ -1,8 +1,167 @@
----
-import Layout from '../layouts/Layout.astro';
----
-<Layout>
+<!DOCTYPE html><html class="light" lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Profil Sekolah - Tarbiyah Sunnah Lab School</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=Amiri&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#75786e",
+                        "on-background": "#1c1c15",
+                        "on-primary-fixed": "#121f06",
+                        "inverse-primary": "#bbcda4",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#bbcda4",
+                        "secondary-container": "#febf8f",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#546342",
+                        "surface-bright": "#fdf9ee",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f2eee3",
+                        "primary": "#29371a",
+                        "on-secondary-fixed": "#2f1500",
+                        "on-tertiary-fixed-variant": "#404b28",
+                        "outline-variant": "#c5c8bc",
+                        "inverse-surface": "#313129",
+                        "primary-container": "#3f4e2f",
+                        "inverse-on-surface": "#f4f1e6",
+                        "secondary-fixed": "#ffdcc3",
+                        "on-tertiary-container": "#b1be91",
+                        "on-primary-container": "#adbf97",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#434d2a",
+                        "surface-container-high": "#ece8dd",
+                        "on-primary-fixed-variant": "#3c4b2d",
+                        "on-surface": "#1c1c15",
+                        "tertiary-fixed-dim": "#bfcc9e",
+                        "on-surface-variant": "#45483f",
+                        "on-secondary-fixed-variant": "#673d17",
+                        "secondary": "#82542c",
+                        "tertiary": "#2c3615",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dddacf",
+                        "on-secondary-container": "#794c25",
+                        "on-tertiary-fixed": "#161f02",
+                        "background": "#fdf9ee",
+                        "surface-variant": "#e6e2d8",
+                        "surface-container-low": "#f7f3e8",
+                        "surface": "#fdf9ee",
+                        "tertiary-fixed": "#dbe8b9",
+                        "surface-container-highest": "#e6e2d8",
+                        "primary-fixed": "#d7e9bf",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#f8ba8a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "section-padding-mobile": "40px",
+                        "section-padding-desktop": "80px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "accent-arabic": ["Amiri"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "accent-arabic": ["1.25em", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9ee; color: #1c1c15; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .islamic-pattern {
+            background-image: radial-gradient(#29371a 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .hero-mask {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
 
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .timeline-line {
+                height: 0;
+                transition: height 1s ease-out;
+            }
+            .timeline-line.active {
+                height: 100%;
+            }
+            .timeline-dot {
+                transform: scale(0);
+                transition: transform 0.4s ease-out;
+            }
+            .timeline-dot.active {
+                transform: scale(1);
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-background/95 backdrop-blur-md shadow-sm">
+<div class="flex items-center h-full">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvjhUQbvOSmiPDzG6AQgafcrIERU3ykZ9Vs3xdktiaBADpNV00aoBsBGPU6Vh-bkWZMer6DNQMjje2vV0XbzySJQ8fOiI4eJvZr7J4a0umpzHI-lh7TnUiEJ50bOCeB7tinN-gO0JQNxKZ0QlBikBuykeyWTIkVY-2-UUSw_XVBxOZ1G3vfzKuVRAO2XnPMUEsT0UYliFp7DHKr9JJvGzANIN7IYWOu7Yh35sBQ3H0xRjgvXE5fEClgX16D1DGFcCjNKNtc5MJF6A" alt="Tarbiyah Sunnah Lab School Logo" class="h-[50px] w-auto object-contain">
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Beranda</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Profil</a>
+<a class="text-on-surface-variant font-medium hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Preschool</a>
+<a class="text-on-surface-variant font-medium hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Elementary</a>
+<a class="text-on-surface-variant font-medium hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Program</a>
+<a class="text-on-surface-variant font-medium hover:text-primary font-body-md text-body-md transition-colors duration-200" href="#">Artikel</a>
+</nav>
+<div class="flex gap-4">
+<button class="hidden lg:block px-4 py-2 text-primary font-bold transition-transform scale-95 active:scale-90 font-body-md text-body-md">Sistem Informasi</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold hover:opacity-90 transition-all scale-95 active:scale-90 font-body-md text-body-md">SPMB</button>
+</div>
+</header>
 <!-- Hero Section -->
 <section class="relative pt-32 pb-section-padding-desktop hero-mask bg-primary overflow-hidden">
 <div class="absolute inset-0 opacity-20">
@@ -29,7 +188,7 @@ import Layout from '../layouts/Layout.astro';
 <span class="font-label-caps text-label-caps text-secondary mb-4 block">TENTANG KAMI</span>
 <h2 class="font-headline-md text-headline-md text-primary mb-6">Menempa Fitrah, Mengukir Prestasi</h2>
 <div class="space-y-4 text-on-surface-variant font-body-md text-body-md">
-<p class="">Tarbiyah Sunnah Islamic Lab School hadir sebagai institusi pendidikan model yang mengedepankan pembinaan aqidah dan akhlak di atas segalanya. Sebagai "Lab School", kami senantiasa mengembangkan metode pembelajaran yang relevan dengan perkembangan anak namun tetap teguh pada prinsip syar'i.</p>
+<p class="">Tarbiyah Sunnah Lab School hadir sebagai institusi pendidikan model yang mengedepankan pembinaan aqidah dan akhlak di atas segalanya. Sebagai "Lab School", kami senantiasa mengembangkan metode pembelajaran yang relevan dengan perkembangan anak namun tetap teguh pada prinsip syar'i.</p>
 <p class="">Kami melayani jenjang <strong>Preschool (PAUD)</strong> dan <strong>Elementary (SD)</strong>, menciptakan lingkungan belajar yang tenang, natural, dan suportif bagi pertumbuhan fitrah setiap anak didik.</p>
 </div>
 </div>
@@ -255,6 +414,44 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 </section>
+<!-- Footer (Shared Component) -->
+<footer class="bg-primary border-t-4 border-secondary text-on-primary w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-section-padding-desktop w-full">
+<div class="space-y-6">
+<div class="font-headline-md text-headline-md text-on-primary"><h3 class="font-headline-md text-headline-md text-on-primary mb-6" style="--tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; --tw-contain-size: ; --tw-contain-layout: ; --tw-contain-paint: ; --tw-contain-style: ; --tw-text-opacity: 1; color: rgb(255, 255, 255); outline: none !important;">TS Lab School</h3></div>
+<p class="font-body-md text-body-md text-on-primary/80">Tarbiyah Sunnah Lab School: Menyiapkan generasi beraqidah lurus, berakhlaq mulia, dan kompeten secara akademik.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
+<nav class="flex flex-col gap-2 font-body-md text-body-md">
+<a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform duration-200" href="#">Program Sekolah</a>
+<a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform duration-200" href="#">Sistem Informasi Sekolah</a>
+<a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform duration-200" href="#">SPMB Online</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-lg mb-4">Hubungi Kami</h4>
+<nav class="flex flex-col gap-2 font-body-md text-body-md">
+<a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform duration-200" href="#">WhatsApp Admin</a>
+<a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform duration-200" href="#">Alamat &amp; Maps</a>
+</nav>
+</div>
+<div class="bg-primary-container p-6 rounded-lg">
+<h4 class="font-bold text-lg mb-4">Kalender Akademik</h4>
+<p class="text-sm opacity-80 mb-4">Dapatkan informasi terkini mengenai agenda sekolah dan waktu pendaftaran.</p>
+<button class="text-on-primary underline font-bold">Lihat Kalender</button>
+</div>
+</div>
+<div class="bg-secondary p-4 text-center">
+<p class="font-body-md text-body-md text-on-secondary/90">© 2024 Tarbiyah Sunnah Islamic Lab School. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- SideNavBar / FAB (Shared Component) -->
+<div class="fixed bottom-8 right-8 z-[60] flex items-center justify-center animate-bounce">
+<a class="bg-secondary text-on-secondary rounded-full h-16 w-16 shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all" href="#" title="Hubungi Kami">
+<span class="material-symbols-outlined text-3xl">chat</span>
+</a>
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const observerOptions = {
@@ -292,4 +489,7 @@ import Layout from '../layouts/Layout.astro';
 
 
 
-</Layout>
+
+
+
+</body></html>
