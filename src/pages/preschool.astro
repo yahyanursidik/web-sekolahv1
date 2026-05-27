@@ -1,0 +1,327 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-background/95 backdrop-blur-md shadow-sm">
+<div class="font-headline-sm text-headline-sm text-primary font-bold"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvjhUQbvOSmiPDzG6AQgafcrIERU3ykZ9Vs3xdktiaBADpNV00aoBsBGPU6Vh-bkWZMer6DNQMjje2vV0XbzySJQ8fOiI4eJvZr7J4a0umpzHI-lh7TnUiEJ50bOCeB7tinN-gO0JQNxKZ0QlBikBuykeyWTIkVY-2-UUSw_XVBxOZ1G3vfzKuVRAO2XnPMUEsT0UYliFp7DHKr9JJvGzANIN7IYWOu7Yh35sBQ3H0xRjgvXE5fEClgX16D1DGFcCjNKNtc5MJF6A" alt="Tarbiyah Sunnah Lab School Logo" class="h-12 w-auto object-contain"></div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="/">Beranda</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="/profil">Profil</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-300" href="/preschool">Preschool</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="/elementary">Elementary</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="/program">Program</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Artikel</a>
+</div>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-medium scale-95 active:scale-90 transition-all hover:bg-primary-container duration-300">SPMB</button>
+</div>
+</nav>
+<!-- Floating Action Button (Consultation) -->
+<a class="fixed bottom-8 right-8 z-[60] flex items-center justify-center h-16 w-16 bg-secondary rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition-all animate-bounce" href="#">
+<span class="material-symbols-outlined text-on-secondary text-3xl" data-icon="chat">chat</span>
+</a>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center pt-24 overflow-hidden reveal active">
+<div class="absolute inset-0 islamic-pattern"></div>
+<div class="container mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+<div>
+<span class="inline-block px-4 py-1 bg-primary-fixed text-on-primary-fixed rounded-full text-label-caps font-label-caps mb-6">Holistik Integratif Islamic Preschool</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6 leading-tight">Preschool Islam yang Hangat, Lembut, dan Ramah Anak</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-10 max-w-[500px]">
+                    Menanamkan fitrah keimanan melalui pendekatan yang alami dan menyenangkan, menciptakan fondasi karakter berlandaskan Sunnah sejak usia dini.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full text-body-md font-bold shadow-lg hover:bg-primary-container transition-colors duration-300">Daftar Sekarang</button>
+<button class="border-2 border-secondary text-secondary px-8 py-4 rounded-full text-body-md font-bold hover:bg-secondary hover:text-on-secondary transition-colors duration-300">Lihat Kurikulum</button>
+</div>
+</div>
+<div class="relative animate-float">
+<div class="w-full aspect-square rounded-xl overflow-hidden shadow-2xl relative">
+<img alt="Islamic Preschool Learning" class="w-full h-full object-cover" data-alt="A serene and sun-drenched classroom for young children featuring warm wood textures and high ceilings. Large windows allow soft morning light to illuminate a workspace with natural wooden toys, small books, and seedlings in ceramic pots. The atmosphere is calm and academic, utilizing a color palette of sage green, broken white, and deep olive tones without any figurative representations. The design feels organic and grounded in nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9ybNpRFIJk7K-XxrfR5tE6zYghU6TN664tOVTTf_bFyauy2zpxLqcMI-E8UQJSo-FNrQiDEzvNkArvS9Gj36yWLeopeL6xeze5FJI0Dps2WD-0e11S6OczdszB2kq2OMSn4oNQZ6gTSxE3Sh6QcphaA8zzhWvmWogqCE6GKgZySgdDDwhNYMi4gcFeOckYlCa_O1tnJxLL_w0hVu_fRJblGXRX6Mj82T04dEICSPXaMB9zS33vydPtsbjtlib1TEWazCl2pEyI3I">
+<div class="absolute inset-0 bg-primary/10"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-secondary-container p-8 rounded-lg shadow-xl max-w-[240px]">
+<div class="flex items-center gap-3 mb-2 text-on-secondary-container font-bold">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="">Lingkungan Fitrah</span>
+</div>
+<p class="text-sm text-on-secondary-container/80">Ruang belajar terbuka yang memaksimalkan sirkulasi udara dan cahaya alami.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Brief Profile Section (Bento Grid) -->
+<section class="py-section-padding-desktop bg-surface-container-low relative reveal active">
+<div class="container mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Membangun Adab &amp; Keilmuan</h2>
+<div class="w-24 h-1 bg-secondary mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-4 bg-white p-10 rounded-lg shadow-[0px_4px_20px_rgba(63,78,47,0.08)] flex flex-col justify-center transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+<span class="material-symbols-outlined text-primary text-5xl mb-6" data-icon="book_2">book_2</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Adab Before Ilmu</h3>
+<p class="text-on-surface-variant">Kami meyakini bahwa pondasi pendidikan anak usia dini dimulai dari pembiasaan adab harian sesuai tuntunan Sunnah Nabi ï·º.</p>
+</div>
+<div class="md:col-span-8 relative rounded-lg overflow-hidden group transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+<img alt="Classroom Library" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A detailed view of a school library corner designed for young children, featuring low wooden shelves filled with neatly organized educational books and scrolls. The lighting is soft and ambient, casting gentle shadows across a plush sage green carpet. Natural textures like wicker baskets and wooden stools add to the 'Organic Academic' aesthetic. The overall mood is peaceful, encouraging a love for reading and quiet contemplation in a serene, nature-inspired setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDixM87ZDkGe0YCFESCPU-uXxqsLxzXCYox1e32SitB2j3Bfkx9uqRgKpQTo2GPOHicA0LsqrnshNPyQ1--0c-_bbSSX65YqiOJeVEC-s45jc03WLXcyQC5aIEGmGNjo9VfjBWBh0a8EyN9u5zahkZZVhilKvQOYduisehHCcG8fzfmkjjaf6spZOyrLdpuNYT6TVECAKekSiRTYgOHrKNBE_PjBSRWU9RqEZVCWNHCoRd9tPuX3defCoFMHEYdDXsKlwBAH6x9aqs">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-10">
+<h3 class="text-white font-headline-md text-headline-md">Lingkungan Aman &amp; Stimulatif</h3>
+</div>
+</div>
+<div class="md:col-span-7 bg-tertiary-fixed p-10 rounded-lg flex items-center gap-8 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-tertiary-fixed mb-4">Tahfidz &amp; Al-Qur'an</h3>
+<p class="text-on-tertiary-fixed/80">Metode talaqqi yang menyenangkan untuk menumbuhkan rasa cinta anak terhadap Kalamullah sejak dini.</p>
+</div>
+<span class="material-symbols-outlined text-on-tertiary-fixed text-6xl opacity-20" data-icon="menu_book">menu_book</span>
+</div>
+<div class="md:col-span-5 bg-secondary text-on-secondary p-10 rounded-lg shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+<h3 class="font-headline-sm text-headline-sm mb-4">Perkembangan Anak</h3>
+<p class="opacity-90">Pemantauan berkala aspek sensorik, motorik, dan sosial-emosional anak oleh tim pendidik yang kompeten.</p>
+<div class="mt-6 flex gap-2">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span class="w-2 h-2 rounded-full bg-white/50"></span>
+<span class="w-2 h-2 rounded-full bg-white/50"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Preschool Programs (Category Cards) -->
+<section class="py-section-padding-desktop bg-background reveal active">
+<div class="container mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16">
+<div class="max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">7 Pilar Kurikulum Preschool</h2>
+<p class="text-on-surface-variant">Kurikulum yang dirancang khusus untuk mengoptimalkan fase 'Golden Age' anak dengan sentuhan nilai-nilai Islam.</p>
+</div>
+<div class="hidden md:block">
+<span class="font-accent-arabic text-accent-arabic text-primary opacity-50">ØªÙŽØ±Ù’Ø¨ÙÙŠÙŽØ©Ù Ø§Ù„Ø³ÙÙ‘Ù†ÙŽÙ‘Ø©Ù</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Islamic Essential -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="star">star</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Islamic Essential Knowledge</h4>
+<p class="text-sm text-on-surface-variant">Pengenalan aqidah dasar dan ibadah praktis melalui keteladanan.</p>
+</div>
+<!-- Al-Qur'an -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="library_books">library_books</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Al-Qurâ€™an Anak</h4>
+<p class="text-sm text-on-surface-variant">Metode hafal yang ringan dengan penekanan pada makharijul huruf.</p>
+</div>
+<!-- Kemandirian -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="self_improvement">self_improvement</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Kemandirian</h4>
+<p class="text-sm text-on-surface-variant">Melatih Life Skills dasar agar anak mampu mengurus dirinya sendiri.</p>
+</div>
+<!-- Motorik -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="fitness_center">fitness_center</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Motorik</h4>
+<p class="text-sm text-on-surface-variant">Stimulasi fisik motorik kasar dan halus melalui permainan edukatif.</p>
+</div>
+<!-- Bahasa -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Bahasa</h4>
+<p class="text-sm text-on-surface-variant">Pengembangan kemampuan komunikasi lisan dengan kosakata yang baik.</p>
+</div>
+<!-- Sosial-Emosional -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary" data-icon="groups">groups</span>
+</div>
+<h4 class="font-bold text-primary mb-3">Sosial-Emosional</h4>
+<p class="text-sm text-on-surface-variant">Membangun empati dan kerjasama dalam lingkungan sosial yang sehat.</p>
+</div>
+<!-- Eksplorasi Alam -->
+<div class="bg-surface-container p-8 rounded-lg border border-outline-variant hover:border-primary lg:col-span-2 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+<div class="flex gap-6 items-center h-full">
+<div class="w-16 h-16 bg-secondary-fixed text-on-secondary-fixed rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="eco">eco</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-2 text-lg">Eksplorasi Alam</h4>
+<p class="text-sm text-on-surface-variant">Belajar langsung dari alam (Outdoor Learning) untuk mengagumi ciptaan Allah di kebun sekolah yang asri.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Daily Activities Timeline -->
+<section class="py-section-padding-desktop bg-surface-container-highest reveal active">
+<div class="container mx-auto px-gutter">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Keseharian yang Terarah</h2>
+<p class="text-on-surface-variant">Rutinitas harian di Preschool kami didesain untuk memberikan rasa aman dan keteraturan bagi anak.</p>
+</div>
+<div class="relative">
+<!-- Timeline Line -->
+<div class="absolute left-1/2 top-0 bottom-0 w-1 bg-primary/10 hidden md:block -translate-x-1/2"></div>
+<div class="space-y-12">
+<!-- Item 1 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 text-center md:text-right">
+<h5 class="font-bold text-primary text-xl mb-2">08:00 - Greeting &amp; Adab</h5>
+<p class="text-on-surface-variant">Menyambut pagi dengan senyum, salam, dan sapa untuk melatih adab masuk sekolah.</p>
+</div>
+<div class="z-10 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white border-4 border-surface-container-highest transition-transform hover:scale-110 duration-300">
+<span class="material-symbols-outlined" data-icon="sunny">sunny</span>
+</div>
+<div class="md:w-1/2 md:pl-12"></div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12"></div>
+<div class="z-10 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white border-4 border-surface-container-highest transition-transform hover:scale-110 duration-300">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div class="md:w-1/2 md:pl-12 text-center md:text-left">
+<h5 class="font-bold text-primary text-xl mb-2">08:30 - Circle Time</h5>
+<p class="text-on-surface-variant">Murojaah doa harian, hadits pendek, dan berdiskusi tentang tema mingguan.</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 text-center md:text-right">
+<h5 class="font-bold text-primary text-xl mb-2">09:30 - Core Activities</h5>
+<p class="text-on-surface-variant">Kegiatan sentra (seni, balok, persiapan kognitif) yang interaktif dan menyenangkan.</p>
+</div>
+<div class="z-10 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white border-4 border-surface-container-highest transition-transform hover:scale-110 duration-300">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div class="md:w-1/2 md:pl-12"></div>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12"></div>
+<div class="z-10 w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white border-4 border-surface-container-highest transition-transform hover:scale-110 duration-300">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div class="md:w-1/2 md:pl-12 text-center md:text-left">
+<h5 class="font-bold text-primary text-xl mb-2">10:30 - Snack &amp; Motoric</h5>
+<p class="text-on-surface-variant">Makan bersama sesuai sunnah dilanjutkan dengan permainan fisik di area bermain.</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="md:w-1/2 md:pr-12 text-center md:text-right">
+<h5 class="font-bold text-primary text-xl mb-2">11:30 - Closing &amp; Go Home</h5>
+<p class="text-on-surface-variant">Evaluasi harian, refleksi perasaan, dan persiapan kepulangan dengan tertib.</p>
+</div>
+<div class="z-10 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white border-4 border-surface-container-highest transition-transform hover:scale-110 duration-300">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</div>
+<div class="md:w-1/2 md:pl-12"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Section (Quote) -->
+<section class="py-20 bg-background overflow-hidden reveal active">
+<div class="container mx-auto px-gutter text-center relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 islamic-pattern w-full h-full"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-6xl mb-6 opacity-30" data-icon="format_quote">format_quote</span>
+<p class="font-headline-md text-headline-md text-primary max-w-4xl mx-auto italic mb-8">
+                    "Anak-anak dilahirkan di atas fitrah. Maka kedua orang tuanyalah yang menjadikannya Yahudi, Nasrani, atau Majusi."
+                </p>
+<p class="font-label-caps text-label-caps tracking-widest text-on-surface-variant uppercase">HR. Al-Bukhari &amp; Muslim</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter py-section-padding-desktop w-full max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-6">TS Islamic Lab School</h3>
+<p class="text-on-primary/70 mb-6 leading-relaxed">Mewujudkan generasi Rabbani yang berlandaskan pemahaman para Salafush Shalih dengan pendekatan yang ramah anak.</p>
+<div class="flex gap-4">
+<a class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined" data-icon="mail">mail</span></a>
+<a class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined" data-icon="call">call</span></a>
+<a class="hover:opacity-70 transition-opacity" href="#"><span class="material-symbols-outlined" data-icon="location_on">location_on</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-lg">Menu Cepat</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">WhatsApp Admin</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Alamat &amp; Maps</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Program Sekolah</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Sistem Informasi</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">SPMB Online</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-lg">Akademik</h4>
+<ul class="space-y-4">
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Kalender Akademik</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Kurikulum Preschool</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Jadwal Harian</a></li>
+<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-transform inline-block" href="#">Galeri Kegiatan</a></li>
+</ul>
+</div>
+<div class="bg-primary-container p-6 rounded-lg">
+<h4 class="font-bold mb-4 text-lg">Hubungi Kami</h4>
+<p class="text-sm text-on-primary/70 mb-4">Dapatkan informasi lengkap mengenai pendaftaran dan konsultasi pendidikan.</p>
+<button class="w-full bg-secondary text-white py-3 rounded-full font-bold hover:bg-secondary-fixed-dim transition-colors duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                    WhatsApp Konsultasi
+                </button>
+</div>
+</div>
+<div class="bg-secondary/20 py-6 border-t border-white/10">
+<div class="container mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-primary/60">
+<p class="">Â© 2024 Tarbiyah Sunnah Islamic Lab School. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-on-primary transition-colors" href="#">Kebijakan Privasi</a>
+<a class="hover:text-on-primary transition-colors" href="#">Syarat &amp; Ketentuan</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+
+
+</Layout>
