@@ -1,0 +1,63 @@
+---
+---
+<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full">
+<a href="/" class="flex items-center">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAip8I6_uWfOn_RFceBmcKZPNOvbO_MrVTTdNlQPIBquSjj2f6VffWqmuXbtAZ1kaTB2vISR6qJA1MD7Hk75iHIkQlJg7aBvI_Y6fk5orBdO1p_aRKQHZMFwK7VCheZU0625pbgjZd9eaWBcd8AcJFI7uwMi8HXepzW_2j7uAJhetqkjMn62vZXzG70xvOsU1e-0Qfa9vhVZDTIFmXyJe68_3Zzzkc8sUPbGsT7M0qFV7lYH6iRxSXanWZn87EKE5sk1YH53VCz3sPzlw" alt="Tarbiyah Sunnah Lab School Logo" class="h-16 md:h-20 w-auto object-contain">
+</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/">Beranda</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/profil">Profil</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/preschool">Preschool</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/elementary">Elementary</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/program">Program</a>
+</nav>
+<div class="hidden md:flex items-center space-x-4">
+<button class="hidden lg:block text-primary font-semibold py-2 px-4 hover:bg-primary-fixed/30 rounded-full transition-all">Sistem Informasi</button>
+<a href="/spmb" class="bg-primary text-on-primary py-2 px-6 rounded-full font-bold scale-95 active:scale-90 transition-transform inline-block">SPMB</a>
+</div>
+
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="md:hidden flex items-center p-2 text-primary focus:outline-none">
+  <span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</header>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-md transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-gutter pb-8 overflow-y-auto">
+  <nav class="flex flex-col gap-6 text-center text-lg">
+    <a class="text-on-surface font-medium hover:text-primary" href="/">Beranda</a>
+    <a class="text-on-surface font-medium hover:text-primary" href="/profil">Profil</a>
+    <a class="text-on-surface font-medium hover:text-primary" href="/preschool">Preschool</a>
+    <a class="text-on-surface font-medium hover:text-primary" href="/elementary">Elementary</a>
+    <a class="text-on-surface font-medium hover:text-primary" href="/program">Program</a>
+    <a href="/spmb" class="bg-primary text-on-primary py-3 px-6 rounded-full font-bold mt-4">Daftar SPMB</a>
+    <button class="text-primary font-semibold py-3 px-6 border-2 border-primary rounded-full mt-2">Sistem Informasi</button>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const icon = btn?.querySelector('span');
+
+    let isOpen = false;
+
+    // Reset state on page load (useful for View Transitions if enabled)
+    if(menu) menu.classList.add('translate-x-full');
+    if(icon) icon.textContent = 'menu';
+
+    btn?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        menu?.classList.remove('translate-x-full');
+        if(icon) icon.textContent = 'close';
+      } else {
+        menu?.classList.add('translate-x-full');
+        if(icon) icon.textContent = 'menu';
+      }
+    });
+  });
+</script>

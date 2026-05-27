@@ -3,35 +3,13 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout>
 
-<!-- Top Navigation Bar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-background/95 backdrop-blur-md shadow-sm">
-<a href="/" class="flex items-center">
-  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvjhUQbvOSmiPDzG6AQgafcrIERU3ykZ9Vs3xdktiaBADpNV00aoBsBGPU6Vh-bkWZMer6DNQMjje2vV0XbzySJQ8fOiI4eJvZr7J4a0umpzHI-lh7TnUiEJ50bOCeB7tinN-gO0JQNxKZ0QlBikBuykeyWTIkVY-2-UUSw_XVBxOZ1G3vfzKuVRAO2XnPMUEsT0UYliFp7DHKr9JJvGzANIN7IYWOu7Yh35sBQ3H0xRjgvXE5fEClgX16D1DGFcCjNKNtc5MJF6A" alt="Tarbiyah Sunnah Lab School Logo" class="h-16 md:h-20 w-auto object-contain">
-</a>
-<nav class="hidden md:flex items-center space-x-8">
-<a class="text-primary font-bold border-b-2 border-primary pb-1" href="/">Beranda</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/profil">Profil</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/preschool">Preschool</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/elementary">Elementary</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/program">Program</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Artikel</a>
-</nav>
-<div class="flex items-center space-x-4">
-<button class="hidden lg:block text-primary font-semibold py-2 px-4 hover:bg-primary-fixed/30 rounded-full transition-all">Sistem Informasi</button>
-<a href="/spmb" class="bg-primary text-on-primary py-2 px-6 rounded-full font-bold scale-95 active:scale-90 transition-transform inline-block">SPMB</a>
-</div>
-</header>
-<!-- Floating WhatsApp Action -->
-<a class="fixed bottom-8 right-8 z-[60] flex items-center justify-center animate-bounce bg-secondary text-on-secondary rounded-full h-16 w-16 shadow-lg hover:scale-110 hover:shadow-xl transition-all" href="https://wa.me/school_admin">
-<span class="material-symbols-outlined text-4xl" data-icon="chat">chat</span>
-</a>
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
 <div class="absolute inset-0 pattern-bg z-0"></div>
 <div class="container mx-auto px-gutter relative z-10 grid lg:grid-cols-2 gap-12 items-center">
 <div class="max-w-2xl">
 <span class="inline-block py-1 px-4 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps mb-6">BIIDZNILLAH, MEMBENTUK GENERASI RABBANI</span>
-<h1 class="font-display-lg text-display-lg text-primary mb-6">Tarbiyah Sunnah Islamic Lab School</h1>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Tarbiyah Sunnah Lab School</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar.</p>
 <div class="flex flex-wrap gap-4">
 <button class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg hover:bg-primary-container transition-all">Daftar SPMB</button>
@@ -45,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
 <div class="relative group">
 <div class="absolute -top-4 -right-4 w-full h-full border-2 border-secondary rounded-lg -z-10 group-hover:top-0 group-hover:right-0 transition-all duration-500"></div>
 <div class="rounded-lg overflow-hidden shadow-2xl h-[500px]">
-<img alt="School Exterior" class="w-full h-full object-cover" data-alt="A grand architectural view of a modern Islamic school building with natural wood accents and large windows. The lighting is golden hour sun, casting soft warm shadows across the clean courtyard. The atmosphere is serene, academic, and professional, reflecting the organic academic design system with sage green and terracotta tones in the landscaping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXyxwKnB3dzOwoVXlZ2wgezbZN564RJu99XsMbCTkIjsrteHqkMhbDRPuPJlM3-tE4NrqWQLkijZnemqoEfhGop61Hlwe2I3EI6RKsBe9o86647ZpVyI3SbGw64YLoXS16COpaXQp9n3ToZGXfZmPQwDt4_cQBJG8Wakn7f19vfDPgmYFOdmDDerKLZAeLV_mNs3rjh0v-tD0KTbo1J2bQ6HlXSfaO_5OsssHaTUyQodPkUi3XglXo2U7gj0PtJsLHxkylGQq3uGI">
+<img alt="School Exterior" class="w-full h-full object-cover" data-alt="A grand architectural view of a modern Islamic school building with natural wood accents and large windows. The lighting is golden hour sun, casting soft warm shadows across the clean courtyard. The atmosphere is serene, academic, and professional, reflecting the organic academic design system with sage green and terracotta tones in the landscaping." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDviLjcDWT3n-UTFGVzp8OS36GpzCZU7_A1GvjjYf_T2CFXGdEuvycsJzEULuscqLH9ZaGgAbkKlg7J0O9V3PUe_7tNmdSthX1EKkrlsaxUi_0xZmGEzUfUfqNgfVqm58jKxQv94F7TjDnEqrITOHYZoyjU75QT2XTkcUKBu0kUSeQRGzHw6syn0Iv7zAU8AUehbNxw5aL_wM1RqSPMLBBJZ1VjjYGe20DDmBQBSf09oImQMhmInVdoEv9Jguvw-eajFtd6sI4JgdoVRA">
 </div>
 </div>
 </div>
@@ -61,13 +39,13 @@ import Layout from '../layouts/Layout.astro';
 <!-- Preschool Card -->
 <div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="preschool">
 <div class="h-64">
-<img alt="Preschool Area" class="w-full h-full object-cover" data-alt="A warm and inviting preschool classroom featuring natural wooden furniture and soft earth-tone decorations. Large windows allow natural light to fill the space where sensory play materials like sand and wooden blocks are arranged neatly. The environment feels calm and nurturing, specifically designed for early childhood development in an Islamic context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhTCfFBfsSC7lwgBWFCmasHxdnGtAAEdqk_rvvWifu_luLScsdVAJIOSGGlfF3AjYgeFjRY5l-zFR-fdkCJn7wBIIhm6eSg5yM-irCaoDHCtM52cRASXUN-ruU5Wd0RxsM5DkG5aDEXAUdDE-xrZyPULbEm8dJxVoxegMVfawMSaDqE4U4cWrv9Klh15s96pznKkaKlooNu_2k6uNMKJ3GoCXrELGwlHu0IzIiVoedNkcP-CbSTKdGqsVT62kZ4-Er2Ev6Hc-K4gc">
+<img alt="Preschool Area" class="w-full h-full object-cover" data-alt="A warm and inviting preschool classroom featuring natural wooden furniture and soft earth-tone decorations. Large windows allow natural light to fill the space where sensory play materials like sand and wooden blocks are arranged neatly. The environment feels calm and nurturing, specifically designed for early childhood development in an Islamic context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0Ysoc5sdQ417ET7R_ZyE1g8CPtl4ZhhXWgjWngFuBb3xn1XRWUiCagvDqLybm-Novby6xkyDsMV9fEdHxEAw_FmmxcIX-nkG_LxQBKXlnvWX4SDuaEALnShbUwZeKbfZOaWrUjKo_Ylr2ZD6E8ukD0LUU7hHZ8ok40yMI9VWHqk8CKDt1zG21dOg6BnYClOc1V2vGXdT5LRIjuMJPFgqf5N9RbOha_wMUG5qDfJdwMgW94QR39DJ0ZWn7-zlZzbt2PsC2Mb2WoRXPQ">
 </div>
 <div class="p-10">
-<h3 class="font-headline-sm text-headline-sm text-secondary mb-4">Preschool (TK)</h3>
+<h3 class="font-headline-sm text-headline-sm text-secondary mb-4">Preschool (PAUD)</h3>
 <p class="text-on-surface-variant mb-6">Masa keemasan anak adalah waktu terbaik menanamkan kecintaan pada Allah. Dengan pendekatan ramah anak dan bermain sambil belajar, kami mendampingi ananda mengenal adab dan kemandirian sejak dini dalam suasana yang hangat dan ceria.</p>
 <ul class="space-y-3 mb-8 text-on-surface">
-<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Pembiasaan Adab Harian</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Kurikulum Khas</li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Stimulasi Motorik &amp; Sensorik</li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Tahfidz Surat Pendek</li>
 </ul>
@@ -77,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
 <!-- Elementary Card -->
 <div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="elementary">
 <div class="h-64">
-<img alt="Elementary Library" class="w-full h-full object-cover" data-alt="A clean and disciplined elementary school library with rows of organized books including Islamic literature and science texts. The room features high ceilings and minimalist modern furniture in deep olive and warm wood tones. The atmosphere is academic and studious, reflecting a balance of classical scholarship and modern learning tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGXsZ8NI9CwOeFBLOInB8XUwKzq06PrnCCQJ6bqvOGwKk5J3sVhpIR00BR6UzVwOu7GgoJqLk9ejZDnEqqmrC5zh4OhazF8hTysXhops2NzJVxB_G2kXzFC2yLHxQ8dMM0DXVAgeKgmfUez9-feRwIEplv33e90N0-hgzbtaUL6efaWTXRTWUScYWT3MZNUu4EaZBaFLHrkMh7LEHAQ3yApTf8ZYtlfXmcvAraXGV7aWvdjFW-4NNB9EWTTE8t5tWJpsc-_qDCnjw">
+<img alt="Elementary Library" class="w-full h-full object-cover" data-alt="A clean and disciplined elementary school library with rows of organized books including Islamic literature and science texts. The room features high ceilings and minimalist modern furniture in deep olive and warm wood tones. The atmosphere is academic and studious, reflecting a balance of classical scholarship and modern learning tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbkVi3CexN09LsOFBvvyHOv3spIyweck2wkYJUjkkyXVgY8ypXfQApQe5QJnmxfBzY4XEkOqrcC0yMBZb3L2Drw7UemKJWGYoUbkYcQvanu6zHvMGmHO0zdsB7ynKgLH3rRV81nR95QjQqUb15Btu30YIKez0NoarY84DW47CtwIHxDW8WDBDPs11YU7aVVPAY-R_8WRf4LX0eEOq7gJoUyCsSOgmUPYnKzXfqa7HZUjqjKV6NUn2c77vQDWclEYV9QmGi1oZy954kAg">
 </div>
 <div class="p-10">
 <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Elementary (SD)</h3>
@@ -185,10 +163,10 @@ import Layout from '../layouts/Layout.astro';
 <div class="lg:col-span-7 grid grid-cols-2 gap-4">
 <div class="space-y-4">
 <img alt="Student Activity" class="rounded-lg shadow-lg aspect-square object-cover" data-alt="A focused close-up of a student's hands carefully holding a traditional Arabic calligraphy pen over textured paper. The lighting is soft and natural, emphasizing the texture of the materials. The setting is a serene, sunlit classroom with olive green accents and wooden furniture, embodying the school's focus on adab and classical Islamic arts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8iP7u7gvoJgL7H1-v3p_1deWfjtrjR-KPjyFfgOtMYRc_RCVCQT_RsXizsE1e276zx1bAVhnLjOkkkWv9jieWtCkE4vOWgfrVtHGiC-KjaVzSM9h9D3XSx8-aF28pcJSbmY4llMG7aPDvKgCzIoICtdEmtl_KX0jk1de-NSb3SunMEpCFCxMjQaUfZxXfmbM3wUo3jhiF7t_Lm5wsaezttnRQ3xOCFbEHFj4w3MHkhDbcxNmS0omAHhw5qgt0R0waTyHV8nf3FlI">
-<img alt="Nature Area" class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="A peaceful outdoor garden within the school grounds featuring indigenous plants and a small stone pathway. The morning light creates a fresh, vibrant atmosphere. This natural learning space is used for science observations and quiet reflection, designed with an organic academic aesthetic using sage green and deep earth tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKlklDS7JA-qKd12tGoOrv0OgIo10qWYe6XUwCT1GdtUSeaGuSpoYnmDs8xvuJYsKBf8hx_D3IeYJrKWH5cpvWXJDADVdumVNU0kR1ALXmgY4xq0xupoGhNIyK7a1v0zneymT7RhQWWu2FrZ1UQNektrEspokbY8RFxplFPsNw6IfG5rU73cl6p04UnfY-4Wet0-mduG0ilPTsWQkZHNEi9qe_2GgajDWdqG_HqizjHLyUWS9E4-C5Fv7VL8PnLI101GFP54rSCs">
+<img alt="Nature Area" class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="A peaceful outdoor garden within the school grounds featuring indigenous plants and a small stone pathway. The morning light creates a fresh, vibrant atmosphere. This natural learning space is used for science observations and quiet reflection, designed with an organic academic aesthetic using sage green and deep earth tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMF_lQbW38RqJaqqwJtEf9uZr5N7y_Rj7g4Vx0S-x95_zw2MvamSyEDlqNoynAvjIUxWP3Tt-goOJV2ADSVAvyabJTzL918EcUanvnn7gSJZqS0truH7rlRltXKVZWUSk6dDJT2ligya0nh9BTID4TQS2GYgDYZXdsANNsL6jdbEol1BxemVNGQDyxO5a0D9GEmkeI7-xSNWFHKsdRefYXTsAOs7KkfVrBzsIwEShKlZ0DS7WyBFlu_483FHP0EVoMaXaKN2tMO4rwWg">
 </div>
 <div class="space-y-4 pt-12">
-<img alt="Classroom" class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="An empty, well-organized elementary classroom at Tarbiyah Sunnah Lab School. The desks are arranged for collaboration, made from light-colored wood. Large windows look out onto greenery, filling the room with diffused daylight. The walls are a soft warm white, decorated with neat, minimalist educational charts that maintain a calm academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAytCaZRvRcvya57x2gXEtd0Rekij9gEpRf0Oaqa8DQ1VFLPnDcJrTFJsjdbqLdj-KfMZhO8bQh7cXAwMP-IsuncIiJS65pKSoLCjoVnEVg62DKYw_VSdKtsvLyguj6XG6bxRJjoeWSGoT1nj1vhTlVNu05kS3EwlcM0oEqViCMJKmzfSLumT8xAZk5Pqy2b5Vqknhrllx82i2C0F7RaIr9vEUOioJIdaTMv_mUPOVp7JLGPPXwQOheFISq8Yn5ICnqOxJDRQxJss4">
+<img alt="Classroom" class="rounded-lg shadow-lg aspect-[3/4] object-cover" data-alt="An empty, well-organized elementary classroom at Tarbiyah Sunnah Lab School. The desks are arranged for collaboration, made from light-colored wood. Large windows look out onto greenery, filling the room with diffused daylight. The walls are a soft warm white, decorated with neat, minimalist educational charts that maintain a calm academic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjzJX1qlCjzOWhvsS09jv4UTBn18x6bG2ZQFkF_99gI1MO8bcksS54oToq1XITHxxxdZ-IpPB1TPLHwXCxIVQEMVgS0S6LZYiykM9fK-X0Fi8EgZvRS0Flqsu2I5c2snGxZG8NTfSIxs_WbXEmlXKNUItOqxHKT1TzLOQOuseGdqjzTkrq9Jdb1VpJPqmuRvln7veZFnfSL6MCGegRTE5iBEy7ACy5g_M-ZfvzD9Jge23FmeHTB76QM5Osr0EpNUzcfI3gwzqkdFvx6Q">
 </div>
 </div>
 </div>
@@ -257,66 +235,4 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 </section>
-<!-- Footer -->
-<footer class="bg-primary text-on-primary pt-16">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter pb-16 w-full max-w-container-max mx-auto">
-<div class="col-span-1 md:col-span-1">
-<div class="font-headline-md text-headline-md text-on-primary mb-6"><h3 class="font-headline-md text-headline-md text-on-primary mb-6">TS Islamic Lab School</h3></div>
-<p class="text-on-primary/80 mb-6 italic">"Membentuk Generasi Rabbani yang beradab dan berilmu di atas manhaj yang lurus."</p>
-<div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center hover:bg-on-primary/20 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl" data-icon="facebook">social_leaderboard</span>
-</a>
-<a class="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center hover:bg-on-primary/20 transition-colors" href="#">
-<span class="material-symbols-outlined text-xl" data-icon="camera">camera</span>
-</a>
-</div>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Hubungi Kami</h4>
-<ul class="space-y-4">
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="location_on">location_on</span>
-<span class="">Jl. Setrasari VI No.3A, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152</span>
-</li>
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="call">call</span>
-<span class="">+62 812-3456-7890</span>
-</li>
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="mail">mail</span>
-<span class="">salam@tslabschool.id</span>
-</li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Tautan Cepat</h4>
-<ul class="space-y-4">
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="#">Sistem Informasi Sekolah</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="#">SPMB Online</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="#">Program Preschool</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="#">Program Elementary</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="#">WhatsApp Admin</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Akademik</h4>
-<div class="bg-primary-container p-6 rounded-lg border border-on-primary/10">
-<p class="font-bold mb-2">Kalender Akademik</p>
-<p class="text-sm text-on-primary/70 mb-4">Update informasi semester genap 2024/2025 sudah tersedia.</p>
-<button class="text-secondary-fixed text-sm font-bold flex items-center gap-1">Download Kalender <span class="material-symbols-outlined text-xs" data-icon="download">download</span></button>
-</div>
-</div>
-</div>
-<div class="bg-secondary px-gutter py-4 flex flex-col md:flex-row justify-between items-center text-on-secondary text-sm border-t-4 border-secondary">
-<span class="">Â© 2024 Tarbiyah Sunnah Islamic Lab School. All Rights Reserved.</span>
-<div class="flex gap-6 mt-2 md:mt-0">
-<a class="hover:underline" href="#">Kebijakan Privasi</a>
-<a class="hover:underline" href="#">Syarat &amp; Ketentuan</a>
-</div>
-</div>
-</footer>
-
-
-
 </Layout>
