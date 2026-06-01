@@ -8,11 +8,13 @@ import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string;
 }
 
 const { 
 	title = "Tarbiyah Sunnah Lab School | Sekolah Islam Fitrah & Rabbani",
-	description = "Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar."
+	description = "Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar.",
+	image = "https://lh3.googleusercontent.com/aida-public/AB6AXuDviLjcDWT3n-UTFGVzp8OS36GpzCZU7_A1GvjjYf_T2CFXGdEuvycsJzEULuscqLH9ZaGgAbkKlg7J0O9V3PUe_7tNmdSthX1EKkrlsaxUi_0xZmGEzUfUfqNgfVqm58jKxQv94F7TjDnEqrITOHYZoyjU75QT2XTkcUKBu0kUSeQRGzHw6syn0Iv7zAU8AUehbNxw5aL_wM1RqSPMLBBJZ1VjjYGe20DDmBQBSf09oImQMhmInVdoEv9Jguvw-eajFtd6sI4JgdoVRA"
 } = Astro.props;
 ---
 
@@ -27,6 +29,7 @@ const {
 		<meta name="description" content={description} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
 		<meta property="og:type" content="website" />
 		
 		<!-- Google Fonts & Material Symbols -->

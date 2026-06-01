@@ -7,6 +7,7 @@ const artikel = defineCollection({
     title: z.string(),
     category: z.string().optional(),
     date: z.string().optional(),
+    description: z.string().optional(),
     thumbnail: z.string().optional(),
     isEditorChoice: z.boolean().optional(),
   }),

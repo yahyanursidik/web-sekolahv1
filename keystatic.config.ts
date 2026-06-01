@@ -1,9 +1,15 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 
+// Menggunakan local storage saat development (npm run dev), dan GitHub storage saat production (di Netlify)
+const isDev = process.env.NODE_ENV === 'development';
+
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  storage: isDev 
+    ? { kind: 'local' }
+    : { 
+        kind: 'github', 
+        repo: 'yahyanursidik/web-sekolahv1'
+      },
   collections: {
     artikel: collection({
       label: 'Artikel',
@@ -24,6 +30,7 @@ export default config({
           defaultValue: 'Parenting Islami',
         }),
         date: fields.date({ label: 'Tanggal Terbit' }),
+        description: fields.text({ label: 'Deskripsi Singkat (SEO & Cuplikan)', multiline: true }),
         thumbnail: fields.image({
           label: 'Gambar Thumbnail',
           directory: 'public/images/blog',
