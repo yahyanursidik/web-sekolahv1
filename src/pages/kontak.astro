@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 overflow-hidden bg-surface-container-low wood-texture">
+  <div class="absolute inset-0 pattern-bg z-0 opacity-50"></div>
+  <div class="container mx-auto px-gutter relative z-10 text-center">
+    <h1 class="font-display-lg text-display-lg text-primary mb-6">Hubungi Kami</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+      Kami siap menjawab pertanyaan Anda seputar program, pendaftaran, maupun jadwal kunjungan ke Tarbiyah Sunnah Lab School.
+    </p>
+  </div>
+</section>
+
+<!-- Contact Info -->
+<section class="py-section-padding-desktop bg-background">
+  <div class="container mx-auto px-gutter">
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div>
+          <h2 class="font-headline-md text-headline-md text-primary mb-6">Informasi Kontak</h2>
+          <p class="text-on-surface-variant mb-8">
+            Silakan hubungi kami melalui saluran berikut untuk informasi lebih lanjut mengenai pendaftaran dan program pendidikan kami.
+          </p>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="bg-primary-container p-3 rounded-lg text-primary mt-1">
+              <span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg mb-1">Alamat</h4>
+              <p class="text-on-surface-variant">
+                Kawasan Tarbiyah Sunnah<br />
+                Desa Selacau, Kec. Batujajar<br />
+                Kab. Bandung Barat, Jawa Barat
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="bg-primary-container p-3 rounded-lg text-primary mt-1">
+              <span class="material-symbols-outlined" data-icon="phone">phone</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg mb-1">WhatsApp (School Center)</h4>
+              <p class="text-on-surface-variant">
+                <a href="http://wa.me/6285173396002" class="hover:text-primary transition-colors">+62 851-7339-6002</a>
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="bg-primary-container p-3 rounded-lg text-primary mt-1">
+              <span class="material-symbols-outlined" data-icon="email">email</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg mb-1">Email</h4>
+              <p class="text-on-surface-variant">
+                <a href="mailto:info@tarbiyahsunnah.sch.id" class="hover:text-primary transition-colors">info@tarbiyahsunnah.sch.id</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-surface-container rounded-lg p-8 border border-outline-variant shadow-sm h-full min-h-[400px] flex items-center justify-center">
+        <div class="text-center">
+          <span class="material-symbols-outlined text-6xl text-primary mb-4 block" data-icon="map">map</span>
+          <p class="text-on-surface-variant">Peta lokasi (Google Maps Embed) dapat ditambahkan di sini.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
