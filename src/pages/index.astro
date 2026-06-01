@@ -1,5 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('artikel');
+// Sort newest first
+allArticles.sort((a, b) => new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime());
+const latestArticles = allArticles.slice(0, 3);
 ---
 <Layout>
 
@@ -186,38 +192,23 @@ import Layout from '../layouts/Layout.astro';
 <h2 class="font-headline-md text-headline-md text-primary mb-4">Artikel Terbaru</h2>
 <p class="text-on-surface-variant">Inspirasi parenting dan info terkini kegiatan sekolah kami.</p>
 </div>
-<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
+<a href="/artikel" class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
                     Lihat Semua Artikel <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</button>
+</a>
 </div>
 <div class="grid md:grid-cols-3 gap-8">
-<!-- Article 1 -->
+{latestArticles.map((article) => (
 <article class="group cursor-pointer">
+<a href={`/artikel/${article.id}`} class="block">
 <div class="rounded-lg overflow-hidden h-64 mb-6">
-<img alt="Parenting Article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cozy indoor scene featuring an open book on a wooden table next to a cup of tea, with soft morning light streaming through a nearby window. The atmosphere is quiet and contemplative, perfect for a blog post about Islamic parenting. The visual style follows the school's organic aesthetic with warm white and sage green color notes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzxq8iZYpT6lIbujf9YN3YmLUr8BIz_PwmAE7rEYfkDRjQoeZa4VBluTB_iSmewY_duLBp8WqSfuJWHMkIOE1F7XmtXEe__jCl9Wgc1rYBKQ602FadIdmtE2LQrmh_7NWURoA4obH3w87D04LTdVlaenA57VD-jI8QjzCbfqvSp-CZ8gNwUa4qBDl9IfH88DWBnqGhCi0WxNVjw-vcakJgAAAjXN4qwrqNdwKBkp7XoyWm1AFhkYiHv4mWcohKsOOfY7wQqi9riPs">
+<img alt={article.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={article.data.thumbnail || "https://lh3.googleusercontent.com/aida-public/AB6AXuDzxq8iZYpT6lIbujf9YN3YmLUr8BIz_PwmAE7rEYfkDRjQoeZa4VBluTB_iSmewY_duLBp8WqSfuJWHMkIOE1F7XmtXEe__jCl9Wgc1rYBKQ602FadIdmtE2LQrmh_7NWURoA4obH3w87D04LTdVlaenA57VD-jI8QjzCbfqvSp-CZ8gNwUa4qBDl9IfH88DWBnqGhCi0WxNVjw-vcakJgAAAjXN4qwrqNdwKBkp7XoyWm1AFhkYiHv4mWcohKsOOfY7wQqi9riPs"}>
 </div>
-<span class="text-secondary font-label-caps text-label-caps font-bold">PARENTING</span>
-<h3 class="font-bold text-xl mt-2 mb-4 group-hover:text-primary transition-colors">Menanamkan Adab di Rumah: Panduan untuk Orang Tua</h3>
-<p class="text-on-surface-variant line-clamp-2">Langkah-langkah praktis bagi ayah dan bunda untuk membiasakan adab islami pada anak dalam keseharian...</p>
+<span class="text-secondary font-label-caps text-label-caps font-bold">{article.data.category || 'UMUM'}</span>
+<h3 class="font-bold text-xl mt-2 mb-4 group-hover:text-primary transition-colors">{article.data.title}</h3>
+<p class="text-on-surface-variant line-clamp-2">{article.data.date}</p>
+</a>
 </article>
-<!-- Article 2 -->
-<article class="group cursor-pointer">
-<div class="rounded-lg overflow-hidden h-64 mb-6">
-<img alt="School Event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A collection of vibrant educational materials and books neatly arranged on a wooden desk, symbolizing school activities. The light is bright and cheerful, reflecting a positive learning environment. The colors are dominated by the school's primary olive green and warm secondary orange, maintaining professional academic branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnLAoo9TRxliYLrFMq6VlxrQGBE82cEOEXGIIRCxhTRB8TSEClTWAVkk8FU6llO1N_ZhztyUmhQfnZdlAY4nbXM5sCoJMq2Fzew1Qd6Pp9psu_rVQHG0IAh9_0rwUVb2t2saZH8IG6-bpHSGzqF2Bza-frZRVtCJ2JPgDtOuHxnuGonFMhahzPY7vjpCIVZi8BC_rcDwGpNcUcQsTo7hYmusXGa_OHPEkmdQW-YRT8SqthsOtGUwQBkrmn756xH5HaieSIaIxtgTI">
-</div>
-<span class="text-secondary font-label-caps text-label-caps font-bold">KEGIATAN SEKOLAH</span>
-<h3 class="font-bold text-xl mt-2 mb-4 group-hover:text-primary transition-colors">Keseruan Field Trip: Belajar Tadabbur Alam di Kebun Raya</h3>
-<p class="text-on-surface-variant line-clamp-2">Siswa elementary diajak mengenal kebesaran Allah melalui pengamatan berbagai jenis tanaman dan ekosistem...</p>
-</article>
-<!-- Article 3 -->
-<article class="group cursor-pointer">
-<div class="rounded-lg overflow-hidden h-64 mb-6">
-<img alt="Islamic Study" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A focused view of a traditional wooden book stand holding an open Mushaf, positioned in a quiet area of an Islamic school. The lighting is soft, creating a respectful and sacred mood. This image highlights the school's commitment to Al-Qur'an literacy and spiritual growth in a clean, modern, and natural setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_WR_Bzb5f6AhburxZ9CjMLRBB3L0Pw7cjDtDSHCJza0P5U3AA_OxA2NvmbMn8GOBaD-rWzL-U8_wIsEWd68z7MsjDYluGIojFFeOQmYNJtI5kgafFLRFGdhhcISsyC72lTiQ0tFeOUq2UiH-n8_2oEj2hNQRVGifORVtBx3q1AvqfPJo738GNgelTpVDWtAK2yh5F0NAncI6ZpT9ZKWjHSCxSoxUdajo_84fdzppVnjHwovWl-EcIeTq3W7rt5jAxAdfAq3l-3cE">
-</div>
-<span class="text-secondary font-label-caps text-label-caps font-bold">KURIKULUM</span>
-<h3 class="font-bold text-xl mt-2 mb-4 group-hover:text-primary transition-colors">Pentingnya Tahfidz Sejak Usia Dini untuk Kecerdasan Anak</h3>
-<p class="text-on-surface-variant line-clamp-2">Mengulas manfaat menghafal Al-Qur'an dalam menstimulasi perkembangan kognitif dan ketenangan jiwa anak...</p>
-</article>
+))}
 </div>
 </div>
 </section>

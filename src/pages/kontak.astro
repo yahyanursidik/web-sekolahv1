@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import globalSettings from '../content/settings/global.json';
 ---
 <Layout>
 
@@ -34,9 +35,9 @@ import Layout from '../layouts/Layout.astro';
             <div>
               <h4 class="font-bold text-lg mb-1">Alamat</h4>
               <p class="text-on-surface-variant">
-                Kawasan Tarbiyah Sunnah<br />
-                Desa Selacau, Kec. Batujajar<br />
-                Kab. Bandung Barat, Jawa Barat
+                Jl. Setrasari VI No.3A, Sukarasa<br />
+                Kec. Sukasari, Kota Bandung<br />
+                Jawa Barat 40152
               </p>
             </div>
           </div>
@@ -60,18 +61,30 @@ import Layout from '../layouts/Layout.astro';
             <div>
               <h4 class="font-bold text-lg mb-1">Email</h4>
               <p class="text-on-surface-variant">
-                <a href="mailto:info@tarbiyahsunnah.sch.id" class="hover:text-primary transition-colors">info@tarbiyahsunnah.sch.id</a>
+                <a href="mailto:salam@tslabschool.id" class="hover:text-primary transition-colors">salam@tslabschool.id</a>
               </p>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="bg-surface-container rounded-lg p-8 border border-outline-variant shadow-sm h-full min-h-[400px] flex items-center justify-center">
-        <div class="text-center">
-          <span class="material-symbols-outlined text-6xl text-primary mb-4 block" data-icon="map">map</span>
-          <p class="text-on-surface-variant">Peta lokasi (Google Maps Embed) dapat ditambahkan di sini.</p>
-        </div>
+      <div class="bg-surface-container rounded-lg p-2 border border-outline-variant shadow-sm h-full min-h-[400px] flex items-center justify-center overflow-hidden relative">
+        {globalSettings.mapsUrl && globalSettings.mapsUrl.trim() !== '' ? (
+          <iframe 
+            src={globalSettings.mapsUrl} 
+            width="100%" 
+            height="100%" 
+            style="border:0; position: absolute; top:0; left:0; width:100%; height:100%;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        ) : (
+          <div class="text-center p-8">
+            <span class="material-symbols-outlined text-6xl text-primary mb-4 block" data-icon="map">map</span>
+            <p class="text-on-surface-variant">Peta lokasi (Google Maps Embed) dapat ditambahkan melalui Pengaturan Global di Keystatic.</p>
+          </div>
+        )}
       </div>
     </div>
   </div>

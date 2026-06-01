@@ -12,16 +12,6 @@ const artikel = defineCollection({
   }),
 });
 
-const pengumuman = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx,mdoc}", base: "./src/content/pengumuman" }),
-  schema: z.object({
-    title: z.string(),
-    kategori: z.string().optional(),
-    date: z.string().optional(),
-  }),
-});
-
 export const collections = {
   artikel,
-  pengumuman,
 };

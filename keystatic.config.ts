@@ -1,4 +1,4 @@
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
@@ -36,24 +36,15 @@ export default config({
         content: fields.markdoc({ label: 'Konten Artikel' }),
       },
     }),
-    pengumuman: collection({
-      label: 'Pengumuman',
-      slugField: 'title',
-      path: 'src/content/pengumuman/*',
-      format: { contentField: 'content' },
+  },
+  singletons: {
+    settings: singleton({
+      label: 'Pengaturan Global',
+      path: 'src/content/settings/global',
+      format: { data: 'json' },
       schema: {
-        title: fields.slug({ name: { label: 'Judul Pengumuman' } }),
-        date: fields.date({ label: 'Tanggal' }),
-        kategori: fields.select({
-            label: 'Kategori Pengumuman',
-            options: [
-                { label: 'SPMB', value: 'SPMB' },
-                { label: 'Akademik', value: 'AKADEMIK' },
-                { label: 'Umum', value: 'UMUM' },
-            ],
-            defaultValue: 'UMUM',
-        }),
-        content: fields.markdoc({ label: 'Isi Pengumuman' }),
+        calendarUrl: fields.url({ label: 'URL Kalender Akademik (Drive/PDF)', description: 'Tautan untuk tombol Download Kalender' }),
+        mapsUrl: fields.url({ label: 'URL Google Maps Embed', description: 'URL src dari iframe Google Maps (dimulai dengan https://www.google.com/maps/embed?...)' }),
       },
     }),
   },

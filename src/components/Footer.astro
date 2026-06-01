@@ -1,4 +1,5 @@
 ---
+import globalSettings from '../content/settings/global.json';
 ---
 <footer class="bg-primary text-on-primary pt-16">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter pb-16 w-full max-w-container-max mx-auto">
@@ -47,7 +48,7 @@
 <div class="bg-primary-container p-6 rounded-lg border border-on-primary/10">
 <p class="font-bold mb-2">Kalender Akademik</p>
 <p class="text-sm text-on-primary/70 mb-4">Update informasi semester genap 2024/2025 sudah tersedia.</p>
-<button class="text-secondary-fixed text-sm font-bold flex items-center gap-1">Download Kalender <span class="material-symbols-outlined text-xs" data-icon="download">download</span></button>
+<a href={globalSettings.calendarUrl || '#'} target="_blank" class="inline-flex text-secondary-fixed text-sm font-bold items-center gap-1 hover:underline">Download Kalender <span class="material-symbols-outlined text-xs" data-icon="download">download</span></a>
 </div>
 </div>
 </div>
