@@ -50,8 +50,42 @@ export default config({
       path: 'src/content/settings/global',
       format: { data: 'json' },
       schema: {
+        favicon: fields.image({
+          label: 'Favicon Website',
+          description: 'Ikon kecil yang muncul di tab browser (disarankan format persegi, misal 512x512)',
+          directory: 'public/images/favicon',
+          publicPath: '/images/favicon',
+        }),
         calendarUrl: fields.url({ label: 'URL Kalender Akademik (Drive/PDF)', description: 'Tautan untuk tombol Download Kalender' }),
         mapsUrl: fields.url({ label: 'URL Google Maps Embed', description: 'URL src dari iframe Google Maps (dimulai dengan https://www.google.com/maps/embed?...)' }),
+      },
+    }),
+    faq: singleton({
+      label: 'Halaman FAQ',
+      path: 'src/content/settings/faq',
+      format: { data: 'json' },
+      schema: {
+        title: fields.text({ label: 'Judul Halaman FAQ', defaultValue: 'Frequently Asked Questions' }),
+        description: fields.text({ label: 'Deskripsi Singkat', multiline: true }),
+        sections: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Judul Kategori / Section' }),
+            faqs: fields.array(
+              fields.object({
+                question: fields.text({ label: 'Pertanyaan' }),
+                answer: fields.text({ label: 'Jawaban', multiline: true }),
+              }),
+              {
+                label: 'Daftar FAQ',
+                itemLabel: props => props.fields.question.value || 'FAQ Baru',
+              }
+            )
+          }),
+          {
+            label: 'Kategori FAQ',
+            itemLabel: props => props.fields.title.value || 'Kategori Baru',
+          }
+        ),
       },
     }),
   },

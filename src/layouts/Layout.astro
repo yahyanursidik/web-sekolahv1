@@ -5,6 +5,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 
+import globalSettings from '../content/settings/global.json';
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -16,6 +18,8 @@ const {
 	description = "Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar.",
 	image = "https://lh3.googleusercontent.com/aida-public/AB6AXuDviLjcDWT3n-UTFGVzp8OS36GpzCZU7_A1GvjjYf_T2CFXGdEuvycsJzEULuscqLH9ZaGgAbkKlg7J0O9V3PUe_7tNmdSthX1EKkrlsaxUi_0xZmGEzUfUfqNgfVqm58jKxQv94F7TjDnEqrITOHYZoyjU75QT2XTkcUKBu0kUSeQRGzHw6syn0Iv7zAU8AUehbNxw5aL_wM1RqSPMLBBJZ1VjjYGe20DDmBQBSf09oImQMhmInVdoEv9Jguvw-eajFtd6sI4JgdoVRA"
 } = Astro.props;
+
+const faviconPath = globalSettings.favicon || '/favicon.svg';
 ---
 
 <!doctype html>
@@ -23,7 +27,7 @@ const {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href={faviconPath} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
