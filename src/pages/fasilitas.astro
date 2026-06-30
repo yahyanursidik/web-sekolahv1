@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
+---
+<Layout>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-section-padding-desktop overflow-hidden">
+<div class="absolute inset-0 pattern-bg z-0 opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background z-0"></div>
+<div class="relative container mx-auto px-gutter text-center max-w-4xl pt-12 z-10">
+<span class="hero-anim opacity-0 inline-block py-1 px-4 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps mb-6">FASILITAS KAMI</span>
+<h1 class="hero-anim opacity-0 font-display-lg text-display-lg text-primary mb-6">Fasilitas Lingkungan Sekolah</h1>
+<p class="hero-anim opacity-0 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+Fasilitas di Tarbiyah Sunnah Lab School dibangun untuk menunjang standar kebutuhan belajar mengajar secara memadai. Kami menyediakan ruang kelas yang kondusif, area hijau untuk observasi langsung, serta fasilitas penunjang untuk aktivitas siswa sehari-hari.
+</p>
+</div>
+</section>
+
+<!-- Fasilitas Utama Grid -->
+<section class="py-section-padding-desktop container mx-auto px-gutter">
+<div class="grid lg:grid-cols-3 gap-6">
+  <!-- Ruang Kelas -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 lg:col-span-2 group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 min-h-[300px]">
+    <img src="/images/kelas.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Ruang Kelas Nyaman" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 text-white z-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="material-symbols-outlined text-3xl">chair_alt</span>
+        <h3 class="font-headline-md text-2xl font-bold">Ruang Kelas Sentra</h3>
+      </div>
+      <p class="font-body-md opacity-90 max-w-lg">Desain kelas tematik dengan sirkulasi udara alami dan pencahayaan optimal, mendukung metode sentra yang aktif dan menyenangkan.</p>
+    </div>
+  </div>
+  
+  <!-- Masjid -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 min-h-[300px]">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0Ysoc5sdQ417ET7R_ZyE1g8CPtl4ZhhXWgjWngFuBb3xn1XRWUiCagvDqLybm-Novby6xkyDsMV9fEdHxEAw_FmmxcIX-nkG_LxQBKXlnvWX4SDuaEALnShbUwZeKbfZOaWrUjKo_Ylr2ZD6E8ukD0LUU7hHZ8ok40yMI9VWHqk8CKDt1zG21dOg6BnYClOc1V2vGXdT5LRIjuMJPFgqf5N9RbOha_wMUG5qDfJdwMgW94QR39DJ0ZWn7-zlZzbt2PsC2Mb2WoRXPQ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Masjid Sekolah" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 text-white z-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="material-symbols-outlined text-3xl">mosque</span>
+        <h3 class="font-headline-md text-xl font-bold">Masjid Sentral</h3>
+      </div>
+      <p class="font-body-md opacity-90">Pusat pembinaan adab dan spiritual siswa.</p>
+    </div>
+  </div>
+  
+  <!-- Perpustakaan -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 min-h-[300px]">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbkVi3CexN09LsOFBvvyHOv3spIyweck2wkYJUjkkyXVgY8ypXfQApQe5QJnmxfBzY4XEkOqrcC0yMBZb3L2Drw7UemKJWGYoUbkYcQvanu6zHvMGmHO0zdsB7ynKgLH3rRV81nR95QjQqUb15Btu30YIKez0NoarY84DW47CtwIHxDW8WDBDPs11YU7aVVPAY-R_8WRf4LX0eEOq7gJoUyCsSOgmUPYnKzXfqa7HZUjqjKV6NUn2c77vQDWclEYV9QmGi1oZy954kAg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Perpustakaan Literasi" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 text-white z-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="material-symbols-outlined text-3xl">local_library</span>
+        <h3 class="font-headline-md text-xl font-bold">Perpustakaan Literasi</h3>
+      </div>
+      <p class="font-body-md opacity-90">Koleksi buku literatur Islam & Sains Modern.</p>
+    </div>
+  </div>
+
+  <!-- Nature Lab -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 lg:col-span-2 group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 min-h-[300px]">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlfm_VuEO5d0r_rxZh6LTxrX_Y3pVMgARtIerjRsD0gLckEaPJnJnLv4MZAmFApphD1ydh85Qw5SFkRFTV8z7VGflGk7jOLqTptTfLunoHK4OSPfVQ_cUjpoEYpw5tAFuTR4zowd6QzBOiiv92Kr0gTX2CmhI8CDXAliT8Y_4XNEhvfd7OTGA6kqIG3V9sH0hMtRhJeBdDbXLQGaoxnNFQoeL10ONfzX7EV1t22BeflMv3SOBXQdcSz0TLEz5b5xMUBxzafNIEeXQ" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Nature Laboratory" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 p-8 text-white z-10">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="material-symbols-outlined text-3xl">nature_people</span>
+        <h3 class="font-headline-md text-2xl font-bold">Nature Laboratory</h3>
+      </div>
+      <p class="font-body-md opacity-90 max-w-lg">Fasilitas agrikultur dan taman observasi alam yang digunakan untuk eksplorasi sains, menumbuhkan rasa syukur, dan kemandirian ekologis.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Penjelasan Mendalam (Zig-Zag) -->
+<section class="py-section-padding-desktop bg-surface-container-low">
+<div class="container mx-auto px-gutter space-y-24">
+  <div class="scroll-fade-up opacity-0 translate-y-8 flex flex-col md:flex-row gap-12 items-center">
+    <div class="w-full md:w-1/2">
+      <div class="relative">
+        <div class="absolute -top-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+        <img class="relative z-10 rounded-2xl shadow-xl w-full aspect-video object-cover" src="/images/kelas.png" alt="Interior Kelas">
+      </div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <h3 class="font-headline-md text-headline-md text-primary mb-4">Ramah Anak, Bebas Eksplorasi</h3>
+      <p class="font-body-md text-on-surface-variant mb-6">Kami mendesain setiap sudut sekolah dengan memperhatikan ergonomi dan psikologi anak. Pemilihan warna bumi (<i>earth-tone</i>), material furnitur berbahan dasar kayu, serta sudut-sudut ruangan yang aman bertujuan untuk mengurangi stimulasi berlebih (<i>overstimulation</i>) sehingga anak bisa belajar dalam keadaan emosi yang stabil.</p>
+      <ul class="space-y-4 font-body-md text-on-surface">
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Furnitur kayu ergonomis (<i>Child-sized</i>)</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Material aman dan bersertifikasi</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Sudut baca nyaman (<i>Reading Corner</i>)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scroll-fade-up opacity-0 translate-y-8 flex flex-col md:flex-row-reverse gap-12 items-center">
+    <div class="w-full md:w-1/2">
+      <div class="relative">
+        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+        <img class="relative z-10 rounded-2xl shadow-xl w-full aspect-[4/3] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8iP7u7gvoJgL7H1-v3p_1deWfjtrjR-KPjyFfgOtMYRc_RCVCQT_RsXizsE1e276zx1bAVhnLjOkkkWv9jieWtCkE4vOWgfrVtHGiC-KjaVzSM9h9D3XSx8-aF28pcJSbmY4llMG7aPDvKgCzIoICtdEmtl_KX0jk1de-NSb3SunMEpCFCxMjQaUfZxXfmbM3wUo3jhiF7t_Lm5wsaezttnRQ3xOCFbEHFj4w3MHkhDbcxNmS0omAHhw5qgt0R0waTyHV8nf3FlI" alt="Laboratorium & Sains">
+      </div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <h3 class="font-headline-md text-headline-md text-primary mb-4">STEAM & Islamic Integration</h3>
+      <p class="font-body-md text-on-surface-variant mb-6">Fasilitas lab dan sains dirancang untuk mengadopsi pendekatan STEAM (<i>Science, Technology, Engineering, Art, Mathematics</i>) yang diselaraskan dengan keagungan ciptaan Allah. Melalui fasilitas ini, kami memantik nalar kritis anak sejak dini.</p>
+      <ul class="space-y-4 font-body-md text-on-surface">
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Ruang Observasi Sains Interaktif</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Fasilitas Eksplorasi Seni & Keterampilan</li>
+        <li class="flex items-center gap-3"><span class="material-symbols-outlined text-secondary">check_circle</span> Peralatan modern berwawasan lingkungan</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Fasilitas Pendukung (List) -->
+<section class="py-section-padding-desktop container mx-auto px-gutter">
+<div class="text-center mb-16 scroll-fade-up opacity-0 translate-y-8">
+  <h2 class="font-display-md text-3xl text-primary mb-4">Fasilitas Pendukung Lainnya</h2>
+  <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Melengkapi kebutuhan esensial dan kenyamanan ananda selama berada di lingkungan sekolah.</p>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Ruangan Kelas Ber-AC -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">ac_unit</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Ruangan Kelas Ber-AC</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Kenyamanan termal yang terjaga dengan pendingin ruangan (AC) di setiap kelas untuk mendukung fokus dan konsentrasi belajar siswa di segala cuaca.</p>
+  </div>
+  
+  <!-- Halaman Depan -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">park</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Halaman Depan Luas</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Area hijau yang asri untuk menyambut kedatangan siswa, dilengkapi zona aman antar-jemput (*drop-off*) dan ruang tunggu yang teduh.</p>
+  </div>
+  
+  <!-- Halaman Belakang -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">sports_soccer</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Halaman Belakang Aktif</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Area lapang terbuka yang didedikasikan penuh untuk aktivitas olahraga, pengembangan motorik kasar, serta upacara bendera.</p>
+  </div>
+  
+  <!-- Kantin -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">restaurant</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Kantin Halal & Sehat</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Menyediakan konsumsi bergizi dan higienis bersertifikasi halal, sekaligus menjadi sarana menanamkan adab makan dan minum sesuai sunnah.</p>
+  </div>
+  
+  <!-- Pojok Literasi -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">menu_book</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Pojok Literasi Nyaman</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Titik-titik strategis bersantai dengan desain *cozy* dan koleksi buku ringan, dirancang untuk merangsang minat baca siswa secara natural.</p>
+  </div>
+  
+  <!-- UKS -->
+  <div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-low p-8 rounded-2xl border border-outline-variant/30 hover:shadow-md transition-all duration-300 group">
+    <div class="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
+      <span class="material-symbols-outlined text-3xl">medical_services</span>
+    </div>
+    <h3 class="font-headline-sm text-xl text-on-surface mb-3 font-bold">Ruang Kesehatan (UKS)</h3>
+    <p class="font-body-md text-on-surface-variant leading-relaxed">Layanan tindakan dan observasi pertama untuk kesehatan medis, memastikan kenyamanan siswa dengan pengawasan staf yang selalu siaga.</p>
+  </div>
+</div>
+</section>
+
+<!-- Final CTA Section (using the same style as other pages) -->
+<section class="py-section-padding-desktop bg-surface-container-high relative">
+<div class="container mx-auto px-gutter text-center relative z-10">
+<div class="max-w-3xl mx-auto p-12 bg-white/50 backdrop-blur-sm rounded-lg border-2 border-primary/10 shadow-xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Rasakan Langsung Suasana Belajar Kami</h2>
+<p class="text-body-lg text-on-surface-variant mb-10">Kunjungi Tarbiyah Sunnah Lab School melalui tur sekolah atau segera daftar secara online untuk mengamankan kuota ananda.</p>
+<div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4">
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto shadow-lg hover:shadow-xl group")}>
+    Daftar SPMB Online <span class="material-symbols-outlined ml-2 group-hover:scale-110 transition-transform" data-icon="app_registration">app_registration</span>
+</a>
+<a href="/kontak" class={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto border-2 group bg-white")}>
+    Jadwalkan Kunjungan <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  // Hero Animations
+  const heroElements = document.querySelectorAll('.hero-anim');
+  if (heroElements.length > 0) {
+    animate(heroElements, 
+      { opacity: [0, 1], y: [30, 0] }, 
+      { delay: stagger(0.15), duration: 0.8, easing: "ease-out" }
+    );
+  }
+
+  // Scroll Fade Up
+  const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
+  fadeUpElements.forEach((el) => {
+    // Initial hidden state
+    el.classList.add('opacity-0', 'translate-y-8');
+    
+    inView(el, () => {
+      animate(el, { opacity: 1, y: 0 }, { duration: 0.8, easing: [0.17, 0.55, 0.55, 1] });
+    }, { margin: "-50px" });
+  });
+</script>
+</Layout>

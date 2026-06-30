@@ -59,13 +59,13 @@
   --spacing-section-padding-desktop: 80px;
   --spacing-section-padding-mobile: 40px;
 
-  --font-headline-md: "Playfair Display", serif;
-  --font-body-md: "Inter", sans-serif;
-  --font-display-lg-mobile: "Playfair Display", serif;
-  --font-headline-sm: "Playfair Display", serif;
-  --font-display-lg: "Playfair Display", serif;
-  --font-body-lg: "Inter", sans-serif;
-  --font-label-caps: "Inter", sans-serif;
+  --font-headline-md: "Lora", serif;
+  --font-body-md: "Nunito", sans-serif;
+  --font-display-lg-mobile: "Lora", serif;
+  --font-headline-sm: "Lora", serif;
+  --font-display-lg: "Lora", serif;
+  --font-body-lg: "Nunito", sans-serif;
+  --font-label-caps: "Nunito", sans-serif;
   --font-accent-arabic: "Amiri", serif;
 }
 

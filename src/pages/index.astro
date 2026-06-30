@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AdventureMap from '../components/AdventureMap.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
 import { getCollection } from 'astro:content';
 
 const allArticles = await getCollection('artikel');
@@ -15,19 +17,23 @@ const latestArticles = allArticles.slice(0, 3);
 <div class="absolute inset-0 pattern-bg z-0"></div>
 <div class="container mx-auto px-gutter relative z-10 grid lg:grid-cols-2 gap-12 items-center">
 <div class="max-w-2xl">
-<span class="inline-block py-1 px-4 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps mb-6">BERSAMA MEMBENTUK GENERASI RABBANI</span>
-<h1 class="font-display-lg text-display-lg text-primary mb-6">Tarbiyah Sunnah Lab School</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar.</p>
-<div class="flex flex-wrap gap-4">
-<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-lg hover:bg-primary-container transition-all inline-block">Daftar SPMB</a>
-<a href="http://wa.me/6285173396002" class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-bold shadow-lg hover:bg-on-secondary-container transition-all inline-block">Konsultasi School Center</a>
+<span class="hero-anim opacity-0 inline-block py-1 px-4 rounded-full bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps mb-6">BERSAMA MEMBENTUK GENERASI RABBANI</span>
+<h1 class="hero-anim opacity-0 font-display-lg text-display-lg text-primary mb-6">Tarbiyah Sunnah Lab School</h1>
+<p class="hero-anim opacity-0 font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">Sekolah Islam yang mendampingi anak tumbuh dengan iman, adab, ilmu, dan karakter rabbani sejak usia dini hingga sekolah dasar.</p>
+<div class="hero-anim opacity-0 flex flex-wrap gap-4 mt-8">
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "shadow-lg hover:shadow-xl group")}>
+Daftar SPMB <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a href="http://wa.me/6285173396002" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "shadow-md hover:shadow-lg group")}>
+Konsultasi School Center <span class="material-symbols-outlined ml-2 group-hover:scale-110 transition-transform" data-icon="support_agent">support_agent</span>
+</a>
 </div>
 <div class="mt-8 flex gap-6 text-primary">
 <a class="flex items-center gap-2 font-semibold hover:underline" href="#preschool"><span class="material-symbols-outlined" data-icon="child_care">child_care</span> Program Preschool</a>
 <a class="flex items-center gap-2 font-semibold hover:underline" href="#elementary"><span class="material-symbols-outlined" data-icon="school">school</span> Program Elementary</a>
 </div>
 </div>
-<div class="relative group h-[500px]">
+<div class="hero-anim opacity-0 relative group h-[500px]">
 <div class="absolute -top-4 -right-4 w-full h-full border-2 border-secondary rounded-lg -z-10 group-hover:top-0 group-hover:right-0 transition-all duration-500"></div>
 <div class="rounded-lg overflow-hidden shadow-2xl h-full w-full">
 <AdventureMap />
@@ -44,11 +50,12 @@ const latestArticles = allArticles.slice(0, 3);
 </div>
 <div class="grid md:grid-cols-2 gap-12">
 <!-- Preschool Card -->
-<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="preschool">
+<div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="preschool">
 <div class="h-64">
 <img alt="Preschool Area" class="w-full h-full object-cover" data-alt="A warm and inviting preschool classroom featuring natural wooden furniture and soft earth-tone decorations. Large windows allow natural light to fill the space where sensory play materials like sand and wooden blocks are arranged neatly. The environment feels calm and nurturing, specifically designed for early childhood development in an Islamic context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0Ysoc5sdQ417ET7R_ZyE1g8CPtl4ZhhXWgjWngFuBb3xn1XRWUiCagvDqLybm-Novby6xkyDsMV9fEdHxEAw_FmmxcIX-nkG_LxQBKXlnvWX4SDuaEALnShbUwZeKbfZOaWrUjKo_Ylr2ZD6E8ukD0LUU7hHZ8ok40yMI9VWHqk8CKDt1zG21dOg6BnYClOc1V2vGXdT5LRIjuMJPFgqf5N9RbOha_wMUG5qDfJdwMgW94QR39DJ0ZWn7-zlZzbt2PsC2Mb2WoRXPQ">
 </div>
-<div class="p-10">
+<div class="p-10 flex flex-col flex-grow">
+<div>
 <h3 class="font-headline-sm text-headline-sm text-secondary mb-4">Preschool (PAUD)</h3>
 <p class="text-on-surface-variant mb-6">Masa keemasan anak adalah waktu terbaik menanamkan kecintaan pada Allah. Dengan pendekatan ramah anak dan bermain sambil belajar, kami mendampingi ananda mengenal adab dan kemandirian sejak dini dalam suasana yang hangat dan ceria.</p>
 <ul class="space-y-3 mb-8 text-on-surface">
@@ -59,15 +66,21 @@ const latestArticles = allArticles.slice(0, 3);
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Kesiapan Sekolah kejenjang selanjutnya</li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Pendekatan Blok Rutinitas Rumah dan Sekolah</li>
 </ul>
-<a href="/preschool" class="w-full border-2 border-secondary text-secondary py-3 rounded-full font-bold hover:bg-secondary hover:text-white transition-all block text-center">Detail Program Preschool</a>
+</div>
+<div class="mt-auto pt-4">
+<a href="/preschool" class={cn(buttonVariants({ variant: "outline" }), "w-full group border-2 border-secondary text-secondary hover:bg-secondary hover:text-on-secondary")}>
+Detail Program Preschool <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
 </div>
 </div>
 <!-- Elementary Card -->
-<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="elementary">
+<div class="scroll-fade-up opacity-0 translate-y-8 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition-shadow" id="elementary">
 <div class="h-64">
 <img alt="Elementary Library" class="w-full h-full object-cover" data-alt="A clean and disciplined elementary school library with rows of organized books including Islamic literature and science texts. The room features high ceilings and minimalist modern furniture in deep olive and warm wood tones. The atmosphere is academic and studious, reflecting a balance of classical scholarship and modern learning tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbkVi3CexN09LsOFBvvyHOv3spIyweck2wkYJUjkkyXVgY8ypXfQApQe5QJnmxfBzY4XEkOqrcC0yMBZb3L2Drw7UemKJWGYoUbkYcQvanu6zHvMGmHO0zdsB7ynKgLH3rRV81nR95QjQqUb15Btu30YIKez0NoarY84DW47CtwIHxDW8WDBDPs11YU7aVVPAY-R_8WRf4LX0eEOq7gJoUyCsSOgmUPYnKzXfqa7HZUjqjKV6NUn2c77vQDWclEYV9QmGi1oZy954kAg">
 </div>
-<div class="p-10">
+<div class="p-10 flex flex-col flex-grow">
+<div>
 <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Elementary (SD)</h3>
 <p class="text-on-surface-variant mb-6">Membangun fondasi akademik yang kokoh dengan integrasi nilai-nilai keislaman yang mendalam. Siswa diajak untuk berpikir kritis, berakhlak mulia, dan memiliki kedisiplinan tinggi dalam menuntut ilmu syar'i maupun umum.</p>
 <ul class="space-y-3 mb-8 text-on-surface">
@@ -78,7 +91,12 @@ const latestArticles = allArticles.slice(0, 3);
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> integrasi rumah dan sekolah</li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> sekolah berbasis STEAM</li>
 </ul>
-<a href="/elementary" class="w-full border-2 border-primary text-primary py-3 rounded-full font-bold hover:bg-primary hover:text-white transition-all block text-center">Detail Program Elementary</a>
+</div>
+<div class="mt-auto pt-4">
+<a href="/elementary" class={cn(buttonVariants({ variant: "outline" }), "w-full group border-2 border-primary text-primary hover:bg-primary hover:text-on-primary")}>
+Detail Program Elementary <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
 </div>
 </div>
 </div>
@@ -93,37 +111,37 @@ const latestArticles = allArticles.slice(0, 3);
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <!-- Card 1 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="mosque">mosque</span>
 <h4 class="font-bold text-lg mb-3">Berbasis Nilai Islam</h4>
 <p class="text-body-md text-on-surface-variant">Pendidikan yang berlandaskan Al-Qur'an dan As-Sunnah sesuai pemahaman para salafus shalih.</p>
 </div>
 <!-- Card 2 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="volunteer_activism">volunteer_activism</span>
 <h4 class="font-bold text-lg mb-3">Pendekatan Ramah Anak</h4>
 <p class="text-body-md text-on-surface-variant">Menciptakan lingkungan yang aman secara psikologis sehingga potensi anak berkembang optimal.</p>
 </div>
 <!-- Card 3 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="menu_book">menu_book</span>
 <h4 class="font-bold text-lg mb-3">Integrasi Adab</h4>
 <p class="text-body-md text-on-surface-variant">Adab didahulukan sebelum ilmu, memastikan anak tumbuh dengan karakter yang santun dan mulia.</p>
 </div>
 <!-- Card 4 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="eco">eco</span>
 <h4 class="font-bold text-lg mb-3">Lingkungan Natural</h4>
 <p class="text-body-md text-on-surface-variant">Fasilitas yang asri dan dekat dengan alam untuk mendukung kesehatan fisik dan mental anak.</p>
 </div>
 <!-- Card 5 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="diversity_3">diversity_3</span>
 <h4 class="font-bold text-lg mb-3">Komunikasi Orang Tua</h4>
 <p class="text-body-md text-on-surface-variant">Sinergi berkelanjutan antara sekolah dan rumah untuk monitoring perkembangan ananda.</p>
 </div>
 <!-- Card 6 -->
-<div class="p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="scroll-bento opacity-0 translate-y-4 scale-95 p-8 bg-surface-container rounded-lg border border-outline-variant hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="devices">devices</span>
 <h4 class="font-bold text-lg mb-3">Portal Orang Tua</h4>
 <p class="text-body-md text-on-surface-variant">Kemudahan akses informasi akademik dan administrasi melalui platform digital terintegrasi.</p>
@@ -219,18 +237,50 @@ const latestArticles = allArticles.slice(0, 3);
 <div class="max-w-3xl mx-auto p-12 bg-white/50 backdrop-blur-sm rounded-lg border-2 border-primary/10 shadow-xl">
 <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Mari Bergabung Bersama Keluarga Besar Kami</h2>
 <p class="text-body-lg text-on-surface-variant mb-10">Pendaftaran Peserta Didik Baru (SPMB) Tahun Ajaran 2026/2027 masih terbuka. Segera amankan kuota untuk masa depan ananda yang lebih gemilang.</p>
-<div class="flex flex-col md:flex-row justify-center gap-4">
-<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class="bg-primary text-on-primary px-10 py-4 rounded-full font-bold shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2">
-                        Daftar SPMB Online <span class="material-symbols-outlined" data-icon="app_registration">app_registration</span>
+<div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4">
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto shadow-lg hover:shadow-xl group")}>
+    Daftar SPMB Online <span class="material-symbols-outlined ml-2 group-hover:scale-110 transition-transform" data-icon="app_registration">app_registration</span>
 </a>
-<a href="http://wa.me/6285173396002" class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-bold shadow-lg hover:bg-on-secondary-container transition-all flex items-center justify-center gap-2">
-                        Tanya School Center <span class="material-symbols-outlined" data-icon="chat">chat</span>
+<a href="http://wa.me/6285173396002" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "w-full sm:w-auto shadow-md hover:shadow-lg group")}>
+    Tanya School Center <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="forum">forum</span>
 </a>
-<button class="border-2 border-primary text-primary px-10 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
-                        Unduh Brosur <span class="material-symbols-outlined" data-icon="download">download</span>
-</button>
+<a href="#" class={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto border-2 group")}>
+    Unduh Brosur <span class="material-symbols-outlined ml-2 group-hover:translate-y-1 transition-transform" data-icon="download">download</span>
+</a>
 </div>
 </div>
 </div>
 </section>
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  // Hero Animations
+  const heroElements = document.querySelectorAll('.hero-anim');
+  if (heroElements.length > 0) {
+    animate(heroElements, 
+      { opacity: [0, 1], y: [30, 0] }, 
+      { delay: stagger(0.15), duration: 0.8, easing: "ease-out" }
+    );
+  }
+
+  // Scroll Fade Up (Cards)
+  const fadeUpElements = document.querySelectorAll('.scroll-fade-up');
+  fadeUpElements.forEach((el) => {
+    inView(el, (info) => {
+      animate(el, { opacity: 1, y: 0 }, { duration: 0.8, easing: [0.17, 0.55, 0.55, 1] });
+    }, { margin: "-50px" });
+  });
+
+  // Scroll Bento Grid
+  const bentoGrid = document.querySelector('.grid-cols-1.md\\:grid-cols-3');
+  const bentoCards = document.querySelectorAll('.scroll-bento');
+  if (bentoGrid && bentoCards.length > 0) {
+    inView(bentoGrid, () => {
+      animate(bentoCards, 
+        { opacity: 1, y: 0, scale: 1 }, 
+        { delay: stagger(0.1), duration: 0.6, easing: [0.17, 0.55, 0.55, 1] }
+      );
+    }, { margin: "-100px" });
+  }
+</script>
 </Layout>

@@ -1,22 +1,25 @@
 ---
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
+
+const currentPath = Astro.url.pathname;
 ---
-<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md shadow-sm">
-<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full">
+<header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-2">
+<div id="header-container" class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full transition-all duration-300">
 <a href="/" class="flex items-center">
   <img src="/images/logo.png" alt="Tarbiyah Sunnah Lab School Logo" class="h-12 md:h-16 w-auto object-contain scale-[1.5] md:scale-[1.7] origin-left">
 </a>
-<nav class="hidden md:flex items-center space-x-8">
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/">Beranda</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/profil">Profil</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/preschool">Preschool</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/elementary">Elementary</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/program">Program</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/artikel">Artikel</a>
-<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="/kontak">Kontak</a>
+<nav class="hidden lg:flex items-center space-x-8">
+<a class={cn("font-medium transition-colors duration-200", currentPath === '/' ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/">Beranda</a>
+<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/profil') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/profil">Profil</a>
+<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/preschool') || currentPath.startsWith('/elementary') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/preschool">Program</a>
+<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/fasilitas') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/fasilitas">Fasilitas</a>
+<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/artikel') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/artikel">Artikel</a>
+<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/kontak') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/kontak">Kontak</a>
 </nav>
 <div class="hidden md:flex items-center space-x-4">
-<a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class="hidden lg:block text-primary font-semibold py-2 px-4 hover:bg-primary-fixed/30 rounded-full transition-all text-center">Portal Orang Tua</a>
-<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class="bg-primary text-on-primary py-2 px-6 rounded-full font-bold scale-95 active:scale-90 transition-transform inline-block">SPMB</a>
+<a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class={buttonVariants({ variant: "ghost" })}>Portal Orang Tua</a>
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={buttonVariants()}>SPMB</a>
 </div>
 
 <!-- Mobile Menu Button -->
@@ -27,39 +30,65 @@
 </header>
 
 <!-- Mobile Navigation Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-md transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-gutter pb-8 overflow-y-auto">
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-background/98 backdrop-blur-md hidden flex-col pt-24 px-gutter pb-8 overflow-y-auto" style="opacity: 0;">
   <nav class="flex flex-col gap-6 text-center text-lg">
-    <a class="text-on-surface font-medium hover:text-primary" href="/">Beranda</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/profil">Profil</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/preschool">Preschool</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/elementary">Elementary</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/program">Program</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/artikel">Artikel</a>
-    <a class="text-on-surface font-medium hover:text-primary" href="/kontak">Kontak</a>
-    <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class="bg-primary text-on-primary py-3 px-6 rounded-full font-bold mt-4">Daftar SPMB</a>
-    <a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class="text-primary font-semibold py-3 px-6 border-2 border-primary rounded-full mt-2 block text-center">Portal Orang Tua</a>
+    <a href="/" class={cn("mobile-link font-medium", currentPath === '/' ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Beranda</a>
+    <a href="/profil" class={cn("mobile-link font-medium", currentPath.startsWith('/profil') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Profil</a>
+    <a href="/preschool" class={cn("mobile-link font-medium", currentPath.startsWith('/preschool') || currentPath.startsWith('/elementary') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Program</a>
+    <a href="/fasilitas" class={cn("mobile-link font-medium", currentPath.startsWith('/fasilitas') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Fasilitas</a>
+    <a href="/artikel" class={cn("mobile-link font-medium", currentPath.startsWith('/artikel') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Artikel</a>
+    <a href="/kontak" class={cn("mobile-link font-medium", currentPath.startsWith('/kontak') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Kontak</a>
+    <hr class="border-outline-variant/30 my-2">
+    <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={buttonVariants()}>Daftar SPMB</a>
+    <a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class={buttonVariants({ variant: "outline" })}>Portal Orang Tua</a>
   </nav>
 </div>
 
 <script>
+  import { animate, stagger } from "motion";
+
+  const header = document.getElementById('main-header');
+  const container = document.getElementById('header-container');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.remove('bg-transparent', 'py-2');
+      header?.classList.add('bg-background/90', 'backdrop-blur-md', 'shadow-sm', 'py-0');
+      container?.classList.remove('py-4');
+      container?.classList.add('py-2');
+    } else {
+      header?.classList.add('bg-transparent', 'py-2');
+      header?.classList.remove('bg-background/90', 'backdrop-blur-md', 'shadow-sm', 'py-0');
+      container?.classList.add('py-4');
+      container?.classList.remove('py-2');
+    }
+  });
+
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const icon = btn?.querySelector('span');
+  const menuLinks = document.querySelectorAll('.mobile-link');
 
   let isOpen = false;
-
-  // Reset state on page load (useful for View Transitions if enabled)
-  if(menu) menu.classList.add('translate-x-full');
-  if(icon) icon.textContent = 'menu';
 
   btn?.addEventListener('click', () => {
     isOpen = !isOpen;
     if (isOpen) {
-      menu?.classList.remove('translate-x-full');
+      menu?.classList.remove('hidden');
+      menu?.classList.add('flex');
+      
+      animate(menu!, { opacity: [0, 1] }, { duration: 0.3 });
+      animate(menuLinks, { opacity: [0, 1], y: [20, 0] }, { delay: stagger(0.05), duration: 0.4 });
+      
       if(icon) icon.textContent = 'close';
+      document.body.style.overflow = 'hidden'; // prevent scroll
     } else {
-      menu?.classList.add('translate-x-full');
+      animate(menu!, { opacity: 0 }, { duration: 0.3 }).finished.then(() => {
+        menu?.classList.add('hidden');
+        menu?.classList.remove('flex');
+      });
       if(icon) icon.textContent = 'menu';
+      document.body.style.overflow = '';
     }
   });
 </script>

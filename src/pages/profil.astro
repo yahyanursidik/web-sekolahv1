@@ -1,24 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
 ---
 <Layout>
 
 <!-- Hero Section -->
-<section class="relative pt-32 pb-section-padding-desktop hero-mask bg-primary overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute inset-0 islamic-pattern"></div>
-<img class="w-full h-full object-cover grayscale animate-float" data-alt="A cinematic, low-angle shot of a grand educational building featuring elegant stone arches and large wooden doors, captured during the golden hour with soft, warm sunlight illuminating the textures. The scene exudes a sense of prestige, tradition, and intellectual serenity, following a muted olive and warm cream color palette with high-contrast shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKSGCwbDKWV5T340nZqRLubP3QU-Pwwqrut26Z0MhwDtRwFSVTnZrHfQQ5VZGQ5rrbzNJ4EE7admwI_OMGbkOH93Gte3bHdhGJWkMgi2AeLuvocwkabRB6BtRRw25Mad16xPcWVjip0e6ycxc_AMdqsWOLJHI7OJtAjE5nVl6RzWJojqQ7v5ZNojrvqzuTZmqTt-I0xDryESML9NptsQfO4fTuhH8NSDec2kze0wRSYy7a7kkDBvD8d0avAE1OM_bqupfDhhFp6ko">
-</div>
-<div class="relative container mx-auto px-gutter text-center max-w-4xl">
-<h1 class="font-display-lg text-display-lg text-on-primary mb-6">Profil Sekolah</h1>
-<p class="font-body-lg text-body-lg text-on-primary/90 leading-relaxed">
+<section class="relative pt-32 pb-section-padding-desktop overflow-hidden">
+<div class="absolute inset-0 pattern-bg z-0"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-background z-0"></div>
+<div class="relative container mx-auto px-gutter text-center max-w-4xl pt-12 z-10">
+<span class="hero-anim opacity-0 inline-block py-1 px-4 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps mb-6">TENTANG KAMI</span>
+<h1 class="hero-anim opacity-0 font-display-lg text-display-lg text-primary mb-6">Profil Sekolah</h1>
+<p class="hero-anim opacity-0 font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
                 Membangun Generasi Rabbani melalui pendidikan yang berlandaskan Al-Qur'an dan As-Sunnah, memadukan tradisi keilmuan Islam dengan inovasi laboratorium pendidikan modern.
             </p>
 </div>
 </section>
 <!-- Tentang Kami Section -->
 <section class="py-section-padding-desktop container mx-auto px-gutter">
-<div class="flex flex-col md:flex-row gap-16 items-center reveal active">
+<div class="flex flex-col md:flex-row gap-16 items-center reveal">
 <div class="w-full md:w-1/2">
 <div class="relative">
 <div class="absolute -top-4 -left-4 w-24 h-24 bg-tertiary-fixed opacity-30 rounded-full blur-3xl"></div>
@@ -34,7 +35,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 </div>
-</section><section class="py-section-padding-desktop bg-surface-container-low reveal active">
+</section><section class="py-section-padding-desktop bg-surface-container-low reveal">
 <div class="container mx-auto px-gutter">
 <h2 class="font-headline-md text-headline-md text-primary text-center mb-12">Perjalanan Kami</h2>
 <div class="relative max-w-4xl mx-auto border-l-2 border-primary/20 pl-8 ml-4 space-y-12 active" id="timeline-container">
@@ -58,7 +59,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <!-- Visi & Misi Section -->
-<section class="py-section-padding-desktop bg-surface-container-low relative reveal active">
+<section class="py-section-padding-desktop bg-surface-container-low relative reveal">
 <div class="container mx-auto px-gutter">
 <div class="grid md:grid-cols-2 gap-gutter">
 <div class="bg-white p-12 rounded-lg shadow-sm border border-outline-variant/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
@@ -91,7 +92,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 </div>
-</section><section class="py-section-padding-desktop container mx-auto px-gutter reveal active">
+</section><section class="py-section-padding-desktop container mx-auto px-gutter reveal">
 <h2 class="font-headline-md text-headline-md text-primary text-center mb-12">Struktur &amp; Kepemimpinan</h2>
 <div class="grid gap-8 mx-auto md:grid-cols-2 lg:grid-cols-4 max-w-6xl">
 <div class="text-center p-8 bg-white rounded-lg shadow-sm border border-outline-variant/20 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
@@ -125,7 +126,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <!-- Nilai Pendidikan Section -->
-<section class="py-section-padding-desktop container mx-auto px-gutter text-center reveal active">
+<section class="py-section-padding-desktop container mx-auto px-gutter text-center reveal">
 <h2 class="font-headline-md text-headline-md text-primary mb-12">Nilai-Nilai Dasar Pendidikan</h2>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 <div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(63,78,47,0.08)] border border-outline-variant/20 hover:-translate-y-2 hover:shadow-lg transition-all duration-300">
@@ -157,7 +158,7 @@ import Layout from '../layouts/Layout.astro';
 <p class="font-body-md text-on-surface-variant">Lingkungan yang aman dan penuh kasih sayang sesuai psikologi anak.</p>
 </div>
 </div>
-</section><section class="py-section-padding-desktop bg-surface-container reveal active">
+</section><section class="py-section-padding-desktop bg-surface-container reveal">
 <div class="container mx-auto px-gutter">
 <h2 class="font-headline-md text-headline-md text-primary text-center mb-12">Fasilitas Unggulan</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,7 +184,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <!-- Pendekatan Pembelajaran Section -->
-<section class="py-section-padding-desktop bg-tertiary-container text-on-tertiary reveal active">
+<section class="py-section-padding-desktop bg-tertiary-container text-on-tertiary reveal">
 <div class="container mx-auto px-gutter">
 <div class="max-w-3xl mx-auto text-center mb-16">
 <h2 class="font-headline-md text-headline-md mb-6">Pendekatan "Organic Academic"</h2>
@@ -207,7 +208,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 </div>
-</section><section class="py-section-padding-desktop container mx-auto px-gutter reveal active">
+</section><section class="py-section-padding-desktop container mx-auto px-gutter reveal">
 <h2 class="font-headline-md text-headline-md text-primary text-center mb-12">Apa Kata Orang Tua</h2>
 <div class="grid md:grid-cols-2 gap-8">
 <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-secondary hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
@@ -235,7 +236,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <!-- Sejarah / Yayasan Section -->
-<section class="py-section-padding-desktop container mx-auto px-gutter reveal active">
+<section class="py-section-padding-desktop container mx-auto px-gutter reveal">
 <div class="bg-surface-container-high rounded-xl p-8 md:p-16 flex flex-col md:flex-row gap-12 items-center">
 <div class="w-full md:w-2/5">
 <img class="rounded-lg shadow-lg aspect-square object-cover animate-float" data-alt="An artistic close-up of a vintage compass resting on a map of ancient Islamic world trade routes, surrounded by dried botanical leaves. The lighting is low and atmospheric, emphasizing golden tones and rich shadows, signifying the historical foundation and direction of the school's mission. No human figures are present." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJNLmkFDcAXjX6dhLyvGqA-IQ0wIIGAclLaYjns8NGrEFJTZO8bEORmwyNT_hS4gWMQXKbOiz5pDjz2IP91bIYI8lHrzTtM5QVuMZcZaqSr4u-RxIFA08v30n-mx4Vv09kW74b33WoVOBEnwWfr0nOueukJsmYCMhY2NJNGuzqHjUdXSrWQzstnToiSZnY-nwlKESDTHeFFoj0ZnEe99zOoRliEMD86pstS4KCtqwtjpvm4VMw-2zUyuYxb8cHzupbs6fzNvX6Mbg">
@@ -250,19 +251,19 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <!-- CTA Section -->
-<section class="py-section-padding-desktop container mx-auto px-gutter reveal active">
+<section class="py-section-padding-desktop container mx-auto px-gutter reveal">
 <div class="bg-secondary rounded-xl p-12 text-center text-on-secondary shadow-lg relative overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
 <div class="absolute inset-0 islamic-pattern opacity-10"></div>
 <div class="relative z-10">
 <h2 class="font-display-lg text-display-lg mb-6">Mulai Perjalanan Rabbani Buah Hati Anda</h2>
 <p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-90">Pendaftaran Siswa Baru (SPMB) kini telah dibuka. Bergabunglah bersama komunitas pendidikan yang mengutamakan keberkahan.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a class="bg-white text-secondary px-8 py-4 rounded-full font-bold hover:bg-surface-bright transition-all scale-95 active:scale-90 flex items-center justify-center gap-2" href="https://hub.tslabschool.sch.id/spmb/login" target="_blank">
-<span class="material-symbols-outlined">how_to_reg</span>
+<div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "group shadow-lg hover:shadow-xl w-full sm:w-auto")}>
+<span class="material-symbols-outlined mr-2 group-hover:scale-110 transition-transform">how_to_reg</span>
                         Daftar SPMB Online
                     </a>
-<a class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold hover:opacity-90 transition-all scale-95 active:scale-90 flex items-center justify-center gap-2" href="#">
-<span class="material-symbols-outlined">chat</span>
+<a href="#" class={cn(buttonVariants({ variant: "outline", size: "lg" }), "group shadow-md hover:shadow-lg border-2 border-on-secondary text-on-secondary hover:bg-on-secondary hover:text-secondary w-full sm:w-auto")}>
+<span class="material-symbols-outlined mr-2 group-hover:translate-x-1 transition-transform">chat</span>
                         Konsultasi via WhatsApp
                     </a>
 </div>
@@ -270,38 +271,45 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </section>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
+  import { animate, inView, stagger } from "motion";
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    if (entry.target.id === 'timeline-container') {
-                        document.getElementById('timeline-progress').classList.add('active');
-                        const dots = entry.target.querySelectorAll('.timeline-dot');
-                        dots.forEach((dot, index) => {
-                            setTimeout(() => {
-                                dot.classList.add('active');
-                            }, (index + 1) * 300);
-                        });
-                    }
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+  // Hero Animations
+  const heroElements = document.querySelectorAll('.hero-anim');
+  if (heroElements.length > 0) {
+    animate(heroElements, 
+      { opacity: [0, 1], y: [30, 0] }, 
+      { delay: stagger(0.15), duration: 0.8, easing: "ease-out" }
+    );
+  }
 
-        document.querySelectorAll('.reveal').forEach((element) => {
-            observer.observe(element);
-        });
-        
-        const timelineContainer = document.getElementById('timeline-container');
-        if(timelineContainer) observer.observe(timelineContainer);
-    });
+  // Scroll Fade Up
+  const fadeUpElements = document.querySelectorAll('.reveal');
+  fadeUpElements.forEach((el) => {
+    // Initial hidden state
+    el.classList.add('opacity-0', 'translate-y-8');
+    
+    inView(el, () => {
+      animate(el, { opacity: 1, y: 0 }, { duration: 0.8, easing: [0.17, 0.55, 0.55, 1] });
+    }, { margin: "-50px" });
+  });
+
+  // Timeline Animation
+  const timelineContainer = document.getElementById('timeline-container');
+  if (timelineContainer) {
+    const line = document.getElementById('timeline-progress');
+    const dots = document.querySelectorAll('.timeline-dot');
+    
+    // Initial hidden state
+    if (line) line.style.height = "0%";
+    dots.forEach(dot => { dot.style.opacity = "0"; dot.style.transform = "scale(0)"; });
+
+    inView(timelineContainer, () => {
+      if (line) animate(line, { height: ["0%", "100%"] }, { duration: 1.5, easing: "ease-out" });
+      if (dots.length > 0) {
+          animate(dots, { scale: [0, 1], opacity: [0, 1] }, { delay: stagger(0.4), duration: 0.6 });
+      }
+    }, { margin: "-100px" });
+  }
 </script>
 
 
