@@ -3,12 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import AdventureMap from '../components/AdventureMap.astro';
 import { buttonVariants } from '../components/ui/button';
 import { cn } from '../lib/utils';
-import { getCollection } from 'astro:content';
-
-const allArticles = await getCollection('artikel');
-// Sort newest first
-allArticles.sort((a, b) => new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime());
-const latestArticles = allArticles.slice(0, 3);
 ---
 <Layout>
 
@@ -24,7 +18,7 @@ const latestArticles = allArticles.slice(0, 3);
 <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "shadow-lg hover:shadow-xl group")}>
 Daftar SPMB <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
 </a>
-<a href="http://wa.me/6285173396002" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "shadow-md hover:shadow-lg group")}>
+<a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "shadow-md hover:shadow-lg group")}>
 Konsultasi School Center <span class="material-symbols-outlined ml-2 group-hover:scale-110 transition-transform" data-icon="support_agent">support_agent</span>
 </a>
 </div>
@@ -203,34 +197,6 @@ Detail Program Elementary <span class="material-symbols-outlined ml-2 group-hove
 </div>
 </div>
 </section>
-<!-- Latest Articles (Blog) -->
-<section class="py-section-padding-desktop bg-background">
-<div class="container mx-auto px-gutter">
-<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-<div>
-<h2 class="font-headline-md text-headline-md text-primary mb-4">Artikel Terbaru</h2>
-<p class="text-on-surface-variant">Inspirasi parenting dan info terkini kegiatan sekolah kami.</p>
-</div>
-<a href="/artikel" class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform">
-                    Lihat Semua Artikel <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-{latestArticles.map((article) => (
-<article class="group cursor-pointer">
-<a href={`/artikel/${article.id}`} class="block">
-<div class="rounded-lg overflow-hidden h-64 mb-6">
-<img alt={article.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={article.data.thumbnail || "https://lh3.googleusercontent.com/aida-public/AB6AXuDzxq8iZYpT6lIbujf9YN3YmLUr8BIz_PwmAE7rEYfkDRjQoeZa4VBluTB_iSmewY_duLBp8WqSfuJWHMkIOE1F7XmtXEe__jCl9Wgc1rYBKQ602FadIdmtE2LQrmh_7NWURoA4obH3w87D04LTdVlaenA57VD-jI8QjzCbfqvSp-CZ8gNwUa4qBDl9IfH88DWBnqGhCi0WxNVjw-vcakJgAAAjXN4qwrqNdwKBkp7XoyWm1AFhkYiHv4mWcohKsOOfY7wQqi9riPs"}>
-</div>
-<span class="text-secondary font-label-caps text-label-caps font-bold">{article.data.category || 'UMUM'}</span>
-<h3 class="font-bold text-xl mt-2 mb-4 group-hover:text-primary transition-colors">{article.data.title}</h3>
-<p class="text-on-surface-variant line-clamp-2">{article.data.date}</p>
-</a>
-</article>
-))}
-</div>
-</div>
-</section>
 <!-- Final CTA Section -->
 <section class="py-section-padding-desktop bg-surface-container-high relative">
 <div class="container mx-auto px-gutter text-center relative z-10">
@@ -241,7 +207,7 @@ Detail Program Elementary <span class="material-symbols-outlined ml-2 group-hove
 <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto shadow-lg hover:shadow-xl group")}>
     Daftar SPMB Online <span class="material-symbols-outlined ml-2 group-hover:scale-110 transition-transform" data-icon="app_registration">app_registration</span>
 </a>
-<a href="http://wa.me/6285173396002" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "w-full sm:w-auto shadow-md hover:shadow-lg group")}>
+<a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "w-full sm:w-auto shadow-md hover:shadow-lg group")}>
     Tanya School Center <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" data-icon="forum">forum</span>
 </a>
 <a href="#" class={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full sm:w-auto border-2 group")}>

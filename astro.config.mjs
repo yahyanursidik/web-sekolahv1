@@ -6,15 +6,19 @@ import tailwindcss from '@tailwindcss/vite';
 import netlify from '@astrojs/netlify';
 
 import react from '@astrojs/react';
-import markdoc from '@astrojs/markdoc';
-import keystatic from '@keystatic/astro';
+
+const isLocalDev = process.env.ASTRO_LOCAL === '1';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [react(), markdoc(), keystatic()],
-  output: 'server',
-  adapter: netlify()
+  integrations: [react()],
+  ...(isLocalDev
+    ? {}
+    : {
+        output: 'server',
+        adapter: netlify()
+      })
 });

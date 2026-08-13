@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-semibold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-extrabold ring-offset-background transition-[transform,color,background-color,border-color,opacity,box-shadow] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-y-px",
   {
     variants: {
       variant: {
-        default: "bg-primary text-on-primary hover:opacity-90",
+        default: "bg-primary text-on-primary shadow-sm hover:-translate-y-0.5 hover:shadow-md",
         destructive:
           "bg-error text-on-error hover:opacity-90",
         outline:
-          "border border-outline bg-transparent hover:bg-surface-variant hover:text-on-surface-variant",
+          "border border-outline-variant bg-transparent text-primary hover:bg-surface-container hover:border-primary",
         secondary:
-          "bg-secondary text-on-secondary hover:opacity-90",
-        ghost: "hover:bg-surface-variant hover:text-on-surface-variant",
+          "bg-secondary text-on-secondary hover:-translate-y-0.5 hover:shadow-md",
+        ghost: "text-primary hover:bg-surface-container",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {

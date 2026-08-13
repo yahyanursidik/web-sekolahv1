@@ -3,94 +3,96 @@ import { buttonVariants } from '../components/ui/button';
 import { cn } from '../lib/utils';
 
 const currentPath = Astro.url.pathname;
+const isCurrent = (path: string) => path === '/' ? currentPath === '/' : currentPath.startsWith(path);
+const programActive = ['/program', '/preschool', '/elementary', '/fasilitas'].some(isCurrent);
+const primaryLinks = [
+  { href: '/', label: 'Beranda' },
+  { href: '/profil', label: 'Profil' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/kontak', label: 'Kontak' },
+];
+const programLinks = [
+  { href: '/program', label: 'Semua Program' },
+  { href: '/preschool', label: 'Preschool' },
+  { href: '/elementary', label: 'Elementary' },
+  { href: '/fasilitas', label: 'Fasilitas' },
+];
 ---
-<header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-2">
-<div id="header-container" class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto w-full transition-all duration-300">
-<a href="/" class="flex items-center">
-  <img src="/images/logo.png" alt="Tarbiyah Sunnah Lab School Logo" class="h-12 md:h-16 w-auto object-contain scale-[1.5] md:scale-[1.7] origin-left">
-</a>
-<nav class="hidden lg:flex items-center space-x-8">
-<a class={cn("font-medium transition-colors duration-200", currentPath === '/' ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/">Beranda</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/profil') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/profil">Profil</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/preschool') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/preschool">Preschool</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/elementary') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/elementary">Elementary</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/fasilitas') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/fasilitas">Fasilitas</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/artikel') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/artikel">Artikel</a>
-<a class={cn("font-medium transition-colors duration-200", currentPath.startsWith('/kontak') ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant hover:text-primary pb-1")} href="/kontak">Kontak</a>
-</nav>
-<div class="hidden md:flex items-center space-x-4">
-<a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class={buttonVariants({ variant: "ghost" })}>Portal Orang Tua</a>
-<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={buttonVariants()}>SPMB</a>
-</div>
 
-<!-- Mobile Menu Button -->
-<button id="mobile-menu-btn" class="md:hidden flex items-center p-2 text-primary focus:outline-none">
-  <span class="material-symbols-outlined text-3xl">menu</span>
-</button>
-</div>
+<header id="main-header" class="site-header" data-menu-open="false">
+  <div class="site-header__utility">
+    <span>Sekolah Islam di Bandung</span>
+    <div class="flex items-center gap-5">
+      <a href="tel:+6285173396002">+62 851-7339-6002</a>
+      <a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" rel="noopener noreferrer">Portal Orang Tua</a>
+    </div>
+  </div>
+  <div class="site-header__inner">
+    <a href="/" class="flex items-center shrink-0" aria-label="TS Lab School — Beranda">
+      <img src="/images/logo.png" alt="" class="h-11 lg:h-14 w-auto object-contain" width="184" height="64" />
+    </a>
+    <nav class="site-nav" aria-label="Navigasi utama">
+      {primaryLinks.slice(0, 2).map((link) => <a class="site-nav__link" href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
+      <details data-active={programActive ? 'true' : 'false'}>
+        <summary>Program <span class="material-symbols-outlined text-base" aria-hidden="true">expand_more</span></summary>
+        <div class="site-nav__dropdown">
+          {programLinks.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
+        </div>
+      </details>
+      {primaryLinks.slice(2).map((link) => <a class="site-nav__link" href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
+    </nav>
+    <div class="site-header__actions flex items-center gap-2">
+      <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" rel="noopener noreferrer" class={buttonVariants({ size: 'sm' })}>Daftar SPMB</a>
+    </div>
+    <button id="mobile-menu-btn" class="site-header__menu-button inline-flex size-11 items-center justify-center rounded-full border border-outline-variant bg-background text-primary" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+      <span class="material-symbols-outlined text-2xl" aria-hidden="true">menu</span>
+    </button>
+  </div>
 </header>
 
-<!-- Mobile Navigation Menu -->
-<div id="mobile-menu" class="fixed inset-0 z-40 bg-background/98 backdrop-blur-md hidden flex-col pt-24 px-gutter pb-8 overflow-y-auto" style="opacity: 0;">
-  <nav class="flex flex-col gap-6 text-center text-lg">
-    <a href="/" class={cn("mobile-link font-medium", currentPath === '/' ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Beranda</a>
-    <a href="/profil" class={cn("mobile-link font-medium", currentPath.startsWith('/profil') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Profil</a>
-    <a href="/preschool" class={cn("mobile-link font-medium", currentPath.startsWith('/preschool') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Preschool</a>
-    <a href="/elementary" class={cn("mobile-link font-medium", currentPath.startsWith('/elementary') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Elementary</a>
-    <a href="/fasilitas" class={cn("mobile-link font-medium", currentPath.startsWith('/fasilitas') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Fasilitas</a>
-    <a href="/artikel" class={cn("mobile-link font-medium", currentPath.startsWith('/artikel') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Artikel</a>
-    <a href="/kontak" class={cn("mobile-link font-medium", currentPath.startsWith('/kontak') ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary")}>Kontak</a>
-    <hr class="border-outline-variant/30 my-2">
-    <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" class={buttonVariants()}>Daftar SPMB</a>
-    <a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" class={buttonVariants({ variant: "outline" })}>Portal Orang Tua</a>
+<div id="mobile-menu" class="mobile-nav" data-open="false" aria-hidden="true">
+  <nav class="mobile-nav__group" aria-label="Navigasi seluler">
+    <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Beranda <span aria-hidden="true">→</span></a>
+    <a href="/profil" aria-current={isCurrent('/profil') ? 'page' : undefined}>Profil <span aria-hidden="true">→</span></a>
+    <a href="/program" aria-current={isCurrent('/program') ? 'page' : undefined}>Semua Program <span aria-hidden="true">→</span></a>
+    <a href="/preschool" aria-current={isCurrent('/preschool') ? 'page' : undefined}>Preschool <span aria-hidden="true">→</span></a>
+    <a href="/elementary" aria-current={isCurrent('/elementary') ? 'page' : undefined}>Elementary <span aria-hidden="true">→</span></a>
+    <a href="/fasilitas" aria-current={isCurrent('/fasilitas') ? 'page' : undefined}>Fasilitas <span aria-hidden="true">→</span></a>
+    <a href="/faq" aria-current={isCurrent('/faq') ? 'page' : undefined}>FAQ <span aria-hidden="true">→</span></a>
+    <a href="/kontak" aria-current={isCurrent('/kontak') ? 'page' : undefined}>Kontak <span aria-hidden="true">→</span></a>
+    <div class="grid gap-3 pt-5">
+      <a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'justify-center border-0 text-base')}>Daftar SPMB</a>
+      <a href="https://hub.tslabschool.sch.id/portal/login" target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'justify-center text-base')}>Portal Orang Tua</a>
+    </div>
   </nav>
 </div>
 
 <script>
-  import { animate, stagger } from "motion";
-
   const header = document.getElementById('main-header');
-  const container = document.getElementById('header-container');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header?.classList.remove('bg-transparent', 'py-2');
-      header?.classList.add('bg-background/90', 'backdrop-blur-md', 'shadow-sm', 'py-0');
-      container?.classList.remove('py-4');
-      container?.classList.add('py-2');
-    } else {
-      header?.classList.add('bg-transparent', 'py-2');
-      header?.classList.remove('bg-background/90', 'backdrop-blur-md', 'shadow-sm', 'py-0');
-      container?.classList.add('py-4');
-      container?.classList.remove('py-2');
+  const button = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const icon = button?.querySelector('.material-symbols-outlined');
+  const setMenu = (open: boolean) => {
+    header?.setAttribute('data-menu-open', String(open));
+    menu?.setAttribute('data-open', String(open));
+    menu?.setAttribute('aria-hidden', String(!open));
+    button?.setAttribute('aria-expanded', String(open));
+    button?.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+    if (icon) icon.textContent = open ? 'close' : 'menu';
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+  button?.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setMenu(false);
+      button?.focus();
     }
   });
-
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const icon = btn?.querySelector('span');
-  const menuLinks = document.querySelectorAll('.mobile-link');
-
-  let isOpen = false;
-
-  btn?.addEventListener('click', () => {
-    isOpen = !isOpen;
-    if (isOpen) {
-      menu?.classList.remove('hidden');
-      menu?.classList.add('flex');
-      
-      animate(menu!, { opacity: [0, 1] }, { duration: 0.3 });
-      animate(menuLinks, { opacity: [0, 1], y: [20, 0] }, { delay: stagger(0.05), duration: 0.4 });
-      
-      if(icon) icon.textContent = 'close';
-      document.body.style.overflow = 'hidden'; // prevent scroll
-    } else {
-      animate(menu!, { opacity: 0 }, { duration: 0.3 }).finished.then(() => {
-        menu?.classList.add('hidden');
-        menu?.classList.remove('flex');
-      });
-      if(icon) icon.textContent = 'menu';
-      document.body.style.overflow = '';
-    }
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) setMenu(false);
   });
 </script>

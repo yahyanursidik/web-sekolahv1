@@ -99,13 +99,13 @@ const formatAnswer = (text) => {
         <div class="space-y-4 stagger-reveal">
           {section.faqs.map((faq, index) => (
             <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300 shadow-sm faq-item">
-              <button class="w-full text-left px-6 py-5 flex justify-between items-center gap-6 faq-question bg-transparent border-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-colors">
+              <button id={`faq-question-${sectionIndex}-${index}`} type="button" aria-expanded="false" aria-controls={`faq-answer-${sectionIndex}-${index}`} class="w-full text-left px-6 py-5 flex justify-between items-center gap-6 faq-question bg-transparent border-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-colors">
                 <h3 class="font-headline-sm text-primary group-hover:text-secondary transition-colors font-bold text-lg leading-snug">{faq.question}</h3>
                 <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
                   <span class="material-symbols-outlined text-secondary transform transition-transform duration-300 faq-icon">expand_more</span>
                 </div>
               </button>
-              <div class="faq-answer grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
+              <div id={`faq-answer-${sectionIndex}-${index}`} role="region" aria-labelledby={`faq-question-${sectionIndex}-${index}`} class="faq-answer grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
                 <div class="overflow-hidden px-6">
                   <div class="pb-6 border-t border-outline-variant pt-4 mt-2 format-answer-content" set:html={formatAnswer(faq.answer)} />
                 </div>
@@ -132,7 +132,7 @@ const formatAnswer = (text) => {
 Tim kami selalu siap sedia untuk membantu Anda mendapatkan informasi lebih lanjut seputar program, biaya, dan fasilitas di TS Lab School.
 </p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="http://wa.me/6285173396002" class="px-10 py-4 rounded-full bg-secondary text-on-secondary font-bold text-lg hover:scale-105 hover:shadow-xl transition-all inline-flex items-center justify-center gap-2">
+<a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class="px-10 py-4 rounded-full bg-secondary text-on-secondary font-bold text-lg hover:shadow-xl transition-all inline-flex items-center justify-center gap-2 whitespace-nowrap">
   <span class="material-symbols-outlined">forum</span> Hubungi School Center
 </a>
 </div>
@@ -162,8 +162,10 @@ Tim kami selalu siap sedia untuk membantu Anda mendapatkan informasi lebih lanju
                         const otherAnswer = otherItem.querySelector('.faq-answer');
                         const otherIcon = otherItem.querySelector('.faq-icon');
                         const otherIconWrapper = otherItem.querySelector('.faq-question > div');
+                        const otherQuestion = otherItem.querySelector('.faq-question');
                         
                         otherAnswer.style.gridTemplateRows = '0fr';
+                        otherQuestion.setAttribute('aria-expanded', 'false');
                         otherIcon.style.transform = 'rotate(0deg)';
                         otherIconWrapper.classList.remove('bg-secondary', 'text-on-secondary');
                         otherIconWrapper.classList.add('bg-secondary/10');
@@ -174,12 +176,14 @@ Tim kami selalu siap sedia untuk membantu Anda mendapatkan informasi lebih lanju
                 // Toggle current
                 if (isOpen) {
                     answer.style.gridTemplateRows = '0fr';
+                    question.setAttribute('aria-expanded', 'false');
                     icon.style.transform = 'rotate(0deg)';
                     iconWrapper.classList.remove('bg-secondary', 'text-on-secondary');
                     iconWrapper.classList.add('bg-secondary/10');
                     item.classList.remove('bg-primary/5', 'border-primary/30', 'shadow-md');
                 } else {
                     answer.style.gridTemplateRows = '1fr';
+                    question.setAttribute('aria-expanded', 'true');
                     icon.style.transform = 'rotate(180deg)';
                     iconWrapper.classList.remove('bg-secondary/10');
                     iconWrapper.classList.add('bg-secondary', 'text-on-secondary');

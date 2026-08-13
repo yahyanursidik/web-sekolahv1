@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout>
+<Layout title="Penerimaan Murid Baru | TS Lab School" description="Informasi alur penerimaan murid baru dan akses portal pendaftaran TS Lab School.">
 
 <div class="relative flex min-h-screen w-full flex-col bg-background">
 <main class="flex-1">
@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
 <section class="max-w-container-max mx-auto px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row gap-12 items-center">
 <div class="flex-1 space-y-8 animate-fade-in-up">
 <div class="space-y-4">
-<span class="text-secondary font-label-caps uppercase tracking-widest bg-secondary-fixed px-3 py-1 rounded-full inline-block">Penerimaan Santri Baru 2024/2025</span>
+<span class="text-secondary font-label-caps uppercase tracking-widest bg-secondary-fixed px-3 py-1 rounded-full inline-block">Penerimaan Murid Baru</span>
 <h1 class="font-display-lg text-primary text-5xl lg:text-6xl leading-[1.1]">
                             Membangun Generasi <br> Beradab &amp; Berilmu
                         </h1>
@@ -18,20 +18,20 @@ import Layout from '../layouts/Layout.astro';
                         </p>
 </div>
 <div class="flex flex-wrap gap-4">
-<button class="bg-primary-container text-on-primary text-lg font-bold px-10 h-14 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-2 hover:-translate-y-1">
+<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" rel="noopener noreferrer" class="bg-primary-container text-on-primary text-lg font-bold px-10 h-14 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-2 hover:-translate-y-1 whitespace-nowrap">
                             Mulai Pendaftaran <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
-</button>
-<button class="bg-surface-container-high text-on-surface text-lg font-bold px-10 h-14 rounded-full hover:bg-surface-variant transition-all hover:-translate-y-1">
-                            Unduh Panduan PDF
-                        </button>
+</a>
+<a href="/kontak" class="bg-surface-container-high text-on-surface text-lg font-bold px-10 h-14 rounded-full hover:bg-surface-variant transition-all hover:-translate-y-1 inline-flex items-center whitespace-nowrap">
+                            Tanya Tim Sekolah
+                        </a>
 </div>
 </div>
 <div class="flex-1 relative animate-fade-in-up" style="animation-delay: 200ms;">
 <div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl bg-surface-variant" data-alt="A serene and modern university campus courtyard featuring lush greenery, clean stone architecture, and warm sunlight filtering through the trees. The aesthetic is academic and peaceful, utilizing a palette of deep greens and sandy beiges to reflect a traditional yet updated learning environment. The image is captured with professional architectural photography focus, emphasizing symmetry and calm." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCbC2Mo6vScaCFzUawF-HLD62SSdpbedrna6ftpZ7PFho7oqQcS9_Cz3HcA22GO9BvyMnxDXMSqd6ZeI_PVzNd-hlrr550CrgVUcNkG_kXs0mFbHkoVlNDGqAbLFodB5HaRaqS8_OpufuOcoy5LpHBPK6SuT9570C2UXxNXHR3Sgq85kPhhk4_C4s_4KLQhJGnpYGnD4gxaEkoyd8hxlTTNw59TwPPDyNwTe7Sw3oIeoq3Og2yBxoLsMh2-u07YM_iXgqgVvlogiSk&quot;); background-size: cover; background-position: center;">
 </div>
 <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl border border-outline-variant max-w-[240px] animate-fade-in-up" style="animation-delay: 400ms;">
-<p class="text-primary font-bold text-2xl">98%</p>
-<p class="text-sm text-on-surface-variant">Lulusan melanjutkan ke jenjang pendidikan tinggi Islam ternama.</p>
+<p class="text-primary font-bold text-lg">Informasi resmi</p>
+<p class="text-sm text-on-surface-variant">Jadwal, biaya, dan hasil seleksi tersedia melalui portal pendaftaran.</p>
 </div>
 </div>
 </section>
