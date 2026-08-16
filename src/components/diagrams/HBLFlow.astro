@@ -1,0 +1,133 @@
+---
+// Diagram 6 — HBL Partnership Flow (Sinergi TSLS, Guru, Orang Tua, dan Anak)
+interface HBLStep {
+  num: string;
+  role: string;
+  arabic: string;
+  action: string;
+  desc: string;
+  isPeak?: boolean;
+}
+
+const flowSteps: HBLStep[] = [
+  {
+    num: "01",
+    role: "TSLS",
+    arabic: "تَصْمِيمُ المَنْهَج",
+    action: "Merancang Kurikulum & Peta Aktivitas",
+    desc: "Menyusun kerangka pembelajaran berbasis fitrah, modul mingguan, dan panduan observasi tumbuh kembang."
+  },
+  {
+    num: "02",
+    role: "GURU TSLS",
+    arabic: "تَوْجِيهُ المُعَلِّم",
+    action: "Memberi Pijakan & Arahan pada Orang Tua",
+    desc: "Menyediakan video penjelasan konsep, tujuan aktivitas, serta panduan praktis untuk mendampingi di rumah."
+  },
+  {
+    num: "03",
+    role: "ORANG TUA",
+    arabic: "رِعَايَةُ الوَالِدَيْن",
+    action: "Mendampingi Anak dalam Keseharian",
+    desc: "Menghadirkan suasana rumah yang hangat, mengalirkan aktivitas ke dalam rutinitas nyata penuh kasih sayang."
+  },
+  {
+    num: "04",
+    role: "ANAK",
+    arabic: "تَجْرِبَةُ الطِّفْل",
+    action: "Bermain, Mencoba & Mengalami Nyata",
+    desc: "Mengeksplorasi bahan konkret, melatih adab, mengasah motorik, dan belajar dengan gembira tanpa tekanan layar.",
+    isPeak: true
+  },
+  {
+    num: "05",
+    role: "GURU + ORANG TUA",
+    arabic: "المُتَابَعَة وَالتَّقْيِيم",
+    action: "Konsultasi, Evaluasi & Pemantauan Bersama",
+    desc: "Melakukan refleksi berkala, mendiskusikan capaian fitrah anak, dan menyelaraskan langkah pembelajaran berikutnya."
+  }
+];
+---
+
+<div class="hbl-partnership-flow py-8 max-w-2xl mx-auto" data-reveal>
+  <div class="relative">
+    {/* Central Connecting Line */}
+    <div class="absolute left-6 md:left-8 top-6 bottom-6 w-[2px] bg-tsls-sand-400/40 origin-top hbl-line"></div>
+
+    <div class="space-y-6 relative z-10">
+      {flowSteps.map((step, idx) => (
+        <div class="hbl-node relative flex items-start gap-4 md:gap-6 pl-14 md:pl-20" style={`--hbl-idx: ${idx}`}>
+          
+          {/* Timeline Node Icon/Number */}
+          <div class="absolute left-6 md:left-8 -translate-x-1/2 top-2 z-20">
+            <div class={`w-7 h-7 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center font-mono text-xs font-bold transition-transform duration-300 hover:scale-125 ${
+              step.isPeak 
+                ? 'bg-tsls-wood-600 border-tsls-sand-400 text-tsls-cream-50 shadow-md' 
+                : idx === 4
+                  ? 'bg-tsls-olive-950 border-tsls-sand-400 text-tsls-sand-400'
+                  : 'bg-tsls-cream-50 border-tsls-olive-950/40 text-tsls-olive-950'
+            }`}>
+              {step.num}
+            </div>
+          </div>
+
+          {/* Step Content Card */}
+          <div class={`w-full p-5 border transition-all duration-300 ${
+            step.isPeak
+              ? 'bg-tsls-cream-100 border-tsls-wood-600 shadow-sm'
+              : idx === 4
+                ? 'bg-tsls-olive-950 text-tsls-cream-50 border-tsls-olive-950'
+                : 'bg-tsls-cream-50 border-tsls-olive-950/15 hover:border-tsls-wood-600'
+          }`}>
+            <div class="flex items-center justify-between mb-1">
+              <span class={`text-[10px] font-mono font-bold tracking-widest uppercase ${
+                idx === 4 ? 'text-tsls-sand-400' : 'text-tsls-wood-600'
+              }`}>
+                {step.role}
+              </span>
+              <span class={`arabic-watermark text-xs ${
+                idx === 4 ? 'text-tsls-sand-400/70' : 'text-tsls-olive-900/40'
+              }`}>
+                {step.arabic}
+              </span>
+            </div>
+
+            <h4 class={`font-display font-bold text-base md:text-lg mb-1 ${
+              idx === 4 ? 'text-tsls-cream-50' : 'text-tsls-olive-950'
+            }`}>
+              {step.action}
+            </h4>
+
+            <p class={`text-xs md:text-sm leading-relaxed ${
+              idx === 4 ? 'text-tsls-cream-100/80' : 'text-tsls-olive-950/75'
+            }`}>
+              {step.desc}
+            </p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .hbl-partnership-flow .hbl-line {
+    transform: scaleY(0);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  :global(.hbl-partnership-flow.is-visible) .hbl-line {
+    transform: scaleY(1);
+  }
+
+  .hbl-partnership-flow .hbl-node {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: calc(var(--hbl-idx) * 150ms + 200ms);
+  }
+  :global(.hbl-partnership-flow.is-visible) .hbl-node {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

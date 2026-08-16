@@ -7,7 +7,7 @@ import netlify from '@astrojs/netlify';
 
 import react from '@astrojs/react';
 
-const isLocalDev = process.env.ASTRO_LOCAL === '1';
+const isNetlifyBuild = process.env.NETLIFY === 'true' || process.env.NETLIFY === '1' || process.env.ASTRO_NETLIFY === '1';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +15,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [react()],
-  ...(isLocalDev
-    ? {}
-    : {
+  ...(isNetlifyBuild
+    ? {
         output: 'server',
         adapter: netlify()
-      })
+      }
+    : {})
 });

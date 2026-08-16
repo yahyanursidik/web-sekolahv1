@@ -1,24 +1,39 @@
-/* Hallmark · genre: modern-editorial · macrostructure: multi-page system · design-system: design.md · designed-as-app
- * Pre-emit critique: P5 H4 E4 S5 R4 V4 · contrast: pass (40–41) · nav: N2 · footer: Ft4
- * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · mobile: pass (34, 49, 50–57)
- */
 :root {
-  --color-paper: oklch(97% 0.018 91);
-  --color-paper-2: oklch(94% 0.024 91);
-  --color-paper-3: oklch(90% 0.030 91);
-  --color-ink: oklch(22% 0.035 119);
-  --color-ink-2: oklch(36% 0.035 112);
-  --color-rule: oklch(84% 0.030 96);
-  --color-rule-2: oklch(72% 0.040 98);
-  --color-muted: oklch(48% 0.025 108);
-  --color-neutral: oklch(40% 0.032 110);
-  --color-accent: oklch(48% 0.090 118);
-  --color-accent-strong: oklch(35% 0.075 118);
-  --color-accent-ink: oklch(98% 0.010 91);
-  --color-warm: oklch(66% 0.135 58);
-  --color-warm-soft: oklch(88% 0.075 64);
-  --color-focus: oklch(60% 0.140 62);
-  --color-danger: oklch(52% 0.190 28);
+  /* TSLS Brand Colors - Natural Islamic Academic */
+  --tsls-olive-950: #25351F;
+  --tsls-olive-800: #3F4E2F;
+  --tsls-olive-600: #7D8A63;
+  --tsls-sage-500: #9AA67B;
+
+  --tsls-cream-50: #FFFDF5;
+  --tsls-cream-100: #F7F3E8;
+  --tsls-cream-200: #EFE5CF;
+
+  --tsls-sand-400: #D8C2A0;
+  --tsls-yellow-300: #F3CF75;
+  --tsls-wood-600: #8A5A32;
+
+  --text-primary: #25351F;
+  --text-secondary: #55604F;
+  --border-soft: rgba(63, 78, 47, 0.16);
+
+  /* Semantic Theme Mappings */
+  --color-paper: var(--tsls-cream-50);
+  --color-paper-2: var(--tsls-cream-100);
+  --color-paper-3: var(--tsls-cream-200);
+  --color-ink: var(--tsls-olive-950);
+  --color-ink-2: var(--text-secondary);
+  --color-rule: var(--border-soft);
+  --color-rule-2: rgba(63, 78, 47, 0.3);
+  --color-muted: #66735D;
+  --color-neutral: #3F4E2F;
+  --color-accent: var(--tsls-olive-800);
+  --color-accent-strong: var(--tsls-olive-950);
+  --color-accent-ink: var(--tsls-cream-50);
+  --color-warm: var(--tsls-wood-600);
+  --color-warm-soft: var(--tsls-sand-400);
+  --color-focus: var(--tsls-olive-800);
+  --color-danger: #ba1a1a;
 
   --font-display: "Lora", ui-serif, Georgia, serif;
   --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
@@ -42,21 +57,21 @@
   --text-xl: 1.75rem;
   --text-2xl: 2.25rem;
   --text-3xl: 3rem;
-  --text-display-s: clamp(2.5rem, 5vw, 4.5rem);
-  --text-display: clamp(2.75rem, 6vw, 5.75rem);
+  --text-display-s: clamp(2.25rem, 4.5vw, 4rem);
+  --text-display: clamp(2.5rem, 5.5vw, 5rem);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-micro: 120ms;
+  --dur-micro: 140ms;
   --dur-short: 220ms;
-  --dur-long: 420ms;
+  --dur-long: 450ms;
 
   --rule-hair: 1px;
   --rule-fine: 2px;
   --radius-card: 0.875rem;
   --radius-pill: 999px;
   --radius-input: 0.75rem;
-  --shadow-card: 0 18px 48px oklch(22% 0.035 119 / 0.09);
-  --shadow-float: 0 22px 64px oklch(22% 0.035 119 / 0.16);
+  --shadow-card: 0 4px 20px rgba(37, 53, 31, 0.05);
+  --shadow-float: 0 12px 32px rgba(37, 53, 31, 0.12);
 }

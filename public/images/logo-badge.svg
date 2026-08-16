@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 230" fill="none">
+  <!-- Subtle Sticker Outline Shape -->
+  <path d="M 90 28 C 120 18, 220 18, 250 28 C 285 40, 298 75, 276 122 C 265 145, 240 152, 290 152 C 304 152, 314 162, 314 176 C 314 190, 304 200, 290 200 L 50 200 C 36 200, 26 190, 26 176 C 26 162, 36 152, 50 152 C 100 152, 75 145, 64 122 C 42 75, 55 40, 90 28 Z" 
+        fill="#FFFFFF" stroke="rgba(37, 53, 31, 0.12)" stroke-width="2" />
+
+  <!-- Emblem in Center -->
+  <g transform="translate(42, 6) scale(1)">
+    <!-- Golden Orbit Ring -->
+    <path d="M 44 108 C 14 142, 30 184, 128 184 C 206 184, 236 146, 218 84" 
+          stroke="#F3A812" stroke-width="15" stroke-linecap="round" fill="none" />
+    
+    <!-- 8-Pointed Star -->
+    <path d="M 216 44 L 221 56 L 233 53 L 227 63 L 234 72 L 223 73 L 220 85 L 211 77 L 201 84 L 204 73 L 194 68 L 203 61 L 200 49 L 211 55 Z" 
+          fill="#E65100" />
+    
+    <!-- Open Book Left Page -->
+    <path d="M 128 66 L 68 26 L 60 120 C 84 129, 114 136, 128 149 Z" 
+          fill="#FFFFFF" stroke="#254522" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" />
+          
+    <!-- Open Book Right Page -->
+    <path d="M 128 66 L 188 26 L 196 120 C 172 129, 142 136, 128 149 Z" 
+          fill="#FFFFFF" stroke="#254522" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" />
+          
+    <!-- Spine Center Line -->
+    <line x1="128" y1="66" x2="128" y2="147" stroke="#254522" stroke-width="9" stroke-linecap="round" />
+  </g>
+
+  <!-- Badge Text Banner -->
+  <g transform="translate(170, 172)" text-anchor="middle">
+    <text y="0" font-family="'Nunito', system-ui, sans-serif" font-size="16.5" font-weight="900" fill="#254522" letter-spacing="0.04em">TARBIYAH SUNNAH</text>
+    <text y="19" font-family="'Nunito', system-ui, sans-serif" font-size="15" font-weight="900" fill="#254522" letter-spacing="0.14em">LAB SCHOOL</text>
+  </g>
+</svg>

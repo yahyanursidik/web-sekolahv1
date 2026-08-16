@@ -1,0 +1,227 @@
+---
+// Diagram 3 — Whole Child Map (Radial Constellation on Desktop, Branch List on Mobile)
+interface Domain {
+  id: string;
+  number: string;
+  title: string;
+  arabic: string;
+  desc: string;
+  details: string;
+}
+
+const domains: Domain[] = [
+  {
+    id: "iman",
+    number: "01",
+    title: "Iman & Adab",
+    arabic: "الإِيمَان وَالأَدَب",
+    desc: "Fondasi ketauhidan, adab salaf, dan pembiasaan ibadah harian.",
+    details: "Membiasakan doa, dzikir, wudhu, shalat, kecintaan pada As-Sunnah, dan penghormatan kepada orang tua & guru."
+  },
+  {
+    id: "kemandirian",
+    number: "02",
+    title: "Kemandirian",
+    arabic: "الاسْتِقْلَالِيَّة",
+    desc: "Merawat diri, regulasi tugas, inisiatif, dan rasa tanggung jawab.",
+    details: "Keterampilan merapikan barang, menuntaskan amanah mandiri, dan menyelesaikan tantangan personal."
+  },
+  {
+    id: "bahasa",
+    number: "03",
+    title: "Bahasa & Literasi",
+    arabic: "اللُّغَة وَالبَيَان",
+    desc: "Komunikasi jernih, kosakata adab, dan literasi bermakna.",
+    details: "Kemampuan mendengar seksama, membaca dengan pemahaman, serta mengekspresikan gagasan secara santun."
+  },
+  {
+    id: "sosial",
+    number: "04",
+    title: "Sosio-Emosional",
+    arabic: "العَلَاقَات وَالمَشَاعِر",
+    desc: "Regulasi emosi, empati, dan interaksi yang berkeadaban.",
+    details: "Memahami perasaan diri, menghargai teman sebaya, serta menyelesaikan konflik dengan adab musyawarah."
+  },
+  {
+    id: "kognitif",
+    number: "05",
+    title: "Kognitif & Logika",
+    arabic: "المَعْرِفَة وَالإِدْرَاك",
+    desc: "Pemahaman konsep konkret, numerasi kontekstual, dan rasa ingin tahu alamiah.",
+    details: "Menyelidiki fenomena alam ciptaan Allah, pola matematika terapan, dan klasifikasi terstruktur."
+  },
+  {
+    id: "kritis",
+    number: "06",
+    title: "Critical Thinking",
+    arabic: "التَّفْكِيرُ النَّاقِد",
+    desc: "Analisis logis, pemecahan masalah, dan penarikan kesimpulan berdasar ilmu.",
+    details: "Membedakan fakta dan asumsi, mengevaluasi sebab-akibat, serta mengaitkan ilmu dengan kemaslahatan nyata."
+  }
+];
+---
+
+<div class="whole-child-constellation py-6 max-w-5xl mx-auto" data-reveal>
+  
+  {/* Desktop Layout: Radial Constellation Diagram */}
+  <div class="hidden lg:block relative min-h-[560px]">
+    
+    {/* SVG Connector Rays radiating from center (50%, 50%) to 6 nodes */}
+    <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" viewBox="0 0 1000 560" preserveAspectRatio="none">
+      <defs>
+        <radialGradient id="constellation-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8A5A32" stop-opacity="0.15" />
+          <stop offset="100%" stop-color="#25351F" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      
+      {/* Background Orbit Guide Circles */}
+      <circle cx="500" cy="280" r="180" fill="none" stroke="rgba(37, 53, 31, 0.08)" stroke-width="1" stroke-dasharray="6 6" />
+      <circle cx="500" cy="280" r="230" fill="none" stroke="rgba(37, 53, 31, 0.05)" stroke-width="1" />
+      
+      {/* 6 Connector Lines */}
+      {/* Node 1: Top-Left (220, 90) */}
+      <line x1="500" y1="280" x2="260" y2="100" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+      {/* Node 2: Top-Right (780, 90) */}
+      <line x1="500" y1="280" x2="740" y2="100" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+      {/* Node 3: Mid-Left (160, 280) */}
+      <line x1="500" y1="280" x2="220" y2="280" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+      {/* Node 4: Mid-Right (840, 280) */}
+      <line x1="500" y1="280" x2="780" y2="280" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+      {/* Node 5: Bottom-Left (240, 470) */}
+      <line x1="500" y1="280" x2="280" y2="460" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+      {/* Node 6: Bottom-Right (760, 470) */}
+      <line x1="500" y1="280" x2="720" y2="460" stroke="rgba(37, 53, 31, 0.25)" stroke-width="1.5" stroke-dasharray="4 4" class="constellation-ray" />
+    </svg>
+
+    {/* Central Core: ANAK */}
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center">
+      <div class="w-32 h-32 rounded-full bg-tsls-olive-950 text-tsls-cream-50 border-4 border-tsls-cream-50 shadow-2xl flex flex-col items-center justify-center p-3 transition-transform duration-500 hover:scale-105">
+        <span class="text-[10px] uppercase font-mono tracking-widest text-tsls-sand-400">Pusat Asuhan</span>
+        <span class="font-display font-bold text-xl text-tsls-cream-50">ANAK</span>
+        <span class="arabic-watermark text-xs text-tsls-sand-400/80 mt-0.5">طِفْل</span>
+      </div>
+    </div>
+
+    {/* Orbiting Domain Cards (Absolute Coordinates) */}
+    {/* 01: Top Left */}
+    <div class="domain-card absolute left-2 top-4 w-[280px] text-right z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-end gap-2 mb-1">
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[0].arabic}</span>
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">01</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[0].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[0].desc}</p>
+      </div>
+    </div>
+
+    {/* 02: Top Right */}
+    <div class="domain-card absolute right-2 top-4 w-[280px] text-left z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-start gap-2 mb-1">
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">02</span>
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[1].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[1].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[1].desc}</p>
+      </div>
+    </div>
+
+    {/* 03: Mid Left */}
+    <div class="domain-card absolute left-0 top-1/2 -translate-y-1/2 w-[270px] text-right z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-end gap-2 mb-1">
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[2].arabic}</span>
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">03</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[2].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[2].desc}</p>
+      </div>
+    </div>
+
+    {/* 04: Mid Right */}
+    <div class="domain-card absolute right-0 top-1/2 -translate-y-1/2 w-[270px] text-left z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-start gap-2 mb-1">
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">04</span>
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[3].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[3].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[3].desc}</p>
+      </div>
+    </div>
+
+    {/* 05: Bottom Left */}
+    <div class="domain-card absolute left-4 bottom-2 w-[280px] text-right z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-end gap-2 mb-1">
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[4].arabic}</span>
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">05</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[4].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[4].desc}</p>
+      </div>
+    </div>
+
+    {/* 06: Bottom Right */}
+    <div class="domain-card absolute right-4 bottom-2 w-[280px] text-left z-10">
+      <div class="p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 hover:border-tsls-wood-600 transition-colors shadow-sm">
+        <div class="flex items-center justify-start gap-2 mb-1">
+          <span class="text-xs font-mono font-bold text-tsls-wood-600">06</span>
+          <span class="arabic-watermark text-sm text-tsls-olive-800/60">{domains[5].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-base text-tsls-olive-950">{domains[5].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{domains[5].desc}</p>
+      </div>
+    </div>
+
+  </div>
+
+  {/* Mobile Layout: Connected Vertical Branching Tree */}
+  <div class="lg:hidden space-y-4 max-w-lg mx-auto">
+    <div class="p-4 bg-tsls-olive-950 text-tsls-cream-50 text-center border-l-4 border-tsls-sand-400">
+      <span class="text-[10px] font-mono tracking-widest text-tsls-sand-400 uppercase block">Titik Temu Perkembangan</span>
+      <h3 class="font-display font-bold text-lg">ANAK SEBAGAI KESATUAN FITRAH</h3>
+    </div>
+
+    <div class="relative pl-6 border-l-2 border-tsls-olive-950/20 space-y-4 ml-2">
+      {domains.map((item, idx) => (
+        <div class="relative p-4 bg-tsls-cream-50 border border-tsls-olive-950/15">
+          {/* Branch node dot */}
+          <div class="absolute -left-[31px] top-5 w-3 h-3 rounded-full bg-tsls-olive-950 border-2 border-tsls-cream-50"></div>
+          
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-mono font-bold text-tsls-wood-600">{item.number}</span>
+            <span class="arabic-watermark text-xs text-tsls-olive-800/60">{item.arabic}</span>
+          </div>
+          
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">{item.title}</h4>
+          <p class="text-xs text-tsls-olive-950/80 mt-1 leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .whole-child-constellation .constellation-ray {
+    stroke-dashoffset: 400;
+    stroke-dasharray: 400;
+    transition: stroke-dashoffset 1.4s ease-out 0.3s;
+  }
+  :global(.whole-child-constellation.is-visible) .constellation-ray {
+    stroke-dashoffset: 0;
+  }
+
+  .whole-child-constellation .domain-card {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  :global(.whole-child-constellation.is-visible) .domain-card {
+    opacity: 1;
+    transform: scale(1);
+  }
+</style>

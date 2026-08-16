@@ -1,0 +1,93 @@
+---
+// Diagram 2 — Foundation Layers (Architectural Stratum with Ascending Reveal)
+interface Layer {
+  level: string;
+  arabic: string;
+  title: string;
+  desc: string;
+  isBedrock?: boolean;
+}
+
+const layers: Layer[] = [
+  {
+    level: "LAPISAN 05 · MAHKOTA ILMU",
+    arabic: "العُلُوم وَالمَعَارِف",
+    title: "Akademik · Bahasa · Sains · Critical Thinking · Life Skills",
+    desc: "Pengetahuan terapan, kemampuan literasi multibahasa, penyelidikan ilmiah, dan daya nalar kritis."
+  },
+  {
+    level: "LAPISAN 04 · KEMAMPUAN DIRI",
+    arabic: "بِنَاءُ الشَّخْصِيَّة",
+    title: "Kemandirian · Sosio-Emosional · Kebiasaan Belajar",
+    desc: "Regulasi diri yang matang, ketangguhan mental, adab berteman, dan kecintaan pada proses belajar."
+  },
+  {
+    level: "LAPISAN 03 · KELUHURAN AKHLAK",
+    arabic: "الأَدَبُ وَالأَخْلَاق",
+    title: "Adab & Akhlak Salafus Shalih",
+    desc: "Adab penuntut ilmu, penghormatan kepada orang tua & guru, kejujuran, dan kelembutan tutur kata."
+  },
+  {
+    level: "LAPISAN 02 · SUMBER PETUNJUK",
+    arabic: "الكِتَابُ وَالسُّنَّة",
+    title: "Al-Qur'an & As-Sunnah 'ala Fahmi Salaf",
+    desc: "Pedoman mutlak yang menyinari cara pandang, metode pendidikan, dan tujuan akhir hidup manusia."
+  },
+  {
+    level: "FONDASI UTAMA · BEDROCK",
+    arabic: "التَّوْحِيد وَالفِطْرَة",
+    title: "Tauhidullah & Fitrah Keimanan",
+    desc: "Mengenal Allah sebagai satu-satunya Rabb, sesembahan yang haq, dan poros dari seluruh aktivitas belajar.",
+    isBedrock: true
+  }
+];
+---
+
+<div class="foundation-stratum py-8 max-w-3xl mx-auto" data-reveal>
+  <div class="space-y-3">
+    {layers.map((layer, idx) => {
+      // Invert delay so bedrock (bottom) appears first
+      const revealDelay = (layers.length - 1 - idx) * 160 + 200;
+      return (
+        <div 
+          class={`stratum-layer p-4 sm:p-5 border transition-all duration-300 ${
+            layer.isBedrock 
+              ? 'bg-tsls-olive-950 text-tsls-cream-50 border-tsls-olive-950 shadow-xl' 
+              : 'bg-tsls-cream-50/95 border-tsls-olive-950/15 hover:border-tsls-wood-600 hover:bg-tsls-cream-100'
+          }`}
+          style={`--layer-delay: ${revealDelay}ms`}
+        >
+          <div class="flex items-center justify-between gap-4 mb-1">
+            <span class={`text-[10px] font-mono font-bold tracking-widest uppercase ${layer.isBedrock ? 'text-tsls-sand-400' : 'text-tsls-wood-600'}`}>
+              {layer.level}
+            </span>
+            <span class={`arabic-watermark text-sm sm:text-base ${layer.isBedrock ? 'text-tsls-sand-400/60' : 'text-tsls-olive-800/40'}`}>
+              {layer.arabic}
+            </span>
+          </div>
+
+          <h4 class={`font-display font-bold text-base sm:text-lg mb-1 ${layer.isBedrock ? 'text-tsls-cream-50' : 'text-tsls-olive-950'}`}>
+            {layer.title}
+          </h4>
+
+          <p class={`text-xs sm:text-sm leading-relaxed ${layer.isBedrock ? 'text-tsls-cream-100/80' : 'text-tsls-olive-950/75'}`}>
+            {layer.desc}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .foundation-stratum .stratum-layer {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--layer-delay);
+  }
+  :global(.foundation-stratum.is-visible) .stratum-layer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

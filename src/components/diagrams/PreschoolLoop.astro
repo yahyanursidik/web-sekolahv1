@@ -1,0 +1,210 @@
+---
+// Diagram 5 — Preschool Learning Loop (Pengalaman Konkret Usia Dini)
+interface LoopStep {
+  num: string;
+  title: string;
+  arabic: string;
+  desc: string;
+  color: string;
+  accentBg: string;
+}
+
+const steps: LoopStep[] = [
+  {
+    num: "01",
+    title: "BERMAIN",
+    arabic: "اللَّعِبُ الهَادِف",
+    desc: "Aktivitas alami fitrah anak mengeksplorasi lingkungan dengan gembira tanpa rasa takut salah.",
+    color: "text-tsls-sage-600",
+    accentBg: "bg-tsls-sage-500/20"
+  },
+  {
+    num: "02",
+    title: "MENGAMATI",
+    arabic: "المُلَاحَظَة",
+    desc: "Melihat pola, warna alam, tekstur benda, dan keteraturan tanda-tanda kekuasaan Allah.",
+    color: "text-tsls-olive-800",
+    accentBg: "bg-tsls-olive-800/10"
+  },
+  {
+    num: "03",
+    title: "MENCOBA",
+    arabic: "التَّجْرِبَةُ الحِسِّيَّة",
+    desc: "Menggunakan panca indra: menyentuh pasir, menumpuk balok, menuang air, dan bereksperimen.",
+    color: "text-tsls-wood-600",
+    accentBg: "bg-tsls-wood-600/15"
+  },
+  {
+    num: "04",
+    title: "BERBICARA",
+    arabic: "التَّعْبِيرُ وَالبَيَان",
+    desc: "Menceritakan temuan, berdialog dengan guru dan teman, serta memperkaya kosakata adab.",
+    color: "text-tsls-olive-950",
+    accentBg: "bg-tsls-cream-200"
+  },
+  {
+    num: "05",
+    title: "MENGULANG",
+    arabic: "التَّكْرَارُ الإِيجَابِيّ",
+    desc: "Melatih motorik halus, doa harian, dan pembiasaan adab secara berulang dengan konsisten.",
+    color: "text-tsls-sage-700",
+    accentBg: "bg-tsls-sage-500/20"
+  },
+  {
+    num: "06",
+    title: "MEMAHAMI",
+    arabic: "الفَهْمُ وَالرُّسُوخ",
+    desc: "Konsep dasar tertanam kuat dalam nalar fitrah anak sebagai pondasi kesiapan belajar jangka panjang.",
+    color: "text-tsls-olive-950",
+    accentBg: "bg-tsls-sand-400/30"
+  }
+];
+---
+
+<div class="preschool-learning-loop py-8 max-w-5xl mx-auto" data-reveal>
+  
+  {/* Desktop Layout: 6-Step Loop Matrix with Visual Connectors */}
+  <div class="hidden md:block relative">
+    
+    {/* SVG Connector Pathways */}
+    <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 900 380" preserveAspectRatio="none">
+      <!-- Top Row Connectors (1 -> 2 -> 3) -->
+      <line x1="280" y1="90" x2="330" y2="90" stroke="rgba(37, 53, 31, 0.25)" stroke-width="2" stroke-dasharray="4 4" class="loop-path" />
+      <line x1="570" y1="90" x2="620" y2="90" stroke="rgba(37, 53, 31, 0.25)" stroke-width="2" stroke-dasharray="4 4" class="loop-path" />
+      
+      <!-- Right Down Connector (3 -> 4) -->
+      <path d="M 760 140 C 760 185, 760 215, 760 250" fill="none" stroke="rgba(138, 90, 50, 0.4)" stroke-width="2" stroke-dasharray="4 4" class="loop-path" />
+      
+      <!-- Bottom Row Connectors (4 -> 5 -> 6) -->
+      <line x1="620" y1="290" x2="570" y2="290" stroke="rgba(37, 53, 31, 0.25)" stroke-width="2" stroke-dasharray="4 4" class="loop-path" />
+      <line x1="330" y1="290" x2="280" y2="290" stroke="rgba(37, 53, 31, 0.25)" stroke-width="2" stroke-dasharray="4 4" class="loop-path" />
+
+      <!-- Left Return Curve (6 -> 1 Loop) -->
+      <path d="M 140 250 C 70 210, 70 170, 140 140" fill="none" stroke="rgba(154, 166, 123, 0.6)" stroke-width="2.5" stroke-dasharray="6 4" class="loop-path-return" />
+    </svg>
+
+    <div class="grid grid-cols-3 gap-8 relative z-10">
+      
+      {/* Step 01 */}
+      <div class="loop-node p-5 bg-tsls-cream-50 border border-tsls-sage-500/40 shadow-sm transition-all hover:border-tsls-sage-600 hover:shadow-md" style="--node-idx: 0">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-sage-500/20 text-tsls-olive-900">01</span>
+          <span class="arabic-watermark text-xs text-tsls-olive-900/60">{steps[0].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">{steps[0].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{steps[0].desc}</p>
+      </div>
+
+      {/* Step 02 */}
+      <div class="loop-node p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm transition-all hover:border-tsls-olive-800 hover:shadow-md" style="--node-idx: 1">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-cream-200 text-tsls-olive-900">02</span>
+          <span class="arabic-watermark text-xs text-tsls-olive-900/60">{steps[1].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">{steps[1].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{steps[1].desc}</p>
+      </div>
+
+      {/* Step 03 */}
+      <div class="loop-node p-5 bg-tsls-cream-50 border border-tsls-wood-600/30 shadow-sm transition-all hover:border-tsls-wood-600 hover:shadow-md" style="--node-idx: 2">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-wood-600/20 text-tsls-wood-700">03</span>
+          <span class="arabic-watermark text-xs text-tsls-olive-900/60">{steps[2].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">{steps[2].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{steps[2].desc}</p>
+      </div>
+
+      {/* Step 06 (Bottom Left) */}
+      <div class="loop-node p-5 bg-tsls-olive-950 text-tsls-cream-50 border border-tsls-olive-950 shadow-md transition-all hover:border-tsls-sand-400" style="--node-idx: 5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-sand-400 text-tsls-olive-950">06 · BUAH</span>
+          <span class="arabic-watermark text-xs text-tsls-sand-400/80">{steps[5].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-cream-50 mb-1">{steps[5].title}</h4>
+        <p class="text-xs text-tsls-cream-100/80 leading-relaxed">{steps[5].desc}</p>
+      </div>
+
+      {/* Step 05 (Bottom Middle) */}
+      <div class="loop-node p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm transition-all hover:border-tsls-olive-800 hover:shadow-md" style="--node-idx: 4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-cream-200 text-tsls-olive-900">05</span>
+          <span class="arabic-watermark text-xs text-tsls-olive-900/60">{steps[4].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">{steps[4].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{steps[4].desc}</p>
+      </div>
+
+      {/* Step 04 (Bottom Right) */}
+      <div class="loop-node p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm transition-all hover:border-tsls-olive-800 hover:shadow-md" style="--node-idx: 3">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-cream-200 text-tsls-olive-900">04</span>
+          <span class="arabic-watermark text-xs text-tsls-olive-900/60">{steps[3].arabic}</span>
+        </div>
+        <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">{steps[3].title}</h4>
+        <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{steps[3].desc}</p>
+      </div>
+
+    </div>
+
+    {/* Center Philosophy Badge */}
+    <div class="mt-8 p-3 bg-tsls-cream-100 border border-tsls-olive-950/10 text-center max-w-xl mx-auto">
+      <span class="text-[11px] font-mono text-tsls-olive-800 uppercase tracking-widest font-bold">
+        Siklus Belajar Berulang Secara Alami Tanpa Tekanan Kognitif
+      </span>
+    </div>
+
+  </div>
+
+  {/* Mobile Layout: Connected Vertical Spiral Sequence */}
+  <div class="md:hidden space-y-4 max-w-md mx-auto">
+    <div class="relative pl-6 border-l-2 border-tsls-sage-500/40 space-y-4 ml-2">
+      {steps.map((step, idx) => (
+        <div class="relative p-4 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm">
+          {/* Timeline node */}
+          <div class={`absolute -left-[31px] top-4 w-3.5 h-3.5 rounded-full border-2 border-tsls-cream-50 ${idx === 5 ? 'bg-tsls-olive-950' : 'bg-tsls-sage-600'}`}></div>
+          
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-mono font-bold text-tsls-wood-600">{step.num}</span>
+            <span class="arabic-watermark text-xs text-tsls-olive-800/60">{step.arabic}</span>
+          </div>
+          
+          <h4 class="font-display font-bold text-base text-tsls-olive-950 mb-1">{step.title}</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .preschool-learning-loop .loop-node {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: calc(var(--node-idx) * 120ms + 150ms);
+  }
+  :global(.preschool-learning-loop.is-visible) .loop-node {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .preschool-learning-loop .loop-path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 1s ease-out 0.4s;
+  }
+  :global(.preschool-learning-loop.is-visible) .loop-path {
+    stroke-dashoffset: 0;
+  }
+
+  .preschool-learning-loop .loop-path-return {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1.4s ease-out 1s;
+  }
+  :global(.preschool-learning-loop.is-visible) .loop-path-return {
+    stroke-dashoffset: 0;
+  }
+</style>

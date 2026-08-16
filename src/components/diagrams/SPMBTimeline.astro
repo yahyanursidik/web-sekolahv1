@@ -1,0 +1,120 @@
+---
+// Diagram 8 — SPMB Interactive Process Stepper (Natural Islamic Academic)
+interface SPMBStep {
+  step: string;
+  badge: string;
+  title: string;
+  desc: string;
+  details: string[];
+}
+
+const spmbSteps: SPMBStep[] = [
+  {
+    step: '01',
+    badge: 'LANGKAH AWAL',
+    title: 'Eksplorasi & Pemilihan Program',
+    desc: 'Pelajari kurikulum, ritme keseharian, dan visi pendidikan jenjang Preschool Onsite, Preschool HBL, atau Elementary School.',
+    details: ['Memahami keselarasan visi sekolah', 'Menyesuaikan program dengan kebutuhan ananda']
+  },
+  {
+    step: '02',
+    badge: 'REGISTRASI DIGITAL',
+    title: 'Pembuatan Akun di TSLS Hub',
+    desc: 'Buka portal hub.tslabschool.sch.id/spmb dan buat akun wali murid menggunakan email dan nomor WhatsApp aktif.',
+    details: ['Akses mandiri 24/7', 'Satu akun untuk seluruh proses administrasi']
+  },
+  {
+    step: '03',
+    badge: 'PENGISIAN DATA',
+    title: 'Pengisian Formulir & Unggah Dokumen',
+    desc: 'Lengkapi formulir biodata anak, data orang tua, riwayat kesehatan, dan unggah dokumen digital yang dipersyaratkan.',
+    details: ['Format PDF/JPG jelas & terbaca', 'Simpan berkas secara aman dan terenkripsi']
+  },
+  {
+    step: '04',
+    badge: 'PEMETAAN FITRAH',
+    title: 'Observasi Ananda & Dialog Orang Tua',
+    desc: 'Sesi observasi kesiapan belajar ramah anak (tanpa tes calistung memberatkan) serta dialog keselarasan visi bersama orang tua.',
+    details: ['Suasana observasi yang menyenangkan', 'Dialog personal mengenai keunikan fitrah ananda']
+  },
+  {
+    step: '05',
+    badge: 'TRANSPARANSI',
+    title: 'Pengumuman Status Real-Time',
+    desc: 'Pantau status verifikasi berkas dan hasil penerimaan secara transparan langsung melalui dashboard akun TSLS Hub.',
+    details: ['Notifikasi otomatis via WhatsApp/Email', 'Instruksi tahapan lanjutan yang jelas']
+  },
+  {
+    step: '06',
+    badge: 'PENYAMBUTAN',
+    title: 'Daftar Ulang & Ta\'aruf Keluarga TSLS',
+    desc: 'Konfirmasi penyelesaian administrasi dan partisipasi dalam kegiatan orientasi / ta\'aruf keluarga besar TSLS.',
+    details: ['Sosialisasi panduan sekolah', 'Persiapan seragam dan modul belajar']
+  }
+];
+---
+
+<div class="spmb-interactive-process py-6 max-w-4xl mx-auto" data-reveal>
+  <div class="relative pl-6 sm:pl-10 space-y-8 before:absolute before:left-[19px] sm:before:left-[27px] before:top-4 before:bottom-4 before:w-0.5 before:bg-gradient-to-b before:from-tsls-olive-950 before:via-tsls-wood-600 before:to-tsls-sage-500">
+    
+    {spmbSteps.map((item, idx) => (
+      <div 
+        class="spmb-step-card relative group transition-all duration-300"
+        style={`--step-delay: ${idx * 90}ms`}
+      >
+        
+        {/* Step Number Node */}
+        <div class="absolute -left-[35px] sm:-left-[45px] top-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-tsls-olive-950 text-tsls-cream-50 font-mono font-bold text-xs sm:text-sm flex items-center justify-center border-2 border-tsls-sand-400 shadow-md group-hover:scale-110 group-hover:bg-tsls-wood-600 transition-all z-10">
+          {item.step}
+        </div>
+
+        {/* Step Content Card */}
+        <div class="p-6 sm:p-7 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm group-hover:border-tsls-wood-600 group-hover:shadow-md transition-all space-y-3">
+          
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-tsls-olive-950/10 pb-2">
+            <span class="text-[10px] font-mono font-bold tracking-widest uppercase px-2 py-0.5 bg-tsls-cream-200 text-tsls-olive-900">
+              {item.badge}
+            </span>
+            <span class="text-xs font-mono font-bold text-tsls-wood-600">
+              TAHAP {item.step} DARI 06
+            </span>
+          </div>
+
+          <h4 class="font-display font-bold text-lg sm:text-xl text-tsls-olive-950">
+            {item.title}
+          </h4>
+
+          <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+            {item.desc}
+          </p>
+
+          {/* Bullet Details */}
+          <div class="pt-2 grid sm:grid-cols-2 gap-2 text-[11px] sm:text-xs text-tsls-wood-700 font-semibold">
+            {item.details.map((dt) => (
+              <div class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-tsls-wood-600 shrink-0"></span>
+                <span>{dt}</span>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+    ))}
+
+  </div>
+</div>
+
+<style>
+  .spmb-interactive-process .spmb-step-card {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: var(--step-delay);
+  }
+  :global(.spmb-interactive-process.is-visible) .spmb-step-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

@@ -1,57 +1,70 @@
 ---
-import globalSettings from '../content/settings/global.json';
+import { EXTERNAL_LINKS } from '../data/constants';
 const currentYear = new Date().getFullYear();
 ---
+
 <footer class="site-footer">
-<div class="site-footer__grid">
-<div class="col-span-1 md:col-span-1">
-<div class="font-headline-md text-headline-md text-on-primary mb-6"><h3 class="font-headline-md text-headline-md text-on-primary mb-6">TS Lab School</h3></div>
-<p class="text-on-primary/80 mb-6">Mendampingi anak bertumbuh dengan iman, adab, ilmu, dan karakter rabbani.</p>
-<a class="font-bold inline-flex items-center gap-2" href="/profil">Kenali sekolah kami <span aria-hidden="true">&rarr;</span></a>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Hubungi Kami</h4>
-<ul class="space-y-4">
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="location_on">location_on</span>
-<span class="">Jl. Setrasari VI No.3A, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152</span>
-</li>
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="call">call</span>
-<a href="tel:+6285173396002">+62 851-7339-6002</a>
-</li>
-<li class="flex gap-3 text-on-primary/80">
-<span class="material-symbols-outlined text-secondary-fixed" data-icon="mail">mail</span>
-<a href="mailto:salam@tslabschool.id">salam@tslabschool.id</a>
-</li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Tautan Cepat</h4>
-<ul class="space-y-4">
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="https://hub.tslabschool.sch.id/portal/login" target="_blank">Portal Orang Tua</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="https://hub.tslabschool.sch.id/spmb/login" target="_blank">SPMB Online</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="/preschool">Program Preschool</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="/elementary">Program Elementary</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary hover:translate-x-1 transition-all inline-block" href="/faq">Tanya Jawab (FAQ)</a></li>
-<li class=""><a class="text-on-primary/80 hover:text-on-primary transition-colors inline-block" href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer">WhatsApp Admin</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-lg mb-6 text-secondary-fixed">Akademik</h4>
-<div class="bg-primary-container p-6 rounded-lg border border-on-primary/10">
-<p class="font-bold mb-2">Kalender Akademik</p>
-<p class="text-sm text-on-primary/70 mb-4">Dapatkan jadwal akademik terbaru dari tim sekolah.</p>
-{globalSettings.calendarUrl && globalSettings.calendarUrl !== '#' ? (
-<a href={globalSettings.calendarUrl} target="_blank" rel="noopener noreferrer" class="inline-flex text-secondary-fixed text-sm font-bold items-center gap-1 hover:underline">Download Kalender <span class="material-symbols-outlined text-xs" data-icon="download">download</span></a>
-) : (
-<a href="/kontak" class="inline-flex text-secondary-fixed text-sm font-bold items-center gap-1">Tanyakan jadwal akademik <span aria-hidden="true">&rarr;</span></a>
-)}
-</div>
-</div>
-</div>
-<div class="site-footer__bottom">
-<span>&copy; {currentYear} Tarbiyah Sunnah Lab School.</span>
-<span>Bandung, Jawa Barat</span>
-</div>
+  <div class="site-footer__grid">
+    <div class="space-y-3">
+      <a href="/" class="inline-block" aria-label="Tarbiyah Sunnah Lab School">
+        <img src="/images/logo-white.svg" alt="Tarbiyah Sunnah Lab School" class="h-10 w-auto object-contain mb-1" width="200" height="45" />
+      </a>
+      <p class="text-sm text-color-paper/80 leading-relaxed">
+        Merawat Fitrah, Membangun Generasi Rabbani. Mendampingi anak bertumbuh dengan iman, adab, ilmu, dan karakter rabbani di atas fondasi Al-Qur'an dan As-Sunnah.
+      </p>
+      <a href="/tentang" class="text-sm font-bold inline-flex items-center gap-1 hover:underline">
+        Kenali sekolah kami <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-base mb-4 text-color-paper">Program</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/preschool" class="hover:underline">Preschool</a></li>
+        <li><a href="/preschool-hbl" class="hover:underline">Preschool HBL</a></li>
+        <li><a href="/elementary" class="hover:underline">Elementary (SD IT)</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-base mb-4 text-color-paper">Informasi</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/tentang" class="hover:underline">Tentang TSLS</a></li>
+        <li><a href="/pendidikan" class="hover:underline">Pendidikan di TSLS</a></li>
+        <li><a href="/kehidupan-sekolah" class="hover:underline">Kehidupan Sekolah</a></li>
+        <li><a href="/spmb" class="hover:underline">SPMB</a></li>
+        <li><a href="/faq" class="hover:underline">FAQ</a></li>
+        <li><a href="/kontak" class="hover:underline">Kontak</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-base mb-4 text-color-paper">Akses & Hubungan</h4>
+      <ul class="space-y-2 text-sm mb-6">
+        <li>
+          <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class="font-bold text-warm-soft hover:underline">
+            TSLS Hub Portal &rarr;
+          </a>
+        </li>
+        <li>
+          <a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class="hover:underline">
+            WhatsApp Admin
+          </a>
+        </li>
+        <li>
+          <a href="https://maps.google.com/?q=Tarbiyah+Sunnah+Lab+School+Bandung" target="_blank" rel="noopener noreferrer" class="hover:underline">
+            Lokasi Maps
+          </a>
+        </li>
+      </ul>
+      <div class="text-xs text-color-paper/70">
+        Jl. Setrasari VI No.3A, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <span>&copy; {currentYear} Tarbiyah Sunnah Lab School (TSLS). Hak cipta dilindungi.</span>
+    <span>Bandung, Jawa Barat</span>
+  </div>
 </footer>

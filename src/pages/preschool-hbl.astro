@@ -1,0 +1,485 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
+import { EXTERNAL_LINKS } from '../data/constants';
+import HBLFlow from '../components/diagrams/HBLFlow.astro';
+import HBLStructure from '../components/diagrams/HBLStructure.astro';
+---
+
+<Layout title="Preschool HBL (Home-Based Learning) | Tarbiyah Sunnah Lab School">
+
+  {/* =========================================================================
+      Hero Section (Sand & Wood Palette for Home-Based Warmth)
+     ========================================================================= */}
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
+    
+    {/* Subtle Arabic Watermark Background */}
+    <div class="absolute right-0 top-1/3 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none z-0">
+      <span class="arabic-watermark text-[140px] md:text-[240px] font-normal leading-none text-tsls-wood-600" dir="rtl">
+        تَعَلُّمٌ مَنْزِلِيّ
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        {/* Hero Copy */}
+        <div class="lg:col-span-7 space-y-8" data-reveal>
+          
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="academic-stamp text-tsls-wood-700 bg-tsls-sand-400/25 px-3 py-1 border border-tsls-sand-400/50">
+              TSLS PRESCHOOL · HOME-BASED LEARNING (USIA 3–6 TAHUN)
+            </span>
+            <span class="text-xs font-mono text-tsls-olive-800 font-bold">
+              TERBUKA NASIONAL & GLOBAL
+            </span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-[1.12] tracking-tight text-balance">
+            Preschool dari Rumah,<br />
+            <span class="italic font-serif font-normal text-tsls-wood-600">Tetap Terarah dan Bermakna.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-xl leading-relaxed text-pretty">
+            Program pendidikan usia dini berbasis rumah untuk keluarga muslim yang ingin mendampingi tumbuh kembang fitrah ananda dengan kurikulum terstruktur: perpaduan 2 sesi <em>live meeting</em> terbimbing (Talaqqi & Tematik Diniyah) dan 3 hari eksplorasi tematik mandiri di rumah.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-8 rounded-none shadow-sm')}>
+              Daftar Preschool HBL (TSLS Hub) &rarr;
+            </a>
+            <a href="#struktur-pembelajaran" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-wood-600 text-tsls-wood-700 hover:bg-tsls-wood-600 hover:text-tsls-cream-50 font-bold px-8 rounded-none transition-colors')}>
+              Lihat Struktur Belajar
+            </a>
+          </div>
+
+          {/* Key HBL Highlights Bar */}
+          <div class="pt-8 border-t border-tsls-olive-950/10 grid grid-cols-3 gap-4 text-left">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Struktur Belajar</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">2 Hari Live + 3 Hari Mandiri</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Fokus Utama</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Talaqqi Qur'an & Diniyah</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Pendampingan</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Supervisi & Konsultasi 1-on-1</div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Hero Photo / Authentic Home-Based Learning Corner */}
+        <div class="lg:col-span-5" data-reveal="fade-up">
+          <div class="relative p-3 bg-tsls-cream-100 border border-tsls-wood-600/20 shadow-md">
+            <div class="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200 group">
+              <img 
+                src="/images/preschool-hbl-hero.jpg" 
+                alt="Sudut Belajar Alami Home-Based Learning Preschool Tarbiyah Sunnah Lab School" 
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="eager"
+              />
+
+              {/* High-Contrast Top Badge */}
+              <div class="absolute top-3 left-3 z-10">
+                <span class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase px-3 py-1.5 bg-tsls-olive-950 text-tsls-cream-50 shadow-md border border-tsls-sand-400">
+                  <span class="w-2 h-2 rounded-full bg-tsls-sand-400 animate-pulse"></span>
+                  SUDUT BELAJAR DI RUMAH
+                </span>
+              </div>
+
+              {/* High-Contrast Bottom Editorial Caption Box */}
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-tsls-olive-950/98 via-tsls-olive-950/85 to-transparent p-5 sm:p-6 text-tsls-cream-50 z-10">
+                <span class="text-xs font-mono tracking-widest uppercase text-tsls-sand-400 block font-bold drop-shadow-sm">
+                  Rumah Sebagai Madrasah Utama
+                </span>
+                <p class="text-xs sm:text-sm font-sans font-medium text-tsls-cream-50 mt-1 leading-relaxed drop-shadow-sm">
+                  Menghadirkan kehangatan belajar mandiri dengan bahan alam (*loose parts*), buku modul tematik, dan sesi interaktif terarah.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 1 — Struktur Pembelajaran Preschool HBL (Live Meeting & Mandiri)
+     ========================================================================= */}
+  <section id="struktur-pembelajaran" class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          KURIKULUM & POLA BELAJAR
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Struktur Pembelajaran Terpadu Sepekan
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Pola belajar dirancang seimbang antara bimbingan tatap muka maya (*live meeting*) interaktif dengan guru dan keleluasaan belajar nyata di rumah bersama orang tua.
+        </p>
+      </div>
+
+      <div data-reveal="fade-up">
+        <HBLStructure />
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 2 — Prinsip Kemitraan HBL (Alur Sinergi)
+     ========================================================================= */}
+  <section id="cara-kerja" class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+      
+      <div class="space-y-6" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          PRINSIP UTAMA HBL
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight text-balance">
+          Sekolah Merancang. Orang Tua Mendampingi. Anak Mengalami.
+        </h2>
+        <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-2xl mx-auto leading-relaxed text-pretty">
+          HBL bukan program belajar mandiri tanpa bimbingan. Guru TSLS bertindak sebagai perancang kurikulum dan konsultan ahli yang memandu orang tua menjalankan stimulasi fitrah yang tepat setiap pekannya.
+        </p>
+      </div>
+
+      <div data-reveal="fade-up">
+        <HBLFlow />
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 3 — Perbandingan Tegas: HBL Bukan vs HBL Adalah
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          KLARIFIKASI PEMBELAJARAN
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Memahami HBL Secara Jernih
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Kami membedakan secara tegas antara pembelajaran usia dini berbasis rumah yang fitrah dengan metode "sekolah online" yang melelahkan.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        {/* HBL BUKAN */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-wood-600 border-x border-b border-tsls-olive-950/15 space-y-6 shadow-sm" data-reveal="fade-up">
+          <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-3">
+            <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-700">KLARIFIKASI 01</span>
+            <span class="text-xs font-bold text-tsls-wood-600 uppercase">HBL BUKAN:</span>
+          </div>
+
+          <ul class="space-y-4 text-xs sm:text-sm text-tsls-olive-950/85">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-wood-600/20 text-tsls-wood-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&minus;</span>
+              <span><strong>Bukan kelas video call Zoom berjam-jam</strong> yang memaksa anak usia dini menatap layar radiasi sepanjang hari.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-wood-600/20 text-tsls-wood-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&minus;</span>
+              <span><strong>Bukan tumpukan lembar kerja (worksheet)</strong> monoton yang menuntut anak menghafal rumus atau calistung instan.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-wood-600/20 text-tsls-wood-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&minus;</span>
+              <span><strong>Bukan mengubah rumah menjadi ruang kelas formal</strong> yang kaku dan penuh tekanan jam pelajaran.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-wood-600/20 text-tsls-wood-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&minus;</span>
+              <span><strong>Bukan orang tua dibiarkan sendirian</strong> tanpa panduan, rencana belajar, atau evaluasi guru.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* HBL ADALAH */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-olive-950 border-x border-b border-tsls-olive-950/15 space-y-6 shadow-sm" data-reveal="fade-up" style="transition-delay: 120ms">
+          <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-3">
+            <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-olive-800">KLARIFIKASI 02</span>
+            <span class="text-xs font-bold text-tsls-olive-950 uppercase">HBL ADALAH:</span>
+          </div>
+
+          <ul class="space-y-4 text-xs sm:text-sm text-tsls-olive-950/85">
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&#10003;</span>
+              <span><strong>Pengalaman konkret di rumah</strong>: Belajar dari aktivitas keseharian, bahan alam sekitar, memasak, dan menata rumah.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&#10003;</span>
+              <span><strong>2 Hari Sesi Live Terarah</strong>: Bimbingan Talaqqi Al-Qur'an dan Tematik Diniyah yang interaktif dan ceria.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&#10003;</span>
+              <span><strong>Panduan mingguan terstruktur</strong> dari guru TSLS yang memetakan tujuan adab, motorik, bahasa, dan tauhid.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">&#10003;</span>
+              <span><strong>Konsultasi & pemantauan intensif</strong> bersama guru melalui jurnal observasi dan pertemuan evaluasi orang tua.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 4 — Fasilitas dan Dukungan Pembelajaran HBL
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="space-y-4 max-w-3xl" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          LAYANAN & PENDAMPINGAN
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight">
+          Fasilitas dan Dukungan Pembelajaran
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Keluarga tidak dilepas berjalan sendirian. TSLS membekali orang tua dengan sistem pendukung komprehensif agar proses belajar di rumah berjalan nyaman, terstruktur, dan selaras dengan fitrah anak.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        {/* 01. Modul Pembelajaran Berkualitas */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up">
+          <div class="w-10 h-10 rounded-full bg-tsls-sand-400/30 text-tsls-wood-700 font-bold flex items-center justify-center font-mono text-sm">
+            01
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Modul Berkualitas</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Modul dirancang dengan visual menarik, konten interaktif, dan sesuai dengan tahap perkembangan anak usia dini.
+          </p>
+        </div>
+
+        {/* 02. Panduan Pembelajaran Pekanan */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 80ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-sage-500/20 text-tsls-olive-900 font-bold flex items-center justify-center font-mono text-sm">
+            02
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Panduan Pekanan</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Membantu orang tua merancang jadwal belajar, aktivitas mingguan, dan target capaian anak secara jelas dan terarah.
+          </p>
+        </div>
+
+        {/* 03. Video dan Audio Pembelajaran */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 160ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-cream-200 text-tsls-olive-900 font-bold flex items-center justify-center font-mono text-sm">
+            03
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Video & Audio Belajar</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Video pembelajaran tematik dan audio hafalan/talaqqi Al-Qur'an untuk mendukung pembelajaran mandiri ananda.
+          </p>
+        </div>
+
+        {/* 04. Bimbingan dan Konsultasi */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 240ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-olive-950 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            04
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bimbingan & Konsultasi</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Layanan konsultasi langsung dengan guru untuk membantu orang tua menghadapi kesulitan pembelajaran atau pengasuhan.
+          </p>
+        </div>
+
+        {/* 05. Panduan Optimalisasi Pendampingan */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up">
+          <div class="w-10 h-10 rounded-full bg-tsls-wood-600 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            05
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Optimalisasi Pendampingan</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Pedoman untuk meningkatkan keterlibatan orang tua dalam mendampingi ananda secara aktif, sabar, dan konsisten.
+          </p>
+        </div>
+
+        {/* 06. Seminar Serba-Serbi Pendidikan Anak */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 80ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-sand-400 text-tsls-olive-950 font-bold flex items-center justify-center font-mono text-sm">
+            06
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Seminar Parenting</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Seminar rutin serba-serbi pendidikan anak untuk meningkatkan wawasan orang tua seputar pengasuhan fitrah Islam.
+          </p>
+        </div>
+
+        {/* 07. Evaluasi dan Asesmen Pembelajaran */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 160ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-sage-600 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            07
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Evaluasi & Asesmen</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Evaluasi menyeluruh oleh pengajar dan orang tua untuk menilai perkembangan kognitif, emosional, dan spiritual anak.
+          </p>
+        </div>
+
+        {/* 08. Optimalisasi STTPA */}
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 shadow-sm space-y-3" data-reveal="fade-up" style="transition-delay: 240ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-olive-800 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            08
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Optimalisasi STTPA</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Program dirancang sesuai Standar Tingkat Pencapaian Perkembangan Anak untuk memastikan capaian tumbuh kembang tepat usia.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 5 — Siapa yang Cocok Mengikuti HBL? (Target Profil)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          PROFIL KELUARGA
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
+          Siapa yang Sangat Cocok Mengikuti Preschool HBL?
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6" data-reveal="fade-up">
+        
+        <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-wood-600">KONDISI 01</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Luar Jangkauan Onsite</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Keluarga yang berdomisili di luar Bandung atau luar negeri, namun menghendaki kurikulum fitrah berkualitas berbasis Sunnah.
+          </p>
+        </div>
+
+        <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-wood-600">KONDISI 02</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Pilihan Homeschooling</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Orang tua yang berkomitmen mendidik anak di rumah tetapi membutuhkan arahan kurikulum, bahan ajar, dan pendampingan ahli.
+          </p>
+        </div>
+
+        <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-wood-600">KONDISI 03</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Kesiapan Waktu & Komitmen</h4>
+          <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+            Keluarga yang memiliki pendamping dewasa di rumah dan siap menjalin komunikasi serta evaluasi berkala bersama guru pembimbing.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 6 — FAQ Khusus Preschool HBL
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-4" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          TANYA JAWAB HBL
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
+          Pertanyaan Seputar Preschool HBL
+        </h2>
+      </div>
+
+      <div class="divide-y divide-tsls-olive-950/15 border-y border-tsls-olive-950/15" data-reveal="fade-up">
+        
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Berapa kali sesi live meeting dalam sepekan?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Terdapat 2 sesi live meeting interaktif dalam sepekan: 1 hari khusus Talaqqi Al-Qur'an (tahsin & setoran hafalan) dan 1 hari Tematik Diniyah (aqidah, adab, hadits, ibadah praktis, tarbiyah jinsiah & keteladanan salaf). Tiga hari lainnya merupakan pembelajaran tematik mandiri berbasis aktivitas konkret di rumah.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bagaimana jika orang tua sibuk atau bekerja?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Program HBL mensyaratkan adanya pendamping dewasa yang konsisten (baik ibu, ayah, atau pengasuh terpercaya) yang dapat meluangkan waktu 1–2 jam per hari untuk mendampingi aktivitas modul secara rileks.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bagaimana sosialisasi anak jika belajar dari rumah?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Anak bersosialisasi secara nyata di lingkungan terdekat (keluarga besar, tetangga, masjid) dan tetap terhubung dengan teman sekelasnya melalui sesi sapaan virtual berkala dan temu komunitas ramah anak.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Apakah lulusan Preschool HBL bisa melanjutkan ke SD reguler atau Elementary TSLS?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Bisa. Portofolio dan laporan observasi perkembangan HBL TSLS dirancang komprehensif untuk memastikan kematangan fondasi adab, emosi, motorik, dan kesiapan kognitif anak memasuki jenjang sekolah dasar.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="text-center pt-4" data-reveal>
+        <a href="/faq" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
+          Lihat Semua FAQ Sekolah &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 7 — CTA SPMB HBL
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 text-center">
+    <div class="max-w-3xl mx-auto px-4 space-y-8" data-reveal>
+      
+      <span class="text-xs font-mono uppercase tracking-widest text-tsls-sand-400 font-bold block">
+        PENDAFTARAN PRESCHOOL HOME-BASED LEARNING
+      </span>
+
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-tsls-cream-50 leading-tight">
+        Hadirkan Madrasah Terbaik di Rumah Anda
+      </h2>
+
+      <p class="text-base sm:text-lg text-tsls-cream-100/80 leading-relaxed text-pretty">
+        Dapatkan kurikulum fitrah, bimbingan Talaqqi & Diniyah terarah, serta modul aktivitas mingguan untuk ananda tercinta.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-10 rounded-none shadow-md')}>
+          Daftar Preschool HBL Online (TSLS Hub)
+        </a>
+        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-10 rounded-none transition-colors')}>
+          Konsultasi Program
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

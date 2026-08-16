@@ -1,0 +1,135 @@
+---
+// Diagram 1 — Fitrah Growth Path (Natural Islamic Academic)
+interface Stage {
+  num: string;
+  arabic: string;
+  title: string;
+  subtitle: string;
+  tag: string;
+  isPeak?: boolean;
+}
+
+const stages: Stage[] = [
+  {
+    num: "01",
+    arabic: "فِطْرَة",
+    title: "FITRAH KEIMANAN",
+    subtitle: "Potensi dasar ketauhidan, rasa ingin tahu alami, dan kesucian fitrah bawaan sejak lahir.",
+    tag: "Akar & Fondasi"
+  },
+  {
+    num: "02",
+    arabic: "إِيمَان وَأَدَب",
+    title: "IMAN & ADAB",
+    subtitle: "Pembiasaan ibadah sunnah, adab keseharian, dan kecintaan pada Al-Qur'an.",
+    tag: "Jiwa & Karakter"
+  },
+  {
+    num: "03",
+    arabic: "السَّكِينَة",
+    title: "RASA AMAN & RELASI",
+    subtitle: "Lingkungan yang hangat dan aman tanpa ancaman yang mematikan kebahagiaan belajar.",
+    tag: "Lingkungan"
+  },
+  {
+    num: "04",
+    arabic: "الاسْتِقْلَالِيَّة",
+    title: "KEMANDIRIAN",
+    subtitle: "Merawat diri sendiri, mengambil inisiatif, dan memegang tanggung jawab atas tugasnya.",
+    tag: "Ketangkasan Hidup"
+  },
+  {
+    num: "05",
+    arabic: "تَنْمِيَةُ المَلَكَات",
+    title: "BAHASA · SOSIAL · KOGNITIF",
+    subtitle: "Penguasaan literasi bermakna, ekspresi lisan, empati sosial, dan pemahaman konsep konkret.",
+    tag: "Kapabilitas"
+  },
+  {
+    num: "06",
+    arabic: "التَّفْكِيرُ وَالتَّطْبِيق",
+    title: "BERPIKIR · MEMAHAMI · MENERAPKAN",
+    subtitle: "Keterampilan bernalar kritis, memecahkan masalah, dan menghubungkan ilmu dengan kenyataan.",
+    tag: "Akal & Amal"
+  },
+  {
+    num: "07",
+    arabic: "جِيلٌ رَبَّانِيٌّ",
+    title: "GENERASI RABBANI",
+    subtitle: "Melahirkan insan yang beriman teguh, beradab luhur, berilmu mendalam, dan bermanfaat bagi umat.",
+    tag: "Buah Pendidikan",
+    isPeak: true
+  }
+];
+---
+
+<div class="fitrah-path-component py-8 max-w-4xl mx-auto" data-reveal>
+  <div class="relative">
+    {/* Central Vertical Ruler Line (Desktop center, Mobile left) */}
+    <div class="absolute left-6 md:left-1/2 top-4 bottom-8 w-[2px] -translate-x-1/2 bg-tsls-olive-950/20 origin-top flow-ruler"></div>
+
+    <div class="space-y-8 md:space-y-10 relative z-10">
+      {stages.map((stage, idx) => {
+        const isLeft = idx % 2 === 0;
+        return (
+          <div class="stage-item relative flex items-start md:items-center" style={`--item-index: ${idx}`}>
+            {/* Mobile layout / Desktop Left or Right */}
+            <div class={`w-full flex items-start md:items-center pl-14 md:pl-0 ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}>
+              
+              {/* Central Node Pin */}
+              <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 md:top-auto z-20">
+                <div class={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-transform duration-500 hover:scale-125 ${stage.isPeak ? 'bg-tsls-olive-950 border-tsls-sand-400 text-tsls-sand-400 shadow-md' : 'bg-tsls-cream-50 border-tsls-olive-950 text-tsls-olive-950'}`}>
+                  <span class="text-[10px] font-bold font-mono">{stage.num}</span>
+                </div>
+              </div>
+
+              {/* Stage Card */}
+              <div class={`w-full md:w-[calc(50%-2.5rem)] ${isLeft ? 'md:mr-auto md:text-right' : 'md:ml-auto md:text-left'}`}>
+                <div class={`p-5 rounded-none border transition-all duration-300 hover:border-tsls-wood-600 ${stage.isPeak ? 'bg-tsls-olive-950 text-tsls-cream-50 border-tsls-olive-950 shadow-lg' : 'bg-tsls-cream-50/90 border-tsls-olive-950/15 hover:bg-tsls-cream-100/90'}`}>
+                  <div class={`flex items-center gap-3 mb-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
+                    <span class={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border ${stage.isPeak ? 'border-tsls-sand-400/40 text-tsls-sand-400' : 'border-tsls-olive-950/20 text-tsls-wood-600'}`}>
+                      {stage.tag}
+                    </span>
+                    <span class={`arabic-watermark text-lg font-normal ${stage.isPeak ? 'text-tsls-sand-400/60' : 'text-tsls-olive-800/40'}`} dir="rtl">
+                      {stage.arabic}
+                    </span>
+                  </div>
+                  
+                  <h4 class={`font-display font-bold text-base md:text-lg mb-1 tracking-tight ${stage.isPeak ? 'text-tsls-cream-50' : 'text-tsls-olive-950'}`}>
+                    {stage.title}
+                  </h4>
+                  
+                  <p class={`text-xs md:text-sm leading-relaxed ${stage.isPeak ? 'text-tsls-cream-100/80' : 'text-tsls-olive-950/75'}`}>
+                    {stage.subtitle}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<style>
+  .fitrah-path-component .flow-ruler {
+    transform: scaleY(0);
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  :global(.fitrah-path-component.is-visible) .flow-ruler {
+    transform: scaleY(1);
+  }
+
+  .fitrah-path-component .stage-item {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: calc(var(--item-index) * 120ms + 250ms);
+  }
+  :global(.fitrah-path-component.is-visible) .stage-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

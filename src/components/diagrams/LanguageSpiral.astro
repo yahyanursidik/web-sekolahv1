@@ -1,0 +1,93 @@
+---
+// Diagram: Language & Literacy Spiral for Elementary School
+interface Step {
+  num: string;
+  title: string;
+  arabic: string;
+  desc: string;
+  isPeak?: boolean;
+}
+
+const steps: Step[] = [
+  { num: "01", title: "MENYIMAK", arabic: "الإِنْصَات", desc: "Mendengarkan tilawah, penjelasan guru, dan argumen teman dengan adab majelis yang tenang." },
+  { num: "02", title: "MEMAHAMI", arabic: "الفَهْم", desc: "Menangkap inti pesan, mengidentifikasi ide pokok, dan menyerap makna kosakata baru." },
+  { num: "03", title: "BERTANYA", arabic: "السُّؤَال", desc: "Menyusun pertanyaan kritis yang berbobot dengan susunan kalimat yang santun." },
+  { num: "04", title: "BERBICARA", arabic: "الكَلَام", desc: "Menyampaikan pendapat secara runtut, fasih, dan santun dalam dialog musyawarah." },
+  { num: "05", title: "MEMBACA", arabic: "القِرَاءَة", desc: "Membaca teks Al-Qur'an dan literatur sains dengan tajwid, pemahaman mendalam, dan daya analisis." },
+  { num: "06", title: "MENULIS", arabic: "الكِتَابَة", desc: "Menuangkan ide ke dalam karangan terstruktur, catatan refleksi, dan laporan proyek ilmiah." },
+  { num: "07", title: "MENGEMUKAKAN GAGASAN", arabic: "البَيَان", desc: "Mempresentasikan karya di hadapan guru dan teman dengan percaya diri dan beradab.", isPeak: true }
+];
+---
+
+<div class="language-spiral-diagram py-8 max-w-4xl mx-auto" data-reveal>
+  <div class="relative">
+    {/* Central Connecting Vertical Line */}
+    <div class="absolute left-6 md:left-8 top-6 bottom-6 w-[2px] bg-tsls-olive-950/20 origin-top spiral-line"></div>
+
+    <div class="space-y-5 relative z-10">
+      {steps.map((step, idx) => (
+        <div class="spiral-node relative flex items-start gap-4 md:gap-6 pl-14 md:pl-20" style={`--spiral-idx: ${idx}`}>
+          
+          {/* Node Number Circle */}
+          <div class="absolute left-6 md:left-8 -translate-x-1/2 top-2 z-20">
+            <div class={`w-7 h-7 md:w-8 md:h-8 rounded-full border-2 flex items-center justify-center font-mono text-xs font-bold transition-transform duration-300 hover:scale-125 ${
+              step.isPeak
+                ? 'bg-tsls-olive-950 border-tsls-sand-400 text-tsls-sand-400 shadow-md'
+                : 'bg-tsls-cream-50 border-tsls-olive-950/40 text-tsls-olive-950'
+            }`}>
+              {step.num}
+            </div>
+          </div>
+
+          {/* Step Card */}
+          <div class={`w-full p-4 sm:p-5 border transition-all duration-300 ${
+            step.isPeak
+              ? 'bg-tsls-olive-950 text-tsls-cream-50 border-tsls-olive-950 shadow-md'
+              : 'bg-tsls-cream-50 border-tsls-olive-950/15 hover:border-tsls-wood-600'
+          }`}>
+            <div class="flex items-center justify-between mb-1">
+              <span class={`text-xs sm:text-sm font-bold uppercase tracking-wider ${
+                step.isPeak ? 'text-tsls-sand-400' : 'text-tsls-olive-950'
+              }`}>
+                {step.title}
+              </span>
+              <span class={`arabic-watermark text-xs ${
+                step.isPeak ? 'text-tsls-sand-400/70' : 'text-tsls-olive-800/50'
+              }`}>
+                {step.arabic}
+              </span>
+            </div>
+
+            <p class={`text-xs sm:text-sm leading-relaxed ${
+              step.isPeak ? 'text-tsls-cream-100/80' : 'text-tsls-olive-950/75'
+            }`}>
+              {step.desc}
+            </p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .language-spiral-diagram .spiral-line {
+    transform: scaleY(0);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  :global(.language-spiral-diagram.is-visible) .spiral-line {
+    transform: scaleY(1);
+  }
+
+  .language-spiral-diagram .spiral-node {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: calc(var(--spiral-idx) * 110ms + 150ms);
+  }
+  :global(.language-spiral-diagram.is-visible) .spiral-node {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

@@ -1,325 +1,665 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
+import { EXTERNAL_LINKS } from '../data/constants';
+import WholeChildMap from '../components/diagrams/WholeChildMap.astro';
+import LanguageSpiral from '../components/diagrams/LanguageSpiral.astro';
+
+interface Pillar {
+  num: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  accentBg: string;
+  borderColor: string;
+}
+
+const pillars: Pillar[] = [
+  {
+    num: "01",
+    title: "Al-Qur'an (Tahsin & Hafalan)",
+    subtitle: "تَحْسِينٌ وَتَحْفِيظ",
+    desc: "Program intensif perbaikan bacaan (Tahsin) dan hafalan sesuai dengan kemampuan individual siswa, dipandu oleh asatidzah bersanad dan istiqomah terus di jalan para penuntut ilmu Al-Qur'an.",
+    accentBg: "bg-tsls-olive-950 text-tsls-cream-50",
+    borderColor: "border-tsls-olive-950"
+  },
+  {
+    num: "02",
+    title: "Character & Life Skills",
+    subtitle: "الأَخْلَاقُ وَالمَهَارَاتُ الحَيَاتِيَّة",
+    desc: "Melatih kemandirian, tanggung jawab atas diri sendiri, serta keterampilan praktis kehidupan sehari-hari yang membentuk pribadi kokoh dan beradab.",
+    accentBg: "bg-tsls-wood-600 text-tsls-cream-50",
+    borderColor: "border-tsls-wood-600"
+  },
+  {
+    num: "03",
+    title: "21st Century Skills & Islamic Science",
+    subtitle: "العُلُومُ الإِسْلَامِيَّةُ وَمَهَارَاتُ العَصْر",
+    desc: "Mengasah nalar kritis, kreativitas, dan kolaborasi abad 21 yang dipadukan dengan eksplorasi sains Islami berbasis tadabbur ayat-ayat kauniyah ciptaan Allah.",
+    accentBg: "bg-tsls-sage-600 text-tsls-cream-50",
+    borderColor: "border-tsls-sage-600"
+  },
+  {
+    num: "04",
+    title: "Leadership & Fitrah Kemandirian",
+    subtitle: "القِيَادَةُ وَرِعَايَةُ الفِطْرَة",
+    desc: "Fokus pada pembentukan karakter, kepemimpinan diri (self-leadership), dan tanggung jawab moral sesuai fitrah penciptaan: menumbuhkan jiwa kepemimpinan (qawwamah) dan keberanian bagi ikhwan, serta rasa malu yang mulia (haya'), kecakapan mengelola kebaikan, dan kesiapan menjadi madrasah peradaban bagi akhwat.",
+    accentBg: "bg-tsls-sand-400 text-tsls-olive-950",
+    borderColor: "border-tsls-sand-400"
+  },
+  {
+    num: "05",
+    title: "Persiapan Jenjang Selanjutnya",
+    subtitle: "الجَاهِزِيَّةُ لِلْمَرْحَلَةِ القَادِمَة",
+    desc: "Kesiapan akademik, kematangan emosi, dan keteguhan aqidah yang matang untuk transisi mulus menuju pendidikan menengah (SMP / Junior High / Pondok Pesantren).",
+    accentBg: "bg-tsls-olive-800 text-tsls-cream-50",
+    borderColor: "border-tsls-olive-800"
+  }
+];
 ---
-<Layout title="Program Elementary | TS Lab School" description="Program sekolah dasar dengan fondasi adab, ilmu, literasi, numerasi, dan pembelajaran berbasis STEAM.">
 
-<main class="pt-20">
-<!-- Hero Section -->
-<section class="relative min-h-[819px] flex items-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover animate-float" data-alt="A serene architectural view of a modern Islamic school building featuring clean lines, light-colored stone walls, and expansive windows. The scene is bathed in the soft, warm golden light of a late afternoon sun, creating long shadows and a calm, academic atmosphere. There are no people visible, focusing instead on the textures of wood and stone within a natural landscape of olive trees and sage bushes under a clear, pale sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelRDsPoa-BJ90f1132lxx0Q9D7yb4DlBPOTVdDdpqCHTj5meUUluSrZMV1dM4TO1BQvzv1Z3lVclC5-QH1tjVK2flhW1zGo6La_pgu3uTu2LDOEhjlRaFG62P53bT434yW_VcnSzsjriRnI7WamST09BHqbDdT3cfFrPvGclgCWN7fSRV4rapPG78t-yYeUbXLsp02EF1K8sKLEj0gsYX02wIowgHuhmBUa5eTPQvclNUJUpz79r9RDotQYv7PPln-yBEjiRMz1MZjg">
-<div class="absolute inset-0 hero-gradient"></div>
-<div class="absolute inset-0 islamic-pattern"></div>
-</div>
-<div class="relative z-10 container mx-auto px-gutter py-section-padding-desktop">
-<div class="max-w-2xl reveal active">
-<span class="inline-block px-4 py-1 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps mb-6 uppercase tracking-wider reveal active stagger-1">Level Pendidikan Elementary</span>
-<h1 class="font-display-lg text-display-lg text-primary mb-6 reveal active stagger-2">Elementary School Islam yang Akademik, Beradab, dan Terarah</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl reveal active stagger-3">Membangun pondasi kokoh bagi generasi masa depan melalui perpaduan keunggulan akademik, pembentukan adab islami, dan pengembangan karakter yang terukur.</p>
-<div class="flex flex-wrap gap-4 reveal active stagger-4">
-<button class="px-8 py-4 rounded-full bg-primary text-on-primary font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 animate-pulse-subtle">
-                            Daftar Sekarang
-                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</button>
-<button class="px-8 py-4 rounded-full bg-secondary text-on-secondary font-bold flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 hover:bg-secondary/90">
-                            Kurikulum Kami
-                            <span class="material-symbols-outlined" data-icon="description">description</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Profil Singkat Section -->
-<section class="bg-surface py-section-padding-desktop reveal-section">
-<div class="container mx-auto px-gutter">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="relative reveal stagger-1 active">
-<div class="aspect-square rounded-lg overflow-hidden shadow-2xl relative z-10">
-<img class="w-full h-full object-cover" data-alt="A beautifully designed interior of a modern library for children, emphasizing natural wood materials and soft sage green accents. The space is filled with high-quality educational books neatly arranged on open shelves. Soft, diffused daylight enters through large windows, highlighting the clean, organized, and disciplined environment. No people are present, conveying a peaceful and focused academic setting with a minimalist Islamic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZuChi7pL6w496wl2_Wz7i5dJMBcrV9agFkbSdAVNYa21Dvk3AJPEVX-A_Dayxm547DG7CHfq9JUZqMKYTV2Ad-q3_LGRMRf5mItyBB8bs880PFFOgJAyrjXWGAPyCm471CoZY6_701Z1RKIe5tdOYGow2ILI9YI_maCVvRHeFoPi4i-yg4jBhAdMp38QyyHJeX7E55njOBfc3irWFGqZx4isvjvCec-Jcf5Tersf-mOe6lRXlqHX2g4Uq7UrYveSQ8m5TpjPqOm-w2g">
-</div>
-<div class="absolute -bottom-8 -right-8 w-64 h-64 bg-primary-fixed rounded-lg -z-10 opacity-30"></div>
-<div class="absolute -top-8 -left-8 islamic-pattern w-full h-full -z-10"></div>
-</div>
-<div class="reveal stagger-2 active">
-<h2 class="font-headline-md text-headline-md text-primary mb-6">Pondasi Akademik dan Keislaman yang Seimbang</h2>
-<div class="space-y-6 text-on-surface-variant">
-<p class="font-body-lg text-body-lg leading-relaxed">
-                                Di Tarbiyah Sunnah Lab School, pendidikan dasar adalah masa krusial untuk menanamkan kecintaan pada ilmu dan ketaatan kepada Sang Pencipta. Kami menghadirkan lingkungan belajar yang disiplin namun penuh kasih sayang.
-                            </p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-<div class="p-6 bg-surface-container-low rounded-DEFAULT border border-outline-variant hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="menu_book">menu_book</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Fokus Akademik</h3>
-<p class="font-body-md text-body-md">Kurikulum terstruktur yang menekankan literasi, numerasi, dan logika berpikir kritis sejak dini.</p>
-</div>
-<div class="p-6 bg-surface-container-low rounded-DEFAULT border border-outline-variant hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="auto_awesome">auto_awesome</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Nilai Adab</h3>
-<p class="font-body-md text-body-md">Pembiasaan adab harian sesuai Sunnah sebagai landasan interaksi dan tanggung jawab sosial.</p>
-</div>
-<div class="p-6 bg-surface-container-low rounded-DEFAULT border border-outline-variant hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="mosque">mosque</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Pondasi Tauhid</h3>
-<p class="font-body-md text-body-md">Menanamkan keyakinan yang lurus kepada Allah dan Rasul-Nya sebagai dasar utama dalam setiap aspek kehidupan anak.</p>
-</div>
-<div class="p-6 bg-surface-container-low rounded-DEFAULT border border-outline-variant hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="school">school</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Karakter Penuntut Ilmu</h3>
-<p class="font-body-md text-body-md">Membangun semangat belajar, kegigihan, serta rasa hormat terhadap ilmu dan ulama sejak dini.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Program Elementary (Bento Grid) -->
-<section class="bg-surface-container-lowest py-section-padding-desktop relative overflow-hidden reveal-section">
-<div class="container mx-auto px-gutter relative z-10">
-<div class="text-center max-w-3xl mx-auto mb-16 reveal stagger-1 active">
-<h2 class="font-headline-md text-headline-md text-primary mb-4">Program Unggulan Elementary</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Kurikulum komprehensif yang dirancang untuk mengoptimalkan potensi Fitra anak secara holistik.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-<!-- Al-Qur'an -->
-<div class="md:col-span-8 bg-surface-container-high rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group border border-outline-variant/30 overflow-hidden relative reveal stagger-2 active">
-<div class="flex flex-col md:flex-row gap-8 items-center">
-<div class="flex-1">
-<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="history_edu">history_edu</span>
-<h3 class="font-headline-md text-headline-md text-primary mb-3">Al-Qur'an (Tahsin &amp; Hafalan)</h3>
-<p class="text-on-surface-variant mb-4">Program intensif perbaikan bacaan (Tahsin) dan hafalan sesuai dengan kemampuan individual siswa, dipandu oleh muallim yang berkompeten.</p>
-<ul class="space-y-2 text-on-surface-variant font-medium">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> Tajwid Standar Internasional</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle">check_circle</span> Target Hafalan Terukur</li>
-</ul>
-</div>
-<div class="w-full md:w-64 h-48 bg-primary/10 rounded-lg flex items-center justify-center font-accent-arabic text-primary text-4xl animate-float">رياضة اللسان</div>
-</div>
-</div>
-<!-- Islamic Studies -->
-<div class="md:col-span-4 bg-primary text-on-primary rounded-lg p-8 flex flex-col justify-between hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-primary-container reveal stagger-3 active">
-<div>
-<span class="material-symbols-outlined text-on-primary-container text-4xl mb-4" data-icon="mosque">mosque</span>
-<h3 class="font-headline-sm text-headline-sm mb-3">Islamic Studies</h3>
-<p class="opacity-90">Penanaman aqidah shahihah, ibadah praktis sesuai Sunnah, dan sirah nabawiyah sebagai teladan hidup.</p>
-</div>
-<div class="mt-6">
-<span class="font-accent-arabic opacity-60">العلم قبل القول والعمل</span>
-</div>
-</div>
-<!-- Core Academics -->
-<div class="md:col-span-4 bg-surface-container rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-1 active">
-<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="calculate">calculate</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Core Academics</h3>
-<p class="text-on-surface-variant">Penguasaan literasi mendalam dan numerasi kuat melalui metode belajar yang logis dan menyenangkan.</p>
-</div>
-<!-- Languages -->
-<div class="md:col-span-4 bg-secondary-fixed text-on-secondary-fixed rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-secondary-container reveal stagger-2 active">
-<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="language">language</span>
-<h3 class="font-headline-sm text-headline-sm mb-3">Languages</h3>
-<p class="opacity-80">Pengenalan Bahasa Arab sebagai bahasa kunci memahami Al-Qur'an, serta Bahasa Inggris untuk komunikasi global.</p>
-</div>
-<!-- Life Skills -->
-<div class="md:col-span-4 bg-surface-container-high rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-3 active">
-<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="psychology">psychology</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Character &amp; Life Skills</h3>
-<p class="text-on-surface-variant">Melatih kemandirian, tanggung jawab atas diri sendiri, serta keterampilan praktis kehidupan sehari-hari.</p>
-</div>
-<div class="md:col-span-4 bg-surface-container-high rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-1 active">
-<span class="material-symbols-outlined text-primary text-4xl mb-4">science</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Islamic Science (Sains Islami)</h3>
-<p class="text-on-surface-variant">Integrasi pengamatan ilmiah dengan pemahaman spiritual terhadap alam semesta sebagai ciptaan Allah.</p>
-</div>
-<div class="md:col-span-4 bg-surface-container rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-2 active">
-<span class="material-symbols-outlined text-secondary text-4xl mb-4">rocket_launch</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">21st Century Skills</h3>
-<p class="text-on-surface-variant">Berpikir kritis, kreativitas, kolaborasi, dan komunikasi untuk mempersiapkan siswa menghadapi tantangan masa depan.</p>
-</div>
-<div class="md:col-span-4 bg-surface-container-high rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-3 active">
-<span class="material-symbols-outlined text-primary text-4xl mb-4">groups</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Differentiated Learning</h3>
-<p class="text-on-surface-variant">Mengenali dan beradaptasi dengan kebutuhan unik, minat, dan gaya belajar setiap siswa secara individual.</p>
-</div>
-<div class="md:col-span-4 bg-secondary-fixed text-on-secondary-fixed rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-secondary-container reveal stagger-1 active">
-<span class="material-symbols-outlined text-secondary text-4xl mb-4">model_training</span>
-<h3 class="font-headline-sm text-headline-sm mb-3">Deep Learning</h3>
-<p class="opacity-80">Pemahaman mendalam tentang konsep daripada sekadar menghafal, mendorong aplikasi di dunia nyata.</p>
-</div><div class="md:col-span-4 bg-surface-container rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-2 active">
-<span class="material-symbols-outlined text-secondary text-4xl mb-4">leaderboard</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Leadership &amp; Kemandirian</h3>
-<p class="text-on-surface-variant">Fokus pada pembentukan karakter, tanggung jawab, dan keterampilan memimpin dalam tim sejak dini.</p>
-</div><div class="md:col-span-4 bg-surface-container-high rounded-lg p-8 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-outline-variant/50 reveal stagger-3 active">
-<span class="material-symbols-outlined text-primary text-4xl mb-4">trending_up</span>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-3">Persiapan Jenjang Selanjutnya</h3>
-<p class="text-on-surface-variant">Kesiapan akademik dan mental yang matang untuk transisi menuju pendidikan menengah (SMP/Junior High).</p>
-</div></div>
-</div>
-<div class="absolute top-0 right-0 w-1/3 h-full islamic-pattern opacity-5 -z-0"></div>
-</section><section class="bg-surface py-section-padding-desktop reveal-section">
-<div class="container mx-auto px-gutter">
-<div class="text-center max-w-3xl mx-auto mb-16 reveal stagger-1 active">
-<h2 class="font-headline-md text-headline-md text-primary mb-4">Detail Kurikulum &amp; Program</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Pendekatan holistik yang mengintegrasikan ilmu syar'i dan ilmu umum secara harmonis.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-1 active">
-<h4 class="font-bold text-xl text-primary mb-3">Al-Qur'an</h4>
-<p class="text-on-surface-variant">Fokus pada Tahsin (perbaikan bacaan), Hafalan sesuai kemampuan, dan penanaman Adab terhadap Al-Qur'an.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-2 active">
-<h4 class="font-bold text-xl text-primary mb-3">Islamic Studies</h4>
-<p class="text-on-surface-variant">Penanaman dasar Tauhid, Adab harian, Fiqih ibadah praktis, dan Sirah Nabawiyah.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-3 active">
-<h4 class="font-bold text-xl text-primary mb-3">Akademik Dasar</h4>
-<p class="text-on-surface-variant">Penguatan Literasi Bahasa, Numerasi Matematika, dan Eksplorasi Sains Dasar yang logis.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-1 active">
-<h4 class="font-bold text-xl text-primary mb-3">Multi-Bahasa</h4>
-<p class="text-on-surface-variant">Pengenalan Bahasa Indonesia yang baku, Bahasa Arab (kunci ilmu), Inggris, dan kearifan lokal Bahasa Sunda.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-2 active">
-<h4 class="font-bold text-xl text-primary mb-3">Karakter &amp; Adab</h4>
-<p class="text-on-surface-variant">Pembentukan karakter mandiri, tanggung jawab atas diri sendiri, dan kedisiplinan yang Islami.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-3 active">
-<h4 class="font-bold text-xl text-primary mb-3">Project &amp; Life Skill</h4>
-<p class="text-on-surface-variant">Keterampilan praktis kehidupan sehari-hari dan pembelajaran berbasis proyek yang kreatif.</p>
-</div>
-<div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-1 active">
-<h4 class="font-bold text-xl text-primary mb-3">Leadership &amp; Kemandirian</h4>
-<p class="text-on-surface-variant">Program pengembangan kepemimpinan melalui tugas tanggung jawab harian dan proyek kolaboratif.</p>
-</div><div class="p-8 bg-surface-container-low rounded-lg border-l-4 border-secondary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal stagger-2 active">
-<h4 class="font-bold text-xl text-primary mb-3">Persiapan Jenjang Selanjutnya</h4>
-<p class="text-on-surface-variant">Pengayaan materi ujian, orientasi akademik, dan pembekalan mental untuk menghadapi tantangan di tingkat SMP.</p>
-</div></div>
-</div>
-</section>
-<!-- Quote/Call to Action -->
-<section class="bg-surface-container-lowest py-section-padding-desktop reveal-section">
-<div class="container mx-auto px-gutter max-w-4xl">
-<h2 class="font-headline-md text-headline-md text-primary mb-12 text-center reveal stagger-1 active">FAQ Elementary</h2>
-<div class="space-y-4">
-<details class="group bg-surface-container p-6 rounded-lg hover:bg-surface-container-high transition-colors reveal stagger-1 active">
-<summary class="list-none flex justify-between items-center cursor-pointer font-bold text-primary">
-                    Berapa target hafalan Al-Qur'an di tingkat Elementary?
-                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300">expand_more</span>
-</summary>
-<p class="mt-4 text-on-surface-variant overflow-hidden">Target utama adalah penguasaan Tahsin yang benar sesuai kaidah tajwid, dengan target hafalan minimal 2-3 juz (Juz 30, 29, dan pilihan) yang mutqin.</p>
-</details>
-<details class="group bg-surface-container p-6 rounded-lg hover:bg-surface-container-high transition-colors reveal stagger-2 active">
-<summary class="list-none flex justify-between items-center cursor-pointer font-bold text-primary">
-                    Apakah ada program tambahan bagi siswa yang tertinggal pelajaran?
-                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300">expand_more</span>
-</summary>
-<p class="mt-4 text-on-surface-variant overflow-hidden">Ya, kami memiliki tim bimbingan khusus untuk membantu siswa yang memerlukan penguatan pada materi literasi dan numerasi dasar.</p>
-</details>
-<details class="group bg-surface-container p-6 rounded-lg hover:bg-surface-container-high transition-colors reveal stagger-3 active">
-<summary class="list-none flex justify-between items-center cursor-pointer font-bold text-primary">
-                    Bagaimana kurikulum umum (pemerintah) diterapkan?
-                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300">expand_more</span>
-</summary>
-<p class="mt-4 text-on-surface-variant overflow-hidden">Kami mengintegrasikan kurikulum nasional dengan kurikulum khas Tarbiyah Sunnah, memastikan siswa tetap kompeten dalam standar akademik nasional tanpa mengesampingkan pilar pendidikan Islam.</p>
-</details>
-</div>
-</div>
-</section><section class="py-section-padding-desktop bg-surface reveal-section">
-<div class="container mx-auto px-gutter text-center max-w-4xl reveal stagger-1 active">
-<span class="material-symbols-outlined text-primary text-6xl opacity-20 mb-8" data-icon="format_quote" data-weight="fill">format_quote</span>
-<h2 class="font-headline-md text-headline-md text-primary mb-8">Didiklah anak-anakmu sesuai dengan zamannya, karena mereka hidup bukan di zamanmu.</h2>
-<div class="flex flex-col md:flex-row items-center justify-center gap-6">
-<button class="w-full md:w-auto px-10 py-5 rounded-full bg-primary text-on-primary font-bold text-lg hover:scale-105 transition-all shadow-lg active:scale-95 animate-pulse-subtle">Konsultasi Pendaftaran</button>
-<button class="w-full md:w-auto px-10 py-5 rounded-full border-2 border-primary text-primary font-bold text-lg hover:bg-primary hover:text-on-primary transition-all active:scale-95">Unduh Brosur (PDF)</button>
-</div>
-</div>
-</section>
-</main>
-<!-- SideNavBar (WhatsApp Support) -->
-<a class="fixed bottom-8 right-8 z-[60] flex items-center justify-center animate-bounce bg-secondary text-on-secondary rounded-full h-16 w-16 shadow-lg hover:scale-110 hover:shadow-xl transition-all group" href="#">
-<span class="material-symbols-outlined" data-icon="chat">chat</span>
-<span class="absolute right-full mr-4 bg-secondary text-on-secondary px-4 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-label-caps text-label-caps">
-            HUBUNGI KAMI
+<Layout title="Elementary School (SD IT) | Tarbiyah Sunnah Lab School">
+
+  {/* =========================================================================
+      Hero Section (Academic Olive Aesthetic for Elementary)
+     ========================================================================= */}
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
+    
+    {/* Subtle Arabic Watermark Background */}
+    <div class="absolute right-0 top-1/3 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none z-0">
+      <span class="arabic-watermark text-[130px] md:text-[220px] font-normal leading-none text-tsls-olive-950" dir="rtl">
+        المَرْحَلَةُ الابْتِدَائِيَّة
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        {/* Hero Copy */}
+        <div class="lg:col-span-7 space-y-8" data-reveal>
+          
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="academic-stamp text-tsls-olive-950 bg-tsls-sage-500/20 px-3 py-1 border border-tsls-sage-500/40">
+              TSLS ELEMENTARY SCHOOL · ONSITE (SD IT KELAS 1–6)
+            </span>
+            <span class="text-xs font-mono text-tsls-wood-600 font-bold">
+              BANDUNG
+            </span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-[1.12] tracking-tight text-balance">
+            Menjaga Fitrah.<br />
+            <span class="italic font-serif font-normal text-tsls-wood-600">Mengembangkan Akal. Menumbuhkan Kemandirian.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-xl leading-relaxed text-pretty">
+            Pendidikan dasar Islam yang mengembangkan kecakapan bahasa, kemandirian belajar, nalar kritis (*critical thinking*), dan keteguhan karakter rabbani di atas fondasi Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-8 rounded-none shadow-sm')}>
+              Daftar SPMB Elementary (TSLS Hub) &rarr;
+            </a>
+            <a href="#pilar-unggulan" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-olive-950 text-tsls-olive-950 hover:bg-tsls-olive-950 hover:text-tsls-cream-50 font-bold px-8 rounded-none transition-colors')}>
+              Kenali Pilar Unggulan
+            </a>
+          </div>
+
+          {/* Key Elementary Metrics */}
+          <div class="pt-8 border-t border-tsls-olive-950/10 grid grid-cols-3 gap-4 text-left">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Al-Qur'an</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Tahsin Bersanad & Mutqin</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Kecakapan Abad 21</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Sains Islami & Leadership</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Jenjang Lanjutan</div>
+              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Kesiapan SMP / Pesantren</div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Hero Photo / Visual Frame */}
+        <div class="lg:col-span-5" data-reveal="fade-up">
+          <div class="relative p-3 bg-tsls-cream-100 border border-tsls-olive-950/20 shadow-md">
+            <div class="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200">
+              <img 
+                src="/images/kelas.png" 
+                alt="Suasana ruang belajar interaktif di Elementary TSLS" 
+                class="w-full h-full object-cover grayscale-[10%] contrast-105"
+                loading="eager"
+              />
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-tsls-olive-950/85 to-transparent p-4 text-tsls-cream-50">
+                <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block">Adab Penuntut Ilmu</span>
+                <p class="text-xs font-serif italic text-tsls-cream-100">Ilmu dipelajari untuk diamalkan dengan adab, keikhlasan, dan pembuktian nyata.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 1 — Pilar Unggulan Pendidikan Elementary (Core Excellence)
+     ========================================================================= */}
+  <section id="pilar-unggulan" class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          FOKUS KEUNGGULAN INSTITUSI
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Pilar Pendidikan Elementary TSLS
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Mengokohkan pondasi ruhiyah penuntut ilmu Al-Qur'an bersanding dengan pengembangan sains, karakter kepemimpinan, dan kemandirian hidup nyata.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        {/* 01. Al-Qur'an (Tahsin & Hafalan) */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-olive-950 border-x border-b border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between" data-reveal="fade-up">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-olive-950 text-tsls-cream-50">01</span>
+              <span class="arabic-watermark text-xs text-tsls-olive-900/60 font-semibold">{pillars[0].subtitle}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-tsls-olive-950">{pillars[0].title}</h3>
+            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+              {pillars[0].desc}
+            </p>
+          </div>
+          <div class="pt-3 border-t border-tsls-olive-950/10 text-[11px] font-semibold text-tsls-wood-700">
+            Halaqah intensif & bimbingan talaqqi bersanad
+          </div>
+        </div>
+
+        {/* 02. Character & Life Skills */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-wood-600 border-x border-b border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between" data-reveal="fade-up" style="transition-delay: 80ms">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-wood-600 text-tsls-cream-50">02</span>
+              <span class="arabic-watermark text-xs text-tsls-wood-700/60 font-semibold">{pillars[1].subtitle}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-tsls-olive-950">{pillars[1].title}</h3>
+            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+              {pillars[1].desc}
+            </p>
+          </div>
+          <div class="pt-3 border-t border-tsls-olive-950/10 text-[11px] font-semibold text-tsls-wood-700">
+            Pembiasaan adab keseharian & tanggung jawab diri
+          </div>
+        </div>
+
+        {/* 03. 21st Century Skills & Islamic Science */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-sage-600 border-x border-b border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between" data-reveal="fade-up" style="transition-delay: 160ms">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-sage-600 text-tsls-cream-50">03</span>
+              <span class="arabic-watermark text-xs text-tsls-olive-900/60 font-semibold">{pillars[2].subtitle}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-tsls-olive-950">{pillars[2].title}</h3>
+            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+              {pillars[2].desc}
+            </p>
+          </div>
+          <div class="pt-3 border-t border-tsls-olive-950/10 text-[11px] font-semibold text-tsls-wood-700">
+            Tadabbur ayat kauniyah & eksperimen ilmiah
+          </div>
+        </div>
+
+        {/* 04. Leadership & Fitrah Kemandirian */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-sand-400 border-x border-b border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between" data-reveal="fade-up">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-sand-400 text-tsls-olive-950">04</span>
+              <span class="arabic-watermark text-xs text-tsls-wood-700/60 font-semibold">{pillars[3].subtitle}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-tsls-olive-950">{pillars[3].title}</h3>
+            <div class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed space-y-2">
+              <p>Fokus pada pembentukan karakter, kepemimpinan diri (*self-leadership*), dan tanggung jawab moral sesuai fitrah:</p>
+              <ul class="space-y-1.5 pl-0.5 text-[11px] sm:text-xs">
+                <li class="flex items-start gap-1.5">
+                  <strong class="text-tsls-olive-950 font-bold shrink-0">• Ikhwan:</strong>
+                  <span>Jiwa kepemimpinan (*qawwamah*), keberanian membela kebenaran, dan tanggung jawab pelindung.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <strong class="text-tsls-wood-700 font-bold shrink-0">• Akhwat:</strong>
+                  <span>Rasa malu yang mulia (*haya'*), kecakapan mengelola kebaikan, dan kesiapan madrasah peradaban (*ummu warabbatul bayt*).</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-tsls-olive-950/10 text-[11px] font-semibold text-tsls-wood-700">
+            Qawwamah bagi ikhwan & Haya' peradaban bagi akhwat
+          </div>
+        </div>
+
+        {/* 05. Persiapan Jenjang Selanjutnya */}
+        <div class="p-8 bg-tsls-cream-50 border-t-4 border-tsls-olive-800 border-x border-b border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between lg:col-span-2" data-reveal="fade-up" style="transition-delay: 80ms">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-olive-800 text-tsls-cream-50">05 · TRANSISI</span>
+              <span class="arabic-watermark text-xs text-tsls-olive-900/60 font-semibold">{pillars[4].subtitle}</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-tsls-olive-950">{pillars[4].title}</h3>
+            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed max-w-2xl">
+              {pillars[4].desc}
+            </p>
+          </div>
+          <div class="pt-3 border-t border-tsls-olive-950/10 text-[11px] font-semibold text-tsls-olive-800">
+            Kesiapan akademik, nalar riset, dan kemandirian pondok pesantren / SMP
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 2 — Enam Arah Perkembangan Murid Elementary (Radial Map)
+     ========================================================================= */}
+  <section id="enam-arah" class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          PETA TAHAP TUMBUH KEMBANG
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Enam Arah Perkembangan Murid Elementary
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Pendidikan dasar di TSLS tidak hanya berfokus pada penguasaan nilai ujian, melainkan menyelaraskan seluruh dimensi akal, ruhiyah, dan jasmani anak.
+        </p>
+      </div>
+
+      <div data-reveal="fade-up">
+        <WholeChildMap />
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 3 — Alur Kecerdasan Bahasa & Literasi (Language Spiral)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          KECERDASAN BAHASA & LITERASI
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Bahasa Sebagai Gerbang Pemahaman & Nalar
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Sebelum anak dapat berpikir kritis dan menulis karya bermutu, mereka harus melalui tangga bahasa yang kokoh dari mendengar secara beradab hingga berani menyampaikan gagasan (*Al-Bayan*).
+        </p>
+      </div>
+
+      <div data-reveal="fade-up">
+        <LanguageSpiral />
+      </div>
+
+      {/* Multilingual Pillar Cards */}
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6" data-reveal="fade-up">
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-olive-900">BAHASA INDONESIA</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Literasi Pokok</h4>
+          <p class="text-xs text-tsls-olive-950/75 leading-relaxed">Tata bahasa baku, apresiasi sastra bermoral, dan kemampuan menulis naratif ilmiah.</p>
+        </div>
+
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-wood-600">BAHASA ARAB</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Bahasa Qur'ani</h4>
+          <p class="text-xs text-tsls-olive-950/75 leading-relaxed">Pengenalan kosa kata Al-Qur'an, nahwu-sharaf aplikatif, dan percakapan tematik harian.</p>
+        </div>
+
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-sage-600">BAHASA INGGRIS</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Komunikasi Global</h4>
+          <p class="text-xs text-tsls-olive-950/75 leading-relaxed">Keterampilan membaca teks sains, menyimak instruksi, dan presentasi lisan terarah.</p>
+        </div>
+
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+          <div class="text-xs font-mono font-bold text-tsls-sand-500">BAHASA SUNDA</div>
+          <h4 class="font-display font-bold text-base text-tsls-olive-950">Kearifan Lokal</h4>
+          <p class="text-xs text-tsls-olive-950/75 leading-relaxed">Undak usuk basa Sunda yang sarat adab kesopanan, tata krama, dan budaya luhur daerah.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 4 — Critical Thinking & Pembelajaran Mendalam (Deep Learning)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          PARADIGMA BERPIKIR
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Critical Thinking Berbasis Adab & Bukti
+        </h2>
+      </div>
+
+      {/* Definition Manifesto Card */}
+      <div class="p-8 md:p-12 bg-tsls-cream-100 border-l-8 border-tsls-olive-950 border-y border-r border-tsls-olive-950/15 shadow-sm max-w-4xl mx-auto space-y-4" data-reveal="fade-up">
+        <span class="text-xs font-mono font-bold text-tsls-wood-600 tracking-widest uppercase block">
+          DEFINISI CRITICAL THINKING DI TSLS
         </span>
-</a>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Scroll Reveal logic using IntersectionObserver
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        <blockquote class="font-serif italic text-lg sm:text-xl text-tsls-olive-950 leading-relaxed text-pretty">
+          "Kemampuan menggunakan informasi secara cermat, membedakan fakta dan dugaan, mencari alasan dan bukti (*hujjah*), menemukan hubungan sebab-akibat, serta mengambil kesimpulan secara bertanggung jawab di atas bimbingan adab Islam."
+        </blockquote>
+      </div>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Find all reveal elements within this section
-                    const reveals = entry.target.querySelectorAll('.reveal');
-                    if (reveals.length > 0) {
-                        reveals.forEach(el => el.classList.add('active'));
-                    } else if (entry.target.classList.contains('reveal')) {
-                        entry.target.classList.add('active');
-                    }
-                    // Optional: Unobserve after revealing to only animate once
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections containing reveals, or individual reveals not in a section
-        document.querySelectorAll('.reveal-section').forEach(section => {
-            observer.observe(section);
-        });
+      {/* 3 Pillars of Deep Learning */}
+      <div class="grid md:grid-cols-3 gap-8">
         
-        // Header blur on scroll
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.classList.add('shadow-md');
-                header.classList.replace('bg-background/95', 'bg-background/98');
-            } else {
-                header.classList.remove('shadow-md');
-                header.classList.replace('bg-background/98', 'bg-background/95');
-            }
-        });
-    });
-</script>
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-3" data-reveal="fade-up">
+          <div class="w-10 h-10 rounded-full bg-tsls-olive-950 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            01
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Berkesadaran (Conscious)</h4>
+          <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+            Anak memahami mengapa suatu ilmu harus dipelajari dan apa kemanfaatannya bagi dirinya, sesama, dan agama. Tidak ada hafalan kosong tanpa makna.
+          </p>
+        </div>
 
-<style is:global>
-    .hero-gradient {
-        background: linear-gradient(135deg, rgba(253, 249, 238, 0.9) 0%, rgba(247, 243, 232, 0.8) 100%);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-3" data-reveal="fade-up" style="transition-delay: 100ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-wood-600 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            02
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bermakna (Meaningful)</h4>
+          <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+            Setiap konsep matematika, sains, dan bahasa dihubungkan langsung dengan fenomena alam ciptaan Allah (*ayat kauniyah*) dan kehidupan nyata anak.
+          </p>
+        </div>
+
+        <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-3" data-reveal="fade-up" style="transition-delay: 200ms">
+          <div class="w-10 h-10 rounded-full bg-tsls-sage-600 text-tsls-cream-50 font-bold flex items-center justify-center font-mono text-sm">
+            03
+          </div>
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Menggembirakan (Joyful)</h4>
+          <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+            Pembelajaran mengalir dalam dialog majelis yang hangat, eksperimen lapangan yang seru, tanpa intimidasi sistem ranking yang memicu permusuhan.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 5 — Ritme Keseharian di Elementary (A Day at School)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          RITME HARI SEKOLAH
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Keseharian Murid di Elementary TSLS
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Jadwal harian dirancang seimbang antara asupan ruhiyah, pengasahan logika intelektual, serta gerak jasmani yang menyegarkan.
+        </p>
+      </div>
+
+      <div class="space-y-4 max-w-3xl mx-auto" data-reveal="fade-up">
         
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-pulse-subtle {
-            animation: pulse-subtle 3s infinite;
-        }
-        @keyframes pulse-subtle {
-            0% { box-shadow: 0 0 0 0 rgba(41, 55, 26, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(41, 55, 26, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(41, 55, 26, 0); }
-        }
-    }
-</style>
+        {/* Step 1: Circle Time & Dzikir Pagi */}
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 bg-tsls-cream-200 text-tsls-olive-900 shrink-0">07.15 - 07.45</span>
+            <div>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">Circle Time & Dzikir Pagi</h4>
+              <p class="text-xs text-tsls-olive-950/75">Kedatangan beradab, lingkaran pagi (*circle time*), dzikir ma'tsurat, dan pengkondisian hati menyambut ilmu.</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-tsls-wood-600 font-bold uppercase tracking-wider shrink-0">Pembuka Hari</span>
+        </div>
+
+        {/* Step 2: Majelis Qur'an */}
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 bg-tsls-sage-500/20 text-tsls-olive-900 shrink-0">07.45 - 09.15</span>
+            <div>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">Majelis Qur'an: Tahsin & Tahfiz</h4>
+              <p class="text-xs text-tsls-olive-950/75">Halaqah Al-Qur'an intensif dalam kelompok kecil dengan bimbingan tajwid (*tahsin*) bersanad dan setoran hafalan.</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-tsls-sage-600 font-bold uppercase tracking-wider shrink-0">Al-Qur'an</span>
+        </div>
+
+        {/* Step 3: Snack & Istirahat */}
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 bg-tsls-cream-200 text-tsls-olive-900 shrink-0">09.15 - 09.45</span>
+            <div>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">Snack Sehat & Istirahat Pagi</h4>
+              <p class="text-xs text-tsls-olive-950/75">Menikmati kudapan bergizi, mempraktikkan adab makan dan minum, serta menyegarkan fisik.</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-tsls-wood-600 font-bold uppercase tracking-wider shrink-0">Istirahat</span>
+        </div>
+
+        {/* Step 4: Pembelajaran Sesuai Jadwal Kelas */}
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 bg-tsls-cream-200 text-tsls-olive-900 shrink-0">09.45 - 11.45</span>
+            <div>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">Pembelajaran Sesuai Jadwal Kelas</h4>
+              <p class="text-xs text-tsls-olive-950/75">Pendalaman mata pelajaran tematik & akademik (Bahasa, Matematika Bernalar, Sains Islami, Karakter & Life Skills).</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-tsls-wood-600 font-bold uppercase tracking-wider shrink-0">Akademik</span>
+        </div>
+
+        {/* Step 5: Shalat Zhuhur di Masjid & Makan Siang */}
+        <div class="p-5 bg-tsls-cream-50 border border-tsls-olive-950/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-mono font-bold px-2.5 py-1 bg-tsls-sage-500/20 text-tsls-olive-900 shrink-0">11.45 - 13.00</span>
+            <div>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">Shalat Zhuhur di Masjid & Makan Siang</h4>
+              <p class="text-xs text-tsls-olive-950/75">Shalat berjamaah di masjid khusus ikhwan (akhwat di mushalla sekolah), makan siang bersama beradab, dan rehat sejenak.</p>
+            </div>
+          </div>
+          <span class="text-[10px] font-mono text-tsls-sage-600 font-bold uppercase tracking-wider shrink-0">Ibadah & Makan</span>
+        </div>
+
+        {/* Step 6: Waktu Kepulangan Berjenjang (Fase A vs Fase B) */}
+        <div class="p-6 bg-tsls-cream-50 border-2 border-tsls-olive-950 shadow-sm space-y-4">
+          <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2">
+            <span class="text-xs font-mono font-bold text-tsls-olive-950 tracking-wider uppercase">JADWAL KEPULANGAN BERJENJANG</span>
+            <span class="text-[11px] font-mono text-tsls-wood-600 font-bold">SESUAI FASE KELAS</span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 pt-1">
+            <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-tsls-wood-700">FASE A (KELAS 1–2)</span>
+                <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-wood-600 text-tsls-cream-50">13.30 WIB</span>
+              </div>
+              <h5 class="font-display font-bold text-sm text-tsls-olive-950">Kepulangan Fase A</h5>
+              <p class="text-[11px] text-tsls-olive-950/75 leading-relaxed">
+                Ritme kepulangan lebih awal disesuaikan dengan transisi stamina dan daya konsentrasi ananda di fase awal SD.
+              </p>
+            </div>
+
+            <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-tsls-olive-900">FASE B & C (KELAS 3–6)</span>
+                <span class="text-xs font-mono font-bold px-2 py-0.5 bg-tsls-olive-950 text-tsls-cream-50">14.30 WIB</span>
+              </div>
+              <h5 class="font-display font-bold text-sm text-tsls-olive-950">Kepulangan Fase B & C</h5>
+              <p class="text-[11px] text-tsls-olive-950/75 leading-relaxed">
+                Melanjutkan sesi pendalaman proyek terpadu, riset sains, atau pembiasaan adab sebelum kepulangan pada 14.30 WIB.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 6 — Sistem Asesmen Autentik (Assessment for Growth)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="grid lg:grid-cols-12 gap-12 items-center" data-reveal>
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+            EVALUASI PERKEMBANGAN
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950 leading-tight">
+            Asesmen Autentik: Menilai Proses & Pertumbuhan Nyata
+          </h2>
+          <p class="text-base text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Kami meyakini bahwa capaian anak tidak bisa direduksi hanya menjadi selembar angka ujian akhir. Di TSLS, asesmen ditujukan untuk memahami keunikan proses belajar ananda dan memandu langkah perbaikan secara berkelanjutan.
+          </p>
+        </div>
+
+        <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+          <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-2">
+            <h4 class="font-display font-bold text-base text-tsls-olive-950">Observasi Karakter & Adab</h4>
+            <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+              Pencatatan konsistensi shalat, kejujuran, adab berbicara, kepedulian terhadap teman, dan kemandirian menjaga barang pribadi.
+            </p>
+          </div>
+
+          <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-2">
+            <h4 class="font-display font-bold text-base text-tsls-olive-950">Portofolio Karya & Riset</h4>
+            <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+              Kumpulan proyek ilmiah, karangan cerita, hasil uji sains, dan catatan refleksi yang dibuat oleh murid sepanjang semester.
+            </p>
+          </div>
+
+          <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-2">
+            <h4 class="font-display font-bold text-base text-tsls-olive-950">Ujian Pemahaman Konseptual</h4>
+            <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+              Tanya jawab lisan dan pemecahan masalah yang menguji nalar mendalam, bukan sekadar menghafal pola jawaban pilihan ganda.
+            </p>
+          </div>
+
+          <div class="p-6 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-2">
+            <h4 class="font-display font-bold text-base text-tsls-olive-950">Laporan Naratif Deskriptif</h4>
+            <p class="text-xs text-tsls-olive-950/80 leading-relaxed">
+              Umpan balik tertulis mendalam kepada orang tua yang memetakan kekuatan, area tantangan, dan rekomendasi stimulasi di rumah.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 7 — FAQ Khusus Elementary
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-4" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          TANYA JAWAB
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
+          Pertanyaan Umum tentang Elementary TSLS
+        </h2>
+      </div>
+
+      <div class="divide-y divide-tsls-olive-950/15 border-y border-tsls-olive-950/15" data-reveal="fade-up">
+        
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Berapa target hafalan Al-Qur'an murid selama di Elementary?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Target hafalan berjenjang dirancang realistis (2–5 Juz selama 6 tahun) dengan memprioritaskan kesempurnaan makhraj huruf, hukum tajwid, pemahaman makna surat, serta pembiasaan shalat dengan bacaan yang mutqin bersama asatidzah bersanad.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bagaimana kebijakan pekerjaan rumah (PR) di Elementary TSLS?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Kami membatasi PR akademis yang memberatkan di rumah. Waktu di rumah diprioritaskan untuk penguatan hafalan Qur'an, interaksi hangat bersama orang tua, membantu pekerjaan rumah tangga, dan istirahat yang cukup.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Apakah menerima murid pindahan dari sekolah lain?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Penerimaan murid pindahan dibuka berkala berdasarkan ketersediaan kuota kelas dan melalui proses asesmen kesiapan belajar serta keselarasan visi pendidikan bersama orang tua.
+          </p>
+        </div>
+
+        <div class="py-8 space-y-2">
+          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bagaimana kesiapan lulusan Elementary TSLS ke jenjang berikutnya?</h4>
+          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+            Lulusan Elementary TSLS dibekali kemandirian adab, kecakapan bahasa (Arab, Inggris, Indonesia), hafalan Al-Qur'an bersanad, dan daya pikir kritis yang siap melanjutkan ke pondok pesantren salaf, KMI, maupun SMP umum unggulan.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="text-center pt-4" data-reveal>
+        <a href="/faq" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
+          Lihat Semua FAQ Sekolah &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 9 — CTA SPMB Elementary
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 text-center">
+    <div class="max-w-3xl mx-auto px-4 space-y-8" data-reveal>
+      
+      <span class="text-xs font-mono uppercase tracking-widest text-tsls-sand-400 font-bold block">
+        PENERIMAAN SISWA BARU ELEMENTARY SCHOOL (SD IT)
+      </span>
+
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-tsls-cream-50 leading-tight">
+        Bangun Fondasi Adab & Akal Ananda di Elementary TSLS
+      </h2>
+
+      <p class="text-base sm:text-lg text-tsls-cream-100/80 leading-relaxed text-pretty">
+        Beri ananda pengalaman belajar yang bermakna, menumbuhkan nalar kritis, dan menanamkan tauhid yang kokoh di lingkungan belajar islami.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-10 rounded-none shadow-md')}>
+          Daftar SPMB Elementary Online
+        </a>
+        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-10 rounded-none transition-colors')}>
+          Konsultasi & Kunjungan
+        </a>
+      </div>
+
+    </div>
+  </section>
+
 </Layout>

@@ -1,0 +1,124 @@
+---
+// Diagram 7 — Home-School Partnership (Triad Architecture without emojis)
+---
+
+<div class="home-school-triad py-8 max-w-4xl mx-auto" data-reveal>
+  <div class="relative">
+    
+    {/* SVG Triangular Bridge Connecting Apex (Anak) with Base (Rumah & Sekolah) */}
+    <svg class="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 800 420" preserveAspectRatio="none">
+      {/* Triangle connecting lines */}
+      <line x1="400" y1="65" x2="190" y2="180" stroke="rgba(37, 53, 31, 0.3)" stroke-width="2" stroke-dasharray="4 4" class="triad-line" />
+      <line x1="400" y1="65" x2="610" y2="180" stroke="rgba(37, 53, 31, 0.3)" stroke-width="2" stroke-dasharray="4 4" class="triad-line" />
+      <line x1="260" y1="280" x2="540" y2="280" stroke="rgba(138, 90, 50, 0.4)" stroke-width="2" class="triad-line-horizontal" />
+    </svg>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+      
+      {/* Top Apex Node: ANAK */}
+      <div class="md:col-span-2 flex flex-col items-center justify-center">
+        <div class="px-8 py-3 bg-tsls-olive-950 text-tsls-cream-50 border-2 border-tsls-sand-400 shadow-lg text-center flex flex-col items-center">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-tsls-sand-400">Pusat Amanah Pendidikan</span>
+          <span class="font-display font-bold text-xl md:text-2xl tracking-wide">ANAK</span>
+        </div>
+      </div>
+
+      {/* Left Pillar: RUMAH */}
+      <div class="p-6 md:p-8 bg-tsls-cream-50 border border-tsls-olive-950/20 hover:border-tsls-wood-600 transition-colors shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-tsls-olive-950/10 mb-4">
+            <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600">Matra 01</span>
+            <span class="arabic-watermark text-base text-tsls-olive-900/60">بَيْتٌ</span>
+          </div>
+          
+          <h4 class="font-display font-bold text-2xl text-tsls-olive-950 mb-1">RUMAH</h4>
+          <p class="text-xs font-bold uppercase tracking-wider text-tsls-olive-700 mb-6">Pendidikan Pertama & Utama</p>
+          
+          <div class="space-y-3">
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Teladan Orang Tua</span>
+              <span class="text-xs text-tsls-olive-950/75">Praktek ibadah nyata, adab berkomunikasi, dan kesalehan personal.</span>
+            </div>
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Rutinitas Keseharian</span>
+              <span class="text-xs text-tsls-olive-950/75">Ritme tidur, makan beradab, tilawah Al-Qur'an, dan disiplin waktu.</span>
+            </div>
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Relasi & Kehangatan</span>
+              <span class="text-xs text-tsls-olive-950/75">Rasa aman emosional, penerimaan tanpa syarat, dan dialog terbuka.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-3 border-t border-tsls-olive-950/10 text-[11px] text-tsls-olive-950/70 italic text-center">
+          "Menanamkan akar keimanan & fitrah kasih sayang"
+        </div>
+      </div>
+
+      {/* Right Pillar: SEKOLAH */}
+      <div class="p-6 md:p-8 bg-tsls-cream-50 border border-tsls-olive-950/20 hover:border-tsls-wood-600 transition-colors shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-tsls-olive-950/10 mb-4">
+            <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600">Matra 02</span>
+            <span class="arabic-watermark text-base text-tsls-olive-900/60">مَدْرَسَة</span>
+          </div>
+          
+          <h4 class="font-display font-bold text-2xl text-tsls-olive-950 mb-1">SEKOLAH</h4>
+          <p class="text-xs font-bold uppercase tracking-wider text-tsls-olive-700 mb-6">Mitra Penunjang Tumbuh Kembang</p>
+          
+          <div class="space-y-3">
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Ilmu & Kurikulum Terpadu</span>
+              <span class="text-xs text-tsls-olive-950/75">Struktur pembelajaran berbasis fitrah, tahsin, tahfiz, dan sains.</span>
+            </div>
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Lingkungan Terarah</span>
+              <span class="text-xs text-tsls-olive-950/75">Interaksi sosial yang dipandu adab dan suasana belajar yang tenang.</span>
+            </div>
+            <div class="p-3 bg-tsls-cream-100/70 border border-tsls-olive-950/10">
+              <span class="text-xs font-bold text-tsls-olive-950 block mb-0.5">Pendampingan Profesional</span>
+              <span class="text-xs text-tsls-olive-950/75">Guru sebagai murabbi dan fasilitator tahap perkembangan anak.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-3 border-t border-tsls-olive-950/10 text-[11px] text-tsls-olive-950/70 italic text-center">
+          "Menumbuhkan cabang ilmu, adab majelis & ketangkasan"
+        </div>
+      </div>
+
+      {/* Bottom Synergy Foundation Bar */}
+      <div class="md:col-span-2 p-4 md:p-5 bg-tsls-olive-950 text-tsls-cream-50 border border-tsls-olive-950 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-tsls-sand-400 shrink-0"></span>
+          <span class="text-xs md:text-sm font-semibold text-tsls-cream-50">
+            Sinergi Searah: Pendidikan menjadi kokoh saat nilai di rumah dan di sekolah tidak saling menegasikan.
+          </span>
+        </div>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-tsls-sand-400 shrink-0 border-b border-tsls-sand-400 pb-0.5">
+          Tarbiyah Mutakamilah
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .home-school-triad .triad-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1.2s ease-out 0.2s;
+  }
+  :global(.home-school-triad.is-visible) .triad-line {
+    stroke-dashoffset: 0;
+  }
+  .home-school-triad .triad-line-horizontal {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1s ease-out 0.8s;
+  }
+  :global(.home-school-triad.is-visible) .triad-line-horizontal {
+    stroke-dashoffset: 0;
+  }
+</style>

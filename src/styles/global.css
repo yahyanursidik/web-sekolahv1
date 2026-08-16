@@ -228,7 +228,7 @@
   }
 
   img {
-    background: var(--color-paper-3);
+    background: transparent;
   }
 
   a,
@@ -592,3 +592,54 @@
     transition-property: opacity, color, background-color !important;
   }
 }
+
+/* ==========================================================================
+   Natural Islamic Academic Animation & Reveal System
+   ========================================================================== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal="fade-up"] {
+  transform: translateY(24px);
+}
+
+[data-reveal="fade-right"] {
+  transform: translateX(-24px);
+}
+
+[data-reveal="scale-y"] {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scaleY(1);
+}
+
+/* Watermark & Academic Theme Elements */
+.arabic-watermark {
+  font-family: "Amiri", "Traditional Arabic", serif;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1.2;
+}
+
+.academic-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  font-weight: 800;
+}
+
+.natural-paper-border {
+  border: 1px solid rgba(41, 55, 26, 0.12);
+}
+

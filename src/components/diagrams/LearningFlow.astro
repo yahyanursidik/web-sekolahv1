@@ -1,0 +1,95 @@
+---
+// Diagram: Learning Flow (Natural Islamic Academic 7-Step Spiral)
+interface Step {
+  num: string;
+  arabic: string;
+  text: string;
+  sub: string;
+  isFinal?: boolean;
+}
+
+const steps: Step[] = [
+  { num: "01", arabic: "المُلَاحَظَة", text: "MENGAMATI", sub: "Membuka indra terhadap fenomena ciptaan Allah." },
+  { num: "02", arabic: "السُّؤَال", text: "BERTANYA", sub: "Menyalakan rasa ingin tahu & merumuskan tanda tanya." },
+  { num: "03", arabic: "الفَهْم", text: "MEMAHAMI", sub: "Mengkonstruksi konsep dasar secara mendalam." },
+  { num: "04", arabic: "التَّجْرِبَة", text: "MENCOBA", sub: "Bereksplorasi secara konkret lewat tindakan nyata." },
+  { num: "05", arabic: "الرَّبْط", text: "MENGHUBUNGKAN", sub: "Menautkan ilmu dengan hikmah & konteks hidup." },
+  { num: "06", arabic: "التَّطْبِيق", text: "MENERAPKAN", sub: "Mengamalkan ilmu menjadi perilaku & karya nyata." },
+  { num: "07", arabic: "المُحَاسَبَة", text: "MEREFLEKSI", sub: "Mengevaluasi diri dan bersyukur atas ilmu baru.", isFinal: true }
+];
+---
+
+<div class="learning-flow-diagram relative py-4 pl-2 sm:pl-6" data-reveal>
+  {/* The background vertical line */}
+  <div class="flow-line absolute left-[21px] sm:left-[37px] top-6 bottom-8 w-[2px] bg-tsls-olive-950/20 origin-top"></div>
+  
+  <div class="space-y-6">
+    {steps.map((step, idx) => (
+      <div class="flex items-start gap-4 sm:gap-6 group" style={`--step-idx: ${idx}`}>
+        {/* Node with number */}
+        <div 
+          class:list={[
+            "flow-node-outer relative z-10 w-7 h-7 rounded-full border-2 bg-tsls-cream-50 flex-shrink-0 flex items-center justify-center shadow-sm mt-0.5",
+            step.isFinal ? 'border-tsls-wood-600 bg-tsls-wood-600/10' : 'border-tsls-olive-950/40'
+          ]}
+          style={`transition-delay: ${idx * 140 + 200}ms`}
+        >
+           <span class={`text-[9px] font-mono font-bold ${step.isFinal ? 'text-tsls-wood-600' : 'text-tsls-olive-950'}`}>
+             {step.num}
+           </span>
+        </div>
+
+        {/* Content Box */}
+        <div 
+          class="flow-text flex-1"
+          style={`transition-delay: ${idx * 140 + 150}ms`}
+        >
+          <div class="flex items-center gap-2">
+            <span class:list={[
+              "text-xs sm:text-sm font-bold uppercase tracking-wider",
+              step.isFinal ? 'text-tsls-wood-600' : 'text-tsls-olive-950'
+            ]}>
+              {step.text}
+            </span>
+            <span class="arabic-watermark text-xs text-tsls-olive-800/40 font-normal">
+              {step.arabic}
+            </span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-tsls-olive-950/70 mt-0.5 leading-snug">
+            {step.sub}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .learning-flow-diagram .flow-line {
+    transform: scaleY(0);
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  :global(.learning-flow-diagram.is-visible) .flow-line {
+    transform: scaleY(1);
+  }
+
+  .learning-flow-diagram .flow-node-outer {
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  :global(.learning-flow-diagram.is-visible) .flow-node-outer {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .learning-flow-diagram .flow-text {
+    opacity: 0;
+    transform: translateX(1rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  :global(.learning-flow-diagram.is-visible) .flow-text {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

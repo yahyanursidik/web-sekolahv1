@@ -1,0 +1,382 @@
+---
+// Ilustrasi Vektor Animasi Hero Preschool: Bahan Alam, Balok Kayu, Tunas Fitrah & Kaca Pembesar Eksplorasi
+// Bebas objek manusia, anti AI-slop, tanpa masjid/kitab/tasbih/arch.
+---
+
+<div class="preschool-hero-illustration relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-100 border border-tsls-olive-950/20 shadow-md select-none">
+  
+  {/* Ambient Soft Sunbeams & Glow */}
+  <div class="absolute inset-0 bg-gradient-to-tr from-tsls-cream-200/80 via-tsls-cream-100 to-[#FFF9EB] pointer-events-none"></div>
+  
+  {/* Soft Floating Botanical Light Particles */}
+  <div class="particle-sparkle particle-1"></div>
+  <div class="particle-sparkle particle-2"></div>
+  <div class="particle-sparkle particle-3"></div>
+  <div class="particle-sparkle particle-4"></div>
+
+  {/* Main SVG Vector Canvas */}
+  <svg class="w-full h-full relative z-10" viewBox="0 0 480 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+    
+    <defs>
+      <!-- Sunbeam Radial Gradient -->
+      <radialGradient id="sunbeam-glow" cx="80%" cy="15%" r="60%">
+        <stop offset="0%" stop-color="#FDE8B3" stop-opacity="0.55" />
+        <stop offset="60%" stop-color="#F7EED6" stop-opacity="0.15" />
+        <stop offset="100%" stop-color="#F7EED6" stop-opacity="0" />
+      </radialGradient>
+
+      <!-- Wood Texture Gradients -->
+      <linearGradient id="wood-light" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#DFC49E" />
+        <stop offset="50%" stop-color="#CDAE82" />
+        <stop offset="100%" stop-color="#B89467" />
+      </linearGradient>
+
+      <linearGradient id="wood-medium" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#B89467" />
+        <stop offset="100%" stop-color="#8A5A32" />
+      </linearGradient>
+
+      <linearGradient id="wood-dark" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#8A5A32" />
+        <stop offset="100%" stop-color="#6B411F" />
+      </linearGradient>
+
+      <!-- Natural Leaf Gradients -->
+      <linearGradient id="leaf-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#A4BA82" />
+        <stop offset="60%" stop-color="#7B9356" />
+        <stop offset="100%" stop-color="#556B36" />
+      </linearGradient>
+
+      <linearGradient id="leaf-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#B8CB9A" />
+        <stop offset="100%" stop-color="#8FA86A" />
+      </linearGradient>
+
+      <!-- Terracotta Clay Pot Gradient -->
+      <linearGradient id="clay-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D98A5B" />
+        <stop offset="50%" stop-color="#C27040" />
+        <stop offset="100%" stop-color="#9C5228" />
+      </linearGradient>
+
+      <!-- River Pebble Gradients -->
+      <linearGradient id="stone-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D5D0C5" />
+        <stop offset="100%" stop-color="#9E988A" />
+      </linearGradient>
+
+      <linearGradient id="stone-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#B5AEA0" />
+        <stop offset="100%" stop-color="#7A7467" />
+      </linearGradient>
+
+      <!-- Glass Magnifier Gradient -->
+      <linearGradient id="glass-reflection" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65" />
+        <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.15" />
+        <stop offset="100%" stop-color="#80A88B" stop-opacity="0.25" />
+      </linearGradient>
+
+      <!-- Drop Shadows -->
+      <filter id="shadow-table" x="-10%" y="-10%" width="120%" height="130%">
+        <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#25351F" flood-opacity="0.12" />
+      </filter>
+
+      <filter id="shadow-block" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#25351F" flood-opacity="0.15" />
+      </filter>
+    </defs>
+
+    {/* Sunbeam Backlight Circle */}
+    <circle cx="380" cy="110" r="220" fill="url(#sunbeam-glow)" />
+
+    {/* Table Base Surface */}
+    <g filter="url(#shadow-table)">
+      <!-- Wooden Table Edge -->
+      <path d="M -20 450 L 500 450 L 500 600 L -20 600 Z" fill="#EAE2D0" />
+      <line x1="-20" y1="450" x2="500" y2="450" stroke="#C7BFA8" stroke-width="3" />
+      <!-- Table Grain Accents -->
+      <path d="M 40 480 Q 200 478 360 482" stroke="#D8D0BA" stroke-width="1.5" fill="none" />
+      <path d="M 120 520 Q 300 518 460 522" stroke="#D8D0BA" stroke-width="1.5" fill="none" />
+    </g>
+
+    {/* ----------------------------------------------------
+        1. WOODEN BUILDING BLOCKS (Balok Susun Alami)
+       ---------------------------------------------------- */}
+    <g class="anim-floating-blocks" filter="url(#shadow-block)">
+      
+      {/* Wooden Base Cube (Left) */}
+      <g transform="translate(70, 340)">
+        <!-- Top Face -->
+        <polygon points="45,0 90,20 45,40 0,20" fill="url(#wood-light)" />
+        <!-- Left Face -->
+        <polygon points="0,20 45,40 45,100 0,80" fill="url(#wood-medium)" />
+        <!-- Right Face -->
+        <polygon points="45,40 90,20 90,80 45,100" fill="url(#wood-dark)" />
+        <!-- Subtle Wood Grain on Cube -->
+        <line x1="12" y1="36" x2="12" y2="82" stroke="#A88358" stroke-width="1" opacity="0.6" />
+        <line x1="28" y1="42" x2="28" y2="92" stroke="#A88358" stroke-width="1" opacity="0.6" />
+      </g>
+
+      {/* Wooden Triangle / Roof Block (On Top of Cube) */}
+      <g transform="translate(70, 275)">
+        <!-- Slanted Front Face -->
+        <polygon points="45,0 0,65 90,65" fill="url(#wood-light)" />
+        <!-- Side Shadow Face -->
+        <polygon points="45,0 90,65 110,50 65,-15" fill="url(#wood-dark)" opacity="0.7" />
+        <!-- Front outline/bevel -->
+        <polyline points="0,65 45,0 90,65" stroke="#FFF5E6" stroke-width="1.5" opacity="0.5" />
+      </g>
+
+      {/* Wooden Cylinder Block (Middle Foreground) */}
+      <g transform="translate(180, 370)">
+        <!-- Body -->
+        <path d="M 0 30 L 0 85 C 0 100, 60 100, 60 85 L 60 30 Z" fill="url(#wood-medium)" />
+        <!-- Top Oval -->
+        <ellipse cx="30" cy="30" rx="30" ry="14" fill="url(#wood-light)" />
+        <!-- Inner Ring Detail -->
+        <ellipse cx="30" cy="30" rx="18" ry="8" stroke="#B89467" stroke-width="1" fill="none" opacity="0.5" />
+      </g>
+
+      {/* Small Arch Bridge / Semi-Circle Block (Right-Mid) */}
+      <g transform="translate(255, 395)">
+        <path d="M 0 50 L 0 15 C 0 -5, 75 -5, 75 15 L 75 50 L 55 50 C 55 25, 20 25, 20 50 Z" fill="url(#wood-light)" />
+        <path d="M 75 15 L 90 5 C 90 -15, 15 -15, 0 5 L 0 15 C 0 -5, 75 -5, 75 15 Z" fill="url(#wood-dark)" opacity="0.4" />
+      </g>
+    </g>
+
+    {/* ----------------------------------------------------
+        2. ORGANIC FITRAH SPROUT (Tunas Tumbuh Ramah Fitrah)
+       ---------------------------------------------------- */}
+    <g class="anim-sprout" transform="translate(320, 220)">
+      
+      {/* Terracotta Clay Pot */}
+      <g transform="translate(0, 140)">
+        <!-- Rim -->
+        <ellipse cx="45" cy="0" rx="46" ry="12" fill="#E29465" />
+        <ellipse cx="45" cy="0" rx="40" ry="9" fill="#5A3219" />
+        <!-- Soil -->
+        <ellipse cx="45" cy="1" rx="38" ry="7" fill="#422513" />
+        <!-- Pot Body -->
+        <path d="M 2 2 L 12 75 C 14 85, 76 85, 78 75 L 88 2 Z" fill="url(#clay-grad)" />
+        <!-- Pot Rim Highlight -->
+        <path d="M 2 2 C 2 12, 88 12, 88 2" stroke="#F1AD86" stroke-width="2" fill="none" />
+      </g>
+
+      {/* Sprout Stem */}
+      <path d="M 45 140 C 45 105, 48 70, 42 35" stroke="#556B36" stroke-width="5.5" stroke-linecap="round" fill="none" />
+
+      {/* Left Leaf (Young & Vibrant) */}
+      <g class="anim-leaf-left" transform="translate(42, 45)">
+        <path d="M 0 0 C -35 -20, -55 5, -50 25 C -35 32, -10 20, 0 0 Z" fill="url(#leaf-grad-1)" />
+        <!-- Main Leaf Vein -->
+        <path d="M 0 0 C -25 10, -42 20, -48 24" stroke="#C4DCA0" stroke-width="1.5" fill="none" opacity="0.8" />
+        <!-- Side Veins -->
+        <path d="M -15 6 C -22 -2, -32 -2, -35 2" stroke="#C4DCA0" stroke-width="1" fill="none" opacity="0.6" />
+        <path d="M -28 14 C -36 8, -42 10, -44 14" stroke="#C4DCA0" stroke-width="1" fill="none" opacity="0.6" />
+      </g>
+
+      {/* Right Leaf (Unfolding) */}
+      <g class="anim-leaf-right" transform="translate(42, 38)">
+        <path d="M 0 0 C 35 -25, 60 -5, 55 20 C 40 28, 15 15, 0 0 Z" fill="url(#leaf-grad-2)" />
+        <!-- Main Leaf Vein -->
+        <path d="M 0 0 C 25 8, 44 16, 52 19" stroke="#E2F2C9" stroke-width="1.5" fill="none" opacity="0.8" />
+        <!-- Side Veins -->
+        <path d="M 16 5 C 24 -2, 35 -1, 38 4" stroke="#E2F2C9" stroke-width="1" fill="none" opacity="0.6" />
+      </g>
+
+      {/* Top Tender Bud */}
+      <path d="M 42 35 C 40 22, 43 14, 42 8 C 45 14, 48 22, 42 35 Z" fill="#B8CB9A" />
+
+      {/* Gentle Morning Dewdrop on Leaf */}
+      <circle cx="12" cy="56" r="3.5" fill="#FFFFFF" fill-opacity="0.85" />
+      <circle cx="13" cy="55" r="1.2" fill="#FFFFFF" />
+    </g>
+
+    {/* ----------------------------------------------------
+        3. NATURE LOOSE PARTS: PEBBLES & PINECONE SEEDS
+       ---------------------------------------------------- */}
+    <g class="anim-loose-parts">
+      {/* Large River Pebble */}
+      <path d="M 140 435 C 140 422, 168 412, 195 418 C 220 424, 225 442, 210 450 C 190 458, 140 452, 140 435 Z" fill="url(#stone-grad-1)" />
+      <ellipse cx="178" cy="426" rx="20" ry="6" fill="#FFFFFF" opacity="0.25" />
+
+      {/* Small Smooth Pebble */}
+      <path d="M 235 440 C 235 432, 252 426, 268 430 C 282 434, 285 446, 275 450 C 262 455, 235 450, 235 440 Z" fill="url(#stone-grad-2)" />
+
+      {/* Botanical Seed / Wooden Beads String */}
+      <g transform="translate(60, 445)">
+        <circle cx="0" cy="0" r="7" fill="#CDAE82" />
+        <circle cx="12" cy="3" r="6" fill="#8A5A32" />
+        <circle cx="23" cy="1" r="6.5" fill="#B89467" />
+        <circle cx="34" cy="5" r="6" fill="#6B411F" />
+        <!-- String Line -->
+        <path d="M -5 -2 Q 15 8 40 4" stroke="#8A5A32" stroke-width="1" fill="none" opacity="0.5" />
+      </g>
+    </g>
+
+    {/* ----------------------------------------------------
+        4. WOODEN MAGNIFYING GLASS (Kaca Pembesar Alam)
+       ---------------------------------------------------- */}
+    <g class="anim-magnifier" transform="translate(130, 160) rotate(-18)">
+      
+      {/* Magnified Leaf Specimen (Inside Lens Area) */}
+      <g transform="translate(95, 95)">
+        <path d="M -30 -15 C -45 5, -25 35, 10 30 C 35 25, 40 -10, 0 -25 Z" fill="url(#leaf-grad-1)" />
+        <path d="M -25 -10 Q 0 10 25 15" stroke="#DDF0BC" stroke-width="2" fill="none" />
+        <path d="M -10 -2 Q -18 -15 -22 -18" stroke="#DDF0BC" stroke-width="1.2" fill="none" />
+        <path d="M 5 6 Q 5 -10 0 -15" stroke="#DDF0BC" stroke-width="1.2" fill="none" />
+      </g>
+
+      {/* Glass Lens with Transparency & Refraction */}
+      <circle cx="95" cy="95" r="54" fill="url(#glass-reflection)" />
+      
+      {/* Lens Reflection Crescent */}
+      <path d="M 52 80 A 50 50 0 0 1 125 50 A 42 42 0 0 0 65 95 Z" fill="#FFFFFF" fill-opacity="0.45" />
+
+      {/* Wooden Frame (Circular) */}
+      <circle cx="95" cy="95" r="56" stroke="url(#wood-medium)" stroke-width="12" fill="none" />
+      <circle cx="95" cy="95" r="62" stroke="url(#wood-dark)" stroke-width="2" fill="none" opacity="0.6" />
+      <circle cx="95" cy="95" r="50" stroke="#FFF5E6" stroke-width="1.5" fill="none" opacity="0.5" />
+
+      {/* Wooden Handle */}
+      <g transform="translate(95, 151)">
+        <!-- Handle Neck Connector -->
+        <rect x="-8" y="0" width="16" height="12" fill="url(#wood-dark)" rx="2" />
+        <rect x="-6" y="2" width="12" height="8" fill="#D9BA8F" rx="1" />
+        <!-- Long Turned Wood Handle -->
+        <path d="M -7 12 C -8 40, -11 80, -9 110 C -7 122, 7 122, 9 110 C 11 80, 8 40, 7 12 Z" fill="url(#wood-medium)" />
+        <!-- Handle Grip Ridges -->
+        <line x1="-7" y1="45" x2="7" y2="45" stroke="#6B411F" stroke-width="1.5" />
+        <line x1="-8" y1="65" x2="8" y2="65" stroke="#6B411F" stroke-width="1.5" />
+        <line x1="-8" y1="85" x2="8" y2="85" stroke="#6B411F" stroke-width="1.5" />
+        <!-- Bottom Knob -->
+        <circle cx="0" cy="115" r="8" fill="url(#wood-light)" />
+      </g>
+
+    </g>
+
+    {/* Top Right Subtle Nature Badge */}
+    <g transform="translate(350, 40)" opacity="0.85">
+      <circle cx="30" cy="30" r="28" fill="#FFFDF5" stroke="#8A5A32" stroke-width="1.5" stroke-dasharray="3 3" />
+      <text x="30" y="26" font-family="'Nunito', sans-serif" font-size="8" font-weight="900" fill="#25351F" text-anchor="middle" letter-spacing="0.1em">EKSPLORASI</text>
+      <text x="30" y="38" font-family="'Nunito', sans-serif" font-size="7.5" font-weight="800" fill="#8A5A32" text-anchor="middle" letter-spacing="0.12em">BAHAN ALAM</text>
+    </g>
+
+  </svg>
+
+  {/* Editorial Caption Banner at Bottom */}
+  <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-tsls-olive-950/90 via-tsls-olive-950/70 to-transparent p-4 text-tsls-cream-50 z-20">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-tsls-sand-400 animate-pulse"></span>
+      <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block font-bold">Ruang Eksplorasi Ramah Fitrah</span>
+    </div>
+    <p class="text-xs font-serif italic text-tsls-cream-100 mt-0.5">
+      Melalui sentra bahan alam, balok kayu alami, dan interaksi nyata, anak mengenal keagungan ciptaan Allah dengan gembira.
+    </p>
+  </div>
+
+</div>
+
+<style>
+  /* ----------------------------------------------------
+     Subtle Natural Micro-Animations (Gentle & Calming)
+     ---------------------------------------------------- */
+  
+  /* Sprout & Leaves Gentle Sway */
+  .anim-sprout {
+    transform-origin: 365px 360px;
+    animation: sprout-sway 7s ease-in-out infinite alternate;
+  }
+  @keyframes sprout-sway {
+    0% { transform: translate(320px, 220px) rotate(0deg); }
+    100% { transform: translate(320px, 220px) rotate(2.5deg); }
+  }
+
+  .anim-leaf-left {
+    transform-origin: 0 0;
+    animation: leaf-breathe-left 5s ease-in-out infinite alternate;
+  }
+  @keyframes leaf-breathe-left {
+    0% { transform: translate(42px, 45px) rotate(0deg) scale(1); }
+    100% { transform: translate(42px, 45px) rotate(-3deg) scale(1.03); }
+  }
+
+  .anim-leaf-right {
+    transform-origin: 0 0;
+    animation: leaf-breathe-right 6s ease-in-out infinite alternate;
+  }
+  @keyframes leaf-breathe-right {
+    0% { transform: translate(42px, 38px) rotate(0deg) scale(1); }
+    100% { transform: translate(42px, 38px) rotate(3.5deg) scale(1.02); }
+  }
+
+  /* Magnifier Subtle Float */
+  .anim-magnifier {
+    transform-origin: 220px 250px;
+    animation: magnifier-float 8s ease-in-out infinite alternate;
+  }
+  @keyframes magnifier-float {
+    0% { transform: translate(130px, 160px) rotate(-18deg); }
+    50% { transform: translate(134px, 154px) rotate(-15deg); }
+    100% { transform: translate(130px, 160px) rotate(-18deg); }
+  }
+
+  /* Wooden Blocks Grounding Micro Shift */
+  .anim-floating-blocks {
+    animation: blocks-settle 9s ease-in-out infinite alternate;
+  }
+  @keyframes blocks-settle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-2px); }
+  }
+
+  /* Floating Ambient Sparkles */
+  .particle-sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 176, 20, 0.7) 0%, rgba(245, 176, 20, 0) 70%);
+    pointer-events: none;
+    z-index: 15;
+  }
+  .particle-1 {
+    width: 14px;
+    height: 14px;
+    top: 22%;
+    right: 28%;
+    animation: float-p1 9s ease-in-out infinite;
+  }
+  .particle-2 {
+    width: 18px;
+    height: 18px;
+    top: 40%;
+    left: 20%;
+    animation: float-p2 11s ease-in-out infinite;
+  }
+  .particle-3 {
+    width: 10px;
+    height: 10px;
+    top: 65%;
+    right: 38%;
+    animation: float-p1 8s ease-in-out infinite 2s;
+  }
+  .particle-4 {
+    width: 12px;
+    height: 12px;
+    top: 15%;
+    left: 35%;
+    animation: float-p2 10s ease-in-out infinite 1s;
+  }
+
+  @keyframes float-p1 {
+    0%, 100% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0.3; }
+    50% { transform: translateY(-16px) translateX(10px) scale(1.1); opacity: 0.85; }
+  }
+
+  @keyframes float-p2 {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+    50% { transform: translateY(-20px) translateX(-12px) scale(1.2); opacity: 0.9; }
+  }
+</style>

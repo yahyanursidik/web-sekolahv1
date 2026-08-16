@@ -1,266 +1,360 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { buttonVariants } from '../components/ui/button';
+import { cn } from '../lib/utils';
+import { EXTERNAL_LINKS } from '../data/constants';
+import SPMBTimeline from '../components/diagrams/SPMBTimeline.astro';
+
+const spmbPrograms = [
+  {
+    type: "ONSITE",
+    title: "Preschool Onsite",
+    age: "Usia 3–6 Tahun (KB & TK IT)",
+    desc: "Pendidikan anak usia dini holistik berbasis fitrah dengan sentra bahan alam, pembiasaan adab salaf, serta interaksi sosial nyata di sekolah.",
+    features: [
+      "Rasio guru & murid 1 : 6 yang hangat",
+      "Sentra bahan alam & playground outdoor",
+      "Pembiasaan adab harian & doa ma'tsurat",
+      "Stimulasi motorik kasar & sensorik alami"
+    ],
+    link: "/preschool",
+    tagColor: "text-tsls-olive-900 bg-tsls-sage-500/20"
+  },
+  {
+    type: "HOME-BASED",
+    title: "Preschool HBL",
+    age: "Usia 3–6 Tahun (Home-Based)",
+    desc: "Pembelajaran dari rumah terstruktur dengan modul bermutu, 2 hari Live Meeting (Talaqqi & Tematik Diniyah), serta bimbingan konsultasi orang tua.",
+    features: [
+      "2 Hari Live Meeting + 3 Hari Mandiri",
+      "Modul cetak tematik & video panduan",
+      "Konsultasi 1-on-1 bersama guru",
+      "Standar capaian perkembangan STTPA"
+    ],
+    link: "/preschool-hbl",
+    tagColor: "text-tsls-wood-700 bg-tsls-sand-400/30"
+  },
+  {
+    type: "ONSITE",
+    title: "Elementary School (SD IT)",
+    age: "Usia 6–12 Tahun (Kelas 1–6)",
+    desc: "Pendidikan dasar Islam yang mengintegrasikan Al-Qur'an bersanad, multiliterasi 4 bahasa, sains islami kauniyah, serta kepemimpinan beradab.",
+    features: [
+      "Halaqah Al-Qur'an: Tahsin bersanad & Tahfiz",
+      "Nalar kritis & Deep Learning (Tanpa ranking)",
+      "Shalat Zhuhur di masjid (khusus ikhwan)",
+      "Kesiapan jenjang SMP / Pesantren Salaf"
+    ],
+    link: "/elementary",
+    tagColor: "text-tsls-olive-950 bg-tsls-cream-200"
+  }
+];
+
+const documentRequirements = [
+  {
+    title: "Akta Kelahiran Calon Murid",
+    desc: "Scan / foto dokumen asli yang jelas dan terbaca untuk verifikasi usia masuk sekolah."
+  },
+  {
+    title: "Kartu Keluarga (KK)",
+    desc: "Salinan Kartu Keluarga terbaru yang memuat nama calon murid dan orang tua."
+  },
+  {
+    title: "KTP Kedua Orang Tua / Wali",
+    desc: "Identitas resmi ayah dan ibu / wali calon murid yang masih berlaku."
+  },
+  {
+    title: "Pas Foto Berwarna Calon Murid",
+    desc: "Foto terbaru dengan pakaian sopan dan latar belakang polos."
+  },
+  {
+    title: "Buku KIA / Riwayat Tumbuh Kembang",
+    desc: "Khusus jenjang Preschool untuk pemetaan awal riwayat stimulasi dan kesehatan ananda."
+  },
+  {
+    title: "Surat Keterangan / Rapor Terakhir",
+    desc: "Khusus pendaftaran pindahan jenjang Elementary School dari sekolah asal."
+  }
+];
+
+const spmbFaqs = [
+  {
+    q: "Kapan periode pendaftaran SPMB dibuka?",
+    a: "Pendaftaran dibuka secara berkala melalui gelombang pendaftaran online di TSLS Hub. Kuota kelas dibatasi demi menjaga rasio guru-murid yang ideal, sehingga kami menyarankan orang tua mendaftar lebih awal."
+  },
+  {
+    q: "Apakah ada tes membaca, menulis, atau berhitung (Calistung) untuk masuk SD IT?",
+    a: "Tidak ada tes calistung yang bersifat seleksi eliminatif kaku. Asesmen di TSLS berbentuk observasi kesiapan belajar, kematangan emosi, daya fokus, serta kemandirian anak dalam suasana yang menyenangkan."
+  },
+  {
+    q: "Mengapa ada sesi wawancara / dialog dengan orang tua?",
+    a: "Pendidikan anak adalah amanah bersama. Dialog orang tua ditujukan untuk menyelaraskan visi pendidikan manhaj Salafus Shalih, pola asuh di rumah, dan komitmen sinergi antara keluarga dan sekolah."
+  },
+  {
+    q: "Bagaimana cara memantau status kelulusan berkas pendaftaran?",
+    a: "Seluruh tahapan verifikasi berkas, jadwal observasi, dan pengumuman hasil dapat dipantau langsung 24/7 melalui dashboard akun orang tua di portal TSLS Hub."
+  }
+];
 ---
-<Layout title="Penerimaan Murid Baru | TS Lab School" description="Informasi alur penerimaan murid baru dan akses portal pendaftaran TS Lab School.">
 
-<div class="relative flex min-h-screen w-full flex-col bg-background">
-<main class="flex-1">
-<!-- Hero Section -->
-<section class="max-w-container-max mx-auto px-6 lg:px-12 py-12 lg:py-20 flex flex-col lg:flex-row gap-12 items-center">
-<div class="flex-1 space-y-8 animate-fade-in-up">
-<div class="space-y-4">
-<span class="text-secondary font-label-caps uppercase tracking-widest bg-secondary-fixed px-3 py-1 rounded-full inline-block">Penerimaan Murid Baru</span>
-<h1 class="font-display-lg text-primary text-5xl lg:text-6xl leading-[1.1]">
-                            Membangun Generasi <br> Beradab &amp; Berilmu
-                        </h1>
-<p class="text-body-lg text-on-surface-variant max-w-xl">
-                            Bergabunglah bersama kami dalam perjalanan menuntut ilmu syar'i yang berasaskan Al-Qur'an dan As-Sunnah sesuai pemahaman para salafus shalih.
-                        </p>
-</div>
-<div class="flex flex-wrap gap-4">
-<a href="https://hub.tslabschool.sch.id/spmb/login" target="_blank" rel="noopener noreferrer" class="bg-primary-container text-on-primary text-lg font-bold px-10 h-14 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center gap-2 hover:-translate-y-1 whitespace-nowrap">
-                            Mulai Pendaftaran <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
-</a>
-<a href="/kontak" class="bg-surface-container-high text-on-surface text-lg font-bold px-10 h-14 rounded-full hover:bg-surface-variant transition-all hover:-translate-y-1 inline-flex items-center whitespace-nowrap">
-                            Tanya Tim Sekolah
-                        </a>
-</div>
-</div>
-<div class="flex-1 relative animate-fade-in-up" style="animation-delay: 200ms;">
-<div class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl bg-surface-variant" data-alt="A serene and modern university campus courtyard featuring lush greenery, clean stone architecture, and warm sunlight filtering through the trees. The aesthetic is academic and peaceful, utilizing a palette of deep greens and sandy beiges to reflect a traditional yet updated learning environment. The image is captured with professional architectural photography focus, emphasizing symmetry and calm." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCbC2Mo6vScaCFzUawF-HLD62SSdpbedrna6ftpZ7PFho7oqQcS9_Cz3HcA22GO9BvyMnxDXMSqd6ZeI_PVzNd-hlrr550CrgVUcNkG_kXs0mFbHkoVlNDGqAbLFodB5HaRaqS8_OpufuOcoy5LpHBPK6SuT9570C2UXxNXHR3Sgq85kPhhk4_C4s_4KLQhJGnpYGnD4gxaEkoyd8hxlTTNw59TwPPDyNwTe7Sw3oIeoq3Og2yBxoLsMh2-u07YM_iXgqgVvlogiSk&quot;); background-size: cover; background-position: center;">
-</div>
-<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl border border-outline-variant max-w-[240px] animate-fade-in-up" style="animation-delay: 400ms;">
-<p class="text-primary font-bold text-lg">Informasi resmi</p>
-<p class="text-sm text-on-surface-variant">Jadwal, biaya, dan hasil seleksi tersedia melalui portal pendaftaran.</p>
-</div>
-</div>
-</section>
-<!-- Alur Pendaftaran -->
-<section class="bg-surface-container-low py-20 relative overflow-hidden">
-<div class="bg-pattern absolute inset-0"></div>
-<div class="max-w-container-max mx-auto px-6 lg:px-12 relative z-10">
-<div class="text-center mb-16 scroll-anim transition-all-custom">
-<h2 class="font-headline-md text-primary mb-4">Alur Pendaftaran Lengkap</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto">Proses seleksi kami dirancang untuk memastikan keselarasan antara visi sekolah dengan kebutuhan serta potensi calon santri.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Step 1 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 100ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="edit_note">edit_note</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">1. Mengisi Formulir</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Pendaftaran dilakukan secara daring melalui portal resmi kami. Pastikan data diri dan pilihan program studi sudah benar sebelum disimpan.</p>
-</div>
-<!-- Step 2 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 200ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">2. Konsultasi</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Sesi tanya jawab khusus antara tim admin dengan orang tua untuk menyamakan visi pendidikan dan menjelaskan kurikulum Tarbiyah Sunnah.</p>
-</div>
-<!-- Step 3 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 300ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="visibility">visibility</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">3. Observasi</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Pemantauan interaksi dan adaptasi calon santri di lingkungan sekolah untuk melihat kesiapan belajar serta minat bakat mereka.</p>
-</div>
-<!-- Step 4 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 400ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="forum">forum</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">4. Wawancara</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Pertemuan mendalam bersama pimpinan pondok untuk membahas kesiapan santri dan komitmen orang tua dalam mendukung proses pendidikan.</p>
-</div>
-<!-- Step 5 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 500ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="campaign">campaign</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">5. Pengumuman</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Hasil seleksi akan diumumkan melalui dashboard akun pendaftaran dan email resmi. Keputusan tim penguji bersifat final.</p>
-</div>
-<!-- Step 6 -->
-<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant shadow-sm hover:shadow-lg transition-all group hover:-translate-y-2 scroll-anim transition-all-custom" style="transition-delay: 600ms;">
-<div class="size-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="task_alt">task_alt</span>
-</div>
-<h3 class="font-bold text-xl mb-3 text-on-surface">6. Daftar Ulang</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Penyelesaian administrasi keuangan dan pengumpulan berkas fisik dokumen sebagai syarat sah menjadi santri resmi.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Jadwal & Biaya Section -->
-<section class="max-w-container-max mx-auto px-6 lg:px-12 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
-<!-- Documents & Requirements -->
-<div class="space-y-10">
-<div class="space-y-4 scroll-anim transition-all-custom">
-<h2 class="font-headline-md text-primary">Persyaratan Dokumen</h2>
-<p class="text-on-surface-variant">Pastikan Anda menyiapkan berkas digital (PDF/JPG) untuk proses unggah saat pengisian formulir.</p>
-</div>
-<div class="space-y-4">
-<div class="flex items-start gap-4 p-5 bg-surface-container rounded-lg scroll-anim transition-all-custom" style="transition-delay: 100ms;">
-<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
-<div>
-<p class="font-bold text-on-surface">Identitas Diri</p>
-<p class="text-sm text-on-surface-variant">Fotokopi Akta Kelahiran, Kartu Keluarga (KK), dan KTP Orang Tua.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-5 bg-surface-container rounded-lg scroll-anim transition-all-custom" style="transition-delay: 200ms;">
-<span class="material-symbols-outlined text-secondary" data-icon="school">school</span>
-<div>
-<p class="font-bold text-on-surface">Riwayat Pendidikan</p>
-<p class="text-sm text-on-surface-variant">Fotokopi Rapor 2 tahun terakhir dan Ijazah (jika sudah ada).</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-5 bg-surface-container rounded-lg scroll-anim transition-all-custom" style="transition-delay: 300ms;">
-<span class="material-symbols-outlined text-secondary" data-icon="account_box">account_box</span>
-<div>
-<p class="font-bold text-on-surface">Pas Foto Terbaru</p>
-<p class="text-sm text-on-surface-variant">Ukuran 3x4 (Background Merah) dengan pakaian formal dan sopan.</p>
-</div>
-</div>
-<div class="flex items-start gap-4 p-5 bg-surface-container rounded-lg scroll-anim transition-all-custom" style="transition-delay: 400ms;">
-<span class="material-symbols-outlined text-secondary" data-icon="health_and_safety">health_and_safety</span>
-<div>
-<p class="font-bold text-on-surface">Surat Sehat</p>
-<p class="text-sm text-on-surface-variant">Surat keterangan sehat dari dokter atau puskesmas setempat.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Important Dates Table -->
-<div class="bg-primary p-8 lg:p-12 rounded-xl text-on-primary space-y-8 scroll-anim transition-all-custom">
-<h2 class="font-headline-md">Jadwal Penting</h2>
-<div class="space-y-6">
-<div class="flex justify-between border-b border-primary-container pb-4">
-<div>
-<p class="font-bold">Gelombang 1</p>
-<p class="text-sm text-on-primary-container">Pendaftaran &amp; Unggah Berkas</p>
-</div>
-<p class="text-right font-medium">1 Okt - 30 Des 2023</p>
-</div>
-<div class="flex justify-between border-b border-primary-container pb-4 relative overflow-hidden group">
-<div class="absolute inset-0 bg-primary-container/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-<div class="relative z-10 flex w-full justify-between">
-<div>
-<p class="font-bold flex items-center gap-2">Tes Seleksi <span class="size-2 bg-secondary rounded-full animate-pulse-slow"></span></p>
-<p class="text-sm text-on-primary-container">Online &amp; Offline</p>
-</div>
-<p class="text-right font-medium">15 Jan 2024</p>
-</div>
-</div>
-<div class="flex justify-between border-b border-primary-container pb-4">
-<div>
-<p class="font-bold">Pengumuman Kelulusan</p>
-<p class="text-sm text-on-primary-container">Hasil Seleksi Akhir</p>
-</div>
-<p class="text-right font-medium">30 Jan 2024</p>
-</div>
-<div class="flex justify-between border-b border-primary-container pb-4">
-<div>
-<p class="font-bold">Daftar Ulang</p>
-<p class="text-sm text-on-primary-container">Administrasi &amp; Seragam</p>
-</div>
-<p class="text-right font-medium">1 - 15 Feb 2024</p>
-</div>
-</div>
-<div class="bg-primary-container p-6 rounded-lg">
-<p class="text-sm italic">"Barangsiapa yang menempuh jalan untuk mencari ilmu, maka Allah akan mudahkan baginya jalan menuju surga." (HR. Muslim)</p>
-</div>
-</div>
-</section>
-<!-- FAQ Section -->
-<section class="bg-surface-container-high py-20">
-<div class="max-w-[800px] mx-auto px-6">
-<div class="text-center mb-12 scroll-anim transition-all-custom">
-<h2 class="font-headline-md text-primary">Pertanyaan Sering Diajukan (FAQ)</h2>
-</div>
-<div class="space-y-4">
-<details class="bg-surface-container-lowest rounded-lg border border-outline-variant group scroll-anim transition-all-custom" style="transition-delay: 100ms;">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none">
-<span class="">Berapa batas usia minimal untuk mendaftar?</span>
-<span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="expand_more">expand_more</span>
-</summary>
-<div class="faq-content">
-<div class="faq-inner px-6 pb-6 text-on-surface-variant text-sm">
-                                Untuk jenjang Sekolah Dasar (Elementary), calon santri minimal berusia 6 tahun pada bulan Juli tahun ajaran baru. Untuk jenjang di atasnya, wajib menyertakan ijazah dari jenjang sebelumnya.
-                            </div>
-</div>
-</details>
-<details class="bg-surface-container-lowest rounded-lg border border-outline-variant group scroll-anim transition-all-custom" style="transition-delay: 200ms;">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none">
-<span class="">Apakah tersedia kelas Trial (Percobaan)?</span>
-<span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="expand_more">expand_more</span>
-</summary>
-<div class="faq-content">
-<div class="faq-inner px-6 pb-6 text-on-surface-variant text-sm">
-                                Ya, kami menyediakan Open House dan Trial Class selama satu hari penuh di setiap bulan November. Silakan hubungi admin kami untuk reservasi kuota.
-                            </div>
-</div>
-</details>
-<details class="bg-surface-container-lowest rounded-lg border border-outline-variant group scroll-anim transition-all-custom" style="transition-delay: 300ms;">
-<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-on-surface list-none">
-<span class="">Bagaimana sistem asrama di Tarbiyah Sunnah?</span>
-<span class="material-symbols-outlined group-open:rotate-180 transition-transform duration-300" data-icon="expand_more">expand_more</span>
-</summary>
-<div class="faq-content">
-<div class="faq-inner px-6 pb-6 text-on-surface-variant text-sm">
-                                Asrama dikelola dengan pengawasan ketat dari Musyrif/Musyrifah selama 24 jam. Kami mengutamakan adab dalam kehidupan sehari-hari, jadwal ibadah tepat waktu, dan program hafalan Al-Qur'an setelah waktu shubuh dan ashar.
-                            </div>
-</div>
-</details>
-</div>
-</div>
-</section>
-<!-- Contact CTA -->
-<section class="py-20 bg-white">
-<div class="max-w-container-max mx-auto px-6 lg:px-12">
-<div class="bg-secondary-container rounded-xl p-10 lg:p-16 flex flex-col lg:flex-row justify-between items-center gap-10 scroll-anim transition-all-custom">
-<div class="space-y-4 text-center lg:text-left">
-<h2 class="font-headline-md text-on-secondary-container">Butuh Informasi Lebih Lanjut?</h2>
-<p class="text-on-secondary-container opacity-90 max-w-lg">Tim Customer Service kami siap melayani pertanyaan seputar kurikulum, fasilitas, dan biaya operasional setiap hari kerja (08:00 - 16:00).</p>
-</div>
-<div class="flex flex-col sm:flex-row gap-4">
-<button class="bg-secondary text-white font-bold px-8 h-14 rounded-full flex items-center justify-center gap-2 shadow-lg hover:bg-[#6a4220] hover:-translate-y-1 transition-all">
-<span class="material-symbols-outlined" data-icon="call">call</span>
-                                Hubungi via WhatsApp
-                            </button>
-<button class="bg-on-secondary-container text-white font-bold px-8 h-14 rounded-full flex items-center justify-center gap-2 shadow-lg hover:bg-[#5b3819] hover:-translate-y-1 transition-all">
-<span class="material-symbols-outlined" data-icon="mail">mail</span>
-                                Kirim Email
-                            </button>
-</div>
-</div>
-</div>
-</section>
-</main>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove('opacity-0-js', 'translate-y-8-js', 'translate-x-[-2rem]-js', 'scale-95-js');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        });
+<Layout title="Penerimaan Murid Baru (SPMB) | Tarbiyah Sunnah Lab School">
 
-        document.querySelectorAll('.scroll-anim').forEach(el => {
-            observer.observe(el);
-        });
-    });
-</script>
+  {/* =========================================================================
+      Hero Section (SPMB TSLS)
+     ========================================================================= */}
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
+    
+    {/* Subtle Arabic Watermark Background */}
+    <div class="absolute right-0 top-1/3 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none z-0">
+      <span class="arabic-watermark text-[140px] md:text-[240px] font-normal leading-none text-tsls-olive-950" dir="rtl">
+        القَبُولُ وَالتَّسْجِيل
+      </span>
+    </div>
 
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10" data-reveal>
+      
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-tsls-sage-500/20 border border-tsls-sage-500/40 text-tsls-olive-950 text-xs font-mono font-bold tracking-widest uppercase">
+        PENERIMAAN PESERTA DIDIK BARU (SPMB) · TA 2026/2027
+      </div>
+      
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-[1.12] tracking-tight text-balance">
+        Langkah Awal Menapaki<br />
+        <span class="italic font-serif font-normal text-tsls-wood-600">Pendidikan Fitrah Rabbani.</span>
+      </h1>
 
+      <p class="text-base sm:text-lg text-tsls-olive-950/80 leading-relaxed max-w-3xl mx-auto text-pretty">
+        Selamat datang di gerbang penerimaan murid baru Tarbiyah Sunnah Lab School. Seluruh proses pengisian formulir, unggah dokumen, hingga pemantauan status seleksi dilakukan secara terpusat, aman, dan transparan melalui portal digital <strong>TSLS Hub</strong>.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-10 rounded-none shadow-md')}>
+          Mulai Pendaftaran Online (TSLS Hub) &rarr;
+        </a>
+        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-olive-950 text-tsls-olive-950 hover:bg-tsls-olive-950 hover:text-tsls-cream-50 font-bold px-10 rounded-none transition-colors')}>
+          Masuk Akun Orang Tua
+        </a>
+      </div>
+
+      {/* 3 Value Badges */}
+      <div class="pt-10 border-t border-tsls-olive-950/10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
+        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
+          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">100% Terintegrasi</div>
+          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Paperless & Praktis dari Mana Saja</div>
+        </div>
+        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
+          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Observasi Ramah Anak</div>
+          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Pemetaan Fitrah Tanpa Beban Calistung</div>
+        </div>
+        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
+          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Sinergi Orang Tua</div>
+          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Penyelarasan Nilai Manhaj & Pola Asuh</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 1 — Pilihan Program Pendidikan SPMB
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          PILIHAN JENJANG PENDIDIKAN
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Jenjang Program yang Dibuka
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Pilih program yang paling selaras dengan tahap tumbuh kembang ananda dan ritme pengasuhan keluarga Anda.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {spmbPrograms.map((prog, idx) => (
+          <div 
+            class="p-8 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm space-y-6 flex flex-col justify-between"
+            data-reveal="fade-up"
+            style={`transition-delay: ${idx * 80}ms`}
+          >
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2.5">
+                <span class={`text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 ${prog.tagColor}`}>
+                  {prog.type}
+                </span>
+                <span class="text-xs font-mono text-tsls-wood-600 font-bold">
+                  {prog.age}
+                </span>
+              </div>
+
+              <h3 class="font-display font-bold text-2xl text-tsls-olive-950">
+                {prog.title}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
+                {prog.desc}
+              </p>
+
+              <div class="pt-2 border-t border-tsls-olive-950/10 space-y-2">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold block">
+                  Keunggulan Program:
+                </span>
+                <ul class="space-y-1.5 text-xs text-tsls-olive-950/80">
+                  {prog.features.map((ft) => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-tsls-olive-900 font-bold shrink-0">✓</span>
+                      <span>{ft}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-tsls-olive-950/10 flex items-center justify-between gap-4">
+              <a href={prog.link} class="text-xs font-bold text-tsls-olive-950 hover:text-tsls-wood-600 transition-colors uppercase tracking-wider">
+                Pelajari Kurikulum &rarr;
+              </a>
+              <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-3 py-1.5 bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 transition-colors">
+                Daftar &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 2 — Alur & Tahapan Pendaftaran (Interactive Stepper)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          TAHAPAN PENDAFTARAN
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
+          Alur Pendaftaran SPMB TSLS
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Enam tahapan mudah dan terarah mulai dari registrasi akun hingga penyambutan keluarga baru.
+        </p>
+      </div>
+
+      <SPMBTimeline />
+
+      {/* Info Alert Box */}
+      <div class="p-6 bg-tsls-cream-100 border-l-4 border-tsls-olive-950 border-y border-r border-tsls-olive-950/15 shadow-sm text-xs sm:text-sm text-tsls-olive-950/85 leading-relaxed max-w-3xl mx-auto" data-reveal="fade-up">
+        <strong class="text-tsls-olive-950 font-bold block mb-1">Catatan Penting untuk Orang Tua:</strong>
+        Setelah data dan dokumen diunggah, tim verifikator TSLS akan memeriksa kelengkapan berkas Anda. Jadwal observasi anak dan dialog orang tua akan dikirimkan otomatis melalui dashboard TSLS Hub dan notifikasi WhatsApp resmi.
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 3 — Persyaratan Dokumen Digital
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          DOKUMEN PERSYARATAN
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight">
+          Siapkan Dokumen Sebelum Memulai
+        </h2>
+        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
+          Unggah dokumen dalam format digital (PDF atau foto JPG jernih) saat mengisi formulir di portal TSLS Hub.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="fade-up">
+        {documentRequirements.map((doc, idx) => (
+          <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 text-xs font-bold flex items-center justify-center font-mono">
+                {idx + 1}
+              </span>
+              <h4 class="font-display font-bold text-base text-tsls-olive-950">
+                {doc.title}
+              </h4>
+            </div>
+            <p class="text-xs text-tsls-olive-950/75 leading-relaxed pl-7">
+              {doc.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 4 — Pertanyaan Umum SPMB (FAQ)
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-4" data-reveal>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
+          TANYA JAWAB SPMB
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
+          Pertanyaan Seputar Pendaftaran
+        </h2>
+      </div>
+
+      <div class="divide-y divide-tsls-olive-950/15 border-y border-tsls-olive-950/15" data-reveal="fade-up">
+        {spmbFaqs.map((faq) => (
+          <div class="py-8 space-y-2">
+            <h4 class="font-display font-bold text-lg text-tsls-olive-950">
+              {faq.q}
+            </h4>
+            <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
+              {faq.a}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center pt-2" data-reveal>
+        <a href="/faq" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
+          Lihat FAQ Lengkap Sekolah &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  {/* =========================================================================
+      Section 5 — CTA & Portal Pendaftaran
+     ========================================================================= */}
+  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 text-center">
+    <div class="max-w-3xl mx-auto px-4 space-y-8" data-reveal>
+      <span class="text-xs font-mono uppercase tracking-widest text-tsls-sand-400 font-bold block">
+        MULAI PENDAFTARAN ONLINE
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold">
+        Siap Bergabung Bersama TSLS?
+      </h2>
+      <p class="text-base sm:text-lg text-tsls-cream-100/80 leading-relaxed text-pretty">
+        Data pendaftaran dikelola secara aman melalui portal terpusat TSLS Hub. Pastikan menyiapkan nomor WhatsApp dan email aktif Anda.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-10 rounded-none shadow-md')}>
+          Buka Formulir SPMB di TSLS Hub &rarr;
+        </a>
+        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-10 rounded-none transition-colors')}>
+          Konsultasi Admin SPMB
+        </a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
