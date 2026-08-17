@@ -112,4 +112,12 @@ const secondaryNav = [
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) setMenu(false);
   });
+
+  // Close desktop details dropdown when clicking outside
+  document.addEventListener('click', (event) => {
+    const details = document.querySelector('.site-nav details');
+    if (details && details.hasAttribute('open') && !details.contains(event.target as Node)) {
+      details.removeAttribute('open');
+    }
+  });
 </script>
