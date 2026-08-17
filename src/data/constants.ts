@@ -21,7 +21,7 @@ export const NAV_LINKS = [
     children: [
       { label: 'Preschool', href: '/preschool', desc: 'Holistik Berbasis Fitrah' },
       { label: 'Preschool HBL', href: '/preschool-hbl', desc: 'Home-Based Learning Terarah' },
-      { label: 'Elementary (SD IT)', href: '/elementary', desc: 'Pendidikan Dasar Islam Utuh' },
+      { label: 'Elementary (PKBM)', href: '/elementary', desc: 'Pendidikan Dasar Islam Utuh (Setara SD)' },
     ],
   },
   { label: 'Pendidikan', href: '/pendidikan' },
