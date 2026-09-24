@@ -4,7 +4,29 @@ import { buttonVariants } from '../components/ui/button';
 import { cn } from '../lib/utils';
 import { EXTERNAL_LINKS } from '../data/constants';
 import PreschoolLoop from '../components/diagrams/PreschoolLoop.astro';
-import PreschoolHeroIllustration from '../components/illustrations/PreschoolHeroIllustration.astro';
+
+const preschoolHeroSlides = [
+  {
+    src: '/images/preschool/playground-outdoor.jpg',
+    alt: 'Area bermain outdoor dan motorik kasar Preschool Tarbiyah Sunnah Lab School',
+    caption: 'Area bermain outdoor untuk melatih motorik, keberanian, dan kegembiraan belajar.',
+  },
+  {
+    src: '/images/preschool/ruang-kelas-bermain.jpg',
+    alt: 'Ruang kelas Preschool dengan meja kegiatan dan area bermain anak',
+    caption: 'Ruang kelas hangat yang menyiapkan anak bermain, belajar, dan berelasi.',
+  },
+  {
+    src: '/images/preschool/bangunan-preschool.jpg',
+    alt: 'Bangunan Preschool Onsite dan area bermain luar ruangan TSLS',
+    caption: 'Lingkungan onsite yang aman untuk menemani rutinitas belajar ananda.',
+  },
+  {
+    src: '/images/preschool/halaman-preschool.jpg',
+    alt: 'Halaman dan area bermain Preschool Tarbiyah Sunnah Lab School',
+    caption: 'Halaman Preschool yang memberi ruang gerak dan eksplorasi setiap hari.',
+  },
+];
 ---
 
 <Layout title="Preschool Onsite | Tarbiyah Sunnah Lab School">
@@ -71,33 +93,52 @@ import PreschoolHeroIllustration from '../components/illustrations/PreschoolHero
 
         </div>
 
-        {/* Hero Photo / Authentic Preschool Outdoor Environment */}
+        {/* Hero slideshow / Authentic Preschool Environment */}
         <div class="lg:col-span-5" data-reveal="fade-up">
           <div class="relative p-3 bg-tsls-cream-100 border border-tsls-olive-950/20 shadow-md">
-            <div class="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200 group">
-              <img 
-                src="/images/preschool-outdoor.jpg" 
-                alt="Area Bermain Outdoor & Motorik Kasar Preschool Tarbiyah Sunnah Lab School" 
-                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                loading="eager"
-              />
-              
-              {/* Subtle Top Badge */}
+            <section class="hero-slideshow relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200" aria-roledescription="carousel" aria-label="Fasilitas Preschool Onsite" data-preschool-hero-slideshow>
+              <div class="hero-slideshow__track">
+                {preschoolHeroSlides.map((slide, index) => (
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    class:list={['hero-slideshow__image', { 'is-active': index === 0 }]}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
+                    aria-hidden={index === 0 ? undefined : 'true'}
+                  />
+                ))}
+              </div>
+              <div class="hero-slideshow__shade" aria-hidden="true"></div>
               <div class="absolute top-3 left-3 z-10">
                 <span class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-1 bg-tsls-olive-950/90 text-tsls-cream-50 backdrop-blur-sm border border-tsls-sand-400/40">
                   <span class="w-1.5 h-1.5 rounded-full bg-tsls-sand-400 animate-pulse"></span>
                   AREA OUTDOOR & MOTORIK
                 </span>
               </div>
-
-              {/* Bottom Editorial Caption */}
-              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-tsls-olive-950/90 via-tsls-olive-950/60 to-transparent p-4 sm:p-5 text-tsls-cream-50">
+              <div class="hero-slideshow__caption">
                 <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block font-bold">Ruang Belajar Ramah Fitrah</span>
-                <p class="text-xs font-serif italic text-tsls-cream-100 mt-0.5 leading-relaxed">
-                  Ruang gerak bebas motorik, stimulasi sensorik alami, dan udara terbuka yang aman dan menyenangkan untuk ananda.
-                </p>
+                <p class="hero-slideshow__caption-copy text-xs font-serif italic text-tsls-cream-100">{preschoolHeroSlides[0].caption}</p>
               </div>
-            </div>
+              <div class="hero-slideshow__controls">
+                <div class="hero-slideshow__dots" role="tablist" aria-label="Pilih foto fasilitas Preschool">
+                  {preschoolHeroSlides.map((slide, index) => (
+                    <button
+                      class:list={['hero-slideshow__dot', { 'is-active': index === 0 }]}
+                      type="button"
+                      role="tab"
+                      aria-label={`Tampilkan foto ${index + 1}: ${slide.alt}`}
+                      aria-selected={index === 0 ? 'true' : 'false'}
+                      data-preschool-hero-slide={index}
+                    ></button>
+                  ))}
+                </div>
+                <div class="hero-slideshow__arrows">
+                  <button class="hero-slideshow__button" type="button" aria-label="Foto sebelumnya" data-preschool-hero-previous>&larr;</button>
+                  <button class="hero-slideshow__button" type="button" aria-label="Foto berikutnya" data-preschool-hero-next>&rarr;</button>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 
@@ -584,3 +625,74 @@ import PreschoolHeroIllustration from '../components/illustrations/PreschoolHero
   </section>
 
 </Layout>
+
+<script define:vars={{ captions: preschoolHeroSlides.map((slide) => slide.caption) }}>
+  const slideshow = document.querySelector('[data-preschool-hero-slideshow]');
+
+  if (slideshow && slideshow.dataset.initialized !== 'true') {
+    slideshow.dataset.initialized = 'true';
+
+    const slides = Array.from(slideshow.querySelectorAll('.hero-slideshow__image'));
+    const dots = Array.from(slideshow.querySelectorAll('[data-preschool-hero-slide]'));
+    const caption = slideshow.querySelector('.hero-slideshow__caption-copy');
+    const previous = slideshow.querySelector('[data-preschool-hero-previous]');
+    const next = slideshow.querySelector('[data-preschool-hero-next]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = 0;
+    let timeoutId;
+
+    const showSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === activeIndex;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === activeIndex;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', String(active));
+      });
+
+      if (caption) caption.textContent = captions[activeIndex];
+    };
+
+    const stopAutoplay = () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      timeoutId = undefined;
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (!reducedMotion.matches) {
+        timeoutId = window.setTimeout(() => {
+          showSlide(activeIndex + 1);
+          startAutoplay();
+        }, 6000);
+      }
+    };
+
+    dots.forEach((dot, index) => dot.addEventListener('click', () => {
+      showSlide(index);
+      startAutoplay();
+    }));
+    previous?.addEventListener('click', () => {
+      showSlide(activeIndex - 1);
+      startAutoplay();
+    });
+    next?.addEventListener('click', () => {
+      showSlide(activeIndex + 1);
+      startAutoplay();
+    });
+    slideshow.addEventListener('mouseenter', stopAutoplay);
+    slideshow.addEventListener('mouseleave', startAutoplay);
+    slideshow.addEventListener('focusin', stopAutoplay);
+    slideshow.addEventListener('focusout', (event) => {
+      if (!(event.relatedTarget instanceof Node) || !slideshow.contains(event.relatedTarget)) startAutoplay();
+    });
+    reducedMotion.addEventListener('change', startAutoplay);
+    startAutoplay();
+  }
+</script>

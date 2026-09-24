@@ -8,6 +8,45 @@ import FoundationLayers from '../components/diagrams/FoundationLayers.astro';
 import WholeChildMap from '../components/diagrams/WholeChildMap.astro';
 import HomeSchoolDiagram from '../components/diagrams/HomeSchoolDiagram.astro';
 import LearningFlow from '../components/diagrams/LearningFlow.astro';
+
+const heroSlides = [
+  {
+    src: '/images/hero/belajar-mandiri.jpg',
+    alt: 'Siswa TSLS belajar mandiri dengan buku dan lembar kerja',
+    caption: 'Belajar mandiri dengan pendampingan yang tenang.',
+    position: 'center',
+  },
+  {
+    src: '/images/hero/menulis-dengan-teliti.jpg',
+    alt: 'Siswa TSLS menulis dengan teliti di meja belajar',
+    caption: 'Membangun kebiasaan belajar yang teliti dan bertahap.',
+    position: 'center',
+  },
+  {
+    src: '/images/hero/menggambar-dan-berkarya.jpg',
+    alt: 'Siswa TSLS menggambar dan berkarya di kelas',
+    caption: 'Ruang untuk bereksplorasi, berkarya, dan bertumbuh.',
+    position: 'center',
+  },
+  {
+    src: '/images/hero/ruang-kelas-aktif.jpg',
+    alt: 'Suasana kelas aktif di Tarbiyah Sunnah Lab School',
+    caption: 'Pembelajaran yang hidup dalam lingkungan beradab.',
+    position: 'center',
+  },
+  {
+    src: '/images/hero/belajar-bersama.jpg',
+    alt: 'Siswa TSLS belajar bersama di meja kelas',
+    caption: 'Belajar bersama sambil menjaga adab dan kemandirian.',
+    position: 'center',
+  },
+  {
+    src: '/images/hero/menyimak-pelajaran.jpg',
+    alt: 'Siswa TSLS menyimak pelajaran di ruang kelas',
+    caption: 'Menyimak, bertanya, dan memahami ilmu dengan gembira.',
+    position: 'center',
+  },
+];
 ---
 
 <Layout title="Tarbiyah Sunnah Lab School | Merawat Fitrah, Membangun Generasi Rabbani">
@@ -75,21 +114,47 @@ import LearningFlow from '../components/diagrams/LearningFlow.astro';
 
         </div>
 
-        {/* Right Column: Editorial Photograph Frame */}
+        {/* Right Column: School-life slideshow */}
         <div class="lg:col-span-5" data-reveal="fade-up">
           <div class="relative p-3 bg-tsls-cream-100 border border-tsls-olive-950/20 shadow-md">
-            <div class="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200">
-              <img 
-                src="/images/kelas.png" 
-                alt="Suasana pembelajaran di Tarbiyah Sunnah Lab School" 
-                class="w-full h-full object-cover grayscale-[15%] contrast-110"
-                loading="eager"
-              />
-              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-tsls-olive-950/80 to-transparent p-4 text-tsls-cream-50">
-                <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block">Ruang Belajar TSLS</span>
-                <p class="text-xs font-serif italic text-tsls-cream-100">Lingkungan alami yang tenang, memerdekakan eksplorasi & menjaga adab.</p>
+            <section class="hero-slideshow relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200" aria-roledescription="carousel" aria-label="Dokumentasi kegiatan belajar TSLS" data-hero-slideshow>
+              <div class="hero-slideshow__track">
+                {heroSlides.map((slide, index) => (
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    class:list={['hero-slideshow__image', { 'is-active': index === 0 }]}
+                    style={`object-position: ${slide.position}`}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
+                    aria-hidden={index === 0 ? undefined : 'true'}
+                  />
+                ))}
               </div>
-            </div>
+              <div class="hero-slideshow__shade" aria-hidden="true"></div>
+              <div class="hero-slideshow__caption">
+                <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block">Ruang Belajar TSLS</span>
+                <p class="hero-slideshow__caption-copy text-xs font-serif italic text-tsls-cream-100" aria-live="polite">{heroSlides[0].caption}</p>
+              </div>
+              <div class="hero-slideshow__controls">
+                <div class="hero-slideshow__dots" role="tablist" aria-label="Pilih foto kegiatan">
+                  {heroSlides.map((slide, index) => (
+                    <button
+                      class:list={['hero-slideshow__dot', { 'is-active': index === 0 }]}
+                      type="button"
+                      role="tab"
+                      aria-label={`Tampilkan foto ${index + 1}: ${slide.alt}`}
+                      aria-selected={index === 0 ? 'true' : 'false'}
+                      data-hero-slide={index}
+                    ></button>
+                  ))}
+                </div>
+                <div class="hero-slideshow__arrows">
+                  <button class="hero-slideshow__button" type="button" aria-label="Foto sebelumnya" data-hero-previous>&larr;</button>
+                  <button class="hero-slideshow__button" type="button" aria-label="Foto berikutnya" data-hero-next>&rarr;</button>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 
@@ -643,3 +708,73 @@ import LearningFlow from '../components/diagrams/LearningFlow.astro';
   </section>
 
 </Layout>
+
+<script define:vars={{ captions: heroSlides.map((slide) => slide.caption) }}>
+  const slideshow = document.querySelector('[data-hero-slideshow]');
+
+  if (slideshow && slideshow.dataset.initialized !== 'true') {
+    slideshow.dataset.initialized = 'true';
+    const slides = Array.from(slideshow.querySelectorAll('.hero-slideshow__image'));
+    const dots = Array.from(slideshow.querySelectorAll('[data-hero-slide]'));
+    const caption = slideshow.querySelector('.hero-slideshow__caption-copy');
+    const previous = slideshow.querySelector('[data-hero-previous]');
+    const next = slideshow.querySelector('[data-hero-next]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = 0;
+    let timeoutId;
+
+    const showSlide = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === activeIndex;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === activeIndex;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', String(active));
+      });
+
+      if (caption) caption.textContent = captions[activeIndex];
+    };
+
+    const stopAutoplay = () => {
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      timeoutId = undefined;
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (!reducedMotion.matches) {
+        timeoutId = window.setTimeout(() => {
+          showSlide(activeIndex + 1);
+          startAutoplay();
+        }, 6000);
+      }
+    };
+
+    dots.forEach((dot, index) => dot.addEventListener('click', () => {
+      showSlide(index);
+      startAutoplay();
+    }));
+    previous?.addEventListener('click', () => {
+      showSlide(activeIndex - 1);
+      startAutoplay();
+    });
+    next?.addEventListener('click', () => {
+      showSlide(activeIndex + 1);
+      startAutoplay();
+    });
+    slideshow.addEventListener('mouseenter', stopAutoplay);
+    slideshow.addEventListener('mouseleave', startAutoplay);
+    slideshow.addEventListener('focusin', stopAutoplay);
+    slideshow.addEventListener('focusout', (event) => {
+      if (!(event.relatedTarget instanceof Node) || !slideshow.contains(event.relatedTarget)) startAutoplay();
+    });
+    reducedMotion.addEventListener('change', startAutoplay);
+    startAutoplay();
+  }
+</script>
