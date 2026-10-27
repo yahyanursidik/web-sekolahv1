@@ -1,780 +1,255 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { buttonVariants } from '../components/ui/button';
-import { cn } from '../lib/utils';
-import { EXTERNAL_LINKS } from '../data/constants';
-import FitrahPath from '../components/diagrams/FitrahPath.astro';
-import FoundationLayers from '../components/diagrams/FoundationLayers.astro';
-import WholeChildMap from '../components/diagrams/WholeChildMap.astro';
-import HomeSchoolDiagram from '../components/diagrams/HomeSchoolDiagram.astro';
-import LearningFlow from '../components/diagrams/LearningFlow.astro';
+import SectionHead from '../components/ui/SectionHead.astro';
+import ProgramCard from '../components/ui/ProgramCard.astro';
+import ProgramFinder from '../components/ProgramFinder.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import { PROGRAMS } from '../data/programs';
+import { SITE } from '../data/constants';
 
-const heroSlides = [
+const pillars = [
   {
-    src: '/images/hero/belajar-mandiri.jpg',
-    alt: 'Siswa TSLS belajar mandiri dengan buku dan lembar kerja',
-    caption: 'Belajar mandiri dengan pendampingan yang tenang.',
-    position: 'center',
+    key: 'move',
+    color: 'var(--tsls-move)',
+    ink: 'var(--tsls-move-ink)',
+    word: 'MOVE.',
+    verb: 'Mengalami',
+    line: 'Bergerak, mencoba dan bereksplorasi.',
   },
   {
-    src: '/images/hero/menulis-dengan-teliti.jpg',
-    alt: 'Siswa TSLS menulis dengan teliti di meja belajar',
-    caption: 'Membangun kebiasaan belajar yang teliti dan bertahap.',
-    position: 'center',
+    key: 'learn',
+    color: 'var(--tsls-learn)',
+    ink: 'var(--tsls-learn-ink)',
+    word: 'LEARN.',
+    verb: 'Memahami',
+    line: 'Mengamati, bertanya dan menemukan makna.',
   },
   {
-    src: '/images/hero/menggambar-dan-berkarya.jpg',
-    alt: 'Siswa TSLS menggambar dan berkarya di kelas',
-    caption: 'Ruang untuk bereksplorasi, berkarya, dan bertumbuh.',
-    position: 'center',
+    key: 'grow',
+    color: 'var(--tsls-grow)',
+    ink: 'var(--tsls-grow-ink)',
+    word: 'GROW.',
+    verb: 'Bertumbuh',
+    line: 'Iman, adab, ilmu dan kemandirian.',
+  },
+];
+
+const philosophy = [
+  {
+    num: '01 / EXPERIENCE',
+    word: 'MOVE.',
+    color: 'var(--tsls-move-light)',
+    desc: 'Anak diberi ruang untuk bergerak, bereksplorasi, mencoba, dan mengambil inisiatif melalui aktivitas nyata.',
   },
   {
-    src: '/images/hero/ruang-kelas-aktif.jpg',
-    alt: 'Suasana kelas aktif di Tarbiyah Sunnah Lab School',
-    caption: 'Pembelajaran yang hidup dalam lingkungan beradab.',
-    position: 'center',
+    num: '02 / UNDERSTANDING',
+    word: 'LEARN.',
+    color: 'var(--tsls-learn-light)',
+    desc: 'Belajar melalui pengalaman konkret, dialog, talaqqi, penyelidikan, praktik dan refleksi sesuai tahap usia.',
   },
   {
-    src: '/images/hero/belajar-bersama.jpg',
-    alt: 'Siswa TSLS belajar bersama di meja kelas',
-    caption: 'Belajar bersama sambil menjaga adab dan kemandirian.',
-    position: 'center',
+    num: '03 / DEVELOPMENT',
+    word: 'GROW.',
+    color: 'var(--tsls-grow-light)',
+    desc: 'Perkembangan iman, adab, ilmu, kemandirian, sosial-emosional dan kemampuan berpikir didampingi bertahap.',
+  },
+];
+
+const actionPoints = [
+  {
+    num: '01',
+    title: 'Melihat lebih dekat.',
+    desc: 'Anak mengamati lingkungan dan benda nyata sebelum mendalami konsep.',
   },
   {
-    src: '/images/hero/menyimak-pelajaran.jpg',
-    alt: 'Siswa TSLS menyimak pelajaran di ruang kelas',
-    caption: 'Menyimak, bertanya, dan memahami ilmu dengan gembira.',
-    position: 'center',
+    num: '02',
+    title: 'Bertanya dan mencoba.',
+    desc: 'Guru memancing rasa ingin tahu, lalu memberi kesempatan bereksplorasi.',
+  },
+  {
+    num: '03',
+    title: 'Memahami dan mengamalkan.',
+    desc: 'Pengetahuan dihubungkan dengan adab, tanggung jawab, dan kehidupan sehari-hari.',
   },
 ];
 ---
 
-<Layout title="Tarbiyah Sunnah Lab School | Merawat Fitrah, Membangun Generasi Rabbani">
-
-  {/* =========================================================================
-      Section 2 — Hero Section (Natural Islamic Academic)
-     ========================================================================= */}
-  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
-    
-    {/* Subtle Arabic Calligraphy Watermark in Background */}
-    <div class="absolute right-0 top-1/4 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none z-0">
-      <span class="arabic-watermark text-[140px] md:text-[220px] lg:text-[280px] font-normal leading-none text-tsls-olive-950" dir="rtl">
-        فِطْرَةَ اللَّهِ
-      </span>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-        
-        {/* Left Column: Academic Manifesto */}
-        <div class="lg:col-span-7 space-y-8" data-reveal>
-          
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="academic-stamp text-tsls-olive-950 border-b-2 border-tsls-olive-950 pb-1">
-              TARBIYAH SUNNAH LAB SCHOOL · BANDUNG
-            </span>
-            <span class="text-xs font-mono text-tsls-wood-600 font-bold px-2 py-0.5 bg-tsls-cream-200 border border-tsls-olive-950/10">
-              PRESCHOOL & ELEMENTARY
-            </span>
-          </div>
-
-          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-[1.1] tracking-tight text-balance">
-            Merawat Fitrah.<br />
-            <span class="italic font-normal text-tsls-wood-600">Membangun Generasi Rabbani.</span>
-          </h1>
-
-          <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-xl leading-relaxed text-pretty">
-            Mendampingi anak bertumbuh dengan iman, adab, ilmu, kemandirian, dan kemampuan berpikir melalui pendidikan yang sesuai tahap perkembangan, berlandaskan Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih.
-          </p>
-          
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a href="/tentang" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-8 rounded-none shadow-sm')}>
-              Kenali TSLS
-            </a>
-            <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-olive-950 text-tsls-olive-950 hover:bg-tsls-olive-950 hover:text-tsls-cream-50 font-bold px-8 rounded-none transition-colors')}>
-              Daftar SPMB (TSLS Hub) &rarr;
-            </a>
-          </div>
-
-          {/* Quick Institutional Highlights */}
-          <div class="pt-8 border-t border-tsls-olive-950/10 grid grid-cols-3 gap-4 text-left">
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Fondasi</div>
-              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Al-Qur'an & Sunnah</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Pendekatan</div>
-              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">Sesuai Tahap Fitrah</div>
-            </div>
-            <div>
-              <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Layanan</div>
-              <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-0.5">3 Pilihan Program</div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Right Column: School-life slideshow */}
-        <div class="lg:col-span-5" data-reveal="fade-up">
-          <div class="relative p-3 bg-tsls-cream-100 border border-tsls-olive-950/20 shadow-md">
-            <section class="hero-slideshow relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4] overflow-hidden bg-tsls-cream-200" aria-roledescription="carousel" aria-label="Dokumentasi kegiatan belajar TSLS" data-hero-slideshow>
-              <div class="hero-slideshow__track">
-                {heroSlides.map((slide, index) => (
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    class:list={['hero-slideshow__image', { 'is-active': index === 0 }]}
-                    style={`object-position: ${slide.position}`}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    fetchpriority={index === 0 ? 'high' : 'auto'}
-                    aria-hidden={index === 0 ? undefined : 'true'}
-                  />
-                ))}
-              </div>
-              <div class="hero-slideshow__shade" aria-hidden="true"></div>
-              <div class="hero-slideshow__caption">
-                <span class="text-[10px] font-mono tracking-widest uppercase text-tsls-sand-400 block">Ruang Belajar TSLS</span>
-                <p class="hero-slideshow__caption-copy text-xs font-serif italic text-tsls-cream-100" aria-live="polite">{heroSlides[0].caption}</p>
-              </div>
-              <div class="hero-slideshow__controls">
-                <div class="hero-slideshow__dots" role="tablist" aria-label="Pilih foto kegiatan">
-                  {heroSlides.map((slide, index) => (
-                    <button
-                      class:list={['hero-slideshow__dot', { 'is-active': index === 0 }]}
-                      type="button"
-                      role="tab"
-                      aria-label={`Tampilkan foto ${index + 1}: ${slide.alt}`}
-                      aria-selected={index === 0 ? 'true' : 'false'}
-                      data-hero-slide={index}
-                    ></button>
-                  ))}
-                </div>
-                <div class="hero-slideshow__arrows">
-                  <button class="hero-slideshow__button" type="button" aria-label="Foto sebelumnya" data-hero-previous>&larr;</button>
-                  <button class="hero-slideshow__button" type="button" aria-label="Foto berikutnya" data-hero-next>&rarr;</button>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 3 — Philosophy: Setiap Anak Membawa Fitrah
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      {/* Header & Philosophical Manifesto */}
-      <div class="grid lg:grid-cols-12 gap-12 items-start" data-reveal>
-        
-        <div class="lg:col-span-5 space-y-6">
-          <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-            BAB 01 · FILOSOFI PENDIDIKAN
-          </div>
-          
-          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight text-balance">
-            Setiap Anak Membawa Fitrah yang Perlu Dirawat
-          </h2>
-
-          <div class="p-4 bg-tsls-cream-50 border-l-4 border-tsls-wood-600 text-xs sm:text-sm text-tsls-olive-950/90 italic font-serif leading-relaxed">
-            "Maka hadapkanlah wajahmu dengan lurus kepada agama Allah; (tetaplah atas) fitrah Allah yang telah menciptakan manusia menurut fitrah itu..."
-            <span class="block font-sans not-italic font-bold text-[10px] text-tsls-olive-700 mt-2 font-mono uppercase">
-              — QS. Ar-Rum: 30
-            </span>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 space-y-6 lg:pt-8 text-base lg:text-lg text-tsls-olive-950/80 leading-relaxed text-pretty">
-          <p>
-            Pendidikan bukan proses mencetak atau menyeragamkan anak. Setiap anak lahir dengan tahap perkembangan, modalitas belajar, kepekaan emosi, dan potensi fitrah yang unik.
-          </p>
-          <p>
-            TSLS berikhtiar menyediakan ilmu yang haq, keteladanan pendidik, lingkungan yang aman dari distraksi, dan pengalaman belajar konkret yang membantu fitrah itu bertumbuh mekar ke arah yang diridhai Allah Ta'ala.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Animated Interactive Fitrah Growth Diagram */}
-      <div data-reveal="fade-up" class="pt-4">
-        <div class="text-center mb-8">
-          <span class="text-[10px] font-mono uppercase tracking-widest text-tsls-olive-800 font-bold block mb-1">
-            Peta Jalur Pertumbuhan Fitrah (Fitrah Growth Path)
-          </span>
-          <span class="text-xs text-tsls-olive-950/60 italic font-serif">
-            Bagaimana TSLS mengawal proses tumbuh kembang anak dari akar keimanan hingga buah kemaslahatan
-          </span>
-        </div>
-        <FitrahPath />
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 4 — Programs: Satu Arah Pendidikan, Tiga Pilihan Program
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="space-y-4 max-w-2xl" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          BAB 02 · PILIHAN JENJANG PENDIDIKAN
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight">
-          Satu Arah Pendidikan,<br />Tiga Pilihan Program
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Seluruh program bertumpu pada fondasi nilai yang sama, dengan modalitas pelaksanaan yang disesuaikan dengan kesiapan ananda dan keluarga.
+<Layout
+  title={`${SITE.name} | MOVE. LEARN. GROW.`}
+  description="Tiga pilihan program, satu arah pendidikan Rabbani. TK Reguler, TK HBL, dan SD di Sekolah Tarbiyah Sunnah Bandung."
+>
+  {/* 1 — Hero */}
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow" data-anim>{SITE.name} · TK & SD</span>
+        <h1 class="hero__title">
+          <span data-anim style="--anim-delay:60ms">MOVE<span class="hero__dot--move">.</span></span>
+          <span data-anim style="--anim-delay:130ms">LEARN<span class="hero__dot--learn">.</span></span>
+          <span data-anim style="--anim-delay:200ms">GROW<span class="hero__dot--grow">.</span></span>
+        </h1>
+        <p class="hero__lead" data-anim style="--anim-delay:270ms">
+          Bergerak untuk mengalami.<br />
+          Belajar untuk memahami.<br />
+          Bertumbuh dengan iman dan adab.
         </p>
-      </div>
-
-      <div class="grid lg:grid-cols-3 gap-8 items-stretch">
-        
-        {/* Program 1: Preschool Onsite */}
-        <div class="p-8 bg-tsls-cream-100 border-t-4 border-tsls-sage-500 border-x border-b border-tsls-olive-950/15 flex flex-col justify-between group hover:shadow-md transition-all" data-reveal="fade-up">
-          <div class="space-y-6">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono font-bold tracking-widest uppercase text-tsls-olive-800 bg-tsls-sage-500/20 px-2.5 py-1">
-                ONSITE · USIA 3–6 TAHUN
-              </span>
-              <span class="arabic-watermark text-sm text-tsls-olive-950/40">رَوْضَةُ الأَطْفَال</span>
-            </div>
-
-            <h3 class="font-display text-2xl font-bold text-tsls-olive-950 group-hover:text-tsls-wood-700 transition-colors">
-              Preschool
-            </h3>
-
-            <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              Pengalaman belajar yang hangat, konkret, dan sesuai tahap perkembangan untuk membangun iman, adab, kemandirian, bahasa, sosial-emosional, dan kesiapan belajar.
-            </p>
-
-            <div class="pt-4 border-t border-tsls-olive-950/10 space-y-2 text-xs text-tsls-olive-950/75">
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-sage-500"></span>
-                <span>Sentra bermain konkret & eksplorasi sensorik</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-sage-500"></span>
-                <span>Tahfidz Juz 'Amma bertahap & hadits pilihan</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-sage-500"></span>
-                <span>Pembiasaan adab harian, cinta keluarga & sesama</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="/preschool" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 mt-8 pt-4 border-t border-tsls-olive-950/10 transition-colors">
-            Jelajahi Preschool &rarr;
+        <p class="hero__desc" data-anim style="--anim-delay:330ms">
+          Setiap anak memiliki fitrah dan tahap perkembangannya. Di Sekolah Tarbiyah Sunnah Bandung,
+          Ananda didampingi melalui
+          pengalaman belajar aktif, bermakna, dan menggembirakan, berlandaskan Al-Qur'an dan
+          As-Sunnah sesuai pemahaman Salafus Shalih.
+        </p>
+        <div class="hero__actions" data-anim style="--anim-delay:390ms">
+          <a class="btn btn--primary" href="/program">
+            Jelajahi Program <span class="btn__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="btn btn--light" href="/pendekatan">
+            Cara Kami Belajar <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
         </div>
-
-        {/* Program 2: Preschool HBL */}
-        <div class="p-8 bg-tsls-cream-100 border-t-4 border-tsls-sand-400 border-x border-b border-tsls-olive-950/15 flex flex-col justify-between group hover:shadow-md transition-all" data-reveal="fade-up" style="transition-delay: 120ms">
-          <div class="space-y-6">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono font-bold tracking-widest uppercase text-tsls-wood-600 bg-tsls-sand-400/30 px-2.5 py-1">
-                HOME-BASED LEARNING
-              </span>
-              <span class="arabic-watermark text-sm text-tsls-olive-950/40">تَعَلُّمٌ مَنْزِلِيّ</span>
-            </div>
-
-            <h3 class="font-display text-2xl font-bold text-tsls-olive-950 group-hover:text-tsls-wood-700 transition-colors">
-              Preschool dari Rumah
-            </h3>
-
-            <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              Kurikulum dan pendampingan terarah dari guru TSLS untuk memandu orang tua menghadirkan pembelajaran usia dini tanpa mengubah rumah menjadi ruang kelas formal yang kaku.
-            </p>
-
-            <div class="pt-4 border-t border-tsls-olive-950/10 space-y-2 text-xs text-tsls-olive-950/75">
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-wood-600"></span>
-                <span>Modul aktivitas mingguan terstruktur</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-wood-600"></span>
-                <span>Konsultasi & supervisi rutin bersama guru</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="/preschool-hbl" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 mt-8 pt-4 border-t border-tsls-olive-950/10 transition-colors">
-            Jelajahi Preschool HBL &rarr;
-          </a>
+        <div class="hero__proof" data-anim style="--anim-delay:450ms">
+          <span>Berbasis fitrah</span>
+          <span>Adab & Al-Qur'an</span>
+          <span>PAUD hingga pendidikan dasar</span>
         </div>
-
-        {/* Program 3: Elementary School */}
-        <div class="p-8 bg-tsls-cream-100 border-t-4 border-tsls-olive-950 border-x border-b border-tsls-olive-950/15 flex flex-col justify-between group hover:shadow-md transition-all" data-reveal="fade-up" style="transition-delay: 240ms">
-          <div class="space-y-6">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono font-bold tracking-widest uppercase text-tsls-cream-50 bg-tsls-olive-950 px-2.5 py-1">
-                ONSITE · PKBM SETARA SD
-              </span>
-              <span class="arabic-watermark text-sm text-tsls-olive-950/40">مَرْحَلَةٌ ابْتِدَائِيَّة</span>
-            </div>
-
-            <h3 class="font-display text-2xl font-bold text-tsls-olive-950 group-hover:text-tsls-wood-700 transition-colors">
-              Elementary School
-            </h3>
-
-            <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              Pendidikan dasar yang mengembangkan bahasa, sosial-emosional, kognitif, critical thinking, kemandirian, dan kebiasaan belajar di atas fondasi Al-Qur'an dan Sunnah.
-            </p>
-
-            <div class="pt-4 border-t border-tsls-olive-950/10 space-y-2 text-xs text-tsls-olive-950/75">
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-olive-950"></span>
-                <span>Integrasi sains, matematika, & adab Islam</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-tsls-olive-950"></span>
-                <span>Pembiasaan critical thinking & proyek nyata</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="/elementary" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 mt-8 pt-4 border-t border-tsls-olive-950/10 transition-colors">
-            Jelajahi Elementary &rarr;
-          </a>
-        </div>
-
       </div>
 
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 5 — Foundation: Berbeda Tahap, Satu Fondasi
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-12">
-      
-      <div class="space-y-6" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          BAB 03 · ARSITEKTUR INTEGRASI KURIKULUM
+      <div class="hero__art">
+        <div class="hero__photo" data-anim="photo" style="--anim-delay:120ms">
+          <img
+            src="/images/preschool/playground-outdoor.jpg"
+            alt="Area bermain luar ruang Sekolah Tarbiyah Sunnah Bandung"
+            width="760"
+            height="900"
+            fetchpriority="high"
+          />
         </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Berbeda Tahap, Satu Fondasi
-        </h2>
-        <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-2xl mx-auto text-balance leading-relaxed">
-          Dari Preschool hingga Elementary, arah pendidikan tetap bertumpu pada fondasi yang sama. Islam bukan sekadar mata pelajaran tambahan, melainkan poros yang mengarahkan seluruh ilmu dan amal.
-        </p>
-      </div>
-
-      <div data-reveal="fade-up">
-        <FoundationLayers />
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 6 — Child Development: Whole Child Map
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-6 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          BAB 04 · ENAM DOMAIN PERKEMBANGAN UTUH
+        <div class="hero__card hero__card--top" data-anim="card-rotated" style="--anim-delay:420ms">
+          <b>Learning by experience</b>
+          <small>Explore · Observe · Understand</small>
         </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Kami Tidak Hanya Bertanya,<br />
-          <span class="italic font-serif font-normal text-tsls-wood-600">"Apa yang Anak Tahu?"</span>
-        </h2>
-        <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-3xl mx-auto text-pretty leading-relaxed">
-          Kami juga memperhatikan bagaimana anak memahami dirinya, berkomunikasi dengan santun, mengelola emosi, mengambil tanggung jawab, berpikir kritis, dan mengamalkan ilmu dalam keseharian.
-        </p>
-      </div>
-
-      <div data-reveal="fade-up">
-        <WholeChildMap />
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 7 — How Learning Works (Spiral of Learning)
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-16 lg:gap-12 items-start">
-        
-        {/* Left Column: 7-Step Animated Learning Flow */}
-        <div class="lg:col-span-5 space-y-6" data-reveal>
-          <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-            BAB 05 · SPIRAL METODE PEMBELAJARAN
-          </div>
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950 leading-tight text-balance">
-            Belajar untuk Memahami,<br />
-            <span class="italic font-serif font-normal text-tsls-wood-600">Bukan Sekadar Menghafal Materi</span>
-          </h2>
-          
-          <div class="pt-4">
-            <LearningFlow />
-          </div>
+        <div class="hero__card hero__card--bottom" data-anim="card" style="--anim-delay:480ms">
+          <strong>Every child,<br />a unique journey.</strong>
+          <p>Didampingi bertahap. Dihargai prosesnya.</p>
         </div>
-
-        {/* Right Column: 3 Pedagogical Principles */}
-        <div class="lg:col-span-7 space-y-8 lg:pl-6">
-          <div class="border-b border-tsls-olive-950/10 pb-4">
-            <span class="text-xs font-mono uppercase tracking-widest text-tsls-olive-700 font-bold">
-              3 Prinsip Pedagogi TSLS
-            </span>
-          </div>
-
-          <div class="space-y-6">
-            <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15" data-reveal="fade-up">
-              <div class="flex items-center justify-between mb-2">
-                <h4 class="font-display font-bold text-xl text-tsls-olive-950">01. Berkesadaran</h4>
-                <span class="text-xs font-mono text-tsls-wood-600 font-bold">AL-WA'YU</span>
-              </div>
-              <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-                Anak mengetahui apa yang sedang dipelajari dan secara bertahap memahami tujuan belajarnya. Pembelajaran tidak berlangsung dengan paksaan atau kepatuhan buta, melainkan melalui keterlibatan nalar yang sadar.
-              </p>
-            </div>
-
-            <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15" data-reveal="fade-up" style="transition-delay: 100ms">
-              <div class="flex items-center justify-between mb-2">
-                <h4 class="font-display font-bold text-xl text-tsls-olive-950">02. Bermakna</h4>
-                <span class="text-xs font-mono text-tsls-wood-600 font-bold">AL-MA'NAWIYYAH</span>
-              </div>
-              <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-                Konsep tidak berhenti sebagai teori abstrak di atas kertas; anak menghubungkannya dengan pengalaman indrawi, fenomena alam ciptaan Allah, dan aplikasi konkret dalam kehidupannya.
-              </p>
-            </div>
-
-            <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15" data-reveal="fade-up" style="transition-delay: 200ms">
-              <div class="flex items-center justify-between mb-2">
-                <h4 class="font-display font-bold text-xl text-tsls-olive-950">03. Menggembirakan</h4>
-                <span class="text-xs font-mono text-tsls-wood-600 font-bold">AL-INSHIRAH</span>
-              </div>
-              <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-                Belajar berlangsung dalam suasana yang lapang, menghargai proses ikhtiar anak, dan tetap memberikan tantangan yang sesuai tanpa menimbulkan stres yang mematikan kecintaan pada ilmu.
-              </p>
-            </div>
-          </div>
+        <div class="hero__card hero__card--side" data-anim="card" style="--anim-delay:540ms">
+          <b>3</b>
+          <small>program belajar</small>
         </div>
-
       </div>
     </div>
   </section>
 
-  {/* =========================================================================
-      Section 8 — Parent Partnership: Sinergi Rumah & Sekolah
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-      
-      <div class="space-y-6" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          BAB 06 · SINERGI KELUARGA & MADRASAH
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance">
-          Sekolah Tidak Menggantikan Rumah
-        </h2>
-        <p class="text-base sm:text-lg text-tsls-olive-950/80 max-w-2xl mx-auto text-balance leading-relaxed">
-          Pendidikan ananda akan kokoh tak tergoyahkan ketika nilai keteladanan di rumah dan bimbingan ilmu di sekolah berlayar dalam satu arah yang selaras.
-        </p>
-      </div>
-
-      <div data-reveal="fade-up">
-        <HomeSchoolDiagram />
-      </div>
-
-      <div class="pt-6" data-reveal>
-        <a href="/pendidikan" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 border-b-2 border-tsls-olive-950 pb-1 hover:border-tsls-wood-600 transition-colors">
-          Pelajari Filosofi Kemitraan Orang Tua &rarr;
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 9 — Environment: Ruang & Lingkungan Belajar
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          BAB 07 · RUANG & LINGKUNGAN FISIK
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Lingkungan yang Membantu Anak Belajar dengan Tenang
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Arsitektur ruang dan tata letak dirancang untuk mengalirkan sirkulasi udara bersih, pencahayaan alami, dan material kayu yang ramah fitrah.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-8 items-center">
-        
-        <div class="lg:col-span-8" data-reveal="fade-up">
-          <div class="relative p-3 bg-tsls-cream-50 border border-tsls-olive-950/20 shadow-sm">
-            <div class="aspect-[16/10] overflow-hidden bg-tsls-cream-200">
-              <img 
-                src="/images/kelas.png" 
-                alt="Ruang belajar dan lingkungan natural di TSLS" 
-                class="w-full h-full object-cover grayscale-[15%] contrast-110" 
-              />
+  {/* 2 — Three-pillar strip */}
+  <div class="pillar-strip">
+    <div class="container pillar-strip__inner">
+      {
+        pillars.map((pillar) => (
+          <article>
+            <div class="pillar-strip__stripe" style={`background:${pillar.color}`} />
+            <div>
+              <b>
+                {pillar.word} <span style={`color:${pillar.ink}`}>{pillar.verb}</span>
+              </b>
+              <p>{pillar.line}</p>
             </div>
-            <div class="flex items-center justify-between pt-3 text-[11px] font-mono text-tsls-olive-950/70">
-              <span>TSLS BANDUNG · RUANG KELAS UTAMA</span>
-              <span>PENCATATAN FASILITAS RESMI</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-4 space-y-8">
-          <div class="p-6 bg-tsls-cream-50 border-l-4 border-tsls-olive-800 border-y border-r border-tsls-olive-950/15" data-reveal="fade-up" style="transition-delay: 100ms">
-            <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">Alami & Minim Distraksi</h4>
-            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              Ruang belajar yang mengutamakan pencahayaan matahari alami, tanaman hijau, dan suasana hening yang menumbuhkan konsentrasi berfikir.
-            </p>
-          </div>
-
-          <div class="p-6 bg-tsls-cream-50 border-l-4 border-tsls-wood-600 border-y border-r border-tsls-olive-950/15" data-reveal="fade-up" style="transition-delay: 200ms">
-            <h4 class="font-display font-bold text-lg text-tsls-olive-950 mb-1">Aman & Terarah</h4>
-            <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              Zona aktivitas dirancang khusus untuk mendukung kemandirian anak menata alat belajar dan berkolaborasi dalam kelompok kecil secara tertib.
-            </p>
-          </div>
-
-          <div class="pt-2" data-reveal="fade-up" style="transition-delay: 300ms">
-            <a href="/kehidupan-sekolah" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
-              Lihat Seluruh Kehidupan Sekolah &rarr;
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 10 — SPMB Gateway: Pendaftaran Terpusat TSLS Hub
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 border-b border-tsls-olive-950">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-16">
-      
-      <div class="space-y-6 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-sand-400 border-b border-tsls-sand-400/40 pb-1">
-          PENERIMAAN SISWA BARU (SPMB)
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-balance leading-tight">
-          Mulai dari Memahami Program,<br />
-          <span class="italic font-serif font-normal text-tsls-sand-400">Lanjutkan Pendaftaran via TSLS Hub</span>
-        </h2>
-        <p class="text-sm sm:text-base text-tsls-cream-100/80 max-w-2xl mx-auto leading-relaxed">
-          Seluruh proses pendaftaran, unggah dokumen, hingga verifikasi dilakukan secara transparan dan terpusat melalui portal resmi.
-        </p>
-      </div>
-
-      {/* 6-Step Admissions Roadmap */}
-      <div class="grid grid-cols-2 md:grid-cols-6 divide-x divide-y md:divide-y-0 divide-tsls-cream-50/15 border border-tsls-cream-50/15" data-reveal="fade-up">
-        
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">01</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Pilih<br />Program</span>
-        </div>
-
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">02</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Buat<br />Akun</span>
-        </div>
-
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">03</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Isi<br />Formulir</span>
-        </div>
-
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">04</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Unggah<br />Dokumen</span>
-        </div>
-
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">05</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Pantau<br />Status</span>
-        </div>
-
-        <div class="p-6 flex flex-col items-center justify-center space-y-2 hover:bg-tsls-cream-50/5 transition-colors">
-          <span class="text-sm text-tsls-sand-400 font-mono font-bold">06</span>
-          <span class="text-xs font-bold tracking-wider uppercase">Informasi<br />Hasil</span>
-        </div>
-
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-6 pt-4" data-reveal>
-        <a href="/spmb" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-8 rounded-none shadow-md')}>
-          Panduan Lengkap SPMB
-        </a>
-        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-8 rounded-none transition-colors')}>
-          Buka Portal TSLS Hub &rarr;
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 11 — FAQ Preview
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-      
-      <div class="text-center space-y-4" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          TANYA JAWAB ESENSIAL
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
-          Pertanyaan yang Sering Diajukan Orang Tua
-        </h2>
-      </div>
-
-      <div class="divide-y divide-tsls-olive-950/15 border-y border-tsls-olive-950/15" data-reveal="fade-up">
-        
-        <div class="py-8 space-y-2">
-          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Apa perbedaan mendasar Preschool Onsite dan Preschool HBL?</h4>
-          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-            Preschool Onsite diselenggarakan tatap muka di lingkungan sekolah dengan interaksi sosial harian. Preschool HBL (Home-Based Learning) dirancang khusus untuk memandu orang tua dalam menghadirkan kurikulum usia dini di rumah secara terstruktur dengan bimbingan dan konsultasi guru TSLS.
-          </p>
-        </div>
-
-        <div class="py-8 space-y-2">
-          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Bagaimana integrasi kurikulum Islam dan kurikulum nasional di TSLS?</h4>
-          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-            Nilai-nilai Al-Qur'an dan Sunnah bukan sebatas mata pelajaran tambahan, melainkan fondasi poros yang mengarahkan cara pandang, adab belajar, penguasaan sains, dan pengembangan karakter anak secara menyeluruh.
-          </p>
-        </div>
-
-        <div class="py-8 space-y-2">
-          <h4 class="font-display font-bold text-lg text-tsls-olive-950">Di mana dan bagaimana pendaftaran SPMB dilakukan?</h4>
-          <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-            Pendaftaran dan pemantauan berkas calon siswa dilakukan secara daring melalui sistem terpusat TSLS Hub (<a href={EXTERNAL_LINKS.hub} class="underline font-bold text-tsls-wood-600" target="_blank">hub.tslabschool.sch.id</a>).
-          </p>
-        </div>
-
-      </div>
-
-      <div class="text-center pt-4" data-reveal>
-        <a href="/faq" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
-          Lihat Semua Pertanyaan & Jawaban (FAQ) &rarr;
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 12 — Final CTA / Academic Closing
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100">
-    <div class="max-w-3xl mx-auto px-4 text-center space-y-8" data-reveal>
-      
-      <span class="arabic-watermark text-3xl text-tsls-olive-800/40 block">
-        بِسْمِ اللَّهِ تَوَكَّلْنَا عَلَى اللَّهِ
-      </span>
-
-      <h2 class="font-display text-4xl sm:text-5xl font-bold text-tsls-olive-950 leading-tight">
-        Satu Amanah,<br />
-        <span class="italic font-serif font-normal text-tsls-wood-600">Satu Arah Pendidikan Rabbani</span>
-      </h2>
-
-      <p class="text-base sm:text-lg text-tsls-olive-950/80 leading-relaxed text-pretty">
-        Mari bersama merawat fitrah ananda dalam ekosistem pendidikan yang tenang, beradab, dan berakar pada Sunnah Nabi Shallallahu 'Alaihi wa Sallam.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4 pt-4">
-        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-10 rounded-none shadow-md')}>
-          Daftar SPMB Online
-        </a>
-        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-olive-950 text-tsls-olive-950 hover:bg-tsls-olive-950 hover:text-tsls-cream-50 font-bold px-10 rounded-none transition-colors')}>
-          Jadwalkan Kunjungan
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-</Layout>
-
-<script define:vars={{ captions: heroSlides.map((slide) => slide.caption) }}>
-  const slideshow = document.querySelector('[data-hero-slideshow]');
-
-  if (slideshow && slideshow.dataset.initialized !== 'true') {
-    slideshow.dataset.initialized = 'true';
-    const slides = Array.from(slideshow.querySelectorAll('.hero-slideshow__image'));
-    const dots = Array.from(slideshow.querySelectorAll('[data-hero-slide]'));
-    const caption = slideshow.querySelector('.hero-slideshow__caption-copy');
-    const previous = slideshow.querySelector('[data-hero-previous]');
-    const next = slideshow.querySelector('[data-hero-next]');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let activeIndex = 0;
-    let timeoutId;
-
-    const showSlide = (index) => {
-      activeIndex = (index + slides.length) % slides.length;
-
-      slides.forEach((slide, slideIndex) => {
-        const active = slideIndex === activeIndex;
-        slide.classList.toggle('is-active', active);
-        slide.setAttribute('aria-hidden', String(!active));
-      });
-
-      dots.forEach((dot, dotIndex) => {
-        const active = dotIndex === activeIndex;
-        dot.classList.toggle('is-active', active);
-        dot.setAttribute('aria-selected', String(active));
-      });
-
-      if (caption) caption.textContent = captions[activeIndex];
-    };
-
-    const stopAutoplay = () => {
-      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-      timeoutId = undefined;
-    };
-
-    const startAutoplay = () => {
-      stopAutoplay();
-      if (!reducedMotion.matches) {
-        timeoutId = window.setTimeout(() => {
-          showSlide(activeIndex + 1);
-          startAutoplay();
-        }, 6000);
+          </article>
+        ))
       }
-    };
+    </div>
+  </div>
 
-    dots.forEach((dot, index) => dot.addEventListener('click', () => {
-      showSlide(index);
-      startAutoplay();
-    }));
-    previous?.addEventListener('click', () => {
-      showSlide(activeIndex - 1);
-      startAutoplay();
-    });
-    next?.addEventListener('click', () => {
-      showSlide(activeIndex + 1);
-      startAutoplay();
-    });
-    slideshow.addEventListener('mouseenter', stopAutoplay);
-    slideshow.addEventListener('mouseleave', startAutoplay);
-    slideshow.addEventListener('focusin', stopAutoplay);
-    slideshow.addEventListener('focusout', (event) => {
-      if (!(event.relatedTarget instanceof Node) || !slideshow.contains(event.relatedTarget)) startAutoplay();
-    });
-    reducedMotion.addEventListener('change', startAutoplay);
-    startAutoplay();
-  }
-</script>
+  {/* 3 — Tiga kartu program */}
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        eyebrow="01 · Program"
+        title="Tiga ruang belajar.<br />Satu arah pendidikan."
+        desc="Pilih pengalaman belajar sesuai usia, lokasi, dan kesiapan keluarga."
+      />
+      <div class="program-grid">
+        {PROGRAMS.map((program) => <ProgramCard program={program} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* 4 — Philosophy in practice */}
+  <section class="section belief">
+    <div class="container">
+      <SectionHead
+        onDark
+        eyebrow="02 · Filosofi dalam praktik"
+        title="Bukan hanya apa yang dipelajari.<br />Tetapi bagaimana anak bertumbuh."
+        desc="MOVE. LEARN. GROW. adalah pengalaman belajar, bukan sekadar slogan."
+      />
+      <div class="pillars">
+        {
+          philosophy.map((item) => (
+            <article class="pillar">
+              <span class="pillar__num">{item.num}</span>
+              <h3 style={`color:${item.color}`}>{item.word}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="foundation">
+        <b>Berakar pada Tauhid, Al-Qur'an & As-Sunnah</b>
+        <p>
+          Seluruh program diarahkan untuk membangun generasi berkarakter Rabbani dengan pendampingan
+          guru sebagai pendidik dan teladan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* 5 — Learning in action */}
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        eyebrow="03 · Learning in action"
+        title="Anak mengalami.<br />Guru mendampingi."
+        desc="Contoh bagaimana proses belajar dibangun melalui pengalaman bermakna."
+      />
+      <div class="story-layout">
+        <div class="story-photo">
+          <img
+            loading="lazy"
+            src="/images/elementary-kelas-1.jpg"
+            alt="Ruang kelas SD Tarbiyah Sunnah Bandung"
+            width="760"
+            height="860"
+          />
+          <div class="story-photo__overlay">
+            <small>Lingkungan sekolah · {SITE.city}</small>
+            <b>Ruang yang mendukung fokus, interaksi dan kemandirian.</b>
+          </div>
+        </div>
+        <div class="story-points">
+          {
+            actionPoints.map((point) => (
+              <div class="story-point">
+                <span class="story-point__num">{point.num}</span>
+                <div>
+                  <strong>{point.title}</strong>
+                  <p>{point.desc}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div style="margin-top:28px">
+        <a href="/cerita-belajar" class="btn btn--light">
+          Lihat Kehidupan Sekolah <span class="btn__arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* 6 — Program finder */}
+  <ProgramFinder />
+
+  {/* 7 — SPMB CTA */}
+  <CtaBand />
+</Layout>

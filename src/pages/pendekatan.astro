@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SectionHead from '../components/ui/SectionHead.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import { SITE } from '../data/constants';
+
+const pillarTabs = [
+  {
+    word: 'MOVE.',
+    claim: 'Anak perlu mengalami, bukan hanya menerima informasi.',
+    example:
+      'Contoh: eksplorasi bahan alam, kegiatan gerak, praktik mandiri, pengamatan lingkungan sekitar.',
+    bg: '#f8e7d8',
+  },
+  {
+    word: 'LEARN.',
+    claim: 'Rasa ingin tahu dituntun menuju pemahaman yang bermakna.',
+    example:
+      'Contoh: bermain terarah, dialog majelis, talaqqi, percobaan, penalaran, dan refleksi.',
+    bg: '#dfeeee',
+  },
+  {
+    word: 'GROW.',
+    claim: 'Pertumbuhan dilihat secara utuh, bukan hanya nilai akademik.',
+    example:
+      'Contoh: adab, kemandirian, kebiasaan belajar, bahasa, sosial-emosional, serta pengamalan ilmu.',
+    bg: '#e1ede1',
+  },
+];
+
+const methodologies = [
+  {
+    id: "01 · AL-QUR'AN & ADAB",
+    title: 'Talaqqi & Musyafahah',
+    desc: "Interaksi tatap muka langsung antara murid dan guru dalam Al-Qur'an serta ilmu syar'i untuk menjaga kesempurnaan bacaan dan transfer adab secara hidup.",
+  },
+  {
+    id: '02 · CRITICAL THINKING',
+    title: 'Dialog Majelis & Nalar Kritis',
+    desc: 'Membiasakan murid bertanya dengan beradab, membedakan fakta dari dugaan, mencari alasan dan bukti (hujjah), serta mengemukakan kesimpulan secara bertanggung jawab.',
+  },
+  {
+    id: '03 · SAINS ISLAMI',
+    title: 'Eksplorasi Sains Kauniyah',
+    desc: 'Mempelajari matematika dan sains alam bukan sebagai teori mati, melainkan sebagai jalan mentadabburi keteraturan ayat-ayat kauniyah ciptaan Allah.',
+  },
+  {
+    id: '04 · KEMANDIRIAN & AKSI',
+    title: 'Proyek Terpadu & Life Skills',
+    desc: 'Mengintegrasikan literasi, numerasi, dan ketangkasan tangan dalam proyek nyata yang melatih kemandirian, tanggung jawab moral, kerja tim, dan empati sosial.',
+  },
+];
+
+const foundations = [
+  {
+    id: '01 · LANDASAN',
+    title: 'Tauhid & Adab',
+    desc: 'Menjadikan nilai Islam sebagai arah pendidikan, bukan elemen dekoratif atau mata pelajaran pelengkap.',
+  },
+  {
+    id: '02 · PENDEKATAN',
+    title: 'Fitrah & Tahap Perkembangan',
+    desc: 'Menghargai kesiapan, keunikan, perkembangan, dan kebutuhan setiap anak pada tahap usianya.',
+  },
+  {
+    id: '03 · PEMBELAJARAN',
+    title: 'Berkesadaran, Bermakna, Menggembirakan',
+    desc: 'Memahami tujuan belajar, menggunakan pengalaman nyata, dan menjaga semangat belajar tetap hidup.',
+  },
+];
+
+const ecosystem = [
+  {
+    title: 'Lingkungan aman & bebas perundungan',
+    desc: 'Budaya ukhuwah yang hangat, saling menghormati, dan pengawasan pendidik aktif demi menjaga kenyamanan psikologis Ananda.',
+  },
+  {
+    title: 'Rasio guru–murid yang proporsional',
+    desc: 'Kelas dirancang agar guru dapat mengamati keunikan karakter dan ritme belajar setiap anak.',
+  },
+  {
+    title: 'Pembiasaan shalat berjamaah',
+    desc: 'Ikhwan dibiasakan shalat berjamaah di masjid untuk menanamkan jiwa kepemimpinan, akhwat di mushalla sekolah.',
+  },
+  {
+    title: 'Lingkungan sadar gawai',
+    desc: 'Memprioritaskan interaksi tatap muka langsung, bahan bacaan fisik berkualitas, dan eksplorasi motorik nyata.',
+  },
+];
+---
+
+<Layout
+  title={`Cara Belajar | ${SITE.name}`}
+  description="MOVE. LEARN. GROW. di ruang belajar: talaqqi, dialog majelis, sains kauniyah, dan proyek terpadu di atas fondasi tauhid dan adab."
+>
+  <PageHero
+    eyebrow="Pendekatan pendidikan"
+    title="Berakar pada nilai.<br />Hidup dalam pengalaman."
+    intro="Sekolah Tarbiyah Sunnah Bandung memadukan landasan Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih, perhatian terhadap fitrah, serta pengalaman belajar aktif yang sesuai tahap perkembangan Ananda."
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'Cara Belajar' }]}
+  />
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="approach-row">
+        <div>
+          <span class="eyebrow">Filosofi dalam keseharian</span>
+          <h2>MOVE. LEARN. GROW.<br />di ruang belajar.</h2>
+          <p>
+            Ketiga kata ini menjadi bahasa sederhana yang menyatukan pilihan aktivitas guru,
+            pengalaman anak, dan pemantauan perkembangan. Pilih setiap tahap untuk melihat
+            penerapannya.
+          </p>
+          <div class="pill-tabs" role="tablist" aria-label="Pilar pengalaman belajar">
+            {
+              pillarTabs.map((tab, index) => (
+                <button
+                  type="button"
+                  role="tab"
+                  id={`pillar-tab-${index}`}
+                  aria-controls="approach-panel"
+                  aria-selected={index === 0 ? 'true' : 'false'}
+                  data-pillar={index}
+                >
+                  {tab.word}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          class="approach-panel"
+          id="approach-panel"
+          role="tabpanel"
+          aria-labelledby="pillar-tab-0"
+          style={`background:${pillarTabs[0].bg}`}
+        >
+          <strong>{pillarTabs[0].word}</strong>
+          <p>{pillarTabs[0].claim}</p>
+          <p>{pillarTabs[0].example}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Metodologi pengajaran"
+        title="Bagaimana murid belajar di sekolah kami?"
+        desc="Menggabungkan ketelitian metode transmisi ilmu para ulama Salaf dengan pedagogi yang menghargai fitrah anak."
+      />
+      <div class="content-grid content-grid--2">
+        {
+          methodologies.map((item) => (
+            <article class="info-card">
+              <span class="info-card__id">{item.id}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <SectionHead
+        eyebrow="Landasan yang sama"
+        title="Membangun Generasi Berkarakter Rabbani."
+        linkHref="/tentang"
+        linkLabel="Tentang sekolah"
+      />
+      <div class="content-grid">
+        {
+          foundations.map((item) => (
+            <article class="info-card">
+              <span class="info-card__id">{item.id}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Iklim lingkungan belajar"
+        title="Ekosistem yang aman, hangat, dan terarah."
+        desc="Anak berkembang optimal dalam iklim sekolah yang menenteramkan jiwa, bebas intimidasi, dan dipandu teladan nyata para pendidik."
+      />
+      <div class="content-grid content-grid--2">
+        {
+          ecosystem.map((item, index) => (
+            <article class="info-card">
+              <span class="info-card__id">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="notice">
+        Rincian rasio kelas, kebijakan gawai, dan tata tertib keseharian mengikuti ketentuan resmi
+        tiap unit. Konfirmasikan kepada School Center sebelum mengambil keputusan.
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>
+
+<script
+  is:inline
+  define:vars={{ tabs: pillarTabs }}
+>
+  (() => {
+    const buttons = Array.from(document.querySelectorAll('[data-pillar]'));
+    const panel = document.getElementById('approach-panel');
+    if (!buttons.length || !panel) return;
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const index = Number(button.dataset.pillar);
+        const tab = tabs[index];
+        buttons.forEach((other) =>
+          other.setAttribute('aria-selected', String(other === button))
+        );
+        panel.setAttribute('aria-labelledby', `pillar-tab-${index}`);
+        panel.style.background = tab.bg;
+        panel.innerHTML = `<strong>${tab.word}</strong><p>${tab.claim}</p><p>${tab.example}</p>`;
+      });
+    });
+  })();
+</script>

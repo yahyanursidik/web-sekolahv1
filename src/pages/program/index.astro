@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
+import ProgramCard from '../../components/ui/ProgramCard.astro';
+import SectionHead from '../../components/ui/SectionHead.astro';
+import CtaBand from '../../components/ui/CtaBand.astro';
+import { PROGRAMS } from '../../data/programs';
+import { SITE } from '../../data/constants';
+
+const comparisonRows = [
+  { label: 'Usia', get: (p: (typeof PROGRAMS)[number]) => p.ageRange },
+  { label: 'Mode belajar', get: (p: (typeof PROGRAMS)[number]) => p.modality },
+  { label: 'Model pembelajaran', get: (p: (typeof PROGRAMS)[number]) => p.learningModel },
+];
+---
+
+<Layout
+  title={`Program | ${SITE.name}`}
+  description="TK Reguler, TK HBL, dan SD Tarbiyah Sunnah Bandung — tiga pilihan belajar dengan satu arah pendidikan Rabbani."
+>
+  <PageHero
+    eyebrow="Kenali pilihan belajar"
+    title="Satu nilai. Tiga pilihan.<br />Banyak ruang untuk bertumbuh."
+    intro="Tidak ada satu model belajar yang cocok untuk semua keluarga. Kenali cara belajar, usia, ritme pendampingan, dan pengalaman yang ditawarkan oleh setiap unit Sekolah Tarbiyah Sunnah Bandung."
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'Program' }]}
+  />
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="program-grid">
+        {PROGRAMS.map((program) => <ProgramCard program={program} />)}
+      </div>
+      <div class="notice">
+        Pilihan program didasarkan pada kebutuhan keluarga, kesiapan Ananda, dan ketentuan penerimaan
+        yang berlaku. Konsultasi dengan School Center disarankan sebelum melakukan pendaftaran.
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Perbandingan singkat"
+        title="Melihat tiga program berdampingan."
+        desc="Ringkasan untuk orientasi awal. Rincian lengkap tersedia pada halaman masing-masing unit."
+      />
+      <div class="content-grid">
+        {
+          PROGRAMS.map((program) => (
+            <article class="info-card">
+              <span class="info-card__id">{program.cardTag}</span>
+              <h3>{program.name}</h3>
+              {comparisonRows.map((row) => (
+                <p class="info-card__example">
+                  <strong>{row.label}:</strong> {row.get(program)}
+                </p>
+              ))}
+              <p class="info-card__example">
+                <a href={`/program/${program.slug}`} style="color:#14553b;font-weight:800">
+                  Kenali {program.name} ↗
+                </a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Masih mempertimbangkan pilihan program?"
+    desc="Konsultasikan kebutuhan dan tahap perkembangan Ananda bersama School Center."
+  />
+</Layout>
