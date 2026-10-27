@@ -1,360 +1,207 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { buttonVariants } from '../components/ui/button';
-import { cn } from '../lib/utils';
-import { EXTERNAL_LINKS } from '../data/constants';
-import SPMBTimeline from '../components/diagrams/SPMBTimeline.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SectionHead from '../components/ui/SectionHead.astro';
+import ProgramCard from '../components/ui/ProgramCard.astro';
+import FaqAccordion from '../components/ui/FaqAccordion.astro';
+import { PROGRAMS } from '../data/programs';
+import { EXTERNAL_LINKS, SITE, SPMB as SPMB_INFO } from '../data/constants';
 
-const spmbPrograms = [
+const steps = [
   {
-    type: "ONSITE",
-    title: "Preschool Onsite",
-    age: "Usia 3–6 Tahun (KB & TK IT)",
-    desc: "Pendidikan anak usia dini holistik berbasis fitrah dengan sentra bahan alam, pembiasaan adab salaf, serta interaksi sosial nyata di sekolah.",
-    features: [
-      "Rasio guru & murid 1 : 6 yang hangat",
-      "Sentra bahan alam & playground outdoor",
-      "Pembiasaan adab harian serta doa dan dzikir pagi petang",
-      "Stimulasi motorik kasar & sensorik alami"
-    ],
-    link: "/preschool",
-    tagColor: "text-tsls-olive-900 bg-tsls-sage-500/20"
+    title: 'Kenali program',
+    desc: 'Pahami usia, pola belajar, dan bentuk pendampingan pada setiap unit sebelum memutuskan.',
   },
   {
-    type: "HOME-BASED",
-    title: "Preschool HBL",
-    age: "Usia 3–6 Tahun (Home-Based)",
-    desc: "Pembelajaran dari rumah terstruktur dengan modul bermutu, 2 hari Live Meeting (Talaqqi & Tematik Diniyah), serta bimbingan konsultasi orang tua.",
-    features: [
-      "2 Hari Live Meeting + 3 Hari Mandiri",
-      "Modul cetak tematik & video panduan",
-      "Konsultasi 1-on-1 bersama guru",
-      "Standar capaian perkembangan STTPA"
-    ],
-    link: "/preschool-hbl",
-    tagColor: "text-tsls-wood-700 bg-tsls-sand-400/30"
+    title: 'Buat akun TSLS Hub',
+    desc: 'Gunakan portal resmi yang terhubung langsung dengan proses SPMB dan verifikasi berkas.',
   },
   {
-    type: "ONSITE",
-    title: "Elementary School (PKBM)",
-    age: "Usia 6–12 Tahun (PKBM Setara SD)",
-    desc: "Pendidikan dasar Islam yang mengintegrasikan pembelajaran Al-Qur'an terpadu, multiliterasi 4 bahasa, sains islami kauniyah, serta kepemimpinan beradab.",
-    features: [
-      "Halaqah Al-Qur'an: Tahsin & Tahfiz bersama asatidzah berpengalaman",
-      "Nalar kritis & Deep Learning (Tanpa ranking)",
-      "Shalat Zhuhur di masjid (khusus ikhwan)",
-      "Kesiapan jenjang SMP / Pesantren Salaf"
-    ],
-    link: "/elementary",
-    tagColor: "text-tsls-olive-950 bg-tsls-cream-200"
-  }
+    title: 'Lengkapi formulir',
+    desc: 'Isi informasi Ananda dan keluarga sesuai ketentuan yang tercantum pada portal.',
+  },
+  {
+    title: 'Unggah dokumen',
+    desc: 'Siapkan berkas digital (PDF atau foto JPG yang jernih) sesuai arahan portal.',
+  },
+  {
+    title: 'Observasi & dialog orang tua',
+    desc: 'Jadwal observasi ramah anak dan dialog penyelarasan visi dikirim melalui dashboard TSLS Hub.',
+  },
+  {
+    title: 'Pantau hasil & tahapan lanjutan',
+    desc: 'Ikuti status verifikasi dan petunjuk tahapan penerimaan berikutnya dari portal resmi.',
+  },
 ];
 
-const documentRequirements = [
+const documents = [
   {
-    title: "Akta Kelahiran Calon Murid",
-    desc: "Scan / foto dokumen asli yang jelas dan terbaca untuk verifikasi usia masuk sekolah."
+    title: 'Akta kelahiran calon murid',
+    desc: 'Pindaian atau foto dokumen asli yang jelas dan terbaca untuk verifikasi usia masuk sekolah.',
   },
   {
-    title: "Kartu Keluarga (KK)",
-    desc: "Salinan Kartu Keluarga terbaru yang memuat nama calon murid dan orang tua."
+    title: 'Kartu Keluarga (KK)',
+    desc: 'Salinan Kartu Keluarga terbaru yang memuat nama calon murid dan orang tua.',
   },
   {
-    title: "KTP Kedua Orang Tua / Wali",
-    desc: "Identitas resmi ayah dan ibu / wali calon murid yang masih berlaku."
+    title: 'KTP kedua orang tua / wali',
+    desc: 'Identitas resmi ayah dan ibu atau wali calon murid yang masih berlaku.',
   },
   {
-    title: "Pas Foto Berwarna Calon Murid",
-    desc: "Foto terbaru dengan pakaian sopan dan latar belakang polos."
+    title: 'Pas foto berwarna calon murid',
+    desc: 'Foto terbaru dengan pakaian sopan dan latar belakang polos.',
   },
   {
-    title: "Buku KIA / Riwayat Tumbuh Kembang",
-    desc: "Khusus jenjang Preschool untuk pemetaan awal riwayat stimulasi dan kesehatan ananda."
+    title: 'Buku KIA / riwayat tumbuh kembang',
+    desc: 'Khusus jenjang TK, untuk pemetaan awal riwayat stimulasi dan kesehatan Ananda.',
   },
   {
-    title: "Surat Keterangan / Rapor Terakhir",
-    desc: "Khusus pendaftaran pindahan jenjang Elementary School dari sekolah asal."
-  }
+    title: 'Rapor atau surat keterangan terakhir',
+    desc: 'Khusus pendaftaran murid pindahan jenjang SD dari sekolah asal.',
+  },
 ];
 
-const spmbFaqs = [
+const faqs = [
   {
-    q: "Kapan periode pendaftaran SPMB dibuka?",
-    a: "Pendaftaran dibuka secara berkala melalui gelombang pendaftaran online di TSLS Hub. Kuota kelas dibatasi demi menjaga rasio guru-murid yang ideal, sehingga kami menyarankan orang tua mendaftar lebih awal."
+    q: 'Kapan periode pendaftaran SPMB dibuka?',
+    a: 'Pendaftaran dibuka secara berkala melalui gelombang pendaftaran online di TSLS Hub. Kuota kelas dibatasi demi menjaga rasio guru–murid yang ideal, sehingga kami menyarankan keluarga mendaftar lebih awal.',
   },
   {
-    q: "Apakah ada tes membaca, menulis, atau berhitung (Calistung) untuk masuk jenjang Elementary?",
-    a: "Tidak ada tes calistung yang bersifat seleksi eliminatif kaku. Asesmen di TSLS berbentuk observasi kesiapan belajar, kematangan emosi, daya fokus, serta kemandirian anak dalam suasana yang menyenangkan."
+    q: 'Apakah ada tes calistung untuk masuk jenjang SD?',
+    a: 'Tidak ada tes calistung yang bersifat seleksi eliminatif. Asesmen berbentuk observasi kesiapan belajar, kematangan emosi, daya fokus, serta kemandirian anak dalam suasana yang menyenangkan.',
   },
   {
-    q: "Mengapa ada sesi wawancara / dialog dengan orang tua?",
-    a: "Pendidikan anak adalah amanah bersama. Dialog orang tua ditujukan untuk menyelaraskan visi pendidikan manhaj Salafus Shalih, pola asuh di rumah, dan komitmen sinergi antara keluarga dan sekolah."
+    q: 'Mengapa ada sesi wawancara atau dialog dengan orang tua?',
+    a: 'Pendidikan anak adalah amanah bersama. Dialog ditujukan untuk menyelaraskan visi pendidikan, pola asuh di rumah, dan komitmen sinergi antara keluarga dan sekolah.',
   },
   {
-    q: "Bagaimana cara memantau status kelulusan berkas pendaftaran?",
-    a: "Seluruh tahapan verifikasi berkas, jadwal observasi, dan pengumuman hasil dapat dipantau langsung 24/7 melalui dashboard akun orang tua di portal TSLS Hub."
-  }
+    q: 'Bagaimana memantau status berkas pendaftaran?',
+    a: 'Seluruh tahapan verifikasi berkas, jadwal observasi, dan pengumuman hasil dapat dipantau melalui dashboard akun orang tua di portal TSLS Hub.',
+  },
 ];
 ---
 
-<Layout title="Penerimaan Murid Baru (SPMB) | Tarbiyah Sunnah Lab School">
-
-  {/* =========================================================================
-      Hero Section (SPMB TSLS)
-     ========================================================================= */}
-  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
-    
-    {/* Subtle Arabic Watermark Background */}
-    <div class="absolute right-0 top-1/3 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none z-0">
-      <span class="arabic-watermark text-[140px] md:text-[240px] font-normal leading-none text-tsls-olive-950" dir="rtl">
-        القَبُولُ وَالتَّسْجِيل
-      </span>
+<Layout
+  title={`${SPMB_INFO.label} | ${SITE.name}`}
+  description={`Informasi penerimaan murid baru ${SPMB_INFO.academicYear} ${SITE.name}: alur pendaftaran, dokumen, dan portal resmi TSLS Hub.`}
+>
+  <PageHero
+    eyebrow={`Penerimaan Murid Baru · ${SPMB_INFO.academicYear}`}
+    title="Perjalanan belajar Ananda<br />dimulai dari sini."
+    intro="Kenali program, konsultasikan kebutuhan keluarga, dan selesaikan pendaftaran melalui portal TSLS Hub. Jadwal gelombang, kuota, dan biaya mengikuti pengumuman resmi sekolah."
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'SPMB' }]}
+  >
+    <div class="hero__actions">
+      <a class="btn btn--primary" href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener">
+        Buka Portal Pendaftaran <span class="btn__arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="btn btn--light" href={EXTERNAL_LINKS.consultation} target="_blank" rel="noopener">
+        Konsultasi School Center
+      </a>
     </div>
+    <div class="detail-metrics">
+      <div>Pendaftaran terpusat di TSLS Hub</div>
+      <div>Observasi ramah anak, tanpa beban calistung</div>
+      <div>Dialog penyelarasan bersama orang tua</div>
+    </div>
+  </PageHero>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10" data-reveal>
-      
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-tsls-sage-500/20 border border-tsls-sage-500/40 text-tsls-olive-950 text-xs font-mono font-bold tracking-widest uppercase">
-        PENERIMAAN PESERTA DIDIK BARU (SPMB) · TA 2026/2027
+  <section class="section--tight">
+    <div class="container">
+      <SectionHead
+        eyebrow="Tahapan pendaftaran"
+        title="Proses yang jelas, langkah demi langkah."
+        desc="Alur dirancang sederhana agar Abba & Umma mengetahui apa yang terjadi berikutnya."
+      />
+      <div class="steps">
+        {
+          steps.map((step, index) => (
+            <article class="step">
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </article>
+          ))
+        }
       </div>
-      
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-[1.12] tracking-tight text-balance">
-        Langkah Awal Menapaki<br />
-        <span class="italic font-serif font-normal text-tsls-wood-600">Pendidikan Fitrah Rabbani.</span>
-      </h1>
-
-      <p class="text-base sm:text-lg text-tsls-olive-950/80 leading-relaxed max-w-3xl mx-auto text-pretty">
-        Selamat datang di gerbang penerimaan murid baru Tarbiyah Sunnah Lab School. Seluruh proses pengisian formulir, unggah dokumen, hingga pemantauan status seleksi dilakukan secara terpusat, aman, dan transparan melalui portal digital <strong>TSLS Hub</strong>.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 font-bold px-10 rounded-none shadow-md')}>
-          Mulai Pendaftaran Online (TSLS Hub) &rarr;
-        </a>
-        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-olive-950 text-tsls-olive-950 hover:bg-tsls-olive-950 hover:text-tsls-cream-50 font-bold px-10 rounded-none transition-colors')}>
-          Masuk Akun Orang Tua
-        </a>
+      <div class="notice">
+        Lengkapi halaman ini dengan jadwal gelombang, kuota, biaya, syarat administratif, status
+        satuan pendidikan, mekanisme kunjungan, dan kebijakan pengembalian dana sesuai keputusan
+        resmi sekolah sebelum dipublikasikan.
       </div>
-
-      {/* 3 Value Badges */}
-      <div class="pt-10 border-t border-tsls-olive-950/10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
-          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">100% Terintegrasi</div>
-          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Paperless & Praktis dari Mana Saja</div>
-        </div>
-        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
-          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Observasi Ramah Anak</div>
-          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Pemetaan Fitrah Tanpa Beban Calistung</div>
-        </div>
-        <div class="p-4 bg-tsls-cream-100 border border-tsls-olive-950/10">
-          <div class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold">Sinergi Orang Tua</div>
-          <div class="text-xs sm:text-sm font-bold text-tsls-olive-950 mt-1">Penyelarasan Nilai Manhaj & Pola Asuh</div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  {/* =========================================================================
-      Section 1 — Pilihan Program Pendidikan SPMB
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          PILIHAN JENJANG PENDIDIKAN
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Jenjang Program yang Dibuka
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Pilih program yang paling selaras dengan tahap tumbuh kembang ananda dan ritme pengasuhan keluarga Anda.
-        </p>
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Dokumen persyaratan"
+        title="Siapkan dokumen sebelum memulai."
+        desc="Unggah dokumen dalam format digital (PDF atau foto JPG yang jernih) saat mengisi formulir di portal."
+      />
+      <div class="content-grid">
+        {
+          documents.map((document, index) => (
+            <article class="info-card">
+              <span class="info-card__id">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{document.title}</h3>
+              <p>{document.desc}</p>
+            </article>
+          ))
+        }
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        {spmbPrograms.map((prog, idx) => (
-          <div 
-            class="p-8 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm space-y-6 flex flex-col justify-between"
-            data-reveal="fade-up"
-            style={`transition-delay: ${idx * 80}ms`}
+  <section class="section--tight">
+    <div class="container">
+      <SectionHead
+        eyebrow="Tiga pilihan program"
+        title="Temukan program yang sesuai."
+        desc="Telaah program sebelum membuka portal pendaftaran."
+      />
+      <div class="program-grid">
+        {PROGRAMS.map((program) => <ProgramCard program={program} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Pertanyaan umum SPMB"
+        title="Yang sering ditanyakan sebelum mendaftar."
+        linkHref="/faq"
+        linkLabel="Lihat semua FAQ"
+      />
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Siap mendaftarkan Ananda?</h2>
+          <p>
+            Pendaftaran publik dan akses orang tua aktif dibedakan di dalam portal. Gunakan tautan di
+            samping sesuai kebutuhan Anda.
+          </p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--white" href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener">
+            Daftar di TSLS Hub <span class="btn__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a
+            class="btn btn--outline-white"
+            href={EXTERNAL_LINKS.consultation}
+            target="_blank"
+            rel="noopener"
           >
-            <div class="space-y-4">
-              <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2.5">
-                <span class={`text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-0.5 ${prog.tagColor}`}>
-                  {prog.type}
-                </span>
-                <span class="text-xs font-mono text-tsls-wood-600 font-bold">
-                  {prog.age}
-                </span>
-              </div>
-
-              <h3 class="font-display font-bold text-2xl text-tsls-olive-950">
-                {prog.title}
-              </h3>
-
-              <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
-                {prog.desc}
-              </p>
-
-              <div class="pt-2 border-t border-tsls-olive-950/10 space-y-2">
-                <span class="text-[10px] font-mono uppercase tracking-widest text-tsls-wood-600 font-bold block">
-                  Keunggulan Program:
-                </span>
-                <ul class="space-y-1.5 text-xs text-tsls-olive-950/80">
-                  {prog.features.map((ft) => (
-                    <li class="flex items-start gap-2">
-                      <span class="text-tsls-olive-900 font-bold shrink-0">✓</span>
-                      <span>{ft}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div class="pt-4 border-t border-tsls-olive-950/10 flex items-center justify-between gap-4">
-              <a href={prog.link} class="text-xs font-bold text-tsls-olive-950 hover:text-tsls-wood-600 transition-colors uppercase tracking-wider">
-                Pelajari Kurikulum &rarr;
-              </a>
-              <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-3 py-1.5 bg-tsls-olive-950 text-tsls-cream-50 hover:bg-tsls-olive-800 transition-colors">
-                Daftar &rarr;
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 2 — Alur & Tahapan Pendaftaran (Interactive Stepper)
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          TAHAPAN PENDAFTARAN
+            Konsultasi
+          </a>
         </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Alur Pendaftaran SPMB TSLS
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Enam tahapan mudah dan terarah mulai dari registrasi akun hingga penyambutan keluarga baru.
-        </p>
-      </div>
-
-      <SPMBTimeline />
-
-      {/* Info Alert Box */}
-      <div class="p-6 bg-tsls-cream-100 border-l-4 border-tsls-olive-950 border-y border-r border-tsls-olive-950/15 shadow-sm text-xs sm:text-sm text-tsls-olive-950/85 leading-relaxed max-w-3xl mx-auto" data-reveal="fade-up">
-        <strong class="text-tsls-olive-950 font-bold block mb-1">Catatan Penting untuk Orang Tua:</strong>
-        Setelah data dan dokumen diunggah, tim verifikator TSLS akan memeriksa kelengkapan berkas Anda. Jadwal observasi anak dan dialog orang tua akan dikirimkan otomatis melalui dashboard TSLS Hub dan notifikasi WhatsApp resmi.
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 3 — Persyaratan Dokumen Digital
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          DOKUMEN PERSYARATAN
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 leading-tight">
-          Siapkan Dokumen Sebelum Memulai
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Unggah dokumen dalam format digital (PDF atau foto JPG jernih) saat mengisi formulir di portal TSLS Hub.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="fade-up">
-        {documentRequirements.map((doc, idx) => (
-          <div class="p-6 bg-tsls-cream-50 border border-tsls-olive-950/15 space-y-2">
-            <div class="flex items-center gap-2">
-              <span class="w-5 h-5 rounded-full bg-tsls-olive-950 text-tsls-cream-50 text-xs font-bold flex items-center justify-center font-mono">
-                {idx + 1}
-              </span>
-              <h4 class="font-display font-bold text-base text-tsls-olive-950">
-                {doc.title}
-              </h4>
-            </div>
-            <p class="text-xs text-tsls-olive-950/75 leading-relaxed pl-7">
-              {doc.desc}
-            </p>
-          </div>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 4 — Pertanyaan Umum SPMB (FAQ)
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-      
-      <div class="text-center space-y-4" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          TANYA JAWAB SPMB
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
-          Pertanyaan Seputar Pendaftaran
-        </h2>
-      </div>
-
-      <div class="divide-y divide-tsls-olive-950/15 border-y border-tsls-olive-950/15" data-reveal="fade-up">
-        {spmbFaqs.map((faq) => (
-          <div class="py-8 space-y-2">
-            <h4 class="font-display font-bold text-lg text-tsls-olive-950">
-              {faq.q}
-            </h4>
-            <p class="text-sm text-tsls-olive-950/80 leading-relaxed text-pretty">
-              {faq.a}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center pt-2" data-reveal>
-        <a href="/faq" class="inline-flex items-center gap-2 text-xs font-bold text-tsls-olive-950 uppercase tracking-widest hover:text-tsls-wood-600 transition-colors">
-          Lihat FAQ Lengkap Sekolah &rarr;
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 5 — CTA & Portal Pendaftaran
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 text-center">
-    <div class="max-w-3xl mx-auto px-4 space-y-8" data-reveal>
-      <span class="text-xs font-mono uppercase tracking-widest text-tsls-sand-400 font-bold block">
-        MULAI PENDAFTARAN ONLINE
-      </span>
-      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold">
-        Siap Bergabung Bersama TSLS?
-      </h2>
-      <p class="text-base sm:text-lg text-tsls-cream-100/80 leading-relaxed text-pretty">
-        Data pendaftaran dikelola secara aman melalui portal terpusat TSLS Hub. Pastikan menyiapkan nomor WhatsApp dan email aktif Anda.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a href={EXTERNAL_LINKS.spmb} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-10 rounded-none shadow-md')}>
-          Buka Formulir SPMB di TSLS Hub &rarr;
-        </a>
-        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-10 rounded-none transition-colors')}>
-          Konsultasi Admin SPMB
-        </a>
       </div>
     </div>
   </section>
-
 </Layout>

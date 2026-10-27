@@ -1,0 +1,75 @@
+---
+import { EXTERNAL_LINKS } from '../data/constants';
+import { PROGRAMS } from '../data/programs';
+
+const options = [
+  { value: 'onsite-preschool', label: 'Usia 3–6 tahun, ingin belajar di sekolah', slug: 'preschool-reguler' },
+  { value: 'hbl', label: 'Usia 3–6 tahun, belajar dari rumah', slug: 'preschool-hbl' },
+  { value: 'elementary', label: 'Usia sekolah dasar, belajar onsite', slug: 'elementary' },
+  { value: 'unsure', label: 'Masih ingin berdiskusi dengan sekolah', slug: null },
+];
+
+const recommendations = Object.fromEntries(
+  options
+    .filter((option) => option.slug)
+    .map((option) => {
+      const program = PROGRAMS.find((p) => p.slug === option.slug)!;
+      return [
+        option.value,
+        { name: program.name, summary: program.cardSummary, href: `/program/${program.slug}` },
+      ];
+    })
+);
+---
+
+<section class="section--tight">
+  <div class="container">
+    <div class="finder">
+      <div>
+        <span class="eyebrow">04 · Program finder</span>
+        <h2>Program mana yang paling sesuai untuk Ananda?</h2>
+        <p>
+          Mulai dari usia dan model belajar yang diinginkan keluarga. Hasilnya berupa rekomendasi
+          awal untuk membantu orientasi, bukan penetapan kelayakan atau keputusan penerimaan.
+        </p>
+      </div>
+
+      <div class="finder__control">
+        <label for="study-mode">Pilih kondisi keluarga</label>
+        <select id="study-mode" data-program-finder>
+          <option value="none">Pilih kebutuhan belajar…</option>
+          {options.map((option) => <option value={option.value}>{option.label}</option>)}
+        </select>
+        <div class="finder__result" id="finder-result" aria-live="polite">
+          <b>Temukan jalur belajar Ananda</b>
+          Pilih salah satu kondisi di atas untuk melihat rekomendasi awal.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script
+  is:inline
+  define:vars={{ recommendations, consultationUrl: EXTERNAL_LINKS.consultation }}
+>
+  (() => {
+    const select = document.querySelector('[data-program-finder]');
+    const result = document.getElementById('finder-result');
+    if (!select || !result) return;
+
+    const fallback =
+      '<b>Temukan jalur belajar Ananda</b>Pilih salah satu kondisi di atas untuk melihat rekomendasi awal.';
+
+    select.addEventListener('change', () => {
+      const match = recommendations[select.value];
+      if (match) {
+        result.innerHTML = `<b>${match.name}</b>${match.summary} <a href="${match.href}">Jelajahi program ↗</a>`;
+      } else if (select.value === 'unsure') {
+        result.innerHTML = `<b>Mari diskusi dengan School Center</b>Tanyakan kebutuhan dan tahap perkembangan Ananda secara langsung. <a href="${consultationUrl}" target="_blank" rel="noopener">Chat School Center ↗</a>`;
+      } else {
+        result.innerHTML = fallback;
+      }
+    });
+  })();
+</script>

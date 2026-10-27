@@ -1,348 +1,164 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { buttonVariants } from '../components/ui/button';
-import { cn } from '../lib/utils';
-import { EXTERNAL_LINKS } from '../data/constants';
-import FitrahPath from '../components/diagrams/FitrahPath.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SectionHead from '../components/ui/SectionHead.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import { SITE } from '../data/constants';
 
-interface MissionItem {
-  num: string;
-  title: string;
-  desc: string;
-  tag: string;
-}
-
-const missions: MissionItem[] = [
+const missions = [
   {
-    num: "01",
+    id: '01 · AQIDAH & MANHAJ',
     title: "Internalisasi Al-Qur'an & As-Sunnah",
-    desc: "Menginternalisasi nilai-nilai Al-Qur'an dan As-Sunnah sesuai pemahaman Salafush Shalih dalam kehidupan sehari-hari.",
-    tag: "AQIDAH & MANHAJ"
+    desc: "Menginternalisasi nilai-nilai Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih dalam kehidupan sehari-hari.",
   },
   {
-    num: "02",
-    title: "Kecintaan Terhadap Ilmu & Al-Qur'an",
-    desc: "Menumbuhkan rasa cinta terhadap ilmu agama, Al-Qur’an, dan semangat istiqomah dalam menuntut ilmu syar'i.",
-    tag: "MAHABBATUL ILMI"
+    id: '02 · MAHABBATUL ILMI',
+    title: "Kecintaan terhadap ilmu & Al-Qur'an",
+    desc: "Menumbuhkan rasa cinta terhadap ilmu agama, Al-Qur'an, dan semangat istiqamah dalam menuntut ilmu syar'i.",
   },
   {
-    num: "03",
-    title: "Merawat & Menjaga Fitrah Anak",
-    desc: "Merawat, menumbuhkan, dan menjaga fitrah anak agar senantiasa lurus, suci, dan berkembang optimal sesuai kodrat ilahi.",
-    tag: "FITRAH CARE"
+    id: '03 · FITRAH',
+    title: 'Merawat & menjaga fitrah anak',
+    desc: 'Merawat, menumbuhkan, dan menjaga fitrah anak agar senantiasa lurus, suci, dan berkembang optimal.',
   },
   {
-    num: "04",
-    title: "Pendidikan Ramah & Menghargai Keunikan",
-    desc: "Menyelenggarakan pendidikan ramah anak yang menghargai keunikan potensi dan tahapan perkembangan setiap individu.",
-    tag: "RAMAH ANAK"
+    id: '04 · RAMAH ANAK',
+    title: 'Pendidikan ramah & menghargai keunikan',
+    desc: 'Menyelenggarakan pendidikan ramah anak yang menghargai keunikan potensi dan tahapan perkembangan setiap individu.',
   },
   {
-    num: "05",
-    title: "Lembaga Bermutu & Berakhlakul Karimah",
-    desc: "Menyelenggarakan lembaga pendidikan yang bermutu tinggi, unggul secara tata kelola, dan berlandaskan akhlakul karimah.",
-    tag: "MUTU & ADAB"
+    id: '05 · MUTU & ADAB',
+    title: 'Lembaga bermutu & berakhlakul karimah',
+    desc: 'Menyelenggarakan lembaga pendidikan yang bermutu, unggul secara tata kelola, dan berlandaskan akhlakul karimah.',
   },
   {
-    num: "06",
-    title: "Kompetensi Akademik & Life Skills Adaptif",
-    desc: "Mengembangkan kompetensi akademik, daya nalar kritis, dan keterampilan hidup (life skills) yang adaptif terhadap tantangan zaman.",
-    tag: "LIFE SKILLS"
-  }
+    id: '06 · LIFE SKILLS',
+    title: 'Kompetensi akademik & life skills adaptif',
+    desc: 'Mengembangkan kompetensi akademik, daya nalar kritis, dan keterampilan hidup yang adaptif terhadap tantangan zaman.',
+  },
+];
+
+const leadership = [
+  {
+    role: 'Dewan Pembina Yayasan',
+    name: 'Ustadz Abu Haidar As-Sundawy',
+    desc: 'حَفِظَهُ اللهُ تَعَالَى · Pembina Yayasan Tarbiyah Sunnah.',
+  },
+  {
+    role: 'Ketua Yayasan',
+    name: 'Asep Dadang Sukarna Hikmat Nirwana',
+    desc: 'Memimpin arah strategis, legalitas, dan tata kelola kelembagaan Yayasan Tarbiyah Sunnah.',
+  },
+  {
+    role: 'Ketua Bidang Pendidikan Yayasan',
+    name: 'Mochammad Hilman Al-Fiqhy, M.A.',
+    desc: "Mengawal standardisasi kurikulum syar'i, mutu akademik, dan pembinaan guru di bawah yayasan.",
+  },
+  {
+    role: 'PLT Kepala Unit',
+    name: 'Yahya Nursidik, S.Pd., M.T.',
+    desc: 'Kepemimpinan unit Sekolah Tarbiyah Sunnah Bandung.',
+  },
+  {
+    role: 'Wakasek SD',
+    name: 'Resania Novita, S.Pd.',
+    desc: 'Manajemen operasional pembelajaran, kurikulum, dan ketertiban adab jenjang SD.',
+  },
+  {
+    role: 'Wakasek TK',
+    name: 'Lia Amalia',
+    desc: 'Manajemen sentra bermain ramah fitrah, pendampingan orang tua, dan program usia dini.',
+  },
 ];
 ---
 
-<Layout title="Tentang TSLS | Tarbiyah Sunnah Lab School">
+<Layout
+  title={`Tentang | ${SITE.name}`}
+  description="Sekolah Tarbiyah Sunnah Bandung — sekolah Islam di Bandung yang merawat fitrah dan membangun generasi berkarakter Rabbani."
+>
+  <PageHero
+    eyebrow="Tentang Sekolah Tarbiyah Sunnah Bandung"
+    title="Pendidikan yang menghargai fitrah.<br />Berorientasi pada karakter Rabbani."
+    intro={SITE.description}
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'Tentang' }]}
+  />
 
-  {/* =========================================================================
-      Hero Section (About TSLS)
-     ========================================================================= */}
-  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-tsls-cream-50 overflow-hidden border-b border-tsls-olive-950/10">
-    
-    {/* Subtle Arabic Watermark Background */}
-    <div class="absolute right-0 top-1/3 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none z-0">
-      <span class="arabic-watermark text-[140px] md:text-[240px] font-normal leading-none text-tsls-olive-950" dir="rtl">
-        عَنِ المَدْرَسَة
-      </span>
-    </div>
-
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-6 relative z-10" data-reveal>
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-tsls-sage-500/20 border border-tsls-sage-500/40 text-tsls-olive-950 text-xs font-mono font-bold tracking-widest uppercase">
-        TENTANG TARBIYAH SUNNAH LAB SCHOOL
-      </div>
-      
-      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-tsls-olive-950 leading-tight tracking-tight text-balance">
-        Merawat Fitrah, Membangun Generasi Rabbani
-      </h1>
-
-      <p class="text-base sm:text-lg text-tsls-olive-950/80 leading-relaxed max-w-2xl mx-auto text-pretty">
-        Tarbiyah Sunnah Lab School (TSLS) adalah sekolah Islam di Bandung yang mendampingi anak bertumbuh sesuai tahap perkembangannya, menjaga fitrah, membangun iman, dan menanamkan adab di atas fondasi Al-Qur'an dan As-Sunnah sesuai pemahaman Salafus Shalih.
-      </p>
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 1 — Visi & Misi Sekolah (Official Revision)
-     ========================================================================= */}
-  <section id="visi-misi" class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-      
-      {/* Visi Kami — Editorial Manifesto Card */}
-      <div class="p-8 sm:p-12 md:p-16 bg-tsls-cream-50 border-l-8 border-tsls-olive-950 border-y border-r border-tsls-olive-950/15 shadow-sm space-y-6 relative overflow-hidden" data-reveal>
-        
-        {/* Subtle Watermark */}
-        <div class="absolute right-4 top-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none select-none hidden sm:block">
-          <span class="arabic-watermark text-[110px] md:text-[140px] text-tsls-olive-950" dir="rtl">
-            رُؤْيَتُنَا
-          </span>
+  <section class="section--tight">
+    <div class="container">
+      <div class="approach-row">
+        <div>
+          <span class="eyebrow">Arah yang kami tuju</span>
+          <h2>Membangun Generasi Berkarakter Rabbani.</h2>
+          <p>
+            Visi ini menjadi kompas dalam setiap kurikulum dan aktivitas: memastikan anak tidak hanya
+            tumbuh cerdas secara intelektual, tetapi juga kokoh dalam ketauhidan, adab, dan
+            kemandirian.
+          </p>
+          <div style="margin-top:25px">
+            <a class="btn btn--primary" href="/pendekatan">
+              Kenali Cara Belajar <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
-
-        <div class="space-y-2 relative z-10">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 block">
-            VISI KAMI
-          </span>
-          <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 tracking-tight leading-tight">
-            "Membangun Generasi Berkarakter Rabbani, Beradab, dan Berilmu."
-          </h2>
-        </div>
-
-        <div class="pt-4 border-t border-tsls-olive-950/10 max-w-3xl relative z-10">
-          <p class="font-serif italic text-base sm:text-lg text-tsls-olive-950/85 leading-relaxed">
-            Visi ini menjadi kompas utama kami dalam setiap kurikulum dan aktivitas, memastikan anak tidak hanya cerdas secara intelektual, namun kokoh dalam ketauhidan.
+        <div class="approach-panel">
+          <strong style="font-size:37px;line-height:1.3">Fitrah.<br />Iman.<br />Adab.<br />Ilmu.</strong>
+          <p>
+            Empat kata yang mewarnai pendidikan tanpa menyederhanakan tujuan menjadi sekadar capaian
+            akademik.
           </p>
         </div>
-
-      </div>
-
-      {/* Misi Sekolah — 6 Cards Grid */}
-      <div class="space-y-10">
-        
-        <div class="text-center space-y-3 max-w-2xl mx-auto" data-reveal>
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-            LANGKAH STRATEGIS
-          </span>
-          <h3 class="font-display text-3xl sm:text-4xl font-bold text-tsls-olive-950">
-            Misi Sekolah
-          </h3>
-          <p class="text-sm text-tsls-olive-950/80 leading-relaxed">
-            Enam pilar komitmen institusi dalam mewujudkan pendidikan Islam yang ramah anak, berakar pada sunnah, dan berdaya saing ke masa depan.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {missions.map((m, idx) => (
-            <div 
-              class="p-6 sm:p-7 bg-tsls-cream-50 border border-tsls-olive-950/15 shadow-sm space-y-4 flex flex-col justify-between"
-              data-reveal="fade-up"
-              style={`transition-delay: ${idx * 60}ms`}
-            >
-              <div class="space-y-3">
-                <div class="flex items-center justify-between border-b border-tsls-olive-950/10 pb-2.5">
-                  <span class="text-xs font-mono font-bold px-2.5 py-0.5 bg-tsls-olive-950 text-tsls-cream-50">
-                    {m.num}
-                  </span>
-                  <span class="text-[10px] font-mono font-bold tracking-wider uppercase text-tsls-wood-600">
-                    {m.tag}
-                  </span>
-                </div>
-
-                <h4 class="font-display font-bold text-lg text-tsls-olive-950 leading-snug">
-                  {m.title}
-                </h4>
-
-                <p class="text-xs sm:text-sm text-tsls-olive-950/80 leading-relaxed">
-                  {m.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      Section 2 — Filosofi Pendidikan (Fitrah Path)
-     ========================================================================= */}
-  <section id="filosofi-pendidikan" class="py-24 md:py-32 bg-tsls-cream-50 border-b border-tsls-olive-950/10">
-    <div class="max-w-5xl mx-auto px-4 text-center space-y-12" data-reveal>
-      <div class="space-y-3 max-w-2xl mx-auto">
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          ALUR PERKEMBANGAN FITRAH
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950">
-          Filosofi Pendidikan TSLS
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Pendidikan mengalir selaras dengan fase penciptaan anak dari usia dini hingga kesiapan akil baligh.
-        </p>
-      </div>
-
-      <div data-reveal="fade-up">
-        <FitrahPath />
       </div>
     </div>
   </section>
 
-  {/* =========================================================================
-      Section 3 — Struktur & Kepemimpinan (Leadership & Governance)
-     ========================================================================= */}
-  <section id="struktur-kepemimpinan" class="py-24 md:py-32 bg-tsls-cream-100 border-b border-tsls-olive-950/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      
-      <div class="text-center space-y-4 max-w-3xl mx-auto" data-reveal>
-        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 border-b border-tsls-wood-600/30 pb-1">
-          TATA KELOLA & AMANAH
-        </div>
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-tsls-olive-950 text-balance leading-tight">
-          Struktur & Kepemimpinan
-        </h2>
-        <p class="text-base text-tsls-olive-950/80 leading-relaxed">
-          Sinergi kepemimpinan amanah dan bimbingan asatidzah dalam mengawal visi pendidikan rabbani di Tarbiyah Sunnah Lab School.
-        </p>
-      </div>
-
-      <div class="space-y-8 max-w-4xl mx-auto">
-        
-        {/* Tier 1: Dewan Pembina Yayasan */}
-        <div class="p-8 sm:p-10 bg-tsls-cream-50 border-2 border-tsls-olive-950 shadow-sm relative overflow-hidden" data-reveal="fade-up">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div class="space-y-2">
-              <div class="inline-flex items-center gap-2 px-3 py-1 bg-tsls-olive-950 text-tsls-cream-50 text-[11px] font-mono font-bold tracking-widest uppercase">
-                DEWAN PEMBINA YAYASAN
-              </div>
-              <h3 class="font-display font-bold text-2xl sm:text-3xl text-tsls-olive-950">
-                Ustadz Abu Haidar As-Sundawy
-              </h3>
-              <p class="text-xs sm:text-sm text-tsls-wood-700 font-serif italic">
-                حَفِظَهُ اللهُ تَعَالَى · Pembina Yayasan Tarbiyah Sunnah
-              </p>
-            </div>
-
-            <div class="shrink-0">
-              <div class="w-16 h-16 rounded-full bg-tsls-sage-500/20 border border-tsls-sage-500/40 flex items-center justify-center text-tsls-olive-950 font-bold text-xl font-display">
-                TS
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Tier 2: Pimpinan Yayasan (2 Columns) */}
-        <div class="grid sm:grid-cols-2 gap-6" data-reveal="fade-up" style="transition-delay: 80ms">
-          
-          {/* Ketua Yayasan */}
-          <div class="p-6 sm:p-8 bg-tsls-cream-50 border border-tsls-olive-950/20 shadow-sm space-y-3">
-            <span class="text-[11px] font-mono font-bold tracking-widest uppercase text-tsls-wood-600 block">
-              KETUA YAYASAN
-            </span>
-            <h4 class="font-display font-bold text-xl text-tsls-olive-950">
-              Asep Dadang Sukarna Hikmat Nirwana
-            </h4>
-            <p class="text-xs text-tsls-olive-950/75 leading-relaxed">
-              Memimpin arah strategis, legalitas, dan tata kelola kelembagaan Yayasan Tarbiyah Sunnah.
-            </p>
-          </div>
-
-          {/* Ketua Bidang Pendidikan Yayasan */}
-          <div class="p-6 sm:p-8 bg-tsls-cream-50 border border-tsls-olive-950/20 shadow-sm space-y-3">
-            <span class="text-[11px] font-mono font-bold tracking-widest uppercase text-tsls-sage-600 block">
-              KETUA BIDANG PENDIDIKAN YAYASAN
-            </span>
-            <h4 class="font-display font-bold text-xl text-tsls-olive-950">
-              Mochammad Hilman Al-Fiqhy, M.A.
-            </h4>
-            <p class="text-xs text-tsls-olive-950/75 leading-relaxed">
-              Mengawal standarisasi kurikulum syar'i, mutu akademik, dan pembinaan guru di bawah yayasan.
-            </p>
-          </div>
-
-        </div>
-
-        {/* Tier 3: Kepemimpinan Unit Sekolah (TS Islamic Lab School) */}
-        <div class="p-8 bg-tsls-cream-50 border border-tsls-olive-950/20 shadow-sm space-y-6" data-reveal="fade-up" style="transition-delay: 160ms">
-          
-          <div class="border-b border-tsls-olive-950/10 pb-4">
-            <span class="text-xs font-mono font-bold tracking-widest uppercase text-tsls-wood-600 block">
-              KEPEMIMPINAN UNIT SEKOLAH
-            </span>
-            <div class="mt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <h4 class="font-display font-bold text-2xl text-tsls-olive-950">
-                  Yahya Nursidik, S.Pd., M.T.
-                </h4>
-                <p class="text-xs font-mono font-bold text-tsls-olive-800 uppercase tracking-wider mt-0.5">
-                  PLT Kepala Unit TS Islamic Lab School
-                </p>
-              </div>
-              <span class="text-xs font-mono font-bold px-3 py-1 bg-tsls-cream-200 text-tsls-olive-900 self-start sm:self-auto">
-                KEPALA UNIT
-              </span>
-            </div>
-          </div>
-
-          {/* Wakasek Grid */}
-          <div class="grid sm:grid-cols-2 gap-6 pt-2">
-            
-            {/* Wakasek Elementary */}
-            <div class="p-5 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-1.5">
-              <span class="text-[10px] font-mono font-bold tracking-wider uppercase text-tsls-olive-900">
-                WAKASEK ELEMENTARY SCHOOL
-              </span>
-              <h5 class="font-display font-bold text-lg text-tsls-olive-950">
-                Resania Novita, S.Pd.
-              </h5>
-              <p class="text-xs text-tsls-olive-950/75 leading-relaxed">
-                Manajemen operasional pembelajaran, kurikulum, dan ketertiban adab jenjang Elementary School (PKBM Setara SD).
-              </p>
-            </div>
-
-            {/* Wakasek Preschool */}
-            <div class="p-5 bg-tsls-cream-100 border border-tsls-olive-950/15 space-y-1.5">
-              <span class="text-[10px] font-mono font-bold tracking-wider uppercase text-tsls-wood-700">
-                WAKASEK PRESCHOOL
-              </span>
-              <h5 class="font-display font-bold text-lg text-tsls-olive-950">
-                Lia Amalia
-              </h5>
-              <p class="text-xs text-tsls-olive-950/75 leading-relaxed">
-                Manajemen sentra bermain ramah fitrah, pendampingan orang tua, dan program usia dini.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  {/* =========================================================================
-      CTA Section
-     ========================================================================= */}
-  <section class="py-24 md:py-32 bg-tsls-olive-950 text-tsls-cream-50 text-center">
-    <div class="max-w-3xl mx-auto px-4 space-y-8" data-reveal>
-      <span class="text-xs font-mono uppercase tracking-widest text-tsls-sand-400 font-bold block">
-        PENERIMAAN PESERTA DIDIK BARU (SPMB)
-      </span>
-      <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold">
-        Bergabung Bersama Keluarga Besar TSLS
-      </h2>
-      <p class="text-base sm:text-lg text-tsls-cream-100/80 leading-relaxed text-pretty">
-        Daftarkan ananda pada jenjang Preschool Onsite, Preschool HBL, atau Elementary School (PKBM) melalui portal resmi TSLS Hub.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4 pt-2">
-        <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class={cn(buttonVariants({ size: 'lg' }), 'bg-tsls-cream-50 text-tsls-olive-950 hover:bg-tsls-cream-200 font-bold px-10 rounded-none shadow-md')}>
-          Buka TSLS Hub &rarr;
-        </a>
-        <a href="/kontak" class={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'border-tsls-sand-400 text-tsls-sand-400 hover:bg-tsls-sand-400 hover:text-tsls-olive-950 font-bold px-10 rounded-none transition-colors')}>
-          Hubungi Kami
-        </a>
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Langkah strategis"
+        title="Enam misi sekolah."
+        desc="Komitmen institusi dalam mewujudkan pendidikan Islam yang ramah anak, berakar pada sunnah, dan berdaya menghadapi masa depan."
+      />
+      <div class="content-grid">
+        {
+          missions.map((mission) => (
+            <article class="info-card">
+              <span class="info-card__id">{mission.id}</span>
+              <h3>{mission.title}</h3>
+              <p>{mission.desc}</p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
+  <section class="section--tight">
+    <div class="container">
+      <SectionHead
+        eyebrow="Tata kelola & amanah"
+        title="Struktur & kepemimpinan."
+        desc="Sinergi kepemimpinan dan bimbingan guru dalam mengawal visi pendidikan Rabbani di sekolah kami."
+      />
+      <div class="content-grid">
+        {
+          leadership.map((person) => (
+            <article class="info-card">
+              <span class="info-card__id">{person.role.toUpperCase()}</span>
+              <h3>{person.name}</h3>
+              <p>{person.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="notice">
+        Redaksi resmi visi, misi, nama satuan pendidikan, dan susunan kepemimpinan mengikuti dokumen
+        yayasan terkini. Perbarui halaman ini setiap kali terjadi perubahan struktur.
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Bergabung bersama keluarga besar Sekolah Tarbiyah Sunnah Bandung"
+    desc="Kenali jenjang yang sesuai untuk Ananda, lalu lanjutkan pendaftaran melalui portal resmi TSLS Hub."
+  />
 </Layout>

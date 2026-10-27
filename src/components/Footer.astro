@@ -1,70 +1,56 @@
 ---
-import { EXTERNAL_LINKS } from '../data/constants';
+import { EXTERNAL_LINKS, SITE, SPMB } from '../data/constants';
+import { PROGRAMS } from '../data/programs';
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <div class="site-footer__grid">
-    <div class="space-y-3">
-      <a href="/" class="inline-block" aria-label="Tarbiyah Sunnah Lab School">
-        <img src="/images/logo-white.svg" alt="Tarbiyah Sunnah Lab School" class="h-10 w-auto object-contain mb-1" width="200" height="45" />
-      </a>
-      <p class="text-sm text-color-paper/80 leading-relaxed">
-        Merawat Fitrah, Membangun Generasi Rabbani. Mendampingi anak bertumbuh dengan iman, adab, ilmu, dan karakter rabbani di atas fondasi Al-Qur'an dan As-Sunnah.
-      </p>
-      <a href="/tentang" class="text-sm font-bold inline-flex items-center gap-1 hover:underline">
-        Kenali sekolah kami <span aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
+  <div class="container">
+    <div class="site-footer__main">
+      <div>
+        <a class="brand" href="/" aria-label={`${SITE.name} — Beranda`}>
+          <img class="brand__logo" src="/images/logo.png" alt={SITE.name} width="723" height="240" />
+        </a>
+        <p class="site-footer__desc">
+          Mendampingi setiap anak bergerak, belajar, dan bertumbuh dalam iman, adab, ilmu, serta
+          kemandirian. Membangun Generasi Berkarakter Rabbani.
+        </p>
+        <p class="site-footer__desc">{SITE.address}</p>
+      </div>
 
-    <div>
-      <h4 class="font-bold text-base mb-4 text-color-paper">Program</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="/preschool" class="hover:underline">Preschool</a></li>
-        <li><a href="/preschool-hbl" class="hover:underline">Preschool HBL</a></li>
-        <li><a href="/elementary" class="hover:underline">Elementary (PKBM)</a></li>
-      </ul>
-    </div>
+      <div>
+        <h4>Program</h4>
+        <div class="site-footer__links">
+          {PROGRAMS.map((program) => <a href={`/program/${program.slug}`}>{program.shortName}</a>)}
+          <a href="/program">Bandingkan Program</a>
+        </div>
+      </div>
 
-    <div>
-      <h4 class="font-bold text-base mb-4 text-color-paper">Informasi</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="/tentang" class="hover:underline">Tentang TSLS</a></li>
-        <li><a href="/pendidikan" class="hover:underline">Pendidikan di TSLS</a></li>
-        <li><a href="/kehidupan-sekolah" class="hover:underline">Kehidupan Sekolah</a></li>
-        <li><a href="/spmb" class="hover:underline">SPMB</a></li>
-        <li><a href="/faq" class="hover:underline">FAQ</a></li>
-        <li><a href="/kontak" class="hover:underline">Kontak</a></li>
-      </ul>
-    </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <div class="site-footer__links">
+          <a href="/pendekatan">Cara Belajar</a>
+          <a href="/cerita-belajar">Kehidupan Sekolah</a>
+          <a href="/tentang">Tentang Sekolah</a>
+          <a href="/faq">Pertanyaan Umum</a>
+        </div>
+      </div>
 
-    <div>
-      <h4 class="font-bold text-base mb-4 text-color-paper">Akses & Hubungan</h4>
-      <ul class="space-y-2 text-sm mb-6">
-        <li>
-          <a href={EXTERNAL_LINKS.hub} target="_blank" rel="noopener noreferrer" class="font-bold text-warm-soft hover:underline">
-            TSLS Hub Portal &rarr;
-          </a>
-        </li>
-        <li>
-          <a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class="hover:underline">
-            WhatsApp Admin
-          </a>
-        </li>
-        <li>
-          <a href="https://maps.google.com/?q=Tarbiyah+Sunnah+Lab+School+Bandung" target="_blank" rel="noopener noreferrer" class="hover:underline">
-            Lokasi Maps
-          </a>
-        </li>
-      </ul>
-      <div class="text-xs text-color-paper/70">
-        Jl. Setrasari VI No.3A, Sukarasa, Kec. Sukasari, Kota Bandung, Jawa Barat 40152
+      <div>
+        <h4>Terhubung</h4>
+        <div class="site-footer__links">
+          <a href="/spmb">{SPMB.label}</a>
+          <a href="/kontak">Kontak & Lokasi</a>
+          <a href={EXTERNAL_LINKS.consultation} target="_blank" rel="noopener">School Center</a>
+          <a href={EXTERNAL_LINKS.portal} target="_blank" rel="noopener">Portal Orang Tua ↗</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="site-footer__bottom">
-    <span>&copy; {currentYear} Tarbiyah Sunnah Lab School (TSLS). Hak cipta dilindungi.</span>
-    <span>Bandung, Jawa Barat</span>
+    <div class="site-footer__bottom">
+      <span>© {currentYear} {SITE.name}. Hak cipta dilindungi.</span>
+      <span>{SITE.city} · tslabschool.sch.id</span>
+    </div>
   </div>
 </footer>

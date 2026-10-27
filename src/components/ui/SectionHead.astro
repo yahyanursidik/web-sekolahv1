@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  desc?: string;
+  linkHref?: string;
+  linkLabel?: string;
+  onDark?: boolean;
+}
+
+const { eyebrow, title, desc, linkHref, linkLabel, onDark = false } = Astro.props;
+---
+
+<div class="section-head">
+  <div>
+    <span class:list={['eyebrow', { 'eyebrow--on-dark': onDark }]}>{eyebrow}</span>
+    <h2 set:html={title} />
+  </div>
+  {
+    linkHref && linkLabel ? (
+      <a class="section-head__link" href={linkHref}>
+        {linkLabel} ↗
+      </a>
+    ) : desc ? (
+      <p>{desc}</p>
+    ) : null
+  }
+</div>

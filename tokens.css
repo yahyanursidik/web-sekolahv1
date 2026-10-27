@@ -1,44 +1,82 @@
+/* ==========================================================================
+   TS LAB SCHOOL — DESIGN TOKENS
+   UI/UX Design System v1.0 · Campaign: MOVE. LEARN. GROW.
+   Reference: tsls-uiux-design-system.md §6 (Design tokens)
+   ========================================================================== */
+
 :root {
-  /* TSLS Brand Colors - Natural Islamic Academic */
-  --tsls-olive-950: #25351F;
-  --tsls-olive-800: #3F4E2F;
-  --tsls-olive-600: #7D8A63;
-  --tsls-sage-500: #9AA67B;
+  /* --- Core palette -------------------------------------------------- */
+  --tsls-bg: #f7f8f2;          /* kanvas utama, netral hangat */
+  --tsls-ink: #173c34;         /* judul, tombol utama, identitas */
+  --tsls-dark: #102f28;        /* header atas, modul filsafat, CTA */
+  --tsls-text: #253c36;        /* teks biasa */
+  --tsls-muted: #5c7169;       /* teks pendukung (kontras dinaikkan dari #657A73) */
+  --tsls-line: #dfe8df;        /* pemisah halus */
+  --tsls-white: #ffffff;
 
-  --tsls-cream-50: #FFFDF5;
-  --tsls-cream-100: #F7F3E8;
-  --tsls-cream-200: #EFE5CF;
+  /* --- Pillar accents (aksen saja, bukan latar berwarna besar) -------- */
+  --tsls-move: #f1a578;
+  --tsls-learn: #8ec9d2;
+  --tsls-grow: #a7c99a;
 
-  --tsls-sand-400: #D8C2A0;
-  --tsls-yellow-300: #F3CF75;
-  --tsls-wood-600: #8A5A32;
+  /* Versi gelap untuk teks di atas latar terang (kontras AA) */
+  --tsls-move-ink: #a85c2e;
+  --tsls-learn-ink: #3d7b87;
+  --tsls-grow-ink: #4d7a48;
 
-  --text-primary: #25351F;
-  --text-secondary: #55604F;
-  --border-soft: rgba(63, 78, 47, 0.16);
+  /* Versi terang untuk teks di atas latar gelap */
+  --tsls-move-light: #f6b48b;
+  --tsls-learn-light: #9ed9df;
+  --tsls-grow-light: #badea8;
 
-  /* Semantic Theme Mappings */
-  --color-paper: var(--tsls-cream-50);
-  --color-paper-2: var(--tsls-cream-100);
-  --color-paper-3: var(--tsls-cream-200);
-  --color-ink: var(--tsls-olive-950);
-  --color-ink-2: var(--text-secondary);
-  --color-rule: var(--border-soft);
-  --color-rule-2: rgba(63, 78, 47, 0.3);
-  --color-muted: #66735D;
-  --color-neutral: #3F4E2F;
-  --color-accent: var(--tsls-olive-800);
-  --color-accent-strong: var(--tsls-olive-950);
-  --color-accent-ink: var(--tsls-cream-50);
-  --color-warm: var(--tsls-wood-600);
-  --color-warm-soft: var(--tsls-sand-400);
-  --color-focus: var(--tsls-olive-800);
+  /* --- Surfaces ------------------------------------------------------ */
+  --tsls-surface: #ffffff;
+  --tsls-surface-2: #f1f5ef;
+  --tsls-surface-3: #e7eedf;
+  --tsls-surface-tint: #edf2e9;
+  --tsls-surface-dark: #1c4438;
+  --tsls-line-dark: #3f6557;
+
+  /* --- Legacy aliases (dipakai halaman lama, dipetakan ke palet baru) - */
+  --tsls-cream-50: var(--tsls-bg);
+  --tsls-cream-100: #eef3ea;
+  --tsls-cream-200: #e3ebde;
+  --tsls-olive-950: var(--tsls-dark);
+  --tsls-olive-800: var(--tsls-ink);
+  --tsls-olive-600: #4a6f60;
+  --tsls-sage-500: var(--tsls-grow);
+  --tsls-sage-600: #7fa978;
+  --tsls-sand-400: var(--tsls-move);
+  --tsls-yellow-300: #f3cf75;
+  --tsls-wood-600: #a85c2e;
+
+  --text-primary: var(--tsls-dark);
+  --text-secondary: var(--tsls-muted);
+  --border-soft: var(--tsls-line);
+
+  /* --- Semantic theme mappings --------------------------------------- */
+  --color-paper: var(--tsls-bg);
+  --color-paper-2: var(--tsls-surface-2);
+  --color-paper-3: var(--tsls-surface-3);
+  --color-ink: var(--tsls-dark);
+  --color-ink-2: var(--tsls-muted);
+  --color-rule: var(--tsls-line);
+  --color-rule-2: #cfdccf;
+  --color-muted: var(--tsls-muted);
+  --color-neutral: var(--tsls-text);
+  --color-accent: var(--tsls-ink);
+  --color-accent-strong: var(--tsls-dark);
+  --color-accent-ink: var(--tsls-white);
+  --color-warm: var(--tsls-move-ink);
+  --color-warm-soft: var(--tsls-move);
+  --color-focus: #e39961;
   --color-danger: #ba1a1a;
 
-  --font-display: "Lora", ui-serif, Georgia, serif;
-  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
-  --font-outlier: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  /* --- Typography ----------------------------------------------------- */
+  --tsls-font-display: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --tsls-font-body: "Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  /* --- Spacing -------------------------------------------------------- */
   --space-3xs: 0.25rem;
   --space-2xs: 0.5rem;
   --space-xs: 0.75rem;
@@ -50,28 +88,37 @@
   --space-3xl: 7rem;
   --space-4xl: 10rem;
 
+  /* --- Type scale ----------------------------------------------------- */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-md: 1.125rem;
-  --text-lg: 1.375rem;
-  --text-xl: 1.75rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
   --text-2xl: 2.25rem;
   --text-3xl: 3rem;
-  --text-display-s: clamp(2.25rem, 4.5vw, 4rem);
-  --text-display: clamp(2.5rem, 5.5vw, 5rem);
+  --text-section: clamp(2rem, 3.9vw, 3.3rem);
+  --text-display-s: clamp(2.75rem, 4.6vw, 4.06rem);
+  --text-display: clamp(3.5rem, 6.2vw, 6.06rem);
 
+  /* --- Layout --------------------------------------------------------- */
+  --container-max: 1180px;
+  --container-gutter: 48px;
+
+  /* --- Motion (semua < 250 ms per design system) ---------------------- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-micro: 140ms;
-  --dur-short: 220ms;
-  --dur-long: 450ms;
+  --dur-short: 200ms;
+  --dur-long: 240ms;
 
+  /* --- Shape ---------------------------------------------------------- */
   --rule-hair: 1px;
   --rule-fine: 2px;
-  --radius-card: 0.875rem;
+  --radius-sm: 12px;
+  --radius-card: 14px;
   --radius-pill: 999px;
-  --radius-input: 0.75rem;
-  --shadow-card: 0 4px 20px rgba(37, 53, 31, 0.05);
-  --shadow-float: 0 12px 32px rgba(37, 53, 31, 0.12);
+  /* --radius-lg / --radius-xl berasal dari @theme Tailwind (global.css) */
+  --shadow-card: 0 10px 35px rgba(87, 117, 90, 0.08);
+  --shadow-float: 0 18px 54px rgba(25, 57, 43, 0.09);
 }

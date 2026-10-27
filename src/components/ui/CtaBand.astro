@@ -1,0 +1,37 @@
+---
+import { EXTERNAL_LINKS } from '../../data/constants';
+
+interface Props {
+  title?: string;
+  desc?: string;
+}
+
+const {
+  title = 'Mulai perjalanan belajar Ananda bersama Sekolah Tarbiyah Sunnah Bandung',
+  desc = 'Kenali program yang sesuai, konsultasikan kebutuhan keluarga, lalu lanjutkan ke pendaftaran resmi.',
+} = Astro.props;
+---
+
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h2>{title}</h2>
+        <p>{desc}</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--white" href="/spmb">
+          Informasi SPMB <span class="btn__arrow" aria-hidden="true">↗</span>
+        </a>
+        <a
+          class="btn btn--outline-white"
+          href={EXTERNAL_LINKS.consultation}
+          target="_blank"
+          rel="noopener"
+        >
+          Konsultasi
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

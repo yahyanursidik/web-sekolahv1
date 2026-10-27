@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SectionHead from '../components/ui/SectionHead.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import { SITE } from '../data/constants';
+
+const spaces = [
+  {
+    img: '/images/elementary-kelas-1.jpg',
+    ribbon: 'ELEMENTARY',
+    title: 'Tata letak meja & papan tulis majelis',
+    desc: 'Ruang kelas bersih dan rapi dengan papan tulis interaktif, materi multiliterasi, dan pengingat adab penuntut ilmu di dinding kelas.',
+  },
+  {
+    img: '/images/elementary-halaqah.jpg',
+    ribbon: 'HALAQAH',
+    title: 'Pojok halaqah dan pembiasaan adab',
+    desc: "Area karpet untuk doa dan dzikir, halaqah talaqqi Al-Qur'an, cermin kerapian berpakaian, serta panduan adab harian.",
+  },
+  {
+    img: '/images/elementary-kelas-3.jpg',
+    ribbon: 'KARYA MURID',
+    title: 'Formasi belajar interaktif & display karya',
+    desc: 'Susunan meja-kursi yang mendukung konsentrasi mandiri maupun kerja kelompok, dihiasi kreasi visual buatan anak.',
+  },
+  {
+    img: '/images/preschool/playground-outdoor.jpg',
+    ribbon: 'PRESCHOOL',
+    title: 'Area bermain luar ruang & motorik kasar',
+    desc: 'Zona eksplorasi bahan alam dan permainan luar ruang untuk melatih ketangkasan fisik, koordinasi motorik, dan keberanian.',
+  },
+  {
+    img: '/images/preschool/ruang-kelas-bermain.jpg',
+    ribbon: 'PRESCHOOL',
+    title: 'Ruang kelas dan sentra bermain',
+    desc: 'Ruang hangat yang menyiapkan anak bermain, belajar, dan berelasi melalui sentra bahan alam, balok, serta main peran.',
+  },
+  {
+    img: null,
+    ribbon: 'KONTEN AKAN DIISI',
+    title: 'Cerita belajar & karya Ananda',
+    desc: 'Slot editorial untuk dokumentasi aktivitas nyata beserta tujuan belajar, proses, bukti karya, dan refleksi guru.',
+  },
+];
+
+const cultures = [
+  {
+    num: '01',
+    title: 'Dzikir pagi & pembuka hati',
+    desc: 'Mengawali hari dengan doa dan dzikir bersama, serta pengkondisian hati menyambut ilmu.',
+  },
+  {
+    num: '02',
+    title: 'Adab majelis & tanggung jawab diri',
+    desc: 'Membiasakan murid merapikan loker, mengangkat kursi setelah belajar, dan menjaga kebersihan ruang bersama.',
+  },
+  {
+    num: '03',
+    title: 'Shalat berjamaah',
+    desc: 'Ikhwan dibina berjalan beradab menuju masjid untuk shalat berjamaah; akhwat di mushalla sekolah.',
+  },
+  {
+    num: '04',
+    title: 'Makan sehat & sosialisasi hangat',
+    desc: 'Menikmati kudapan dan makan siang dengan adab: duduk, tangan kanan, basmalah, dan bersyukur.',
+  },
+];
+---
+
+<Layout
+  title={`Kehidupan Sekolah | ${SITE.name}`}
+  description="Lebih dekat dengan suasana kelas, area eksplorasi, dan proses pendampingan sehari-hari di Sekolah Tarbiyah Sunnah Bandung."
+>
+  <PageHero
+    eyebrow="Lingkungan & pengalaman"
+    title="Ruang untuk bertanya.<br />Ruang untuk bertumbuh."
+    intro="Lebih dekat dengan suasana kelas, area eksplorasi, karya, dan proses pendampingan di Sekolah Tarbiyah Sunnah Bandung. Dokumentasi kegiatan diutamakan menampilkan konteks belajar, bukan sekadar foto seremonial."
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'Kehidupan Sekolah' }]}
+  />
+
+  <section class="section--tight">
+    <div class="container">
+      <SectionHead
+        eyebrow="Ruang belajar kami"
+        title="Sekolah terlihat melalui pengalaman."
+        desc="Ruang, fasilitas, dan sudut belajar yang menemani keseharian Ananda."
+      />
+      <div class="story-grid">
+        {
+          spaces.map((space) => (
+            <article class="story-tile">
+              <div
+                class="story-tile__art"
+                style={space.img ? undefined : 'display:grid;place-items:center;background:#dcece6'}
+              >
+                {space.img ? (
+                  <img loading="lazy" src={space.img} alt={space.title} width="520" height="430" />
+                ) : (
+                  <div style="text-align:center;color:#3f7466;font-size:21px;font-weight:800;letter-spacing:-.04em">
+                    LEARNING
+                    <br />
+                    STORIES
+                  </div>
+                )}
+                <span class="story-tile__ribbon">{space.ribbon}</span>
+              </div>
+              <div class="story-tile__content">
+                <h3>{space.title}</h3>
+                <p>{space.desc}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <div class="notice">
+        Slot cerita belajar terakhir masih berupa ruang editorial. Dokumentasi murid baru diterbitkan
+        setelah memperoleh izin tertulis wali dan melalui kurasi privasi anak.
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--tint">
+    <div class="container">
+      <SectionHead
+        eyebrow="Budaya institusi"
+        title="Empat pembiasaan harian."
+        desc="Pendidikan bukan hanya yang tertulis di buku, melainkan adab yang hidup dan dipraktikkan sepanjang hari."
+      />
+      <div class="content-grid content-grid--4">
+        {
+          cultures.map((item) => (
+            <article class="info-card">
+              <span class="info-card__id">{item.num}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ingin melihat suasana sekolah lebih dekat?"
+    desc="Hubungi School Center untuk menanyakan informasi program atau kemungkinan kunjungan."
+  />
+</Layout>

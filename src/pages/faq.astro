@@ -1,238 +1,207 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
 import faqData from '../content/settings/faq.json';
+import { SITE } from '../data/constants';
 
-const formatAnswer = (text) => {
-    if (!text) return '';
-    const blocks = text.split('\n\n');
-    return blocks.map(block => {
-        const lines = block.split('\n');
-        
-        // Handle Tables
-        if (lines.some(l => l.includes('\t'))) {
-            let tableHtml = `<div class="overflow-x-auto my-4 rounded-xl border border-outline-variant/50"><table class="w-full text-left border-collapse text-sm md:text-base">`;
-            lines.forEach((line, i) => {
-                const cols = line.split('\t');
-                tableHtml += `<tr class="border-b border-outline-variant/30 last:border-0">`;
-                cols.forEach(col => {
-                    if (i === 0) {
-                        tableHtml += `<th class="p-3 md:p-4 font-bold text-primary bg-primary/5 align-top">${col}</th>`;
-                    } else {
-                        tableHtml += `<td class="p-3 md:p-4 text-on-surface-variant font-medium align-top">${col}</td>`;
-                    }
-                });
-                tableHtml += `</tr>`;
-            });
-            tableHtml += `</table></div>`;
-            return tableHtml;
-        }
+/** faq.json memakai \n\n untuk paragraf, \n untuk butir, dan \t untuk kolom tabel. */
+const formatAnswer = (text: string) => {
+  if (!text) return '';
+  return text
+    .split('\n\n')
+    .map((block) => {
+      const lines = block.split('\n').filter(Boolean);
 
-        // Handle Lists (Blocks with multiple lines that are not tables)
-        if (lines.length > 1) {
-            let listHtml = `<ul class="list-disc list-outside ml-6 space-y-2 my-4 text-on-surface-variant text-lg">`;
-            lines.forEach(line => {
-                let content = line.replace(/^\d+\.\s*/, '').trim(); // Remove leading numbers for uniform bullets
-                if(content) listHtml += `<li>${content}</li>`;
-            });
-            listHtml += `</ul>`;
-            return listHtml;
-        }
+      if (lines.some((line) => line.includes('\t'))) {
+        const rows = lines
+          .map((line, rowIndex) => {
+            const cells = line
+              .split('\t')
+              .map((cell) =>
+                rowIndex === 0 ? `<th scope="col">${cell}</th>` : `<td>${cell}</td>`
+              )
+              .join('');
+            return `<tr>${cells}</tr>`;
+          })
+          .join('');
+        return `<div class="faq-table"><table>${rows}</table></div>`;
+      }
 
-        // Standard Paragraph
-        return `<p class="mb-4 text-on-surface-variant leading-relaxed text-lg">${block}</p>`;
-    }).join('');
+      if (lines.length > 1) {
+        const items = lines
+          .map((line) => `<li>${line.replace(/^\d+\.\s*/, '').trim()}</li>`)
+          .join('');
+        return `<ul>${items}</ul>`;
+      }
+
+      return `<p>${block}</p>`;
+    })
+    .join('');
 };
+
+const sections = faqData.sections.map((section, index) => ({
+  ...section,
+  id: `faq-${index}`,
+}));
 ---
 
-<Layout title={`${faqData.title} - TS Lab School`}>
-<main class="pt-24 bg-background">
-<!-- Hero Section -->
-<section class="relative min-h-[350px] flex items-center px-gutter py-section-padding-desktop overflow-hidden">
-<div class="absolute inset-0 z-0 bg-surface-container">
-<div class="pattern-overlay absolute inset-0 opacity-20"></div>
-<div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent"></div>
-</div>
-<div class="container mx-auto relative z-10 max-w-container-max text-center">
-<div class="max-w-3xl mx-auto reveal active">
-<span class="inline-block px-4 py-1 rounded-full bg-primary text-on-primary font-label-caps mb-6 shadow-md animate-bounce">Pusat Informasi</span>
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6 leading-tight">
-{faqData.title}
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
-{faqData.description}
-</p>
-</div>
-</div>
-</section>
+<Layout title={`FAQ | ${SITE.name}`} description={faqData.description}>
+  <PageHero
+    eyebrow="Pertanyaan umum"
+    title="Yang sering ditanyakan<br />Abba & Umma."
+    intro={faqData.description}
+    crumbs={[{ href: '/', label: 'Beranda' }, { label: 'FAQ' }]}
+  />
 
-<!-- FAQ Layout Section -->
-<section class="px-gutter py-section-padding-desktop relative">
-<div class="container mx-auto max-w-container-max relative z-10">
-<div class="flex flex-col lg:flex-row gap-12 items-start">
-  
-  <!-- Sidebar Navigation (TOC) -->
-  <aside class="w-full lg:w-1/4 hidden lg:block sticky top-28 reveal active">
-    <div class="bg-surface border border-outline-variant rounded-2xl p-6 shadow-sm">
-      <h3 class="font-bold text-primary mb-6 text-lg flex items-center gap-2">
-        <span class="material-symbols-outlined text-secondary">list_alt</span> Kategori FAQ
-      </h3>
-      <ul class="space-y-1">
-        {faqData.sections.map((section, index) => (
-          <li>
-            <a href={`#section-${index}`} class="toc-link flex items-start gap-2 text-on-surface-variant hover:text-secondary text-sm font-medium transition-colors p-2 rounded-lg hover:bg-secondary/10">
-              <span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5 flex-shrink-0 opacity-0 transition-opacity"></span>
-              {section.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </aside>
+  <section class="section--tight">
+    <div class="container faq-layout">
+      <aside class="faq-toc" aria-label="Kategori FAQ">
+        <h2>Kategori</h2>
+        <ul>
+          {sections.map((section) => <li><a href={`#${section.id}`}>{section.title}</a></li>)}
+        </ul>
+      </aside>
 
-  <!-- Main Content (FAQ List) -->
-  <div class="w-full lg:w-3/4 space-y-16">
-    {faqData.sections.map((section, sectionIndex) => (
-      <div id={`section-${sectionIndex}`} class="faq-section scroll-mt-32 reveal">
-        <div class="mb-8 border-b-2 border-primary/10 pb-4">
-          <h2 class="font-headline-md text-primary">{section.title}</h2>
-        </div>
-        <div class="space-y-4 stagger-reveal">
-          {section.faqs.map((faq, index) => (
-            <div class="bg-surface border border-outline-variant rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300 shadow-sm faq-item">
-              <button id={`faq-question-${sectionIndex}-${index}`} type="button" aria-expanded="false" aria-controls={`faq-answer-${sectionIndex}-${index}`} class="w-full text-left px-6 py-5 flex justify-between items-center gap-6 faq-question bg-transparent border-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-colors">
-                <h3 class="font-headline-sm text-primary group-hover:text-secondary transition-colors font-bold text-lg leading-snug">{faq.question}</h3>
-                <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors">
-                  <span class="material-symbols-outlined text-secondary transform transition-transform duration-300 faq-icon">expand_more</span>
-                </div>
-              </button>
-              <div id={`faq-answer-${sectionIndex}-${index}`} role="region" aria-labelledby={`faq-question-${sectionIndex}-${index}`} class="faq-answer grid transition-all duration-300 ease-in-out" style="grid-template-rows: 0fr;">
-                <div class="overflow-hidden px-6">
-                  <div class="pb-6 border-t border-outline-variant pt-4 mt-2 format-answer-content" set:html={formatAnswer(faq.answer)} />
-                </div>
+      <div>
+        {
+          sections.map((section) => (
+            <section id={section.id} class="faq-section">
+              <h2>{section.title}</h2>
+              <div class="faq-list" style="margin-inline:0;max-width:none">
+                {section.faqs.map((faq) => (
+                  <details>
+                    <summary>{faq.question}</summary>
+                    <div class="faq-answer" set:html={formatAnswer(faq.answer)} />
+                  </details>
+                ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-
-</div>
-</div>
-</section>
-
-<!-- CTA Admissions -->
-<section class="px-gutter pb-section-padding-desktop">
-<div class="container mx-auto max-w-container-max">
-<div class="bg-primary-container rounded-2xl p-8 md:p-16 text-center relative overflow-hidden reveal">
-<div class="pattern-overlay absolute inset-0 opacity-10"></div>
-<div class="relative z-10">
-<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6">Masih Punya Pertanyaan?</h2>
-<p class="text-on-tertiary-container text-lg mb-10 max-w-2xl mx-auto">
-Tim kami selalu siap sedia untuk membantu Anda mendapatkan informasi lebih lanjut seputar program, biaya, dan fasilitas di TS Lab School.
-</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="https://wa.me/6285173396002" target="_blank" rel="noopener noreferrer" class="px-10 py-4 rounded-full bg-secondary text-on-secondary font-bold text-lg hover:shadow-xl transition-all inline-flex items-center justify-center gap-2 whitespace-nowrap">
-  <span class="material-symbols-outlined">forum</span> Hubungi School Center
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // FAQ Accordion Script
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            const icon = item.querySelector('.faq-icon');
-            const iconWrapper = item.querySelector('.faq-question > div');
-            
-            question.addEventListener('click', () => {
-                const isOpen = answer.style.gridTemplateRows === '1fr';
-                
-                // Close all others
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        const otherAnswer = otherItem.querySelector('.faq-answer');
-                        const otherIcon = otherItem.querySelector('.faq-icon');
-                        const otherIconWrapper = otherItem.querySelector('.faq-question > div');
-                        const otherQuestion = otherItem.querySelector('.faq-question');
-                        
-                        otherAnswer.style.gridTemplateRows = '0fr';
-                        otherQuestion.setAttribute('aria-expanded', 'false');
-                        otherIcon.style.transform = 'rotate(0deg)';
-                        otherIconWrapper.classList.remove('bg-secondary', 'text-on-secondary');
-                        otherIconWrapper.classList.add('bg-secondary/10');
-                        otherItem.classList.remove('bg-primary/5', 'border-primary/30', 'shadow-md');
-                    }
-                });
-                
-                // Toggle current
-                if (isOpen) {
-                    answer.style.gridTemplateRows = '0fr';
-                    question.setAttribute('aria-expanded', 'false');
-                    icon.style.transform = 'rotate(0deg)';
-                    iconWrapper.classList.remove('bg-secondary', 'text-on-secondary');
-                    iconWrapper.classList.add('bg-secondary/10');
-                    item.classList.remove('bg-primary/5', 'border-primary/30', 'shadow-md');
-                } else {
-                    answer.style.gridTemplateRows = '1fr';
-                    question.setAttribute('aria-expanded', 'true');
-                    icon.style.transform = 'rotate(180deg)';
-                    iconWrapper.classList.remove('bg-secondary/10');
-                    iconWrapper.classList.add('bg-secondary', 'text-on-secondary');
-                    item.classList.add('bg-primary/5', 'border-primary/30', 'shadow-md');
-                }
-            });
-        });
-
-        // Intersection Observer for Scroll Animations
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal, .stagger-reveal').forEach(el => {
-            if (el) observer.observe(el);
-        });
-
-        // Active TOC Highlighting
-        const sections = document.querySelectorAll('.faq-section');
-        const navLinks = document.querySelectorAll('.toc-link');
-        
-        if (sections.length > 0 && navLinks.length > 0) {
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            const indicator = link.querySelector('span');
-                            if (link.getAttribute('href') === `#${id}`) {
-                                link.classList.add('text-secondary', 'font-bold', 'bg-secondary/10');
-                                link.classList.remove('text-on-surface-variant');
-                                if(indicator) indicator.classList.remove('opacity-0');
-                            } else {
-                                link.classList.remove('text-secondary', 'font-bold', 'bg-secondary/10');
-                                link.classList.add('text-on-surface-variant');
-                                if(indicator) indicator.classList.add('opacity-0');
-                            }
-                        });
-                    }
-                });
-            }, { rootMargin: '-20% 0px -70% 0px' });
-
-            sections.forEach(section => scrollObserver.observe(section));
+            </section>
+          ))
         }
-    });
-</script>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ada pertanyaan yang belum terjawab?"
+    desc="Tim School Center dapat membantu memberikan informasi program dan pendaftaran."
+  />
 </Layout>
+
+<style>
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .faq-toc {
+    position: sticky;
+    top: 110px;
+    border: 1px solid var(--tsls-line);
+    border-radius: 18px;
+    background: #fff;
+    padding: 24px;
+  }
+
+  .faq-toc h2 {
+    margin-bottom: 14px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #3d6d5b;
+  }
+
+  .faq-toc ul {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .faq-toc a {
+    display: block;
+    color: var(--tsls-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .faq-toc a:hover {
+    color: var(--tsls-ink);
+    text-decoration: underline;
+  }
+
+  .faq-section + .faq-section {
+    margin-top: 44px;
+  }
+
+  .faq-section > h2 {
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+
+  .faq-answer {
+    margin-bottom: 22px;
+    color: var(--tsls-muted);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .faq-answer :global(p + p),
+  .faq-answer :global(ul),
+  .faq-answer :global(.faq-table) {
+    margin-top: 12px;
+  }
+
+  .faq-answer :global(ul) {
+    margin-left: 18px;
+    padding: 0;
+  }
+
+  .faq-answer :global(li) {
+    margin-bottom: 6px;
+  }
+
+  .faq-answer :global(.faq-table) {
+    overflow-x: auto;
+    border: 1px solid var(--tsls-line);
+    border-radius: 12px;
+  }
+
+  .faq-answer :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .faq-answer :global(th),
+  .faq-answer :global(td) {
+    border-bottom: 1px solid var(--tsls-line);
+    padding: 10px 14px;
+    vertical-align: top;
+  }
+
+  .faq-answer :global(th) {
+    background: var(--tsls-surface-2);
+    color: var(--tsls-ink);
+    font-weight: 800;
+  }
+
+  .faq-answer :global(tr:last-child td) {
+    border-bottom: 0;
+  }
+
+  @media (max-width: 920px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .faq-toc {
+      position: static;
+    }
+  }
+</style>
